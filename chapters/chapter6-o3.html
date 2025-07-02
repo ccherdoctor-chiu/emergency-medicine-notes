@@ -281,6 +281,131 @@
         tr:nth-child(even) {
             background: #f8f9fa;
         }
+        
+        /* START: Added styles for hemorrhage severity table */
+        #hemorrhage-severity-table {
+            border-radius: 8px;
+            overflow: hidden; /* This clips the child elements to the parent's border-radius */
+            border-collapse: separate; /* separate is needed for border-radius to work on tables */
+            border-spacing: 0;
+            border: 1px solid #ddd;
+        }
+
+        /* Override generic even-row styling for this specific table */
+        #hemorrhage-severity-table tr:nth-child(even) {
+            background-color: transparent;
+        }
+
+        #hemorrhage-severity-table th, 
+        #hemorrhage-severity-table td {
+             border:none; /* Remove default borders */
+        }
+        
+        /* Column Background Colors using nth-child selectors */
+        #hemorrhage-severity-table td:nth-child(2) { background-color: #fef9c3; } /* MINOR - Yellow */
+        #hemorrhage-severity-table td:nth-child(3) { background-color: #fed7aa; } /* MODERATE - Orange */
+        #hemorrhage-severity-table td:nth-child(4) { background-color: #fca5a5; } /* MAJOR - Red */
+        #hemorrhage-severity-table td:nth-child(5) { background-color: #f87171; } /* MASSIVE - Darker Red */
+        
+        /* Make text white on the darkest column for better readability */
+        #hemorrhage-severity-table td:nth-child(5) {
+             color: white;
+        }
+
+        /* Header specific styles */
+        #hemorrhage-severity-table thead th {
+            background-color: #1e3c72; /* Dark blue to match main header */
+            color: white;
+            text-align: center;
+        }
+        
+        /* Parameter column (first column) specific style */
+        #hemorrhage-severity-table tbody td:first-child {
+            background-color: #f8f9fa; /* Light grey */
+            font-weight: bold;
+        }
+        /* END: Added styles for hemorrhage severity table */
+
+        /* START: Styles for improved bleeding locations diagram */
+        #bleeding-locations-diagram .diagram-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto auto;
+            grid-template-areas:
+                "external . thoracic"
+                "central central central"
+                "longbone retro peritoneal";
+            gap: 15px;
+            padding: 20px;
+            position: relative;
+            align-items: stretch;
+        }
+        #bleeding-locations-diagram .central-hub {
+            grid-area: central;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 10;
+            margin: 10px 0;
+        }
+        #bleeding-locations-diagram .location-box {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fdfdfd;
+            display: flex;
+            flex-direction: column;
+        }
+        #bleeding-locations-diagram .location-box h5 {
+            color: #1e3c72;
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        #bleeding-locations-diagram .location-box ul {
+            margin-left: 15px;
+            padding-left: 0;
+            font-size: 0.9em;
+            flex-grow: 1;
+        }
+        #bleeding-locations-diagram .thoracic-cavity { grid-area: thoracic; }
+        #bleeding-locations-diagram .peritoneal-cavity { grid-area: peritoneal; }
+        #bleeding-locations-diagram .retroperitoneal-space { grid-area: retro; }
+        #bleeding-locations-diagram .long-bone { grid-area: longbone; }
+        #bleeding-locations-diagram .external-hemorrhage { grid-area: external; }
+        
+        #bleeding-locations-diagram .diagram-footnote {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive layout for the diagram */
+        @media (max-width: 992px) {
+            #bleeding-locations-diagram .diagram-container {
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas:
+                    "external thoracic"
+                    "central central"
+                    "longbone peritoneal"
+                    "retro retro";
+            }
+        }
+        @media (max-width: 768px) {
+            #bleeding-locations-diagram .diagram-container {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        /* END: Styles for improved bleeding locations diagram */
 
         /* 功能按鈕 */
         #download-pdf {
@@ -447,28 +572,22 @@
     </style>
 </head>
 <body>
-    <!-- 進度條 -->
     <div id="progress-bar"></div>
 
-    <!-- 主標題 -->
     <div class="main-header">
         <h1>📚 ATLS Chapter 6 - 循環評估與容積復甦 考前重點複習筆記</h1>
         <p>🏥 Circulation Assessment and Volume Resuscitation 互動式學習系統</p>
     </div>
 
-    <!-- 下載PDF按鈕 -->
     <button id="download-pdf" onclick="downloadPDF()">
         📥 下載PDF
     </button>
 
-    <!-- 返回頂部按鈕 -->
     <button id="back-to-top" onclick="scrollToTop()">
         ⬆
     </button>
 
-    <!-- 導覽容器 -->
     <div class="nav-container">
-        <!-- 下拉式選單 -->
         <div class="dropdown-nav">
             <div class="dropdown">
                 <button class="dropdown-button">📋 一般性重點筆記 ▼</button>
@@ -477,6 +596,7 @@
                     <a href="#general-shock">休克定義與分類</a>
                     <a href="#general-identification">早期辨識指標</a>
                     <a href="#general-bleeding">五大失血處</a>
+                    <a href="#general-fast">FAST超音波評估</a>
                     <a href="#general-strategy">出血控制與輸血策略</a>
                     <a href="#general-qa">主動回憶問題庫</a>
                 </div>
@@ -497,6 +617,7 @@
                 <div class="dropdown-content">
                     <a href="#clinical-emergency">緊急狀況快速應變</a>
                     <a href="#clinical-dosing">臨床常用劑量速查</a>
+                    <a href="#clinical-anticoagulation-reversal">抗凝藥物逆轉策略</a>
                     <a href="#clinical-assessment">關鍵評估與判讀</a>
                     <a href="#clinical-procedures">實務操作核心提示</a>
                 </div>
@@ -517,13 +638,11 @@
                 <div class="dropdown-content">
                     <a href="#other-nonhemorrhagic">非出血性休克分類</a>
                     <a href="#other-population">不同族群復甦差異</a>
-                    <a href="#other-anticoagulation">抗凝逆轉策略</a>
                     <a href="#other-tca">創傷性心搏停止</a>
                 </div>
             </div>
         </div>
 
-        <!-- 分頁標籤 -->
         <div class="tabs">
             <button class="tab-button active" onclick="showTab('general')">
                 📋 一般性重點筆記
@@ -543,9 +662,7 @@
         </div>
     </div>
 
-    <!-- 內容區域 -->
     <div class="content">
-        <!-- 版權聲明 -->
         <div class="copyright-notice">
             <h4>⚖️ 版權聲明與使用限制</h4>
             <p>本網頁內容使用GAI生成</p>
@@ -557,7 +674,6 @@
             </ul>
         </div>
 
-        <!-- 一般性重點筆記 -->
         <div id="general" class="tab-content active">
             <h2>📋 一般性重點筆記</h2>
             
@@ -606,6 +722,25 @@
                     <li>🩸 外部出血（External - "on the floor"）</li>
                 </ol>
                 <p>💡 故事記憶法：「地板上一灘血 (floor) → 抬頭看胸、腹、骨盆、長骨 (four)」</p>
+            </div>
+
+            <div class="concept-box">
+                <h3 id="general-fast">🔍 FAST 超音波評估 (Focused Assessment with Sonography for Trauma)</h3>
+                <p><strong>定義</strong>：一種快速、非侵入性的床邊超音波檢查，用於快速偵測創傷病患是否有腹腔內出血 (hemoperitoneum) 或心包填塞 (hemopericardium)。</p>
+                <h4>四大標準探查位置 (Standard Views):</h4>
+                <ol>
+                    <li><strong>心包膜下 (Subxiphoid)</strong>：評估心包膜是否積液。</li>
+                    <li><strong>右上腹 (Right Upper Quadrant - RUQ)</strong>：探查肝腎交界的 Morrison's Pouch。</li>
+                    <li><strong>左上腹 (Left Upper Quadrant - LUQ)</strong>：探查脾腎交界 (splenorenal recess)。</li>
+                    <li><strong>骨盆腔 (Pelvic)</strong>：探查膀胱後方的陷凹 (pouch of Douglas)。</li>
+                </ol>
+                <h4>eFAST (延伸版):</h4>
+                <p>eFAST (Extended FAST) 額外增加了<strong>雙側胸腔前側</strong>的探查，用以評估是否存在氣胸 (pneumothorax) 或血胸 (hemothorax)。</p>
+                <h4>優點與侷限:</h4>
+                <ul>
+                    <li><strong>優點</strong>: 非侵入性、可重複檢查、能同時掃描胸腹部。</li>
+                    <li><strong>侷限</strong>: 早期少量出血可能不易偵測、結果高度依賴操作者經驗。</li>
+                </ul>
             </div>
 
             <h3 id="general-strategy">🩺 出血控制與輸血策略</h3>
@@ -730,7 +865,6 @@
             </div>
         </div>
 
-        <!-- 進階觀念與應考陷阱 -->
         <div id="advanced" class="tab-content">
             <h2>⚠️ 進階觀念與應考陷阱</h2>
             
@@ -915,7 +1049,6 @@
             </div>
         </div>
 
-        <!-- 臨床現場實用資訊 -->
         <div id="clinical" class="tab-content">
             <h2>🚨 臨床現場實用資訊</h2>
             
@@ -945,7 +1078,6 @@
             </div>
 
             <h3 id="clinical-dosing">💊 臨床常用劑量速查</h3>
-            
             <table>
                 <tr>
                     <th>藥物／製劑</th>
@@ -954,38 +1086,78 @@
                     <th>特別提示</th>
                 </tr>
                 <tr>
-                    <td><strong>TXA</strong></td>
-                    <td>大量出血；到院 < 3 hr</td>
-                    <td>1 g IV push 10 min → 再 1 g/8 hr <em>或</em> 單次 2 g</td>
-                    <td>>3 hr 若無 TEG/ROTEM「超纖」則不再給</td>
-                </tr>
-                <tr>
-                    <td><strong>Protamine</strong></td>
-                    <td>Heparin / LMWH 逆轉</td>
-                    <td>UFH: 最近 2 hr 每 100 U → 1 mg (max 50 mg)<br>
-                        LMWH: <8 hr 1 mg per mg；8-12 hr 0.5 mg per mg；>12 hr 免給</td>
-                    <td>過量易低血壓；給藥 ≤ 5 mg/min</td>
-                </tr>
-                <tr>
-                    <td><strong>Idarucizumab</strong></td>
-                    <td>Dabigatran 逆轉</td>
-                    <td>5 g IV (2 × 2.5 g) 連續注射</td>
-                    <td>可重複一次；對 Xa 抑制劑無效</td>
-                </tr>
-                <tr>
-                    <td><strong>Andexanet α</strong></td>
-                    <td>Rivaroxaban / Apixaban 出血</td>
-                    <td>低劑量：400 mg bolus → 480 mg/2 hr<br>
-                        高劑量：800 mg bolus → 960 mg/2 hr</td>
-                    <td>周邊不建議推注；注意反彈高凝</td>
-                </tr>
-                <tr>
                     <td><strong>初始輸液量</strong></td>
                     <td>無血品暫替</td>
                     <td>成人晶體液 250-500 mL；兒童 10 mL/kg</td>
                     <td>預熱至 39 °C 以防低溫</td>
                 </tr>
+                 <tr>
+                    <td><strong>TXA</strong></td>
+                    <td>大量出血；到院 < 3 hr</td>
+                    <td>1 g IV push 10 min → 再 1 g/8 hr <em>或</em> 單次 2 g</td>
+                    <td>>3 hr 若無 TEG/ROTEM「超纖」則不再給</td>
+                </tr>
             </table>
+
+            <div class="dosage-box">
+                <h3 id="clinical-anticoagulation-reversal">💊 抗凝藥物逆轉策略 (Table 6-7)</h3>
+                <table>
+                     <thead>
+                        <tr>
+                            <th>抗凝/抗血小板藥物</th>
+                            <th>治療選項</th>
+                            <th>註解/注意事項</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>抗血小板藥物</b><br>e.g., aspirin, clopidogrel (Plavix®), ticagrelor (Brilinta®), prasugrel (Effient®), dipyridamole, abciximab (Reopro®), eptifibatide (Integrilin®), tirofiban (Aggrastat®)</td>
+                            <td>• 判定為輕微或嚴重出血<br>• <b>輕微:</b> Desmopressin (DDAVP) 0.3 mcg/kg 單次<br>• <b>嚴重:</b> 血小板輸注 (用於危及生命之出血或計畫中的神經外科手術)<br>• DDAVP 0.4 mg/kg<br>• TXA 可能有益<br>• EACA: 4g loading, 之後 1g/hr, 最多4小時</td>
+                            <td>• 常規輸注血小板在某研究中顯示預後較差<br>• DDAVP 有理論依據，但療效數據有限<br>• 殘餘的抗血小板藥物可能抑制輸注的血小板功能<br>• EACA 可能增加DVT風險</td>
+                        </tr>
+                        <tr>
+                            <td><b>維他命K拮抗劑</b><br>e.g., warfarin (Coumadin®)</td>
+                            <td>• 維他命K 5-10 mg IV<br>• <b>加上</b> 四因子PCC<br>• <b>或</b> FFP 10-15 mL/kg</td>
+                            <td>• 將INR正常化<br>• 監測年長者及心臟損傷病患是否容量超載</td>
+                        </tr>
+                        <tr>
+                            <td><b>口服直接凝血酶抑制劑</b><br>e.g., dabigatran (Pradaxa®)</td>
+                            <td>• Idarucizumab (Praxbind®) 5g IV<br>• <b>或</b> 四因子PCC</td>
+                            <td>若最後服藥時間在2小時內，可考慮使用活性碳。</td>
+                        </tr>
+                        <tr>
+                            <td><b>靜脈注射直接凝血酶抑制劑</b><br>e.g., bivalirudin, argatroban</td>
+                            <td>FFP 15 ml/kg (可重複)</td>
+                            <td>• Idarucizumab (Praxbind®) 無效且未被核准<br>• 2-6小時內代謝<br>• Bivalirudin有透析移除的可能性</td>
+                        </tr>
+                        <tr>
+                            <td><b>Xa因子抑制劑</b><br>rivaroxaban (Xarelto®), apixaban (Eliquis®)</td>
+                            <td>• Andexanet alfa (Andexxa®)<br>• <b>或</b> 四因子PCC</td>
+                            <td>• 劑量根據最後服藥時間調整<br>• 低劑量方案: 400 mg IV bolus, 接著 480 mg/2hr<br>• 高劑量方案: 800 mg bolus, 接著 960 mg/2hr<br>• 若最後服藥時間在2小時內，可考慮使用活性碳。</td>
+                        </tr>
+                        <tr>
+                            <td><b>Xa因子抑制劑</b><br>edoxaban (Lixiana®, Savaysa®)</td>
+                            <td>• (仿單外使用) Andexanet alfa (Andexxa®)<br>• <b>或</b> 四因子PCC</td>
+                            <td>高劑量方案 (800 mg bolus, 接著 960 mg/2hr)</td>
+                        </tr>
+                        <tr>
+                            <td><b>Xa因子抑制劑</b><br>fondaparinux (Arixtra®)</td>
+                            <td>• (仿單外使用) Andexanet alfa (Andexxa®)<br>• <b>或</b> aPCC (FEIBA®) 20 u/kg 單次<br>• <b>或</b> rVIIa (NovoSeven®) 90 mcg/kg 單次 (若aPCC不可得)</td>
+                            <td>Andexanet alfa的劑量尚未建立。</td>
+                        </tr>
+                        <tr>
+                            <td><b>肝素 (Heparin) 連續輸注</b></td>
+                            <td>Protamine sulfate</td>
+                            <td>過去2小時內每100U肝素給予1 mg protamine，單次最高50 mg。</td>
+                        </tr>
+                         <tr>
+                            <td><b>低分子量肝素 (LMWH)</b><br>e.g., enoxaparin (Lovenox®), dalteparin (Fragmin®), tinzaparin, nadroparin</td>
+                            <td>Protamine sulfate</td>
+                            <td>• <b>&lt;8小時內:</b> 每1mg LMWH給予1mg protamine<br>• <b>8-12小時:</b> 每1mg LMWH給予0.5mg protamine<br>• <b>>12小時:</b> 不需給藥</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h3 id="clinical-assessment">📊 關鍵評估與判讀要點</h3>
             
@@ -1078,84 +1250,136 @@
             </div>
         </div>
 
-        <!-- 重要圖表整理 -->
         <div id="charts" class="tab-content">
             <h2>📊 重要圖表整理</h2>
             
             <h3 id="chart-hemorrhage">📉 Table 6-2: 失血嚴重度分級表</h3>
             <div class="chart-box">
-                <table>
-                    <tr>
-                        <th>參數</th>
-                        <th>Minor</th>
-                        <th>Moderate</th>
-                        <th>Major</th>
-                        <th>Massive</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Heart Rate (bpm)</strong></td>
-                        <td>↔</td>
-                        <td>↔ / ↑</td>
-                        <td>↑ > 100</td>
-                        <td>↑ > 120</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Systolic BP (mmHg)</strong></td>
-                        <td>↔</td>
-                        <td>↔</td>
-                        <td>↔ / ↓</td>
-                        <td>↓ < 90</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Pulse Pressure</strong></td>
-                        <td>↔</td>
-                        <td>↓</td>
-                        <td>↓</td>
-                        <td>↓</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Base Deficit (mEq/L)</strong></td>
-                        <td>0 ~ -2</td>
-                        <td>-2 ~ -6</td>
-                        <td>-6 ~ -10</td>
-                        <td>< -10</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Blood Products</strong></td>
-                        <td>Unlikely</td>
-                        <td>Possibly</td>
-                        <td>Likely</td>
-                        <td>Massive Tx</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Response to Resus.</strong></td>
-                        <td>快速且持續</td>
-                        <td>尚可</td>
-                        <td>短暫</td>
-                        <td>無效</td>
-                    </tr>
+                <table id="hemorrhage-severity-table">
+                    <thead>
+                        <tr>
+                            <th>PARAMETER</th>
+                            <th>MINOR</th>
+                            <th>MODERATE</th>
+                            <th>MAJOR</th>
+                            <th>MASSIVE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Heart Rate (beats/min)</strong></td>
+                            <td>Unchanged</td>
+                            <td>Unchanged to Increased</td>
+                            <td>Increased (&gt;100)</td>
+                            <td>Markedly Increased (&gt;120)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Systolic Pressure (mm Hg)</strong></td>
+                            <td>Unchanged</td>
+                            <td>Unchanged</td>
+                            <td>Unchanged to Decreased</td>
+                            <td>Markedly Decreased (&lt;90)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pulse Pressure</strong></td>
+                            <td>Unchanged</td>
+                            <td>Decreased</td>
+                            <td>Decreased</td>
+                            <td>Decreased</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Respiratory Rate</strong></td>
+                            <td>Unchanged</td>
+                            <td>Unchanged to Increased</td>
+                            <td>Increased</td>
+                            <td>Increased</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Level of Consciousness</strong></td>
+                            <td>Unchanged</td>
+                            <td>Unchanged</td>
+                            <td>Decreased</td>
+                            <td>Markedly Decreased</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Base Deficit (mEq/L)</strong></td>
+                            <td>0 to -2</td>
+                            <td>-2 to -6</td>
+                            <td>-6 to -10</td>
+                            <td>-10 and less</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Blood Products</strong></td>
+                            <td>Unlikely</td>
+                            <td>Possibly</td>
+                            <td>Likely</td>
+                            <td>Massive Transfusion Protocol</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Response to Resuscitation</strong></td>
+                            <td>Rapid and Sustained</td>
+                            <td>Fairly Rapid and Sustained</td>
+                            <td>Transient</td>
+                            <td>Minimal to None</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Operative Hemorrhage Control</strong></td>
+                            <td>Unlikely</td>
+                            <td>Possibly</td>
+                            <td>Likely</td>
+                            <td>Extremely Likely</td>
+                        </tr>
+                    </tbody>
                 </table>
                 <p>💡 <strong>記憶法</strong>：把四級想像成紅綠燈：Minor-綠、Moderate-黃、Major-橙、Massive-紅</p>
             </div>
 
             <h3 id="chart-bleeding">🩸 Figure 6-2: 五大失血位置示意圖</h3>
-            <div class="physiology-box">
-                <h4>"One on the Floor and Four More"</h4>
-                <div style="text-align: center; padding: 20px;">
-                    <pre style="font-family: monospace; display: inline-block; text-align: left;">
-┌─────────────┐
-│  A Thoracic │
-┌─────────┴─────────────┴───────────┐
-│    B Peritoneal cavity            │
-│                                   │
-│  C Pelvic / Retroperitoneal      │
-│                                   │
-│ D Long bone / Muscle compartments │
-└─────────────┬─────────────────────┘
-      E External hemorrhage ("floor")
-                    </pre>
+            <div class="physiology-box" id="bleeding-locations-diagram">
+                <div class="diagram-container">
+                    <div class="location-box external-hemorrhage">
+                        <h5>E. 外部出血 ("The Floor")</h5>
+                        <ul>
+                            <li>頭皮撕裂傷 (Scalp laceration)</li>
+                            <li>開放性骨折 (Open fracture)</li>
+                        </ul>
+                    </div>
+                    <div class="location-box thoracic-cavity">
+                        <h5>A. 胸腔 (Thoracic Cavity)</h5>
+                        <ul>
+                            <li>肺部撕裂傷 (Lung laceration)</li>
+                            <li>血胸 (Hemo-thorax)</li>
+                            <li>胸壁損傷 (Chest wall injury)</li>
+                        </ul>
+                    </div>
+                    <div class="central-hub">
+                        創傷出血五大位置<br>"One on the Floor and Four More"
+                    </div>
+                    <div class="location-box long-bone">
+                        <h5>D. 長骨/軟組織腔室 (Long Bone/Soft Tissue Compartments)</h5>
+                        <ul>
+                            <li>閉鎖性長骨骨折 (Closed long bone fracture)</li>
+                            <li>皮下組織/肌肉 (Subcutaneous tissue/muscle)</li>
+                        </ul>
+                    </div>
+                    <div class="location-box retroperitoneal-space">
+                        <h5>C. 後腹膜腔 (Retroperitoneal Space)</h5>
+                        <ul>
+                            <li>骨盆骨折 (Pelvic fracture)</li>
+                            <li>腎臟等器官損傷 (Kidney/other organs)</li>
+                            <li>腰椎損傷 (Lumbar spine injury)</li>
+                        </ul>
+                    </div>
+                    <div class="location-box peritoneal-cavity">
+                        <h5>B. 腹膜腔 (Peritoneal Cavity)</h5>
+                        <ul>
+                            <li>肝臟 (Liver)</li>
+                            <li>脾臟 (Spleen)</li>
+                            <li>腸道 (Intestines)</li>
+                        </ul>
+                    </div>
                 </div>
-                <p>💡 <strong>應用</strong>：完成 xABCDE 後，立即以 "Floor → Chest → Abdomen → Pelvis/Retro → Long Bones" 次序檢查</p>
+                <p class="diagram-footnote">💡 <strong>應用</strong>：完成 xABCDE 後，立即以 "Floor → Chest → Abdomen → Pelvis/Retro → Long Bones" 次序檢查</p>
             </div>
 
             <h3 id="chart-pelvic">🦴 Figure 6-6: 骨盆容積變化圖</h3>
@@ -1219,9 +1443,200 @@
                 </table>
                 <p>💡 <strong>記憶法</strong>：M-S-S（Mechanism-Symptoms-Signs）</p>
             </div>
+            
+            <div class="concept-box">
+                <h3 id="chart-perfusion-signs">📊 Table 6-4: 休克之臨床異常與灌流改善跡象</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>系統</th>
+                            <th>休克 (Shock)</th>
+                            <th>灌流改善 (Improved Perfusion)</th>
+                            <th>限制 (Limitations)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>中樞神經 (CNS)</strong></td>
+                            <td>早期躁動<br>晚期嗜睡</td>
+                            <td>意識狀態改善</td>
+                            <td>可能被伴隨的TBI、中毒、藥物混淆<br>插管病人無法評估<br>觀察者間差異</td>
+                        </tr>
+                        <tr>
+                            <td><strong>皮膚 (Skin)</strong></td>
+                            <td>冰冷、濕黏<br>微血管填充時間延長 (&gt;2秒)</td>
+                            <td>體溫改善<br>微血管填充時間改善</td>
+                            <td>主觀性<br>受外部溫度影響</td>
+                        </tr>
+                        <tr>
+                            <td><strong>腎臟 (Renal)</strong></td>
+                            <td>腎前性衰竭<br>寡尿/無尿</td>
+                            <td>尿量足夠*</td>
+                            <td>評估需數小時<br>無即時指標<br>慢性腎病影響<br>利尿劑/高血糖影響</td>
+                        </tr>
+                        <tr>
+                            <td><strong>血行動力學 (Hemodynamic)</strong></td>
+                            <td>心搏過速*<br>觸診脈搏微弱<br>低血壓*</td>
+                            <td>趨於正常化<br>可觸及之脈搏強度改善<br>血壓正常化</td>
+                            <td>非侵入性測量可能不準<br>數值可能造成誤導性的安心<br>宏觀穩定不代表細胞層級灌流正常<br>受藥物及先前病史影響</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.8em;">* 臨床數值需根據年齡校正評估。TBI: 創傷性腦損傷 (Traumatic brain injury)。</p>
+            </div>
+
+            <div class="warning-box">
+                <h3 id="chart-nonresponse-reasons">📋 Table 6-5: 對復甦無反應之原因</h3>
+                <table style="vertical-align: middle;">
+                    <thead style="text-align: center;">
+                        <tr>
+                            <th style="width: 25%;">原因類別</th>
+                            <th>主要病因</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3" style="font-weight: bold; text-align: center; vertical-align: middle;">持續性出血<br>(Continuing Hemorrhage)</td>
+                            <td><b>可壓迫性出血處理不當：</b><br>未識別的損傷、傷口填塞不足、骨盆壓迫裝置或止血帶使用不當</td>
+                        </tr>
+                        <tr>
+                            <td><b>不可壓迫性出血：</b><br>腹內、骨盆動脈、穿透性交界區血管損傷</td>
+                        </tr>
+                        <tr>
+                            <td><b>凝血功能病變：</b><br>傷前用藥、血液製品輸注失衡、過度纖維蛋白溶解</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4" style="font-weight: bold; text-align: center; vertical-align: middle;">復甦不全<br>(Inadequate Resuscitation)</td>
+                            <td>軟組織及肌肉內挫傷與撕裂傷</td>
+                        </tr>
+                        <tr>
+                            <td>骨折造成的失血</td>
+                        </tr>
+                         <tr>
+                            <td>合併燒燙傷</td>
+                        </tr>
+                        <tr>
+                            <td>到院前未被識別的失血</td>
+                        </tr>
+                         <tr>
+                            <td rowspan="5" style="font-weight: bold; text-align: center; vertical-align: middle;">非出血性休克<br>(Non-Hemorrhagic Shock)</td>
+                            <td><b>阻塞性休克：</b>張力性氣胸、張力性血胸、心包填塞</td>
+                        </tr>
+                         <tr>
+                            <td><b>神經性休克</b></td>
+                        </tr>
+                        <tr>
+                            <td><b>心因性休克：</b>心臟鈍傷、急性心肌梗塞</td>
+                        </tr>
+                         <tr>
+                            <td><b>敗血性休克：</b>腹內敗血症、肺炎、泌尿道敗血症</td>
+                        </tr>
+                        <tr>
+                            <td><b>內分泌與代謝性休克：</b>糖尿病酮酸中毒、腎上腺功能不全</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3 id="chart-variable-response">👥 Table 6-6: 不同族群對復甦反應的特殊考量</h3>
+            <div class="physiology-box">
+                <h4>🤰 孕婦 (Pregnant)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">影響因子</th>
+                            <th>臨床提示/註解</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>生理性血容量過多 (Physiologic hypervolemia)</td>
+                            <td>即使脈搏和血壓正常，仍可能存在胎盤灌流不足。</td>
+                        </tr>
+                        <tr>
+                            <td>生理性正常偏低之收縮壓 (Physiologic lower normal systolic pressure)</td>
+                            <td>可能在沒有休克臨床症狀的情況下就已大量失血。</td>
+                        </tr>
+                        <tr>
+                            <td>妊娠子宮壓迫下腔靜脈 (Vena cava compression by gravid uterus)</td>
+                            <td>未能手動將子宮推向左側，可能解釋為何復甦反應不佳。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="physiology-box">
+                <h4>👵 年長者 (Older Adult)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">影響因子</th>
+                            <th>臨床提示/註解</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>交感神經受體減少、合併使用Beta/鈣離子通道阻斷劑、心律調節器</td>
+                            <td>心搏過速的代償能力減弱；無法有效增加心輸出量。</td>
+                        </tr>
+                        <tr>
+                            <td>使用利尿劑導致血容量縮減 (Diuretics with contracted blood volume)</td>
+                            <td>即使是輕度失血，也可能導致更嚴重的休克和器官缺血。</td>
+                        </tr>
+                        <tr>
+                            <td>動脈粥樣硬化、傷前心臟代償力下降 (Atherosclerotic disease / Preinjury reduced capacity)</td>
+                            <td>因生理需求增加及圍手術期心肌梗塞風險，心臟失償風險上升。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="physiology-box">
+                <h4>👶 孩童 (Child)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">影響因子</th>
+                            <th>臨床提示/註解</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>高交感神經張力、高效率的生理代償反應</td>
+                            <td>能維持生命徵象穩定，直到因快速失代償而休克；心搏過緩是比心搏過速更不祥的徵兆。</td>
+                        </tr>
+                        <tr>
+                            <td>絕對血容量小 (Small absolute blood volume)</td>
+                            <td>因未能意識到「失血比例」而非「失血量」，可能導致復甦反應不佳。</td>
+                        </tr>
+                        <tr>
+                            <td>可移動且順應性高的組織 (Mobile and compliant tissues)</td>
+                            <td>胃擴張可能導致低血壓；可能快速發展成張力性氣胸。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="physiology-box">
+                <h4>🏃 運動員 (Athlete)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">影響因子</th>
+                            <th>臨床提示/註解</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>傷前靜止心率較低 (Lower preinjury pulse rate)</td>
+                            <td>每單位休克程度的心搏過速反應較輕微。</td>
+                        </tr>
+                        <tr>
+                            <td>生理代償能力較強 (Increased physiologic capacity for compensation)</td>
+                            <td>因臨床症狀輕微，有低估休克嚴重程度的風險。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <!-- 其他重要重點 -->
         <div id="others" class="tab-content">
             <h2>📌 其他重要重點</h2>
             
@@ -1258,18 +1673,6 @@
                     <td>末期才血壓下降；Bradycardia 是危險信號</td>
                 </tr>
             </table>
-
-            <h3 id="other-anticoagulation">💊 抗凝與抗血小板逆轉快速索引（Table 6-7）</h3>
-            <div class="dosage-box">
-                <ul>
-                    <li><strong>Warfarin</strong>：Vit K 5-10 mg IV + 4-factor PCC；若無 PCC→FFP 10-15 mL/kg</li>
-                    <li><strong>DOAC (Rivaroxaban/Apixaban)</strong>：Andexanet α 高或低劑量方案，視最近劑量/時間而定</li>
-                    <li><strong>Dabigatran</strong>：Idarucizumab 5 g 連續注射</li>
-                    <li><strong>UFH / LMWH</strong>：Protamine，LMWH 依給藥時間做 1→0.5→0 mg 梯度</li>
-                    <li><strong>強效抗血小板</strong>：重大出血→考慮 Platelet transfusion ± DDAVP；TXA/EACA 作為輔助</li>
-                </ul>
-                <p>💡 記憶口訣：「Xa 抑→安敵納，Dabi→I達，肝素→普他命」</p>
-            </div>
 
             <h3 id="other-tca">💔 Traumatic Cardiac Arrest（TCA）續救或終止（Table 6-8）</h3>
             <div class="warning-box">
