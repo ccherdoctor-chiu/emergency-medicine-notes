@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLS Chapter 1 - Initial Assessment: Primary Survey 考前重點複習筆記</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            position: relative;
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #007bff, #00c853);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        .main-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .main-header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .nav-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .dropdown-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background: #e3f2fd;
+            border: 1px solid #1976d2;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 5px 0;
+            text-decoration: none;
+            display: block;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab-button {
+            background: #e0f7fa;
+            border: 1px solid #0097a7;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .tab-button.active {
+            background: #0097a7;
+            color: white;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #f0f0f0;
+        }
+
+        .qa-container {
+            margin-bottom: 20px;
+        }
+
+        .qa-item {
+            margin-bottom: 10px;
+        }
+
+        .qa-question {
+            background: #ffe0b2;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .qa-answer {
+            display: none;
+            padding: 10px;
+            background: #fff3e0;
+            border-radius: 4px;
+        }
+
+        .concept-box, .dosage-box, .danger-box, .warning-box {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .copyright-notice {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        #download-pdf, #back-to-top {
+            position: fixed;
+            right: 20px;
+            padding: 10px 15px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            background: #2196f3;
+            color: white;
+            z-index: 2000;
+        }
+
+        #download-pdf { bottom: 80px; }
+        #back-to-top { bottom: 20px; display: none; }
+    </style>
+</head>
+<body>
+    <div id="progress-bar"></div>
+    <header class="main-header">
+        <h1>ATLS Chapter 1 - Initial Assessment: Primary Survey</h1>
+        <p>考前重點複習筆記</p>
+    </header>
+
+    <button id="download-pdf" onclick="downloadPDF()">📥 下載PDF</button>
+    <button id="back-to-top" onclick="scrollToTop()">⬆</button>
+
+    <div class="nav-container">
+        <div class="dropdown-nav">
+            <div class="dropdown">
+                <button class="dropdown-button">📋 一般性重點筆記 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#general-info">資訊篩選與核心解構</a>
+                    <a href="#general-concepts">概念濃縮與簡化</a>
+                    <a href="#general-qa">主動回憶問題庫</a>
+                    <a href="#general-summary">核心概念摘要</a>
+                    <a href="#general-mnemonic">記憶輔助與概念圖</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">⚠️ 進階觀念與應考陷阱 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#advanced-note">內容建置中</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">🚨 臨床現場實用資訊 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#clinical-note">內容建置中</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">📊 重要圖表整理 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#charts-note">內容建置中</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">📌 其他重要重點 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#others-note">內容建置中</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('general')">📋 一般性重點筆記</button>
+            <button class="tab-button" onclick="showTab('advanced')">⚠️ 進階觀念與應考陷阱</button>
+            <button class="tab-button" onclick="showTab('clinical')">🚨 臨床現場實用資訊</button>
+            <button class="tab-button" onclick="showTab('charts')">📊 重要圖表整理</button>
+            <button class="tab-button" onclick="showTab('others')">📌 其他重要重點</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="copyright-notice">
+            <h4>⚖️ 版權聲明與使用限制</h4>
+            <p>本網頁內容使用GAI生成</p>
+            <p>本網頁為自學用途之中文編譯版本，非官方授權翻譯。</p>
+            <ul>
+                <li>原文版權屬於American College of Surgeons Committee on Trauma</li>
+                <li>本網頁教材旨在促進醫學教育發展，僅供學習者參考使用，嚴禁任何商業用途</li>
+                <li>讀者若需完整理解原文，建議參閱原始英文版本</li>
+            </ul>
+        </div>
+
+        <!-- 一般性重點筆記 -->
+        <div id="general" class="tab-content active">
+            <h2>📋 一般性重點筆記</h2>
+
+            <div class="concept-box">
+                <h3 id="general-info">📝 資訊篩選與核心解構</h3>
+                <table>
+                    <tr>
+                        <th>節點 (Node)</th>
+                        <th>必考關鍵詞／定義 (Chunk)</th>
+                        <th>理由</th>
+                    </tr>
+                    <tr>
+                        <td>A: Airway &amp; C-spine</td>
+                        <td>維持氣道通暢、頸椎保護；GCS&lt;8 或阻塞疑慮時及早插管</td>
+                        <td>缺氧是最先致命的可逆原因</td>
+                    </tr>
+                    <tr>
+                        <td>B: Breathing</td>
+                        <td>查看、觸診、聽診胸部；氧氣給予，必要時針 decompression</td>
+                        <td>偵測與處置氣胸、血胸等立即威脅</td>
+                    </tr>
+                    <tr>
+                        <td>C: Circulation</td>
+                        <td>控制外出血、兩條16G以上IV、輸血/輸液</td>
+                        <td>維持灌流、防休克</td>
+                    </tr>
+                    <tr>
+                        <td>D: Disability</td>
+                        <td>GCS、瞳孔反射、四肢活動</td>
+                        <td>快速評估神經功能，發現昏迷或局部缺損</td>
+                    </tr>
+                    <tr>
+                        <td>E: Exposure</td>
+                        <td>完全暴露檢查，並立即保暖</td>
+                        <td>防止失溫與遺漏傷口</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 id="general-concepts">🔑 概念濃縮與簡化</h3>
+            <div class="dosage-box">
+                <ul>
+                    <li><strong>xABCDE</strong>：先止致命出血，再依序處理氣道、呼吸、循環</li>
+                    <li><strong>GCS&lt;8，intubate</strong>：意識不佳應提早建立人工氣道</li>
+                    <li><strong>Look, Listen, Feel</strong>：評估呼吸的三要素</li>
+                    <li><strong>兩條大口徑IV</strong>：避免延誤輸血與液體復甦</li>
+                </ul>
+            </div>
+
+            <h3 id="general-qa">❓ 主動回憶問題庫</h3>
+            <div class="qa-container">
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q1. 初級評估標準步驟為何？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer"><p><strong>答案</strong>：xABCDE 順序處置</p></div>
+                </div>
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q2. 何時需立即插管保護氣道？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer"><p><strong>答案</strong>：GCS&lt;8、顯著上呼吸道阻塞、無法維持氧合時</p></div>
+                </div>
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q3. 針 decompression 適應症？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer"><p><strong>答案</strong>：懷疑張力性氣胸且生命徵象惡化</p></div>
+                </div>
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q4. 循環步驟的首要措施？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer"><p><strong>答案</strong>：立即控制外出血並建立兩條大口徑IV</p></div>
+                </div>
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q5. 快速神經評估常用何指標？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer"><p><strong>答案</strong>：AVPU 或 GCS 評分</p></div>
+                </div>
+            </div>
+
+            <div class="concept-box">
+                <h3 id="general-summary">📑 核心概念摘要</h3>
+                <ul>
+                    <li>氣道與呼吸維持優先，隨時注意頸椎傷</li>
+                    <li>早期辨識張力性氣胸與大出血</li>
+                    <li>簡短神經檢查避免延誤頭部外傷診斷</li>
+                    <li>暴露全身後立即保暖，預防失溫</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h3 id="general-mnemonic">🧠 記憶輔助與概念圖</h3>
+                <ul>
+                    <li>ABCDE：初級評估基本流程</li>
+                    <li>AMPLE：簡短病史詢問</li>
+                    <li>AVPU：神經狀態分級</li>
+                </ul>
+                <p>從 <strong>xABCDE</strong> 出發，同步處理氣道、呼吸與循環問題，最後全面檢查並保暖。</p>
+            </div>
+
+            <div class="warning-box">
+                <h3 id="general-plan">📆 行動計畫</h3>
+                <p>每日默念 xABCDE 流程，模擬至少一位創傷病人評估；熟悉插管與止血步驟。</p>
+            </div>
+        </div>
+
+        <!-- 進階觀念與應考陷阱 -->
+        <div id="advanced" class="tab-content">
+            <h2>⚠️ 進階觀念與應考陷阱</h2>
+            <p id="advanced-note">內容持續建置中…</p>
+        </div>
+
+        <!-- 臨床現場實用資訊 -->
+        <div id="clinical" class="tab-content">
+            <h2>🚨 臨床現場實用資訊</h2>
+            <p id="clinical-note">內容持續建置中…</p>
+        </div>
+
+        <!-- 重要圖表整理 -->
+        <div id="charts" class="tab-content">
+            <h2>📊 重要圖表整理</h2>
+            <p id="charts-note">內容持續建置中…</p>
+        </div>
+
+        <!-- 其他重要重點 -->
+        <div id="others" class="tab-content">
+            <h2>📌 其他重要重點</h2>
+            <p id="others-note">內容持續建置中…</p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function downloadPDF() {
+            window.print();
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onscroll = function() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            const progressBar = document.getElementById('progress-bar');
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+            if (winScroll > 300) {
+                backToTopBtn.style.display = 'flex';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        };
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
