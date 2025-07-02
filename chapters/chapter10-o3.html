@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLS Chapter 10 - Musculoskeletal Trauma 考前重點複習筆記</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            position: relative;
+        }
+
+        /* 進度條 */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #007bff, #00c853);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* 主標題 */
+        .main-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .main-header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* 導覽容器 */
+        .nav-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* 下拉式選單 */
+        .dropdown-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background: #e3f2fd;
+            border: 1px solid #1976d2;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-button:hover {
+            background: #1976d2;
+            color: white;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            z-index: 1;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* 分頁標籤 */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tab-button {
+            background: #f0f0f0;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tab-button.active {
+            background: #2196f3;
+            color: white;
+        }
+
+        .tab-button:hover {
+            background: #1976d2;
+            color: white;
+        }
+
+        /* 內容區域 */
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 資訊區塊 */
+        .info-box {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .concept-box {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+
+        .danger-box {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .dosage-box {
+            background: #e7e3ff;
+            border-color: #6f42c1;
+        }
+
+        .physiology-box {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .chart-box {
+            background: #ffe5d0;
+            border-color: #fd7e14;
+        }
+
+        /* 收合式問答 */
+        .qa-item {
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .qa-question {
+            padding: 15px;
+            background: #f8f9fa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .qa-question:hover {
+            background: #e9ecef;
+        }
+
+        .qa-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: white;
+        }
+
+        .qa-answer.open {
+            padding: 15px;
+            max-height: 500px;
+        }
+
+        .qa-toggle {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .qa-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        /* 表格樣式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* 功能按鈕 */
+        #download-pdf {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        #download-pdf:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        #back-to-top:hover {
+            background: #0056b3;
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        /* 版權聲明 */
+        .copyright-notice {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #721c24;
+        }
+
+        .copyright-notice h4 {
+            margin-bottom: 10px;
+            color: #721c24;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .main-header h1 {
+                font-size: 1.5em;
+            }
+
+            .dropdown-nav {
+                flex-direction: column;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            #download-pdf {
+                top: auto;
+                bottom: 80px;
+            }
+
+            table {
+                font-size: 0.8em;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        /* 列印樣式 */
+        @media print {
+            body {
+                background: white;
+            }
+
+            #progress-bar,
+            .nav-container,
+            #download-pdf,
+            #back-to-top {
+                display: none !important;
+            }
+
+            .tab-content {
+                display: block !important;
+                page-break-after: always;
+                box-shadow: none;
+                margin-bottom: 50px;
+            }
+
+            .qa-answer {
+                max-height: none !important;
+                padding: 15px !important;
+            }
+
+            .info-box {
+                break-inside: avoid;
+            }
+
+            .copyright-notice {
+                break-inside: avoid;
+            }
+        }
+
+        /* 強調文字 */
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* 圖標樣式 */
+        .icon {
+            margin-right: 5px;
+        }
+
+        /* 清單樣式 */
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        ol {
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 進度條 -->
+    <div id="progress-bar"></div>
+
+    <!-- 主標題 -->
+    <div class="main-header">
+        <h1>📚 ATLS Chapter 10 - 肌肉骨骼創傷 考前重點複習筆記</h1>
+        <p>🏥 Musculoskeletal Trauma 互動式學習系統</p>
+    </div>
+
+    <!-- 下載PDF按鈕 -->
+    <button id="download-pdf" onclick="downloadPDF()">
+        📥 下載PDF
+    </button>
+
+    <!-- 返回頂部按鈕 -->
+    <button id="back-to-top" onclick="scrollToTop()">
+        ⬆
+    </button>
+
+    <!-- 導覽容器 -->
+    <div class="nav-container">
+        <!-- 下拉式選單 -->
+        <div class="dropdown-nav">
+            <div class="dropdown">
+                <button class="dropdown-button">📋 一般性重點筆記 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#general-core">核心概念摘要</a>
+                    <a href="#general-shock">休克定義與分類</a>
+                    <a href="#general-identification">早期辨識指標</a>
+                    <a href="#general-bleeding">五大失血處</a>
+                    <a href="#general-strategy">出血控制與輸血策略</a>
+                    <a href="#general-qa">主動回憶問題庫</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropdown-button">⚠️ 進階觀念與應考陷阱 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#advanced-concepts">潛藏高階觀念</a>
+                    <a href="#advanced-traps">模擬考官陷阱題</a>
+                    <a href="#advanced-physiology">關鍵生理病理解析</a>
+                    <a href="#advanced-qa">進階主動回憶問題</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropdown-button">🚨 臨床現場實用資訊 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#clinical-emergency">緊急狀況快速應變</a>
+                    <a href="#clinical-dosing">臨床常用劑量速查</a>
+                    <a href="#clinical-assessment">關鍵評估與判讀</a>
+                    <a href="#clinical-procedures">實務操作核心提示</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropdown-button">📊 重要圖表整理 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#chart-hemorrhage">失血嚴重度分級表</a>
+                    <a href="#chart-bleeding">失血位置示意圖</a>
+                    <a href="#chart-pelvic">骨盆容積變化圖</a>
+                    <a href="#chart-flow">導管流速比較表</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="dropdown-button">📌 其他重要重點 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#other-nonhemorrhagic">非出血性休克分類</a>
+                    <a href="#other-population">不同族群復甦差異</a>
+                    <a href="#other-anticoagulation">抗凝逆轉策略</a>
+                    <a href="#other-tca">創傷性心搏停止</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分頁標籤 -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('general')">
+                📋 一般性重點筆記
+            </button>
+            <button class="tab-button" onclick="showTab('advanced')">
+                ⚠️ 進階觀念與應考陷阱
+            </button>
+            <button class="tab-button" onclick="showTab('clinical')">
+                🚨 臨床現場實用資訊
+            </button>
+            <button class="tab-button" onclick="showTab('charts')">
+                📊 重要圖表整理
+            </button>
+            <button class="tab-button" onclick="showTab('others')">
+                📌 其他重要重點
+            </button>
+        </div>
+    </div>
+
+    <!-- 內容區域 -->
+    <div class="content">
+        <!-- 版權聲明 -->
+        <div class="copyright-notice">
+            <h4>⚖️ 版權聲明與使用限制</h4>
+            <p>本網頁內容使用GAI生成</p>
+            <p>本網頁為自學用途之中文編譯版本，非官方授權翻譯。</p>
+            <ul>
+                <li>原文版權屬於American College of Surgeons Committee on Trauma</li>
+                <li>本網頁教材旨在促進醫學教育發展，僅供學習者參考使用，嚴禁任何商業用途</li>
+                <li>讀者若需完整理解原文，建議參閱原始英文版本</li>
+            </ul>
+        </div>
+
+        <!-- 一般性重點筆記 -->
+        <div id="general" class="tab-content active">
+            <h2>📋 一般性重點筆記</h2>
+
+            <div class="concept-box">
+                <h3 id="general-info">📝 資訊篩選與核心解構</h3>
+                <table>
+                    <tr>
+                        <th>必考關鍵詞／定義 (Chunk)</th>
+                        <th>理由</th>
+                    </tr>
+                    <tr>
+                        <td>生命威脅性骨骼肌肉傷<br>• 骨盆骨折出血 - 可儲血 4-6 L，屬 xABCDE 之 x (止血)<br>• 大血管損傷／截肢 - 立即止血 + 戰鬥止血帶<br>• 雙側股骨幹骨折 - 單側失血 2 L，雙側翻倍 40%+ 失血量</td>
+                        <td>直接導致失血性休克，ATLS 強調優先處置</td>
+                    </tr>
+                    <tr>
+                        <td>肢體威脅性傷害<br>• 區隔症候群：痛 > 外觀、被動牽拉痛、ΔP &lt; 30 mmHg<br>• 開放性骨折／關節穿透：1 hr 內 IV cefazolin ± gentamicin、抗破傷風</td>
+                        <td>延遲治療→殘肢或感染</td>
+                    </tr>
+                    <tr>
+                        <td>初步止血策略<br>直接加壓 → 填塞 → 戰鬥止血帶；骨盆束腹置於大轉子水平</td>
+                        <td>ATLS 演算法 xABCDE “Stop the Bleed”</td>
+                    </tr>
+                    <tr>
+                        <td>神經血管評估<br>脈搏標記、ABI／IEI &lt; 0.9、減壓再評</td>
+                        <td>決定是否需 CT Angio、手術</td>
+                    </tr>
+                    <tr>
+                        <td>必備輔助固定<br>• 股骨牽引夾板<br>• 長腿背側石膏 10°屈膝<br>• 手部功能位 45-60° MCP 彎曲</td>
+                        <td>減少失血、疼痛、二度損傷</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 id="general-concepts">🔑 概念濃縮與簡化</h3>
+            <div class="dosage-box">
+                <ul>
+                    <li><strong>骨盆出血就像「漏水木桶」</strong>：骨盆腔=木桶，綁上骨盆束腹=把桶箍緊，減少失血空間。</li>
+                    <li><strong>區隔症候群=「壓力鍋」</strong>：肌筋膜室被外殼封死，內壓上升（&gt;30 mmHg）會「煮壞」肌肉與神經。</li>
+                    <li><strong>牽引夾板=「拉直折斷吸管」</strong>：拉直後對齊內腔止住滲血與疼痛。</li>
+                    <li><strong>ABI &lt; 0.9 像水管壓力錶警戒線</strong>：指針掉到 0.9 以下，代表管路受阻需立即修補。</li>
+                </ul>
+            </div>
+
+            <h3 id="general-qa">❓ 主動回憶問題庫</h3>
+            <div class="qa-container">
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q1: 何種骨折可單次失血 2 L，雙側可致 40% 以上循環損失？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>答案</strong>：股骨幹骨折，雙側更危險。</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q2: 區隔症候群臨床最早且最可靠的症狀？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>答案</strong>：Pain out of proportion（痛覺超出外觀）。</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q3: 開放性骨折第一劑抗生素應於何時給予？首選？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>答案</strong>：1 小時內；首選 Cefazolin ± Gentamicin。</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q4: 戰鬥止血帶應繫在傷口近端幾公分？避免壓在何處？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>答案</strong>：5–8 cm 近端；避免關節上。</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q5: ABI 低於多少須懷疑大血管損傷？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>答案</strong>：&lt; 0.9。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-box">
+                <h3 id="general-summary">📑 核心概念摘要</h3>
+                <ul>
+                    <li>生命威脅：骨盆出血、股骨大量失血、大血管截肢。</li>
+                    <li>肢體威脅：開放骨折、區隔症候群、關節貫穿、血流不足。</li>
+                    <li>關鍵處置：骨盆束腹、牽引夾板、止血帶、ΔP/ABI 監測、1 hr 內抗生素。</li>
+                    <li>必背數字：骨盆血量 4-6 L；股骨 2 L；ABI &lt; 0.9；區隔 ΔP &lt; 30 mmHg；止血帶 5-8 cm。</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h3 id="general-mnemonic">🧠 記憶輔助與概念圖</h3>
+                <ul>
+                    <li>PAM CB（致死骨傷）</li>
+                    <li>S-T-O-P（止血階梯）</li>
+                    <li>4P+ΔP（區隔症候群）</li>
+                    <li>C→G→M（開放骨折抗生素升級）</li>
+                </ul>
+                <p>中心節點 <strong>Musculoskeletal Trauma</strong> → Hemorrhage Control → Limb-threatening → Adjuncts &amp; Fixation → Systemic Complications → <em>Patient Outcome</em></p>
+            </div>
+
+            <div class="warning-box">
+                <h3>📆 行動計畫</h3>
+                <p>今晚先默寫 PAM CB 及 S-T-O-P；30 分鐘快問快答；睡前想像「壓力鍋」腳腫脹畫面複習區隔症候群。明早再做一次 Active Recall。</p>
+            </div>
+        </div>
+
+        <!-- 進階觀念與應考陷阱 -->
+        <div id="advanced" class="tab-content">
+            <h2>⚠️ 進階觀念與應考陷阱</h2>
+            
+            <h3 id="advanced-concepts">🎯 潛藏高階觀念與易忽略細節</h3>
+            
+            <div class="danger-box">
+                <h4>🚨 特殊族群的假陰性休克</h4>
+                <p><strong>為什麼重要？</strong>高齡β阻斷、孕婦血容量↑、運動員靜息HR↓，皆會「遮蔽」心跳與血壓變化。</p>
+                <p><strong>隱藏陷阱</strong>：只靠 HR / BP 易漏診；以乳酸、Base Deficit及皮膚灌流評估</p>
+                <p>💡 記憶口訣：「<strong>BAPPA</strong>」- Beta-blocker、Athlete、Pregnancy、Pacemaker、Age > 65</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>⏰ TXA 時效 & 劑量差異</h4>
+                <p><strong>關鍵時限</strong>：>3 hr 給藥反增栓塞風險</p>
+                <p><strong>劑量選擇</strong>：可用「1 g＋1 g/8 hr」或單次 2 g</p>
+                <p><strong>考官常問</strong>：「到院 4 hr還能否給？」</p>
+                <p>✅ <strong>正確答案</strong>：除非確證 hyperfibrinolysis（TEG/ROTEM），否則停用</p>
+                <p>💡 記憶口訣：「<strong>三小時，三不給</strong>」- 超3hr、無超纖、無外傷出血 ⇒ 停用</p>
+            </div>
+
+            <div class="dosage-box">
+                <h4>💊 抗凝逆轉策略</h4>
+                <table>
+                    <tr>
+                        <th>抗凝藥物</th>
+                        <th>逆轉劑</th>
+                        <th>劑量/注意事項</th>
+                    </tr>
+                    <tr>
+                        <td>Warfarin</td>
+                        <td>Vit K + 4-factor PCC</td>
+                        <td>5-10 mg IV + PCC</td>
+                    </tr>
+                    <tr>
+                        <td>Rivaroxaban/Apixaban</td>
+                        <td>Andexanet α</td>
+                        <td>依最後服藥時間分高低方案</td>
+                    </tr>
+                    <tr>
+                        <td>Dabigatran</td>
+                        <td>Idarucizumab</td>
+                        <td>5 g (2 × 2.5 g)</td>
+                    </tr>
+                    <tr>
+                        <td>LMWH</td>
+                        <td>Protamine</td>
+                        <td><8hr: 1mg/1mg<br>8-12hr: 0.5mg/1mg<br>>12hr: 不給</td>
+                    </tr>
+                </table>
+                <p>⚠️ <strong>易錯陷阱</strong>：易把 dabigatran 當 Xa 抑制劑；實際為直接 thrombin inhibitor</p>
+            </div>
+
+            <h3 id="advanced-traps">🎭 模擬考官出題視角</h3>
+            
+            <div class="qa-container">
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>🏃 運動員休克指標題：25歲馬拉松選手，失血1.5L，HR 90, BP 100/60，Shock Index 0.9</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>陷阱</strong>：Shock Index 0.9 被視作「正常」</p>
+                        <p><strong>鑑別</strong>：運動員靜息 HR 50 → 失血 2 L 仍僅 HR 100，SI = 1.0 = 危險</p>
+                        <p>✅ <strong>正確處置</strong>：立即輸血，不要被「正常」數值誤導</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>🤰 孕婦 SBP 90 mmHg：28週孕婦車禍，SBP 90，是否屬於 permissive hypotension？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>陷阱</strong>：認為屬於 permissive hypotension</p>
+                        <p><strong>真相</strong>：第三孕期生理性低壓但子宮壓 IVC → 先左移子宮再評估</p>
+                        <p>✅ <strong>正確處置</strong>：左側傾斜15°或手動左移子宮，再評估血壓</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>⏱️ TXA超時給藥：刀傷病人到院已4小時，是否給TXA？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>陷阱</strong>：依靠 CRASH-2 數據而忽略時效上限</p>
+                        <p><strong>重點</strong>：超時僅在 TEG/Ly30>3% 等明確 hyperfibrinolysis 才考慮</p>
+                        <p>✅ <strong>正確答案</strong>：不給，除非有實驗室證據支持超纖溶</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>👶 小兒血壓正常即安全？5歲男童，車禍，HR 140, BP 90/60</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>陷阱</strong>：忽視兒童後期崩潰特性</p>
+                        <p><strong>警示</strong>：觀察心率與膚色；一旦出現 Bradycardia → 末期休克</p>
+                        <p>✅ <strong>正確評估</strong>：HR 140已是顯著心搏過速，需立即輸液/輸血</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="advanced-physiology">🧬 關鍵生理／病理學解析</h3>
+            
+            <div class="physiology-box">
+                <h4>💊 β-Blocker Masking</h4>
+                <p>HR 受 β1 抑制，周邊血管仍收縮 → 皮膚涼、乳酸升高成最早警訊</p>
+            </div>
+
+            <div class="physiology-box">
+                <h4>⏰ TXA 時窗生理學</h4>
+                <p>創傷後 3 hr 內膠原與纖溶失衡最劇；之後纖溶活性下降，額外抑制 → 微血栓</p>
+            </div>
+
+            <div class="physiology-box">
+                <h4>💉 Vasopressor 加劇缺氧</h4>
+                <p>收縮前微血管造成 Shunting，氧氣無法交換；短暫提壓可保腦灌流，但持續使用將惡化代謝酸中毒</p>
+            </div>
+
+            <div class="physiology-box">
+                <h4>🔬 Poiseuille 定律</h4>
+                <p>Flow ∝ r⁴ / L</p>
+                <p>半徑 2→3 mm，流速增加 (3⁴ / 2⁴) ≈ 5 倍</p>
+                <p>💡 記憶口訣：「<strong>短粗飆、水快流（r⁴/L）</strong>」</p>
+            </div>
+
+            <h3 id="advanced-qa">🧠 進階主動回憶問題庫</h3>
+            
+            <div class="qa-container">
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>24 週孕婦到院 SBP 90，首要措施？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>答案</strong>：左側傾或手動左移子宮</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>服用 Rivaroxaban 6 hr前受傷大出血首選逆轉藥？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>答案</strong>：Andexanet α (高劑量方案)</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>何時可考慮停止鈍傷 CPR？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>答案</strong>：無生命徵象且 CPR >10 min</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>18 G×45 cm CVC vs 16 G×4 cm IV，何者流速較快？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>答案</strong>：16 G 周邊 IV (半徑大且短)</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>神經原性休克 MAP 目標？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer">
+                        <p><strong>答案</strong>：≥85 mmHg；需早期 Norepinephrine</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 臨床現場實用資訊 -->
+        <div id="clinical" class="tab-content">
+            <h2>🚨 臨床現場實用資訊</h2>
+            
+            <h3 id="clinical-emergency">🚑 緊急狀況快速應變</h3>
+            
+            <div class="danger-box">
+                <h4>🩸 大量出血 + 低血壓</h4>
+                <p><strong>核心判斷</strong>：SBP < 90 mmHg 或 Shock Index ≥ 1</p>
+                <p><strong>立即SOP</strong>：</p>
+                <ol>
+                    <li>壓迫／止血帶或包扎 «floor»</li>
+                    <li>同時啟動 <strong>MTP</strong>：快速輸注 O PRBC + AB FFP（1:1:1）</li>
+                    <li>若可用，優先「低滴度 O 全血」</li>
+                </ol>
+            </div>
+
+            <div class="warning-box">
+                <h4>🦴 骨盆骨折失血</h4>
+                <p><strong>核心判斷</strong>：機轉 + 下腹痛 + 下肢外旋</p>
+                <p><strong>立即處置</strong>：立即置放 <strong>Pelvic Binder</strong> 於 <em>greater trochanters</em>（非髂前上棘），並內收雙腿固定外旋</p>
+            </div>
+
+            <div class="dosage-box">
+                <h4>🤰 懷孕病患低血壓</h4>
+                <p><strong>核心判斷</strong>：妊娠 20 週後 + 臥姿 SBP ↓</p>
+                <p><strong>立即處置</strong>：先「手動左移子宮」或右側臥 15° 釋放 IVC，再評估輸血需求</p>
+            </div>
+
+            <h3 id="clinical-dosing">💊 臨床常用劑量速查</h3>
+            
+            <table>
+                <tr>
+                    <th>藥物／製劑</th>
+                    <th>適應症</th>
+                    <th>臨床常用劑量</th>
+                    <th>特別提示</th>
+                </tr>
+                <tr>
+                    <td><strong>TXA</strong></td>
+                    <td>大量出血；到院 < 3 hr</td>
+                    <td>1 g IV push 10 min → 再 1 g/8 hr <em>或</em> 單次 2 g</td>
+                    <td>>3 hr 若無 TEG/ROTEM「超纖」則不再給</td>
+                </tr>
+                <tr>
+                    <td><strong>Protamine</strong></td>
+                    <td>Heparin / LMWH 逆轉</td>
+                    <td>UFH: 最近 2 hr 每 100 U → 1 mg (max 50 mg)<br>
+                        LMWH: <8 hr 1 mg per mg；8-12 hr 0.5 mg per mg；>12 hr 免給</td>
+                    <td>過量易低血壓；給藥 ≤ 5 mg/min</td>
+                </tr>
+                <tr>
+                    <td><strong>Idarucizumab</strong></td>
+                    <td>Dabigatran 逆轉</td>
+                    <td>5 g IV (2 × 2.5 g) 連續注射</td>
+                    <td>可重複一次；對 Xa 抑制劑無效</td>
+                </tr>
+                <tr>
+                    <td><strong>Andexanet α</strong></td>
+                    <td>Rivaroxaban / Apixaban 出血</td>
+                    <td>低劑量：400 mg bolus → 480 mg/2 hr<br>
+                        高劑量：800 mg bolus → 960 mg/2 hr</td>
+                    <td>周邊不建議推注；注意反彈高凝</td>
+                </tr>
+                <tr>
+                    <td><strong>初始輸液量</strong></td>
+                    <td>無血品暫替</td>
+                    <td>成人晶體液 250-500 mL；兒童 10 mL/kg</td>
+                    <td>預熱至 39 °C 以防低溫</td>
+                </tr>
+            </table>
+
+            <h3 id="clinical-assessment">📊 關鍵評估與判讀要點</h3>
+            
+            <div class="chart-box">
+                <h4>📈 Shock Index (SI) = HR / SBP</h4>
+                <p><strong>目的</strong>：早期偵測失血</p>
+                <p><strong>快速判讀</strong>：</p>
+                <ul>
+                    <li>≥ 0.9 警訊</li>
+                    <li>≥ 1 高死亡率</li>
+                </ul>
+                <p><strong>處置</strong>：立即啟動輸血與止血；持續監測至 < 0.8</p>
+            </div>
+
+            <div class="physiology-box">
+                <h4>🧪 乳酸 / Base Deficit</h4>
+                <p><strong>目的</strong>：細胞低灌流指標</p>
+                <p><strong>臨界值</strong>：</p>
+                <ul>
+                    <li>Lactate > 2 mmol/L</li>
+                    <li>Base Deficit < -2</li>
+                </ul>
+                <p><strong>監測</strong>：每 30-60 min 追蹤；趨勢下降代表復甦有效</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>🔄 Responder 分類</h4>
+                <table>
+                    <tr>
+                        <th>類型</th>
+                        <th>定義</th>
+                        <th>處置方向</th>
+                    </tr>
+                    <tr>
+                        <td>Responder</td>
+                        <td>輸液後血壓穩定</td>
+                        <td>持續監測</td>
+                    </tr>
+                    <tr>
+                        <td>Transient</td>
+                        <td>降速即惡化</td>
+                        <td>持續輸血 + 手術諮詢</td>
+                    </tr>
+                    <tr>
+                        <td>Non-responder</td>
+                        <td>無改善</td>
+                        <td>立即找致死性出血或非出血性休克源</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 id="clinical-procedures">🔧 實務操作核心提示</h3>
+            
+            <div class="warning-box">
+                <h4>💉 周邊粗短針優先</h4>
+                <p>16 G × 5 cm 流速 > 18 G CVC</p>
+                <p>確保兩條線、再考慮 IO</p>
+                <p>💡 Poiseuille定律：流量 ∝ r⁴ / L</p>
+            </div>
+
+            <div class="dosage-box">
+                <h4>🦴 Intraosseous (IO) 部位</h4>
+                <ul>
+                    <li>成人：鎖骨下端肱骨頭</li>
+                    <li>兒童：脛骨近端</li>
+                    <li>避免骨折遠端插入</li>
+                    <li>流速等同 18 G 周邊針</li>
+                </ul>
+            </div>
+
+            <div class="danger-box">
+                <h4>🩹 Pelvic Binder 實務技巧</h4>
+                <ol>
+                    <li>折疊單層床單</li>
+                    <li>沿大轉子環繞</li>
+                    <li>前交叉回拉固定</li>
+                    <li>塌陷外旋時將雙踝內收纏繃帶防再擴張</li>
+                </ol>
+            </div>
+
+            <div class="physiology-box">
+                <h4>🗣️ 口頭醫囑 / 交班縮寫 - SBAR-3C</h4>
+                <ul>
+                    <li><strong>S</strong>ituation：血壓 80/40，PRBC 第 2 U 進行中</li>
+                    <li><strong>B</strong>ackground：刀傷 + FAST(+)，已 TXA 1 g</li>
+                    <li><strong>A</strong>ssessment：Transient responder</li>
+                    <li><strong>R</strong>ecommendation：開腹 hemostasis ASAP</li>
+                    <li><strong>3C</strong>：Catheter Lines、Counts (unit given)、Complications 待觀察</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 重要圖表整理 -->
+        <div id="charts" class="tab-content">
+            <h2>📊 重要圖表整理</h2>
+            
+            <h3 id="chart-hemorrhage">📉 Table 6-2: 失血嚴重度分級表</h3>
+            <div class="chart-box">
+                <table>
+                    <tr>
+                        <th>參數</th>
+                        <th>Minor</th>
+                        <th>Moderate</th>
+                        <th>Major</th>
+                        <th>Massive</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Heart Rate (bpm)</strong></td>
+                        <td>↔</td>
+                        <td>↔ / ↑</td>
+                        <td>↑ > 100</td>
+                        <td>↑ > 120</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Systolic BP (mmHg)</strong></td>
+                        <td>↔</td>
+                        <td>↔</td>
+                        <td>↔ / ↓</td>
+                        <td>↓ < 90</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pulse Pressure</strong></td>
+                        <td>↔</td>
+                        <td>↓</td>
+                        <td>↓</td>
+                        <td>↓</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Base Deficit (mEq/L)</strong></td>
+                        <td>0 ~ -2</td>
+                        <td>-2 ~ -6</td>
+                        <td>-6 ~ -10</td>
+                        <td>< -10</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Blood Products</strong></td>
+                        <td>Unlikely</td>
+                        <td>Possibly</td>
+                        <td>Likely</td>
+                        <td>Massive Tx</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Response to Resus.</strong></td>
+                        <td>快速且持續</td>
+                        <td>尚可</td>
+                        <td>短暫</td>
+                        <td>無效</td>
+                    </tr>
+                </table>
+                <p>💡 <strong>記憶法</strong>：把四級想像成紅綠燈：Minor-綠、Moderate-黃、Major-橙、Massive-紅</p>
+            </div>
+
+            <h3 id="chart-bleeding">🩸 Figure 6-2: 五大失血位置示意圖</h3>
+            <div class="physiology-box">
+                <h4>"One on the Floor and Four More"</h4>
+                <div style="text-align: center; padding: 20px;">
+                    <pre style="font-family: monospace; display: inline-block; text-align: left;">
+┌─────────────┐
+│  A Thoracic │
+┌─────────┴─────────────┴───────────┐
+│    B Peritoneal cavity            │
+│                                   │
+│  C Pelvic / Retroperitoneal      │
+│                                   │
+│ D Long bone / Muscle compartments │
+└─────────────┬─────────────────────┘
+      E External hemorrhage ("floor")
+                    </pre>
+                </div>
+                <p>💡 <strong>應用</strong>：完成 xABCDE 後，立即以 "Floor → Chest → Abdomen → Pelvis/Retro → Long Bones" 次序檢查</p>
+            </div>
+
+            <h3 id="chart-pelvic">🦴 Figure 6-6: 骨盆容積變化圖</h3>
+            <div class="warning-box">
+                <h4>骨盆骨折與綁帶效果</h4>
+                <ol>
+                    <li><strong>A. 正常骨盆</strong>：紅色區域 = 100% 容積</li>
+                    <li><strong>B. "Open-book" 骨折</strong>：恥骨聯合裂開 → 紅色區域擴大 (↑ 40%)</li>
+                    <li><strong>C. 綁單層床單於 Greater Trochanters</strong>：紅色區域恢復近正常，骨盆容積↓</li>
+                </ol>
+                <p>💡 <strong>記憶法</strong>：想像"打包行李"：骨盆像打開的行李箱 (open-book)；綁帶=拉鍊；✨拉回大轉子→把血「塞不進去」</p>
+            </div>
+
+            <h3 id="chart-flow">💉 Figure 6-9: 導管流速比較表</h3>
+            <div class="dosage-box">
+                <h4>Poiseuille's Law: Flow ∝ r⁴ / L</h4>
+                <table>
+                    <tr>
+                        <th>導管規格</th>
+                        <th>流速 (mL/min)</th>
+                        <th>臨床應用</th>
+                    </tr>
+                    <tr>
+                        <td>14 G × 5 cm</td>
+                        <td>≈ 360</td>
+                        <td>大量輸血首選</td>
+                    </tr>
+                    <tr>
+                        <td>16 G × 5 cm</td>
+                        <td>≈ 215</td>
+                        <td>標準急救選擇</td>
+                    </tr>
+                    <tr>
+                        <td>18 G × 30 cm (CVC)</td>
+                        <td>< 100</td>
+                        <td>藥物給予，非快速輸血</td>
+                    </tr>
+                </table>
+                <p>💡 <strong>口訣</strong>：「短粗飆，長細慢」</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>🔍 Table 6-3: 骨盆骨折臨床因子</h4>
+                <table>
+                    <tr>
+                        <th>類別</th>
+                        <th>重點項目</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Mechanism</strong></td>
+                        <td>車禍、墜落、高處跌落、馬匹/動物跌落、壓砸、單車撞</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Symptoms</strong></td>
+                        <td>骨盆痛、下腹痛、臀/髖痛、下肢放射痛、下背痛</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Signs</strong></td>
+                        <td>低血壓+頻脈、骨盆壓痛、下腹壓痛、髖關節痛、雙下肢外旋、骶尾壓痛、恥骨聯合擴大、鼠蹊/會陰瘀青、尿道口/陰道出血</td>
+                    </tr>
+                </table>
+                <p>💡 <strong>記憶法</strong>：M-S-S（Mechanism-Symptoms-Signs）</p>
+            </div>
+        </div>
+
+        <!-- 其他重要重點 -->
+        <div id="others" class="tab-content">
+            <h2>📌 其他重要重點</h2>
+            
+            <h3 id="other-nonhemorrhagic">🚫 非出血性休克3大類（Table 6-1）</h3>
+            <div class="danger-box">
+                <ul>
+                    <li><strong>Obstructive</strong>：Tension pneumothorax、Cardiac tamponade</li>
+                    <li><strong>Cardiogenic</strong>：Blunt cardiac injury、AMI</li>
+                    <li><strong>Distributive</strong>：Neurogenic、Septic、Anaphylactic</li>
+                </ul>
+                <p>→ 判別後立即啟動病因導向處置（減壓、經皮/開胸引流、強心或升壓）</p>
+            </div>
+
+            <h3 id="other-population">👥 不同族群對復甦反應差異（Table 6-6）</h3>
+            <table>
+                <tr>
+                    <th>族群</th>
+                    <th>影響因子</th>
+                    <th>臨床提示</th>
+                </tr>
+                <tr>
+                    <td><strong>孕婦</strong></td>
+                    <td>下腔靜脈壓迫、血容量↑</td>
+                    <td>正常或偏低 SBP 不能排除休克；先左移子宮再評估</td>
+                </tr>
+                <tr>
+                    <td><strong>高齡</strong></td>
+                    <td>β/鈣離子阻斷、動脈硬化</td>
+                    <td>HR 不一定上升；輕度失血即心肌缺氧</td>
+                </tr>
+                <tr>
+                    <td><strong>兒童</strong></td>
+                    <td>高交感與儲備量</td>
+                    <td>末期才血壓下降；Bradycardia 是危險信號</td>
+                </tr>
+            </table>
+
+            <h3 id="other-anticoagulation">💊 抗凝與抗血小板逆轉快速索引（Table 6-7）</h3>
+            <div class="dosage-box">
+                <ul>
+                    <li><strong>Warfarin</strong>：Vit K 5-10 mg IV + 4-factor PCC；若無 PCC→FFP 10-15 mL/kg</li>
+                    <li><strong>DOAC (Rivaroxaban/Apixaban)</strong>：Andexanet α 高或低劑量方案，視最近劑量/時間而定</li>
+                    <li><strong>Dabigatran</strong>：Idarucizumab 5 g 連續注射</li>
+                    <li><strong>UFH / LMWH</strong>：Protamine，LMWH 依給藥時間做 1→0.5→0 mg 梯度</li>
+                    <li><strong>強效抗血小板</strong>：重大出血→考慮 Platelet transfusion ± DDAVP；TXA/EACA 作為輔助</li>
+                </ul>
+                <p>💡 記憶口訣：「Xa 抑→安敵納，Dabi→I達，肝素→普他命」</p>
+            </div>
+
+            <h3 id="other-tca">💔 Traumatic Cardiac Arrest（TCA）續救或終止（Table 6-8）</h3>
+            <div class="warning-box">
+                <h4>可視為「有生命跡象」：</h4>
+                <ul>
+                    <li>瞳孔反射</li>
+                    <li>任何自主呼吸</li>
+                    <li>可觸脈搏或量得血壓</li>
+                    <li>肢體動作</li>
+                    <li>心電圖有電活動</li>
+                </ul>
+                
+                <h4>停止 CPR 時機：</h4>
+                <ul>
+                    <li>鈍傷 > 10 min</li>
+                    <li>穿刺傷 > 15 min 仍無 ROSC</li>
+                    <li>PoCUS 無心臟運動且僅電活動</li>
+                </ul>
+            </div>
+
+            <div class="physiology-box">
+                <h4>❄️ 體溫、酸鹼、凝血三重打擊</h4>
+                <ul>
+                    <li>低溫（< 35 °C）</li>
+                    <li>酸中毒（pH < 7.2）</li>
+                    <li>凝血功能異常形成惡性循環</li>
+                </ul>
+                <p><strong>防治重點</strong>：39 °C 血品／輸液加溫、及早糾正酸血、使用平衡晶體降低氯酸中毒</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>🔍 FAST 與 DPL 快速比較</h4>
+                <table>
+                    <tr>
+                        <th>工具</th>
+                        <th>優點</th>
+                        <th>侷限</th>
+                    </tr>
+                    <tr>
+                        <td><strong>FAST / eFAST</strong></td>
+                        <td>非侵入、可重複、胸腹同時掃</td>
+                        <td>早期少量血易漏；操作者依賴</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DPL</strong></td>
+                        <td>靈敏度高，可在無影像設備時用</td>
+                        <td>侵入性；不區分泌液來源，可能干擾後續腹腔評估</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="danger-box">
+                <h4>🚁 資源不足時的轉診與持續復甦</h4>
+                <ul>
+                    <li>一旦判定需手術/血管介入而院內超過能力，邊復甦邊啟動轉診</li>
+                    <li>轉運前明確交班：現有 IV/IO 條數、剩餘血品量、出血控制方式及備案</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>🎯 本章核心學習目標摘要</h4>
+                <ol>
+                    <li>迅速識別各型休克並在 xABCDE 流程中同步處置</li>
+                    <li>依「病因-導向」調整輸液與控制出血策略</li>
+                    <li>持續評估、動態修正治療並隨時考慮資源與轉診選項</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 分頁切換功能
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
+            
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // 問答收合功能
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.qa-toggle');
+            
+            answer.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+
+        // 下載PDF功能
+        function downloadPDF() {
+            window.print();
+        }
+
+        // 返回頂部功能
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 顯示/隱藏返回頂部按鈕
+        window.onscroll = function() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            const progressBar = document.getElementById('progress-bar');
+            
+            // 返回頂部按鈕
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = 'flex';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+            
+            // 進度條
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        };
+
+        // 平滑滾動到錨點
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
