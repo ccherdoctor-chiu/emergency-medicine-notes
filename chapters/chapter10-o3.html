@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLS Chapter 10 - Musculoskeletal Trauma 考前重點複習筆記</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            position: relative;
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #007bff, #00c853);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        .main-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .main-header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .nav-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .dropdown-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background: #e3f2fd;
+            border: 1px solid #1976d2;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 5px 0;
+            text-decoration: none;
+            display: block;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab-button {
+            background: #e0f7fa;
+            border: 1px solid #0097a7;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .tab-button.active {
+            background: #0097a7;
+            color: white;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #f0f0f0;
+        }
+
+        .qa-container {
+            margin-bottom: 20px;
+        }
+
+        .qa-item {
+            margin-bottom: 10px;
+        }
+
+        .qa-question {
+            background: #ffe0b2;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .qa-answer {
+            display: none;
+            padding: 10px;
+            background: #fff3e0;
+            border-radius: 4px;
+        }
+
+        .concept-box, .dosage-box, .danger-box, .warning-box {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .copyright-notice {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        #download-pdf, #back-to-top {
+            position: fixed;
+            right: 20px;
+            padding: 10px 15px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            background: #2196f3;
+            color: white;
+            z-index: 2000;
+        }
+
+        #download-pdf { bottom: 80px; }
+        #back-to-top { bottom: 20px; display: none; }
+    </style>
+</head>
+<body>
+    <div id="progress-bar"></div>
+    <header class="main-header">
+        <h1>ATLS Chapter 10 - Musculoskeletal Trauma</h1>
+        <p>考前重點複習筆記</p>
+    </header>
+
+    <button id="download-pdf" onclick="downloadPDF()">📥 下載PDF</button>
+    <button id="back-to-top" onclick="scrollToTop()">⬆</button>
+
+    <div class="nav-container">
+        <div class="dropdown-nav">
+            <div class="dropdown">
+                <button class="dropdown-button">📋 一般性重點筆記 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#general-info">資訊篩選與核心解構</a>
+                    <a href="#general-concepts">概念濃縮與簡化</a>
+                    <a href="#general-qa">主動回憶問題庫</a>
+                    <a href="#general-summary">核心概念摘要</a>
+                    <a href="#general-mnemonic">記憶輔助與概念圖</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">⚠️ 進階觀念與應考陷阱 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#advanced-note">內容建置中</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">🚨 臨床現場實用資訊 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#clinical-note">內容建置中</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">📊 重要圖表整理 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#charts-note">內容建置中</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">📌 其他重要重點 ▼</button>
+                <div class="dropdown-content">
+                    <a href="#others-note">內容建置中</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('general')">📋 一般性重點筆記</button>
+            <button class="tab-button" onclick="showTab('advanced')">⚠️ 進階觀念與應考陷阱</button>
+            <button class="tab-button" onclick="showTab('clinical')">🚨 臨床現場實用資訊</button>
+            <button class="tab-button" onclick="showTab('charts')">📊 重要圖表整理</button>
+            <button class="tab-button" onclick="showTab('others')">📌 其他重要重點</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="copyright-notice">
+            <h4>⚖️ 版權聲明與使用限制</h4>
+            <p>本網頁內容使用GAI生成</p>
+            <p>本網頁為自學用途之中文編譯版本，非官方授權翻譯。</p>
+            <ul>
+                <li>原文版權屬於American College of Surgeons Committee on Trauma</li>
+                <li>本網頁教材旨在促進醫學教育發展，僅供學習者參考使用，嚴禁任何商業用途</li>
+                <li>讀者若需完整理解原文，建議參閱原始英文版本</li>
+            </ul>
+        </div>
+
+        <!-- 一般性重點筆記 -->
+        <div id="general" class="tab-content active">
+            <h2>📋 一般性重點筆記</h2>
+
+            <div class="concept-box">
+                <h3 id="general-info">📝 資訊篩選與核心解構</h3>
+                <table>
+                    <tr>
+                        <th>節點 (Node)</th>
+                        <th>必考關鍵詞／定義 (Chunk)</th>
+                        <th>理由</th>
+                    </tr>
+                    <tr>
+                        <td>生命威脅性骨骼肌肉傷</td>
+                        <td>• 骨盆骨折出血，可儲血 4-6 L，屬 xABCDE 之 x (止血)<br>• 大血管損傷／截肢，立即止血並使用戰鬥止血帶<br>• 雙側股骨幹骨折，單側失血 2 L，雙側翻倍超過 40% 血量</td>
+                        <td>直接導致失血性休克，ATLS 強調優先處置</td>
+                    </tr>
+                    <tr>
+                        <td>肢體威脅性傷害</td>
+                        <td>• 區隔症候群：痛覺超出外觀、被動牽拉痛、ΔP &lt; 30 mmHg<br>• 開放性骨折與關節穿透：1 hr 內 IV cefazolin ± gentamicin，並注射破傷風</td>
+                        <td>延遲治療會導致殘肢或感染</td>
+                    </tr>
+                    <tr>
+                        <td>初步止血策略</td>
+                        <td>直接加壓 → 填塞 → 戰鬥止血帶；骨盆束腹置於大轉子水平</td>
+                        <td>ATLS 演算法 xABCDE “Stop the Bleed”</td>
+                    </tr>
+                    <tr>
+                        <td>神經血管評估</td>
+                        <td>脈搏標記、ABI／IEI &lt; 0.9、減壓後再評估</td>
+                        <td>決定是否需 CT Angio 或手術</td>
+                    </tr>
+                    <tr>
+                        <td>必備輔助固定</td>
+                        <td>• 股骨牽引夾板<br>• 長腿背側石膏 10°屈膝<br>• 手部功能位 45-60° MCP 彎曲</td>
+                        <td>減少失血、疼痛及二度損傷</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 id="general-concepts">🔑 概念濃縮與簡化</h3>
+            <div class="dosage-box">
+                <ul>
+                    <li><strong>骨盆出血就像「漏水木桶」</strong>：骨盆腔=木桶，綁上骨盆束腹＝把桶箍緊，減少失血空間。</li>
+                    <li><strong>區隔症候群=「壓力鍋」</strong>：肌筋膜室封閉，內壓上升&gt;30 mmHg 即損壞肌肉與神經。</li>
+                    <li><strong>牽引夾板=「拉直折斷吸管」</strong>：拉直後對齊內腔止住滲血與疼痛。</li>
+                    <li><strong>ABI &lt; 0.9 像水管壓力錶警戒線</strong>：指針掉到 0.9 以下，代表管路受阻需立即修補。</li>
+                </ul>
+            </div>
+
+            <h3 id="general-qa">❓ 主動回憶問題庫</h3>
+            <div class="qa-container">
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q1. 何種骨折可單次失血 2 L，而雙側可致 40% 以上循環血量損失？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer"><p><strong>答案</strong>：股骨幹骨折；雙側更危險。</p></div>
+                </div>
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q2. 區隔症候群臨床最早且最可靠的症狀是？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer"><p><strong>答案</strong>：Pain out of proportion（痛覺超出外觀）。</p></div>
+                </div>
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q3. 開放性骨折應於抵達急診多長時間內給予第一劑抗生素？主要首選？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer"><p><strong>答案</strong>：1 小時內；首選 Cefazolin ± Gentamicin。</p></div>
+                </div>
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q4. 戰鬥止血帶應繫在傷口近端幾公分？並避免壓在何處？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer"><p><strong>答案</strong>：5–8 cm 近端；避免關節上。</p></div>
+                </div>
+                <div class="qa-item">
+                    <div class="qa-question" onclick="toggleAnswer(this)">
+                        <span>Q5. ABI &lt; 多少須懷疑大血管損傷？</span>
+                        <span class="qa-toggle">▼</span>
+                    </div>
+                    <div class="qa-answer"><p><strong>答案</strong>：&lt; 0.9。</p></div>
+                </div>
+            </div>
+
+            <div class="concept-box">
+                <h3 id="general-summary">📑 核心概念摘要</h3>
+                <ul>
+                    <li>生命威脅：骨盆出血、股骨大量失血、大血管截肢。</li>
+                    <li>肢體威脅：開放骨折、區隔症候群、關節貫穿、血流不足。</li>
+                    <li>關鍵處置：骨盆束腹、牽引夾板、止血帶、ΔP/ABI 監測、1 hr 內抗生素。</li>
+                    <li>必背數字：骨盆血量 4-6 L；股骨 2 L；ABI &lt; 0.9；區隔 ΔP &lt; 30 mmHg；止血帶 5-8 cm。</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h3 id="general-mnemonic">🧠 記憶輔助與概念圖</h3>
+                <ul>
+                    <li>PAM CB（致死骨傷）</li>
+                    <li>S-T-O-P（止血階梯）</li>
+                    <li>4P+ΔP（區隔症候群）</li>
+                    <li>C→G→M（開放骨折抗生素升級）</li>
+                </ul>
+                <p>中心節點 <strong>Musculoskeletal Trauma</strong> → Hemorrhage Control → Limb-threatening → Adjuncts &amp; Fixation → Systemic Complications → <em>Patient Outcome</em></p>
+            </div>
+
+            <div class="warning-box">
+                <h3 id="general-plan">📆 行動計畫</h3>
+                <p>今晚先默寫 PAM CB 及 S-T-O-P；30 分鐘快問快答；睡前想像「壓力鍋」腳腫脹畫面複習區隔症候群。明早再做一次 Active Recall。</p>
+            </div>
+        </div>
+
+        <!-- 進階觀念與應考陷阱 -->
+        <div id="advanced" class="tab-content">
+            <h2>⚠️ 進階觀念與應考陷阱</h2>
+            <p id="advanced-note">內容持續建置中…</p>
+        </div>
+
+        <!-- 臨床現場實用資訊 -->
+        <div id="clinical" class="tab-content">
+            <h2>🚨 臨床現場實用資訊</h2>
+            <p id="clinical-note">內容持續建置中…</p>
+        </div>
+
+        <!-- 重要圖表整理 -->
+        <div id="charts" class="tab-content">
+            <h2>📊 重要圖表整理</h2>
+            <p id="charts-note">內容持續建置中…</p>
+        </div>
+
+        <!-- 其他重要重點 -->
+        <div id="others" class="tab-content">
+            <h2>📌 其他重要重點</h2>
+            <p id="others-note">內容持續建置中…</p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function downloadPDF() {
+            window.print();
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onscroll = function() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            const progressBar = document.getElementById('progress-bar');
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+            if (winScroll > 300) {
+                backToTopBtn.style.display = 'flex';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        };
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
