@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邱俊文的急診考前筆記 | 專業醫學學習資源</title>
+    <meta name="description" content="專業急診醫學考前複習筆記">
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e74c3c, #27ae60);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+        
+        .header .author {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+        
+        .main-content {
+            padding: 60px 40px;
+        }
+        
+        .intro-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .intro-section h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .intro-section p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .tintinalli {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .acls {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .atls {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .category-description {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .category-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .features-section {
+            background: #f8f9fa;
+            padding: 50px 40px;
+            margin: 60px -40px -60px -40px;
+        }
+        
+        .features-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .feature-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+            margin: 0 -40px -60px -40px;
+        }
+        
+        .footer p {
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .main-content, .features-section {
+                padding: 30px 20px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .category-card {
+                padding: 30px 20px;
+            }
+            
+            .features-section {
+                margin: 40px -20px -30px -20px;
+            }
+            
+            .footer {
+                margin: 0 -20px -30px -20px;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .intro-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .category-icon {
+                font-size: 3rem;
+            }
+            
+            .category-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>邱俊文的急診考前筆記</h1>
+                <p class="subtitle">專業醫學學習資源平台</p>
+                <p class="author">Emergency Medicine Study Notes</p>
+            </div>
+        </header>
+        
+        <main class="main-content">
+            <section class="intro-section">
+                <h2>備份使用GAI生成的筆記</h2>
+                <p>內容為GAI生成的筆記，時間限制下，可能因AI幻覺而有所錯誤，使用請自行評估。</p>
+            </section>
+            
+            <section class="categories-grid">
+                <a href="tintinalli.html" class="category-card">
+                    <span class="category-icon">📚</span>
+                    <h3 class="category-title">Tintinalli's 第九版</h3>
+                    <p class="category-description">急診醫學領域最教科書。</p>
+                    <div class="category-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">重點章節</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">核心概念</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">練習題目</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="acls.html" class="category-card">
+                    <span class="category-icon">❤️</span>
+                    <h3 class="category-title">ACLS</h3>
+                    <p class="category-description">高級心臟救命術指引。</p>
+                    <div class="category-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">重要觀念</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">重點藥物</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">情境練習</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="atls.html" class="category-card">
+                    <span class="category-icon">🚑</span>
+                    <h3 class="category-title">ATLS 11版</h3>
+                    <p class="category-description">進階創傷救命術最新版本，系統化創傷評估與處置的國際標準流程。</p>
+                    <div class="category-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10</div>
+                            <div class="stat-label">核心章節</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">關鍵技能</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">80+</div>
+                            <div class="stat-label">案例分析</div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+        </main>
+        
+        <section class="features-section">
+            <h2 class="features-title">學習特色</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">🎯</span>
+                    <h4 class="feature-title">重點聚焦</h4>
+                    <p class="feature-description">提煉核心概念，突出考試重點，避免資訊過載</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔄</span>
+                    <h4 class="feature-title">主動回憶</h4>
+                    <p class="feature-description">問答練習設計，強化記憶鞏固與知識應用</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🧠</span>
+                    <h4 class="feature-title">記憶技巧</h4>
+                    <p class="feature-description">口訣、聯想法幫助複雜概念快速記憶</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🗺️</span>
+                    <h4 class="feature-title">概念圖譜</h4>
+                    <p class="feature-description">視覺化知識結構，建立完整認知框架</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📱</span>
+                    <h4 class="feature-title">響應式設計</h4>
+                    <p class="feature-description">支援各種設備，隨時隨地高效學習</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <h4 class="feature-title">快速檢索</h4>
+                    <p class="feature-description">結構化內容組織，快速找到所需資訊</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>&copy; 2024 邱俊文的急診考前筆記. 僅供學習參考使用</p>
+        </footer>
+    </div>
+</body>
+</html>
