@@ -271,6 +271,7 @@
             padding: 12px;
             text-align: left;
             border: 1px solid #ddd;
+            vertical-align: top;
         }
 
         th {
@@ -470,25 +471,25 @@
     <div class="nav-container">
         <!-- 下拉式選單 -->
         <div class="dropdown-nav">
-            <div class="dropdown">
+             <div class="dropdown">
                 <button class="dropdown-button">📋 一般性重點筆記 ▼</button>
                 <div class="dropdown-content">
-                    <a href="#general-core">核心概念摘要</a>
-                    <a href="#general-shock">休克定義與分類</a>
-                    <a href="#general-identification">早期辨識指標</a>
-                    <a href="#general-bleeding">五大失血處</a>
-                    <a href="#general-strategy">出血控制與輸血策略</a>
-                    <a href="#general-qa">主動回憶問題庫</a>
+                    <a href="#general-step1">Step 1: 核心解構</a>
+                    <a href="#general-step2">Step 2: 概念濃縮</a>
+                    <a href="#general-step3">Step 3: 記憶強化</a>
+                    <a href="#general-step4">Step 4: 整合輸出</a>
                 </div>
             </div>
             
             <div class="dropdown">
                 <button class="dropdown-button">⚠️ 進階觀念與應考陷阱 ▼</button>
                 <div class="dropdown-content">
-                    <a href="#advanced-concepts">潛藏高階觀念</a>
-                    <a href="#advanced-traps">模擬考官陷阱題</a>
-                    <a href="#advanced-physiology">關鍵生理病理解析</a>
-                    <a href="#advanced-qa">進階主動回憶問題</a>
+                    <a href="#advanced-concepts">罕見但攸關生死觀念</a>
+                    <a href="#advanced-diff">外觀相似處置迥異</a>
+                    <a href="#advanced-dose">特殊劑量/程序</a>
+                    <a href="#advanced-guideline">新舊指南差異</a>
+                    <a href="#advanced-hidden">隱藏考點</a>
+                    <a href="#advanced-qa">進階主動回憶</a>
                 </div>
             </div>
             
@@ -505,20 +506,24 @@
             <div class="dropdown">
                 <button class="dropdown-button">📊 重要圖表整理 ▼</button>
                 <div class="dropdown-content">
-                    <a href="#chart-hemorrhage">失血嚴重度分級表</a>
-                    <a href="#chart-bleeding">失血位置示意圖</a>
-                    <a href="#chart-pelvic">骨盆容積變化圖</a>
-                    <a href="#chart-flow">導管流速比較表</a>
+                    <a href="#chart-wses">圖表一：WSES 骨盆骨折分級</a>
+                    <a href="#chart-young-burgess">圖表二：Young-Burgess 型態</a>
+                    <a href="#chart-antibiotic">圖表三：開放性骨折抗生素</a>
+                    <a href="#chart-abi">圖表四：ABI/IEI 量測流程</a>
+                    <a href="#chart-nerve">圖表五：周邊神經評估</a>
+                    <a href="#chart-tourniquet">圖表六：CoTCCC 認證止血帶</a>
                 </div>
             </div>
             
             <div class="dropdown">
                 <button class="dropdown-button">📌 其他重要重點 ▼</button>
                 <div class="dropdown-content">
-                    <a href="#other-nonhemorrhagic">非出血性休克分類</a>
-                    <a href="#other-population">不同族群復甦差異</a>
-                    <a href="#other-anticoagulation">抗凝逆轉策略</a>
-                    <a href="#other-tca">創傷性心搏停止</a>
+                    <a href="#other-amputation">外傷截肢處理</a>
+                    <a href="#other-pain">痛覺控制策略</a>
+                    <a href="#other-fes">脂肪栓塞症候群</a>
+                    <a href="#other-ligament">關節/韌帶損傷</a>
+                    <a href="#other-imaging">影像與輻射安全</a>
+                    <a href="#other-transfer">轉診實務要點</a>
                 </div>
             </div>
         </div>
@@ -559,783 +564,718 @@
 
         <!-- 一般性重點筆記 -->
         <div id="general" class="tab-content active">
-            <h2>📋 一般性重點筆記</h2>
+            <h2 id="general-step1">📋 一般性重點筆記</h2>
             
+            <h3>【Step 1：資訊篩選與核心解構】</h3>
+            <p>（若明天考題只針對 20%，最可能出現的重點）</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>節點 (Node)</th>
+                        <th>必考關鍵詞／定義 (Chunk)</th>
+                        <th>理由</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>生命威脅性骨骼肌肉傷 (Life-threatening MSK Injuries)</strong></td>
+                        <td>
+                            • 骨盆骨折出血 (Pelvic fracture hemorrhage) – 可儲血 4-6 L，屬 xABCDE 之 x (&lt;止血&gt;)<br>
+                            • 大血管損傷／截肢 (Major arterial injury / Traumatic amputation) – 立即止血 + 戰鬥止血帶<br>
+                            • 雙側股骨幹骨折 (Bilateral femur fracture) – 單側失血 2 L，雙側翻倍 40%+ 失血量
+                        </td>
+                        <td>直接導致失血性休克，ATLS 強調優先處置</td>
+                    </tr>
+                    <tr>
+                        <td><strong>肢體威脅性傷害 (Limb-threatening)</strong></td>
+                        <td>
+                            • 區隔症候群 (Compartment syndrome)：痛 &gt; 外觀、被動牽拉痛、ΔP &lt; 30 mmHg<br>
+                            • 開放性骨折 & 關節穿透 (Open fracture / penetrating joint) – 1 hr 內 IV cefazolin ± gentamicin、抗破傷風
+                        </td>
+                        <td>延遲治療→殘肢或感染</td>
+                    </tr>
+                    <tr>
+                        <td><strong>初步止血策略</strong></td>
+                        <td>直接加壓 → 填塞 → 戰鬥止血帶 (tourniquet)；骨盆束腹 (binder) 置於大轉子水平</td>
+                        <td>ATLS 演算法 xABCDE “Stop the Bleed”</td>
+                    </tr>
+                    <tr>
+                        <td><strong>神經血管評估</strong></td>
+                        <td>脈搏標記、ABI／IEI &lt; 0.9、減壓再評</td>
+                        <td>決定是否需 CT Angio、手術</td>
+                    </tr>
+                    <tr>
+                        <td><strong>必備輔助固定</strong></td>
+                        <td>
+                            • 股骨牽引夾板 (traction splint)<br>
+                            • 長腿背側石膏 (posterior long-leg splint) 10°屈膝<br>
+                            • 手部功能位 45-60° MCP 彎曲
+                        </td>
+                        <td>減少失血、疼痛、二度損傷</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <hr>
+            
+            <h3 id="general-step2">【Step 2：概念濃縮與簡化】</h3>
             <div class="concept-box">
-                <h3 id="general-core">🎯 核心概念摘要</h3>
                 <ul>
-                    <li><strong>休克分類</strong>：Hemorrhagic vs. Obstructive (Tension Pneumothorax, Cardiac Tamponade) / Cardiogenic (Blunt Cardiac Injury) / Distributive (Neurogenic, Septic)</li>
-                    <li><strong>早期識別</strong>：Tachycardia + 皮膚冷濕即視為休克；Shock Index ≥ 0.8 提示需輸血</li>
-                    <li><strong>關鍵生理指標</strong>：Lactate、Base Deficit、尿量 (<0.5 mL/kg/hr) 監控復甦成效</li>
-                    <li><strong>處置優先序</strong>：止血→大口徑 IV/IO→血品 1:1:1→Permissive Hypotension→TXA→持續再評估 (Responder 分類)</li>
+                    <li><strong>骨盆出血就像「漏水木桶」</strong>：骨盆腔=木桶，綁上骨盆束腹＝把桶箍緊，減少失血空間。</li>
+                    <li><strong>區隔症候群=「壓力鍋」</strong>：肌筋膜室被外殼封死，內壓一旦上升（&gt;30 mmHg）就會「煮壞」肌肉與神經。</li>
+                    <li><strong>牽引夾板=「拉直折斷吸管」</strong>：拉直後吸管內腔對齊，止住邊緣滲水（止血、疼痛）。</li>
+                    <li><strong>ABI &lt; 0.9 像 水管壓力錶警戒線</strong>：一旦指針掉到 0.9 以下，代表管路受阻需立即修補。</li>
                 </ul>
             </div>
 
-            <h3 id="general-shock">💉 休克定義與分類</h3>
-            <div class="danger-box">
-                <p><strong>🚨 休克定義</strong>：器官供氧不足的警報燈 - 血液載氧量 ↓ → 細胞能量製造停擺 → 器官失能</p>
-                <p><strong>創傷病人最常見</strong>：<span class="highlight">Hemorrhagic Shock</span></p>
-                <p><strong>非出血性休克</strong>：記憶口訣「<strong>O-C-D</strong>」</p>
-                <ul>
-                    <li>🚫 <strong>O</strong>bstructive（阻塞性）</li>
-                    <li>❤️ <strong>C</strong>ardiogenic（心因性）</li>
-                    <li>🌡️ <strong>D</strong>istributive（分布性）</li>
-                </ul>
-            </div>
+            <hr>
 
-            <h3 id="general-identification">🔍 早期辨識指標</h3>
-            <div class="warning-box">
-                <p><strong>最早可量測徵象</strong>：<span class="highlight">Tachycardia</span></p>
-                <p><strong>Shock Index (SI)</strong> = HR / SBP</p>
-                <ul>
-                    <li>正常值：≤ 0.7</li>
-                    <li>警戒值：≥ 0.8（需考慮輸血）</li>
-                    <li>危險值：≥ 1.0（高死亡率相關）</li>
-                </ul>
-                <p>💡 記憶口訣：「<strong>HR over BP, if > One call 119</strong>」</p>
-            </div>
-
-            <h3 id="general-bleeding">🩸 五大失血處</h3>
-            <div class="physiology-box">
-                <p><strong>記憶口訣</strong>：「<strong>One on the Floor & Four More</strong>」</p>
-                <ol>
-                    <li>🫁 胸腔（Chest）</li>
-                    <li>🏥 腹腔（Abdomen）</li>
-                    <li>🦴 骨盆/後腹腔（Pelvis/Retroperitoneum）</li>
-                    <li>🦵 長骨/軟組織（Long bones/Soft tissue）</li>
-                    <li>🩸 外部出血（External - "on the floor"）</li>
-                </ol>
-                <p>💡 故事記憶法：「地板上一灘血 (floor) → 抬頭看胸、腹、骨盆、長骨 (four)」</p>
-            </div>
-
-            <h3 id="general-strategy">🩺 出血控制與輸血策略</h3>
-            <div class="dosage-box">
-                <h4>立即處置流程</h4>
-                <ol>
-                    <li>🩹 立即止血（直接加壓/止血帶）</li>
-                    <li>💉 建立大口徑靜脈通路（16G以上 x 2）</li>
-                    <li>🩸 啟動輸血：<strong>1:1:1</strong>（PRBC:FFP:Platelet）或低滴度O型全血</li>
-                    <li>📉 Permissive Hypotension：
-                        <ul>
-                            <li>刺穿傷：SBP ≈ 90 mmHg</li>
-                            <li>頭/脊髓傷：SBP ≥ 110 mmHg</li>
-                        </ul>
-                        <p>💡 記憶口訣：「<strong>九十止血，百一護腦</strong>」</p>
-                    </li>
-                    <li>💊 TXA給藥（3小時內）：1g IV 10分鐘 + 1g/8hr 或 單次2g</li>
-                </ol>
-            </div>
-
-            <h3 id="general-qa">❓ 主動回憶問題庫</h3>
+            <h3 id="general-step3">【Step 3：記憶強化與結構化】</h3>
+            <h4>主動回憶問題庫</h4>
             <div class="qa-container">
                 <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>Q1: 創傷休克最常見病因？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：Hemorrhagic Shock（出血性休克）</p>
-                    </div>
+                    <div class="qa-question" onclick="toggleAnswer(this)"><span>Q1. 何種骨折可單次失血 2 L，而雙側可致 40% 以上循環血量損失？</span><span class="qa-toggle">▼</span></div>
+                    <div class="qa-answer"><p>A1. 股骨幹骨折 (Femoral shaft fracture)；雙側更危險</p></div>
                 </div>
-
                 <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>Q2: Shock Index 正常值與危險臨界？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：≤0.7 正常；≥1 高死亡率</p>
-                    </div>
+                    <div class="qa-question" onclick="toggleAnswer(this)"><span>Q2. 區隔症候群臨床最早且最可靠的症狀是？</span><span class="qa-toggle">▼</span></div>
+                    <div class="qa-answer"><p>A2. 痛覺超出外觀 (Pain out of proportion)</p></div>
                 </div>
-
                 <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>Q3: 非出血性休克三大類？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：Obstructive, Cardiogenic, Distributive (O-C-D)</p>
-                    </div>
+                    <div class="qa-question" onclick="toggleAnswer(this)"><span>Q3. 開放性骨折應於抵達急診多長時間內給予第一劑抗生素？主要首選？</span><span class="qa-toggle">▼</span></div>
+                    <div class="qa-answer"><p>A3. 1 小時內；首選 Cefazolin ± (高污染或 III 型時) Gentamicin</p></div>
                 </div>
-
                 <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>Q4: 五大失血位置口訣？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>："Four and the Floor"（胸、腹、骨盆/後腹腔、長骨/軟組織 + 外部出血）</p>
-                    </div>
+                    <div class="qa-question" onclick="toggleAnswer(this)"><span>Q4. 戰鬥止血帶應繫在傷口近端幾公分？並避免壓在何處？</span><span class="qa-toggle">▼</span></div>
+                    <div class="qa-answer"><p>A4. 5–8 cm 近端；避免關節上</p></div>
                 </div>
-
                 <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>Q5: Permissive Hypotension 對 SBP 目標？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：90 mmHg（刺穿傷）；110 mmHg（頭/脊傷）</p>
-                    </div>
+                    <div class="qa-question" onclick="toggleAnswer(this)"><span>Q5. ABI &lt; 多少須懷疑大血管損傷？</span><span class="qa-toggle">▼</span></div>
+                    <div class="qa-answer"><p>A5. &lt; 0.9</p></div>
                 </div>
+            </div>
 
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>Q6: Responder 與 Non-responder 最大差別？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：是否在輸液後維持 hemodynamics</p>
-                    </div>
-                </div>
+            <h4>記憶術 (Mnemonics)</h4>
+            <div class="physiology-box">
+                <p><strong>「P A M C B」= 會要命的骨骼肌肉傷</strong></p>
+                <ul>
+                    <li><strong>P</strong>elvic bleed</li>
+                    <li><strong>A</strong>mputation (major artery)</li>
+                    <li><strong>M</strong>assive arterial injury</li>
+                    <li><strong>C</strong>ompartment syndrome</li>
+                    <li><strong>B</strong>ilateral femur fracture</li>
+                </ul>
+                <p><strong>止血 4 步「S-T-O-P」</strong></p>
+                <ul>
+                    <li><strong>S</strong>traight pressure</li>
+                    <li><strong>T</strong>ourniquet</li>
+                    <li><strong>O</strong>rientation (Pelvic binder at <strong>O</strong>trochanter)</li>
+                    <li><strong>P</strong>rovisional alignment/splint</li>
+                </ul>
+                <p><strong>區隔症候群 4P+ΔP</strong>: Pain, Passive-stretch pain, Paresthesia, Pressure (tense), ΔP &lt; 30 mmHg</p>
+                <p><strong>開放性骨折抗生素「C→G→M」</strong> (污染加一級)：</p>
+                <ul>
+                    <li>Clean I–II → <strong>C</strong>efazolin</li>
+                    <li>Soil III → + <strong>G</strong>entamicin</li>
+                    <li>水域污染 → + <strong>M</strong>eropenem / Piper-Tazo</li>
+                </ul>
+            </div>
 
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>Q7: Pelvic Binder 置放位置？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：包住 Greater Trochanters（大轉子）</p>
-                    </div>
-                </div>
+            <h4>概念關聯圖譜（文字版）</h4>
+            <div class="info-box concept-box">
+                <p>骨盆骨折出血 → 失血性休克 → 優先「x」止血 → 骨盆束腹 + 血液製品； 若伴股骨幹骨折 → 牽引夾板減血 + 止痛 → 防脂肪栓塞； 下肢腫脹劇痛 → 區隔症候群 → 早期痛覺超出外觀 → 測壓 ΔP &lt; 30 → 緊急筋膜切開； 開放性骨折 → 感染風險 ↑ → &lt;1 hr 抗生素 + 清創、固定 → 避免骨髓炎； 任何骨折/脫位 → 先復位/臨時固定 → 重新評估脈搏 + ABI → 若 &lt; 0.9 則 CT Angio + 手術。</p>
+            </div>
 
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>Q8: TXA 給藥黃金時間？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：受傷 3 hr 內</p>
-                    </div>
-                </div>
+            <hr>
 
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>Q9: 早期休克最敏感生命徵象？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：Tachycardia（心搏過速）</p>
-                    </div>
-                </div>
+            <h3 id="general-step4">【Step 4：整合輸出與行動計畫 —— 隔日衝刺學習單】</h3>
+            <h4>一、核心概念摘要 (Core Concept Summary)</h4>
+            <div class="warning-box">
+                <ul>
+                    <li>生命威脅：骨盆出血、股骨大量失血、大血管截肢。</li>
+                    <li>肢體威脅：開放骨折、區隔症候群、關節貫穿、血流不足。</li>
+                    <li>關鍵處置：骨盆束腹、牽引夾板、止血帶、ΔP/ABI 監測、1 hr 內抗生素。</li>
+                    <li>必背數字：骨盆血量 4-6 L；股骨 2 L；ABI &lt; 0.9；區隔 ΔP &lt; 30 mmHg；止血帶 5-8 cm。</li>
+                </ul>
+            </div>
 
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>Q10: 休克時最可靠之代謝指標？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：Lactate ↑ 或 Base Deficit ↓</p>
-                    </div>
-                </div>
+            <h4>二、主動回憶問題庫 (Active Recall Question Bank)</h4>
+            <p>（已列於 Step 3，可直接抽卡練習）</p>
+
+            <h4>三、記憶輔助工具 (Memory Aids & Mnemonics)</h4>
+            <div class="physiology-box">
+                <ul>
+                    <li>PAM CB（致死骨傷）</li>
+                    <li>S-T-O-P（止血階梯）</li>
+                    <li>4P+ΔP（區隔症候群）</li>
+                    <li>C→G→M（開放骨折抗生素升級）</li>
+                </ul>
+            </div>
+            
+            <h4>四、概念關聯圖譜 (Concept Connection Map)</h4>
+            <div class="concept-box">
+                <p><strong>文字導覽：</strong><br>
+                中心節點 <strong>Musculoskeletal Trauma</strong> →<br>
+                ① <strong>Hemorrhage Control</strong> （骨盆、股骨、大血管）→ 先止血<br>
+                ② <strong>Limb-threatening</strong> （Compartment / Open fracture / Vascular）→ 保肢<br>
+                ③ <strong>Adjuncts & Fixation</strong> （Binder, Traction, Splint）→ 減壓、減血<br>
+                ④ <strong>Systemic Complications</strong> （Crush syndrome, Fat embolism）→ 監測腎臟、肺部<br>
+                所有箭頭最終回到 <strong>Patient Outcome</strong> —— 早期辨識 + 及時介入 = 降低死亡與殘障率。</p>
             </div>
         </div>
 
         <!-- 進階觀念與應考陷阱 -->
         <div id="advanced" class="tab-content">
             <h2>⚠️ 進階觀念與應考陷阱</h2>
+            <h3>【進階觀念與應考陷阱】Musculoskeletal Trauma—ATLS 11 e Chapter 10</h3>
+            <p>本筆記聚焦「罕見卻高風險」與「最易被忽略」的考點，並揭露考官常用以區分高低段考生的陷阱。</p>
             
-            <h3 id="advanced-concepts">🎯 潛藏高階觀念與易忽略細節</h3>
-            
-            <div class="danger-box">
-                <h4>🚨 特殊族群的假陰性休克</h4>
-                <p><strong>為什麼重要？</strong>高齡β阻斷、孕婦血容量↑、運動員靜息HR↓，皆會「遮蔽」心跳與血壓變化。</p>
-                <p><strong>隱藏陷阱</strong>：只靠 HR / BP 易漏診；以乳酸、Base Deficit及皮膚灌流評估</p>
-                <p>💡 記憶口訣：「<strong>BAPPA</strong>」- Beta-blocker、Athlete、Pregnancy、Pacemaker、Age > 65</p>
-            </div>
+            <h4 id="advanced-concepts">一、罕見但攸關生死／肢體存活的觀念</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>進階觀念</th>
+                        <th>為什麼重要？(生理／病理機轉)</th>
+                        <th>常見誤區／陷阱題</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Crush / Reperfusion Syndrome</strong></td>
+                        <td>再灌流時鉀離子與酸性代謝物瞬間沖入循環 → 心律不整、腎衰竭；同時必須權衡出血風險與腎保護液體量</td>
+                        <td>「大量輸液=好」：過度輸液可沖開血塊、惡化出血</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Morel-Lavallée 內脫套傷 (Internal Degloving)</strong></td>
+                        <td>皮下血清腔→感染、壓力壞死；初診僅擦傷或瘀青</td>
+                        <td>表皮完整即忽略；考官常給「正常 X-ray+大範圍瘀青」</td>
+                    </tr>
+                    <tr>
+                        <td><strong>隱匿性(non-occlusive)血管損傷</strong></td>
+                        <td>僅內膜撕裂或骨折端壓迫 → 初期脈搏可存在；需先復位再評脈搏，以免漏診</td>
+                        <td>看到可摸到脈搏就跳過 CTA—錯！Doppler 可聞≠血流正常</td>
+                    </tr>
+                     <tr>
+                        <td><strong>Doppler 只證明部份流量</strong></td>
+                        <td>ABI/IEI &lt; 0.9 才能排除動脈傷</td>
+                        <td>考題會給「Doppler+, ABI 0.7」問下一步</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <div class="warning-box">
-                <h4>⏰ TXA 時效 & 劑量差異</h4>
-                <p><strong>關鍵時限</strong>：>3 hr 給藥反增栓塞風險</p>
-                <p><strong>劑量選擇</strong>：可用「1 g＋1 g/8 hr」或單次 2 g</p>
-                <p><strong>考官常問</strong>：「到院 4 hr還能否給？」</p>
-                <p>✅ <strong>正確答案</strong>：除非確證 hyperfibrinolysis（TEG/ROTEM），否則停用</p>
-                <p>💡 記憶口訣：「<strong>三小時，三不給</strong>」- 超3hr、無超纖、無外傷出血 ⇒ 停用</p>
-            </div>
+            <h4 id="advanced-diff">二、外觀相似但處置迥異的鑑別診斷</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>情境</th>
+                        <th>關鍵鑑別</th>
+                        <th>正確處置</th>
+                        <th>常錯選項</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>創傷後小腿腫脹</td>
+                        <td>區隔症候群 vs 血腫壓迫</td>
+                        <td>測 ΔP (DBP-Compartment) &lt; 30 mmHg → 筋膜切開；避免區段神經阻滯</td>
+                        <td>單純冰敷、上彈性繃帶→惡化</td>
+                    </tr>
+                    <tr>
+                        <td>高能量骨盆破裂 vs 穩定骨盆裂傷</td>
+                        <td>開放骨盆伴直腸破 vs 封閉</td>
+                        <td>立即骨盆填塞＋會陰暫時閉合；後者僅束腹</td>
+                        <td>「一路送 CT」「先外固定架」</td>
+                    </tr>
+                    <tr>
+                        <td>水域 vs 土壤污染開放骨折</td>
+                        <td>新增 Aeromonas/Vibrio 風險</td>
+                        <td>piperacillin-tazobactam＋doxy 100 mg q12h (鹹水)</td>
+                        <td>只給 cefazolin 或 cef+metro</td>
+                    </tr>
+                </tbody>
+            </table>
 
+            <h4 id="advanced-dose">三、特殊劑量／程序 & 例外規則</h4>
             <div class="dosage-box">
-                <h4>💊 抗凝逆轉策略</h4>
-                <table>
-                    <tr>
-                        <th>抗凝藥物</th>
-                        <th>逆轉劑</th>
-                        <th>劑量/注意事項</th>
-                    </tr>
-                    <tr>
-                        <td>Warfarin</td>
-                        <td>Vit K + 4-factor PCC</td>
-                        <td>5-10 mg IV + PCC</td>
-                    </tr>
-                    <tr>
-                        <td>Rivaroxaban/Apixaban</td>
-                        <td>Andexanet α</td>
-                        <td>依最後服藥時間分高低方案</td>
-                    </tr>
-                    <tr>
-                        <td>Dabigatran</td>
-                        <td>Idarucizumab</td>
-                        <td>5 g (2 × 2.5 g)</td>
-                    </tr>
-                    <tr>
-                        <td>LMWH</td>
-                        <td>Protamine</td>
-                        <td><8hr: 1mg/1mg<br>8-12hr: 0.5mg/1mg<br>>12hr: 不給</td>
-                    </tr>
-                </table>
-                <p>⚠️ <strong>易錯陷阱</strong>：易把 dabigatran 當 Xa 抑制劑；實際為直接 thrombin inhibitor</p>
+                <ul>
+                    <li><strong>Cefazolin 3 g q8h</strong>—體重 &gt; 120 kg 病患需加量</li>
+                    <li><strong>Tourniquet 精準參數</strong>：上肢 250 mmHg；下肢 400 mmHg；90–120 min 檢視可控式放氣，以免再灌流、神經損傷</li>
+                    <li><strong>Fasciotomy 通道選擇</strong>：前臂須同時開 volar + dorsal 隔室，否則深層淺層殘壓持續缺血</li>
+                    <li><strong>Tetanus TIG + Tdap</strong>：未完成 &lt; 3 劑破傷風、且「非乾淨小傷」皆需同時 TIG + Tdap；常被遺漏</li>
+                </ul>
             </div>
 
-            <h3 id="advanced-traps">🎭 模擬考官出題視角</h3>
-            
+            <h4 id="advanced-guideline">四、新舊指南差異 (ATLS 10 e ➔ 11 e) — 高階鑑別點</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>主題</th>
+                        <th>11 e 更新</th>
+                        <th>10 e 舊說法</th>
+                        <th>考官可能提問</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Compartment Threshold</td>
+                        <td>強調 ΔP &lt; 30 mmHg 個人化</td>
+                        <td>絕對壓 30 mmHg</td>
+                        <td>若 DBP 60, 壓 35 mmHg 處置？（答案：不需切開）</td>
+                    </tr>
+                    <tr>
+                        <td>Crush Syndrome</td>
+                        <td>首次在 MSK 章節內獨立討論「過度補液可能破壞止血」</td>
+                        <td>強調早期大量補液</td>
+                        <td>給病例+出血，問是否持續大補液？</td>
+                    </tr>
+                    <tr>
+                        <td>Tourniquet 使用</td>
+                        <td>CoTCCC 指定通過名單、實際壓力數值、&gt; 120 min 需階段性放氣</td>
+                        <td>著重「高、近端、記時間」</td>
+                        <td>若 150 min 無法到院，是否放鬆？（高階考）</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 id="advanced-hidden">五、容易忽視但能拿分的「隱藏考點」</h4>
+            <div class="warning-box">
+                <ul>
+                    <li><strong>神經學篩查對照表</strong>：深腓神經損傷 = 第一、二蹠骨間皮膚麻木；常被忽略導致漏診</li>
+                    <li><strong>影像上的關節間氣體</strong> = 貫穿性關節：即使傷口微小亦需手術洗創，否則感染率高</li>
+                    <li><strong>區隔症候群與區域神經阻滯衝突</strong>：單次阻滯可能掩蓋進展，考官喜出“應否打 nerve block”題</li>
+                    <li><strong>Prehospital 資訊為鑑別關鍵</strong>：e.g., 受困時間、止血帶上肢位；若問“還缺哪項現場資訊？”答案常是 tourniquet 時間</li>
+                </ul>
+            </div>
+
+            <h4 id="advanced-qa">六、進階主動回憶示範（抽查自己是否被坑）</h4>
             <div class="qa-container">
                 <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>🏃 運動員休克指標題：25歲馬拉松選手，失血1.5L，HR 90, BP 100/60，Shock Index 0.9</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>陷阱</strong>：Shock Index 0.9 被視作「正常」</p>
-                        <p><strong>鑑別</strong>：運動員靜息 HR 50 → 失血 2 L 仍僅 HR 100，SI = 1.0 = 危險</p>
-                        <p>✅ <strong>正確處置</strong>：立即輸血，不要被「正常」數值誤導</p>
-                    </div>
+                    <div class="qa-question" onclick="toggleAnswer(this)"><span>問：90 kg 病患開放骨折跌落漁港，鹹水泡 30 min；首選抗生素？</span><span class="qa-toggle">▼</span></div>
+                    <div class="qa-answer"><p>答：Piperacillin-tazobactam 4.5 g q6h + Doxycycline 100 mg q12h</p></div>
                 </div>
-
                 <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>🤰 孕婦 SBP 90 mmHg：28週孕婦車禍，SBP 90，是否屬於 permissive hypotension？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>陷阱</strong>：認為屬於 permissive hypotension</p>
-                        <p><strong>真相</strong>：第三孕期生理性低壓但子宮壓 IVC → 先左移子宮再評估</p>
-                        <p>✅ <strong>正確處置</strong>：左側傾斜15°或手動左移子宮，再評估血壓</p>
-                    </div>
+                    <div class="qa-question" onclick="toggleAnswer(this)"><span>問：止血帶 100 min，仍持續滲血、收縮壓穩定，可否先放鬆 1 min 觀察？</span><span class="qa-toggle">▼</span></div>
+                    <div class="qa-answer"><p>答：可，在有備份止血措施且總缺血時間未超 120 min 情況下，可短暫鬆解評估</p></div>
                 </div>
-
                 <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>⏱️ TXA超時給藥：刀傷病人到院已4小時，是否給TXA？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>陷阱</strong>：依靠 CRASH-2 數據而忽略時效上限</p>
-                        <p><strong>重點</strong>：超時僅在 TEG/Ly30>3% 等明確 hyperfibrinolysis 才考慮</p>
-                        <p>✅ <strong>正確答案</strong>：不給，除非有實驗室證據支持超纖溶</p>
-                    </div>
-                </div>
-
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>👶 小兒血壓正常即安全？5歲男童，車禍，HR 140, BP 90/60</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>陷阱</strong>：忽視兒童後期崩潰特性</p>
-                        <p><strong>警示</strong>：觀察心率與膚色；一旦出現 Bradycardia → 末期休克</p>
-                        <p>✅ <strong>正確評估</strong>：HR 140已是顯著心搏過速，需立即輸液/輸血</p>
-                    </div>
+                    <div class="qa-question" onclick="toggleAnswer(this)"><span>問：DBP 55 mmHg，小腿室壓 40 mmHg，需 fasciotomy 嗎？</span><span class="qa-toggle">▼</span></div>
+                    <div class="qa-answer"><p>答：需，因 ΔP=15 mmHg &lt; 30 mmHg</p></div>
                 </div>
             </div>
-
-            <h3 id="advanced-physiology">🧬 關鍵生理／病理學解析</h3>
             
-            <div class="physiology-box">
-                <h4>💊 β-Blocker Masking</h4>
-                <p>HR 受 β1 抑制，周邊血管仍收縮 → 皮膚涼、乳酸升高成最早警訊</p>
-            </div>
-
-            <div class="physiology-box">
-                <h4>⏰ TXA 時窗生理學</h4>
-                <p>創傷後 3 hr 內膠原與纖溶失衡最劇；之後纖溶活性下降，額外抑制 → 微血栓</p>
-            </div>
-
-            <div class="physiology-box">
-                <h4>💉 Vasopressor 加劇缺氧</h4>
-                <p>收縮前微血管造成 Shunting，氧氣無法交換；短暫提壓可保腦灌流，但持續使用將惡化代謝酸中毒</p>
-            </div>
-
-            <div class="physiology-box">
-                <h4>🔬 Poiseuille 定律</h4>
-                <p>Flow ∝ r⁴ / L</p>
-                <p>半徑 2→3 mm，流速增加 (3⁴ / 2⁴) ≈ 5 倍</p>
-                <p>💡 記憶口訣：「<strong>短粗飆、水快流（r⁴/L）</strong>」</p>
-            </div>
-
-            <h3 id="advanced-qa">🧠 進階主動回憶問題庫</h3>
-            
-            <div class="qa-container">
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>24 週孕婦到院 SBP 90，首要措施？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：左側傾或手動左移子宮</p>
-                    </div>
-                </div>
-
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>服用 Rivaroxaban 6 hr前受傷大出血首選逆轉藥？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：Andexanet α (高劑量方案)</p>
-                    </div>
-                </div>
-
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>何時可考慮停止鈍傷 CPR？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：無生命徵象且 CPR >10 min</p>
-                    </div>
-                </div>
-
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>18 G×45 cm CVC vs 16 G×4 cm IV，何者流速較快？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：16 G 周邊 IV (半徑大且短)</p>
-                    </div>
-                </div>
-
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>神經原性休克 MAP 目標？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer">
-                        <p><strong>答案</strong>：≥85 mmHg；需早期 Norepinephrine</p>
-                    </div>
-                </div>
+            <h4>使用建議</h4>
+            <div class="concept-box">
+                <p><strong>備考前夕</strong>：聚焦表格中粗體字＋三題抽查；確保能解釋「為什麼」而非死背數字。</p>
+                <p><strong>模擬考</strong>：出題方向以「同樣外觀 → 不同處置」與「例外規則」作區分點，先想陷阱再答題，可降低被誤導機率。</p>
             </div>
         </div>
 
         <!-- 臨床現場實用資訊 -->
         <div id="clinical" class="tab-content">
             <h2>🚨 臨床現場實用資訊</h2>
+            <p>— ATLS 11 e Chapter 10：Musculoskeletal Trauma —</p>
             
-            <h3 id="clinical-emergency">🚑 緊急狀況快速應變</h3>
-            
+            <h3 id="clinical-emergency">#1、緊急狀況快速應變 (Rapid Emergency Response)</h3>
             <div class="danger-box">
-                <h4>🩸 大量出血 + 低血壓</h4>
-                <p><strong>核心判斷</strong>：SBP < 90 mmHg 或 Shock Index ≥ 1</p>
-                <p><strong>立即SOP</strong>：</p>
-                <ol>
-                    <li>壓迫／止血帶或包扎 «floor»</li>
-                    <li>同時啟動 <strong>MTP</strong>：快速輸注 O PRBC + AB FFP（1:1:1）</li>
-                    <li>若可用，優先「低滴度 O 全血」</li>
-                </ol>
+                <h4>失血性休克 (Massive Limb/Pelvic Bleed)</h4>
+                <ul>
+                    <li><strong>第一步：</strong>直接加壓 → 填塞 → 戰鬥止血帶（5–8 cm 近端，記錄時間）→ 骨盆束腹置於雙側 greater trochanter 水平，雙腳內轉並束踝以減少骨盆容積</li>
+                    <li><strong>藥物：</strong>Tranexamic Acid (TXA) 1 g IV &lt;10 min 內，3 h 內重複 1 g 點滴（依院內指引）；同時採用低晶體、血品主導之 hemostatic resuscitation</li>
+                </ul>
             </div>
-
             <div class="warning-box">
-                <h4>🦴 骨盆骨折失血</h4>
-                <p><strong>核心判斷</strong>：機轉 + 下腹痛 + 下肢外旋</p>
-                <p><strong>立即處置</strong>：立即置放 <strong>Pelvic Binder</strong> 於 <em>greater trochanters</em>（非髂前上棘），並內收雙腿固定外旋</p>
+                 <h4>急性 Compartment Syndrome</h4>
+                 <ul>
+                    <li><strong>疑似指標：</strong>痛&gt;外觀、被動牽拉痛 + ΔP (DBP − 室壓) &lt; 30 mmHg → 立即移除緊束物、反覆量壓；立刻骨科/手外科諮詢行筋膜切開</li>
+                    <li><strong>禁忌：</strong>避免區域神經阻滯，以免掩蓋進展</li>
+                 </ul>
+            </div>
+             <div class="danger-box">
+                <h4>Crush/Reperfusion Syndrome</h4>
+                <p>高 CK &gt; 10,000 U/L、紅茶色尿 → 平衡輸液 1–1.5 L/h，謹慎避免 «過度» 補液導致再次出血；密切監測血鉀、酸鹼度，必要時採高效能腎保護策略</p>
+            </div>
+             <div class="warning-box">
+                <h4>疑似大血管損傷</h4>
+                <p>先溫和復位 + 暫固定後再量 ABI/IEI；若 &lt; 0.9 → CTA/血管外科，但不得延誤血流重建</p>
             </div>
 
-            <div class="dosage-box">
-                <h4>🤰 懷孕病患低血壓</h4>
-                <p><strong>核心判斷</strong>：妊娠 20 週後 + 臥姿 SBP ↓</p>
-                <p><strong>立即處置</strong>：先「手動左移子宮」或右側臥 15° 釋放 IVC，再評估輸血需求</p>
-            </div>
-
-            <h3 id="clinical-dosing">💊 臨床常用劑量速查</h3>
-            
+            <h3 id="clinical-dosing">#2、臨床常用劑量與給藥速查 (Common Dosing & Administration Quick Ref.)</h3>
             <table>
-                <tr>
-                    <th>藥物／製劑</th>
-                    <th>適應症</th>
-                    <th>臨床常用劑量</th>
-                    <th>特別提示</th>
-                </tr>
-                <tr>
-                    <td><strong>TXA</strong></td>
-                    <td>大量出血；到院 < 3 hr</td>
-                    <td>1 g IV push 10 min → 再 1 g/8 hr <em>或</em> 單次 2 g</td>
-                    <td>>3 hr 若無 TEG/ROTEM「超纖」則不再給</td>
-                </tr>
-                <tr>
-                    <td><strong>Protamine</strong></td>
-                    <td>Heparin / LMWH 逆轉</td>
-                    <td>UFH: 最近 2 hr 每 100 U → 1 mg (max 50 mg)<br>
-                        LMWH: <8 hr 1 mg per mg；8-12 hr 0.5 mg per mg；>12 hr 免給</td>
-                    <td>過量易低血壓；給藥 ≤ 5 mg/min</td>
-                </tr>
-                <tr>
-                    <td><strong>Idarucizumab</strong></td>
-                    <td>Dabigatran 逆轉</td>
-                    <td>5 g IV (2 × 2.5 g) 連續注射</td>
-                    <td>可重複一次；對 Xa 抑制劑無效</td>
-                </tr>
-                <tr>
-                    <td><strong>Andexanet α</strong></td>
-                    <td>Rivaroxaban / Apixaban 出血</td>
-                    <td>低劑量：400 mg bolus → 480 mg/2 hr<br>
-                        高劑量：800 mg bolus → 960 mg/2 hr</td>
-                    <td>周邊不建議推注；注意反彈高凝</td>
-                </tr>
-                <tr>
-                    <td><strong>初始輸液量</strong></td>
-                    <td>無血品暫替</td>
-                    <td>成人晶體液 250-500 mL；兒童 10 mL/kg</td>
-                    <td>預熱至 39 °C 以防低溫</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>藥物</th>
+                        <th>主要情境</th>
+                        <th>標準臨床劑量／途徑</th>
+                        <th>特殊注意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cefazolin</strong></td>
+                        <td>Gustilo I–II 開放骨折</td>
+                        <td>2 g IV q8h；&gt;120 kg 使用 3 g q8h</td>
+                        <td>1 h 內給首劑</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cefazolin + Gentamicin</strong></td>
+                        <td>Gustilo III</td>
+                        <td>2 g IV q8h + 5 mg/kg IV q24h</td>
+                        <td>重污染再加 Metronidazole 500 mg q8h</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Piperacillin/Tazobactam</strong></td>
+                        <td>水域污染</td>
+                        <td>4.5 g IV q6h (+ Doxycycline 100 mg q12h 鹹水)</td>
+                        <td>Fresh vs Salt water 劑量同但需加 Doxy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vancomycin</strong></td>
+                        <td>MRSA 風險</td>
+                        <td>LD 20–35 mg/kg → 15–20 mg/kg IV q8–12h，依血中 trough 調整</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tetanus</strong></td>
+                        <td>所有開放傷</td>
+                        <td>依 Table 10-3：&lt; 3 劑或不明史 → Tdap + TIG；≥ 3 劑且 &gt; 5 y 大傷仍補 Tdap</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tranexamic Acid</strong></td>
+                        <td>3 h 內外傷出血</td>
+                        <td>1 g IV push → 1 g/8 h infusion (院內 SOP)</td>
+                        <td></td>
+                    </tr>
+                </tbody>
             </table>
 
-            <h3 id="clinical-assessment">📊 關鍵評估與判讀要點</h3>
-            
-            <div class="chart-box">
-                <h4>📈 Shock Index (SI) = HR / SBP</h4>
-                <p><strong>目的</strong>：早期偵測失血</p>
-                <p><strong>快速判讀</strong>：</p>
-                <ul>
-                    <li>≥ 0.9 警訊</li>
-                    <li>≥ 1 高死亡率</li>
-                </ul>
-                <p><strong>處置</strong>：立即啟動輸血與止血；持續監測至 < 0.8</p>
-            </div>
-
-            <div class="physiology-box">
-                <h4>🧪 乳酸 / Base Deficit</h4>
-                <p><strong>目的</strong>：細胞低灌流指標</p>
-                <p><strong>臨界值</strong>：</p>
-                <ul>
-                    <li>Lactate > 2 mmol/L</li>
-                    <li>Base Deficit < -2</li>
-                </ul>
-                <p><strong>監測</strong>：每 30-60 min 追蹤；趨勢下降代表復甦有效</p>
-            </div>
-
+            <h3 id="clinical-assessment">#3、關鍵評估與判讀要點 (Key Assessments & Interpretation)</h3>
             <div class="concept-box">
-                <h4>🔄 Responder 分類</h4>
-                <table>
-                    <tr>
-                        <th>類型</th>
-                        <th>定義</th>
-                        <th>處置方向</th>
-                    </tr>
-                    <tr>
-                        <td>Responder</td>
-                        <td>輸液後血壓穩定</td>
-                        <td>持續監測</td>
-                    </tr>
-                    <tr>
-                        <td>Transient</td>
-                        <td>降速即惡化</td>
-                        <td>持續輸血 + 手術諮詢</td>
-                    </tr>
-                    <tr>
-                        <td>Non-responder</td>
-                        <td>無改善</td>
-                        <td>立即找致死性出血或非出血性休克源</td>
-                    </tr>
-                </table>
-            </div>
-
-            <h3 id="clinical-procedures">🔧 實務操作核心提示</h3>
-            
-            <div class="warning-box">
-                <h4>💉 周邊粗短針優先</h4>
-                <p>16 G × 5 cm 流速 > 18 G CVC</p>
-                <p>確保兩條線、再考慮 IO</p>
-                <p>💡 Poiseuille定律：流量 ∝ r⁴ / L</p>
-            </div>
-
-            <div class="dosage-box">
-                <h4>🦴 Intraosseous (IO) 部位</h4>
                 <ul>
-                    <li>成人：鎖骨下端肱骨頭</li>
-                    <li>兒童：脛骨近端</li>
-                    <li>避免骨折遠端插入</li>
-                    <li>流速等同 18 G 周邊針</li>
+                    <li><strong>ΔP &lt; 30 mmHg</strong> → 高度懷疑 compartment syndrome，需分鐘級追蹤</li>
+                    <li><strong>ABI / Injured Extremity Index &lt; 0.9</strong> → 血管受損；須復位後再測一次，仍低即 CTA</li>
+                    <li><strong>WSES Pelvic Fracture Grade IV</strong> = 「任何骨盆骨折 + 休克」→ Binder + Pre-peritoneal packing / REBOA / Angio ± 外固定 立即併行</li>
+                    <li><strong>CK &gt; 10,000 U/L + 茶色尿</strong> = Crush；提早腎保護處置</li>
+                    <li><strong>Prehospital 關鍵訊息</strong>：受困時間、止血帶放置時刻、開放骨折污染源 → 交班必問必記</li>
                 </ul>
             </div>
 
-            <div class="danger-box">
-                <h4>🩹 Pelvic Binder 實務技巧</h4>
-                <ol>
-                    <li>折疊單層床單</li>
-                    <li>沿大轉子環繞</li>
-                    <li>前交叉回拉固定</li>
-                    <li>塌陷外旋時將雙踝內收纏繃帶防再擴張</li>
-                </ol>
-            </div>
-
+            <h3 id="clinical-procedures">#4、實務操作核心提示 (Practical Procedure Pointers)</h3>
             <div class="physiology-box">
-                <h4>🗣️ 口頭醫囑 / 交班縮寫 - SBAR-3C</h4>
                 <ul>
-                    <li><strong>S</strong>ituation：血壓 80/40，PRBC 第 2 U 進行中</li>
-                    <li><strong>B</strong>ackground：刀傷 + FAST(+)，已 TXA 1 g</li>
-                    <li><strong>A</strong>ssessment：Transient responder</li>
-                    <li><strong>R</strong>ecommendation：開腹 hemostasis ASAP</li>
-                    <li><strong>3C</strong>：Catheter Lines、Counts (unit given)、Complications 待觀察</li>
+                    <li><strong>骨盆束腹：</strong>確定束帶下緣低於大轉子；避免置於腰窩—效果差且壓傷</li>
+                    <li><strong>戰鬥止血帶：</strong>上肢壓 250 mmHg、下肢 400 mmHg；&gt; 120 min 需 1–2 min 階段性鬆放並確保替代止血</li>
+                    <li><strong>股骨牽引夾板：</strong>
+                        <ol>
+                            <li>先評並標記遠端脈搏 → Inline traction → 牽引裝置遠端固定踝部，近端抵臀下緣</li>
+                            <li>若骨盆或近端股骨頸骨折禁用；應用後再查血流，若惡化立即減張或拆除</li>
+                        </ol>
+                    </li>
+                    <li><strong>長腿背側石膏：</strong>膝屈 ≈ 10° 以減後方血管張力、降低腔室壓</li>
+                    <li><strong>開放骨折現場：</strong>沖洗污染、覆以濕潤無菌紗布，首劑抗生素 60 min 內；迅速骨科會診</li>
                 </ul>
+            </div>
+            <div class="info-box">
+                <h4>交班口訣「TIME-BIND」</h4>
+                <ul>
+                    <li><strong>T</strong>ourniquet 時間</li>
+                    <li><strong>I</strong>njury 型態 (開放/污染源)</li>
+                    <li><strong>M</strong>obility 喪失程度 & 脈搏情形</li>
+                    <li><strong>E</strong>xtrication 延遲/受困時長</li>
+                    <li><strong>B</strong>inder / Splint 位置</li>
+                    <li><strong>I</strong>nfusion & 藥物已給</li>
+                    <li><strong>N</strong>erve/Vascular 再檢查</li>
+                    <li><strong>D</strong>ebridement 安排</li>
+                </ul>
+            </div>
+            <div class="warning-box">
+                <p><strong>臨床提示：</strong>面對出血肢體，永遠記得「先止血再做剩下的事」。所有固定或牽引後必做再評估脈搏，避免「治療本身」造成新的缺血。祝各位在高壓急救現場也能快速、精準、安全！</p>
             </div>
         </div>
 
         <!-- 重要圖表整理 -->
         <div id="charts" class="tab-content">
-            <h2>📊 重要圖表整理</h2>
-            
-            <h3 id="chart-hemorrhage">📉 Table 6-2: 失血嚴重度分級表</h3>
+            <h2>📊 Musculoskeletal Trauma 重要圖表整理</h2>
+            <p>ATLS 11ᵗʰ Edition Chapter 10</p>
+
+            <h3 id="chart-wses">一、圖表一：Table 10-1 Classification of Pelvic Fractures by WSES Grade</h3>
             <div class="chart-box">
                 <table>
-                    <tr>
-                        <th>參數</th>
-                        <th>Minor</th>
-                        <th>Moderate</th>
-                        <th>Major</th>
-                        <th>Massive</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Heart Rate (bpm)</strong></td>
-                        <td>↔</td>
-                        <td>↔ / ↑</td>
-                        <td>↑ > 100</td>
-                        <td>↑ > 120</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Systolic BP (mmHg)</strong></td>
-                        <td>↔</td>
-                        <td>↔</td>
-                        <td>↔ / ↓</td>
-                        <td>↓ < 90</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Pulse Pressure</strong></td>
-                        <td>↔</td>
-                        <td>↓</td>
-                        <td>↓</td>
-                        <td>↓</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Base Deficit (mEq/L)</strong></td>
-                        <td>0 ~ -2</td>
-                        <td>-2 ~ -6</td>
-                        <td>-6 ~ -10</td>
-                        <td>< -10</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Blood Products</strong></td>
-                        <td>Unlikely</td>
-                        <td>Possibly</td>
-                        <td>Likely</td>
-                        <td>Massive Tx</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Response to Resus.</strong></td>
-                        <td>快速且持續</td>
-                        <td>尚可</td>
-                        <td>短暫</td>
-                        <td>無效</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>WSES Grade</th>
+                            <th>描述 (hemodynamics first)</th>
+                            <th>Young-Burgess 型</th>
+                            <th>早期處置</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>I</strong></td>
+                            <td>Minor，正常血流</td>
+                            <td>APC I、LC I</td>
+                            <td>觀察 ± 基本影像</td>
+                        </tr>
+                        <tr>
+                            <td><strong>II</strong></td>
+                            <td>Moderate，血流不穩</td>
+                            <td>LC II–III、APC II–III</td>
+                            <td>骨盆束腹 ± Angio / 固定</td>
+                        </tr>
+                        <tr>
+                            <td><strong>III</strong></td>
+                            <td>Moderate，VS 型</td>
+                            <td>VS</td>
+                            <td>束腹 ± Angio ± 外固定</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IV</strong></td>
+                            <td>Severe／休克</td>
+                            <td>任何形態</td>
+                            <td>束腹 → Pre-peritoneal packing / REBOA / 機械固定</td>
+                        </tr>
+                    </tbody>
                 </table>
-                <p>💡 <strong>記憶法</strong>：把四級想像成紅綠燈：Minor-綠、Moderate-黃、Major-橙、Massive-紅</p>
+                <h4>圖表核心解釋：</h4>
+                <p>WSES 以「血流穩定度」而非斷裂形態來分類，Grade IV ＝“休克就算 IV”。</p>
+                <h4>臨床應用：</h4>
+                <p>站在 xABCDE 的 x 步驟，先看 MAP/HR 再決定束腹或 REBOA；不必等讀片。</p>
+                <h4>記憶策略：</h4>
+                <p>「W-I-II-III-IV = Well → Ill → ICU」—病人越不穩，處置階梯一路往侵入式上升。</p>
             </div>
 
-            <h3 id="chart-bleeding">🩸 Figure 6-2: 五大失血位置示意圖</h3>
+            <h3 id="chart-young-burgess">二、圖表二：Figure 10-3 Young-Burgess Pelvic-Fracture Patterns 示意圖</h3>
             <div class="physiology-box">
-                <h4>"One on the Floor and Four More"</h4>
-                <div style="text-align: center; padding: 20px;">
-                    <pre style="font-family: monospace; display: inline-block; text-align: left;">
-┌─────────────┐
-│  A Thoracic │
-┌─────────┴─────────────┴───────────┐
-│    B Peritoneal cavity            │
-│                                   │
-│  C Pelvic / Retroperitoneal      │
-│                                   │
-│ D Long bone / Muscle compartments │
-└─────────────┬─────────────────────┘
-      E External hemorrhage ("floor")
-                    </pre>
-                </div>
-                <p>💡 <strong>應用</strong>：完成 xABCDE 後，立即以 "Floor → Chest → Abdomen → Pelvis/Retro → Long Bones" 次序檢查</p>
+                <h4>圖示內容描述</h4>
+                <ul>
+                    <li>左側三列：APC I-III — 恥骨聯合逐漸擴張，骨盆前開。</li>
+                    <li>右側三列：LC I-III — 半骨盆向內折疊，側壁壓縮遞增。</li>
+                    <li>最右：Vertical Shear (VS) — 半骨盆向上滑移，骶髂間隙變寬。箭頭標示力向量。</li>
+                </ul>
+                <h4>圖表核心解釋：</h4>
+                <p>力向量＝預測出血風險；VS 與 APC III 最易大量出血。</p>
+                <h4>臨床應用：</h4>
+                <p>救護現場藉外觀線索（腳內旋 vs 外旋、骨盆長短腳）快速推測分類並預警輸血。</p>
+                <h4>記憶策略：</h4>
+                <p>「A-P crush = A-Part→開啟；L-C crush = Lump-Collapse；V-S = Vertical-Shift」映像化力向量。</p>
             </div>
 
-            <h3 id="chart-pelvic">🦴 Figure 6-6: 骨盆容積變化圖</h3>
-            <div class="warning-box">
-                <h4>骨盆骨折與綁帶效果</h4>
-                <ol>
-                    <li><strong>A. 正常骨盆</strong>：紅色區域 = 100% 容積</li>
-                    <li><strong>B. "Open-book" 骨折</strong>：恥骨聯合裂開 → 紅色區域擴大 (↑ 40%)</li>
-                    <li><strong>C. 綁單層床單於 Greater Trochanters</strong>：紅色區域恢復近正常，骨盆容積↓</li>
-                </ol>
-                <p>💡 <strong>記憶法</strong>：想像"打包行李"：骨盆像打開的行李箱 (open-book)；綁帶=拉鍊；✨拉回大轉子→把血「塞不進去」</p>
-            </div>
-
-            <h3 id="chart-flow">💉 Figure 6-9: 導管流速比較表</h3>
+            <h3 id="chart-antibiotic">三、圖表三：Table 10-2 Open-Fracture Antibiotic Matrix</h3>
             <div class="dosage-box">
-                <h4>Poiseuille's Law: Flow ∝ r⁴ / L</h4>
                 <table>
-                    <tr>
-                        <th>導管規格</th>
-                        <th>流速 (mL/min)</th>
-                        <th>臨床應用</th>
-                    </tr>
-                    <tr>
-                        <td>14 G × 5 cm</td>
-                        <td>≈ 360</td>
-                        <td>大量輸血首選</td>
-                    </tr>
-                    <tr>
-                        <td>16 G × 5 cm</td>
-                        <td>≈ 215</td>
-                        <td>標準急救選擇</td>
-                    </tr>
-                    <tr>
-                        <td>18 G × 30 cm (CVC)</td>
-                        <td>< 100</td>
-                        <td>藥物給予，非快速輸血</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Gustilo 型</th>
+                            <th>無污染</th>
+                            <th>土壤污染</th>
+                            <th>水域污染</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>I–II</strong></td>
+                            <td>Cefazolin 2 g q8h</td>
+                            <td>Cefazolin + Metro 或 Ceftriaxone + Metro</td>
+                            <td>同左</td>
+                        </tr>
+                        <tr>
+                            <td><strong>III</strong></td>
+                            <td>Cefazolin + Gent 5 mg/kg</td>
+                            <td>Ceftriaxone + Metro 或 Cefazolin + Gent + Metro</td>
+                            <td>Pip-Tazo 4.5 g q6h (+ Doxy 100 mg q12h 鹹水)</td>
+                        </tr>
+                    </tbody>
                 </table>
-                <p>💡 <strong>口訣</strong>：「短粗飆，長細慢」</p>
+                <p>β-lactam 過敏：改 Vancomycin / Clinda ± Gent；>120 kg Cefazolin 3 g。</p>
+                <h4>核心解釋：</h4>
+                <p>污染程度＋水源決定需否覆蓋 G-neg 及 Vibrio/Aeromonas。</p>
+                <h4>臨床應用：</h4>
+                <p>ER 到院「&lt;1 h 首劑」原則，照表即打。</p>
+                <h4>記憶策略：</h4>
+                <p>「C-M-W：Clean→Mud→Water」三欄橫向遞增；Dirty＝加 Metro；Water＝改 Pip-Tazo。</p>
             </div>
 
+            <h3 id="chart-abi">四、圖表四：Figure 10-5 & 10-6 ABI／IEI 量測流程</h3>
             <div class="concept-box">
-                <h4>🔍 Table 6-3: 骨盆骨折臨床因子</h4>
-                <table>
-                    <tr>
-                        <th>類別</th>
-                        <th>重點項目</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Mechanism</strong></td>
-                        <td>車禍、墜落、高處跌落、馬匹/動物跌落、壓砸、單車撞</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Symptoms</strong></td>
-                        <td>骨盆痛、下腹痛、臀/髖痛、下肢放射痛、下背痛</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Signs</strong></td>
-                        <td>低血壓+頻脈、骨盆壓痛、下腹壓痛、髖關節痛、雙下肢外旋、骶尾壓痛、恥骨聯合擴大、鼠蹊/會陰瘀青、尿道口/陰道出血</td>
-                    </tr>
-                </table>
-                <p>💡 <strong>記憶法</strong>：M-S-S（Mechanism-Symptoms-Signs）</p>
+                <h4>圖示文字再現</h4>
+                <ol>
+                    <li>上肢袖帶充氣 → Doppler 聽回流壓 = Brachial SBP。</li>
+                    <li>下肢 (或受傷肢/未傷肢) 袖帶充氣 → Doppler 聽回流壓。</li>
+                    <li>ABI = Ankle SBP ÷ Brachial SBP；IEI = Injured SBP ÷ Uninjured SBP。</li>
+                    <li>流程箭頭：若 &lt; 0.9 → 血管傷風險 → CTA。</li>
+                </ol>
+                <h4>核心解釋：</h4>
+                <p>ABI/IEI 提供量化血流指標，比「摸得到脈」敏感。</p>
+                <h4>臨床應用：</h4>
+                <p>復位/牽引前-後皆需重測，以免漏診隱匿性內膜撕裂。</p>
+                <h4>記憶策略：</h4>
+                <p>「90 分及格線」—分數 &lt; 0.9 就要“補考” CTA。</p>
             </div>
+
+            <h3 id="chart-nerve">五、圖表五：Table 10-4 Peripheral Nerve Assessment Cheat-Sheet</h3>
+            <div class="warning-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>區域</th>
+                            <th>Nerve</th>
+                            <th>Motor-test (提示動作)</th>
+                            <th>Sensation 點</th>
+                            <th>典型骨傷</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3">上肢</td>
+                            <td><strong>Ulnar</strong></td>
+                            <td>展指、小指外展</td>
+                            <td>小指背側</td>
+                            <td>肘傷</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Median</strong></td>
+                            <td>對掌 (拇対 2指)</td>
+                            <td>食指尖端</td>
+                            <td>腕骨折</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Radial</strong></td>
+                            <td>手指伸直</td>
+                            <td>拇指‐示指蹼</td>
+                            <td>肱骨遠端</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">下肢</td>
+                            <td><strong>Femoral</strong></td>
+                            <td>膝伸</td>
+                            <td>前膝皮膚</td>
+                            <td>恥骨支骨折</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deep Peroneal</strong></td>
+                            <td>足背屈</td>
+                            <td>第一蹠間隙</td>
+                            <td>腓骨頸骨折</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tibial</strong></td>
+                            <td>趾屈</td>
+                            <td>足底</td>
+                            <td>膝脫位</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>核心解釋：</h4>
+                <p>對照運動 + 皮感，可在麻醉前 30 秒完成全肢神經掃描。</p>
+                <h4>臨床應用：</h4>
+                <p>交班時一句「Radial OK, Ulnar deficient」快速傳遞功能狀態；術後比對。</p>
+                <h4>記憶策略：</h4>
+                <p>「RUM (Forearm) / FTP (Leg)」—Radial-Ulnar-Median；Femoral-Tibial-Peroneal，依表由上到下巡檢。</p>
+            </div>
+
+            <h3 id="chart-tourniquet">六、圖表六：Figure 10-7 CoTCCC 認證止血帶一覽</h3>
+            <div class="danger-box">
+                <h4>內容描述：</h4>
+                <p>列舉 6 款常見戰術止血帶（CAT、SOFT-T、SAM XT、Ratcheting、TX3、TMT），並附 CoTCCC 認證來源網址。</p>
+                <h4>核心解釋：</h4>
+                <p>並非所有“tourniquet”皆合格；選對裝備才能確保 250–400 mmHg 壓力維持。</p>
+                <h4>臨床應用：</h4>
+                <p>院內採購與救護車補給清單；教育學員辨識正確型號、避免雜牌失敗。</p>
+                <h4>記憶策略：</h4>
+                <p>「C-S-S-R-T-T (Cats See Sharp Red Tactical Ties)」六字首口訣，按圖對號。</p>
+            </div>
+            
+            <hr>
+            <p><strong>使用說明：</strong>將本表列印 A4 摺三折放口袋；考前翻閱視覺化格線，即可快速回想「分類-處置-數值」。如需心智圖，可把六張圖連成 “止血→分類→抗生素→評估→神經→固定” 的流程箭頭，強化情境記憶。</p>
+
         </div>
 
         <!-- 其他重要重點 -->
         <div id="others" class="tab-content">
             <h2>📌 其他重要重點</h2>
+            <p>以下內容聚焦於 ATLS 11ᵗʰ Edition Chapter 10 尚未出現在前四份筆記中的要點，採 Markdown 條列呈現，方便後續增刪。</p>
             
-            <h3 id="other-nonhemorrhagic">🚫 非出血性休克3大類（Table 6-1）</h3>
             <div class="danger-box">
-                <ul>
-                    <li><strong>Obstructive</strong>：Tension pneumothorax、Cardiac tamponade</li>
-                    <li><strong>Cardiogenic</strong>：Blunt cardiac injury、AMI</li>
-                    <li><strong>Distributive</strong>：Neurogenic、Septic、Anaphylactic</li>
-                </ul>
-                <p>→ 判別後立即啟動病因導向處置（減壓、經皮/開胸引流、強心或升壓）</p>
-            </div>
-
-            <h3 id="other-population">👥 不同族群對復甦反應差異（Table 6-6）</h3>
-            <table>
-                <tr>
-                    <th>族群</th>
-                    <th>影響因子</th>
-                    <th>臨床提示</th>
-                </tr>
-                <tr>
-                    <td><strong>孕婦</strong></td>
-                    <td>下腔靜脈壓迫、血容量↑</td>
-                    <td>正常或偏低 SBP 不能排除休克；先左移子宮再評估</td>
-                </tr>
-                <tr>
-                    <td><strong>高齡</strong></td>
-                    <td>β/鈣離子阻斷、動脈硬化</td>
-                    <td>HR 不一定上升；輕度失血即心肌缺氧</td>
-                </tr>
-                <tr>
-                    <td><strong>兒童</strong></td>
-                    <td>高交感與儲備量</td>
-                    <td>末期才血壓下降；Bradycardia 是危險信號</td>
-                </tr>
-            </table>
-
-            <h3 id="other-anticoagulation">💊 抗凝與抗血小板逆轉快速索引（Table 6-7）</h3>
-            <div class="dosage-box">
-                <ul>
-                    <li><strong>Warfarin</strong>：Vit K 5-10 mg IV + 4-factor PCC；若無 PCC→FFP 10-15 mL/kg</li>
-                    <li><strong>DOAC (Rivaroxaban/Apixaban)</strong>：Andexanet α 高或低劑量方案，視最近劑量/時間而定</li>
-                    <li><strong>Dabigatran</strong>：Idarucizumab 5 g 連續注射</li>
-                    <li><strong>UFH / LMWH</strong>：Protamine，LMWH 依給藥時間做 1→0.5→0 mg 梯度</li>
-                    <li><strong>強效抗血小板</strong>：重大出血→考慮 Platelet transfusion ± DDAVP；TXA/EACA 作為輔助</li>
-                </ul>
-                <p>💡 記憶口訣：「Xa 抑→安敵納，Dabi→I達，肝素→普他命」</p>
-            </div>
-
-            <h3 id="other-tca">💔 Traumatic Cardiac Arrest（TCA）續救或終止（Table 6-8）</h3>
-            <div class="warning-box">
-                <h4>可視為「有生命跡象」：</h4>
-                <ul>
-                    <li>瞳孔反射</li>
-                    <li>任何自主呼吸</li>
-                    <li>可觸脈搏或量得血壓</li>
-                    <li>肢體動作</li>
-                    <li>心電圖有電活動</li>
-                </ul>
-                
-                <h4>停止 CPR 時機：</h4>
-                <ul>
-                    <li>鈍傷 > 10 min</li>
-                    <li>穿刺傷 > 15 min 仍無 ROSC</li>
-                    <li>PoCUS 無心臟運動且僅電活動</li>
-                </ul>
-            </div>
-
-            <div class="physiology-box">
-                <h4>❄️ 體溫、酸鹼、凝血三重打擊</h4>
-                <ul>
-                    <li>低溫（< 35 °C）</li>
-                    <li>酸中毒（pH < 7.2）</li>
-                    <li>凝血功能異常形成惡性循環</li>
-                </ul>
-                <p><strong>防治重點</strong>：39 °C 血品／輸液加溫、及早糾正酸血、使用平衡晶體降低氯酸中毒</p>
-            </div>
-
-            <div class="concept-box">
-                <h4>🔍 FAST 與 DPL 快速比較</h4>
-                <table>
-                    <tr>
-                        <th>工具</th>
-                        <th>優點</th>
-                        <th>侷限</th>
-                    </tr>
-                    <tr>
-                        <td><strong>FAST / eFAST</strong></td>
-                        <td>非侵入、可重複、胸腹同時掃</td>
-                        <td>早期少量血易漏；操作者依賴</td>
-                    </tr>
-                    <tr>
-                        <td><strong>DPL</strong></td>
-                        <td>靈敏度高，可在無影像設備時用</td>
-                        <td>侵入性；不區分泌液來源，可能干擾後續腹腔評估</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="danger-box">
-                <h4>🚁 資源不足時的轉診與持續復甦</h4>
-                <ul>
-                    <li>一旦判定需手術/血管介入而院內超過能力，邊復甦邊啟動轉診</li>
-                    <li>轉運前明確交班：現有 IV/IO 條數、剩餘血品量、出血控制方式及備案</li>
-                </ul>
-            </div>
-
-            <div class="concept-box">
-                <h4>🎯 本章核心學習目標摘要</h4>
+                <h3 id="other-amputation">1. 外傷截肢的後續處理</h3>
+                <h4>完整包裹步驟</h4>
                 <ol>
-                    <li>迅速識別各型休克並在 xABCDE 流程中同步處置</li>
-                    <li>依「病因-導向」調整輸液與控制出血策略</li>
-                    <li>持續評估、動態修正治療並隨時考慮資源與轉診選項</li>
+                    <li>生理食鹽水或 Ringer’s lactate 沖洗截肢肢段 → 以濕潤無菌紗布包裹。</li>
+                    <li>再以濕潤無菌毛巾覆蓋後置入密封塑膠袋。</li>
+                    <li>與病人同箱運送，外置碎冰保冷，切忌直接浸冰防凍傷。</li>
                 </ol>
+                <h4>重點提示</h4>
+                <ul>
+                    <li>再接植僅考慮「單一肢體傷、全身狀況穩定」個案。</li>
+                    <li>重創多處傷患優先生命救治，並及早心理支持。</li>
+                </ul>
+            </div>
+
+            <div class="dosage-box">
+                <h3 id="other-pain">2. 痛覺控制與鎮靜策略</h3>
+                <ul>
+                    <li><strong>靜脈鎮痛：</strong>小劑量、分次滴定 IV narcotics；備妥 Naloxone、Flumazenil 及完整插管設備。</li>
+                    <li><strong>區域阻滯：</strong>可用於特定骨折復位，但必須先紀錄遠端神經血管狀態；疑似區隔症候群時禁用。</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                 <h3 id="other-fes">3. 脂肪栓塞症候群 (Fat Embolism Syndrome, FES)</h3>
+                 <ul>
+                    <li><strong>高危族群：</strong>多支長骨或雙側股骨骨折。</li>
+                    <li><strong>機轉：</strong>骨髓脂肪進入循環 → 肺微血管阻塞 ± 發炎反應。</li>
+                    <li><strong>臨床線索：</strong>低氧血症、意識改變及點狀皮疹三聯徵常延遲 24–72 h 出現。</li>
+                 </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3 id="other-ligament">4. 關節／韌帶損傷的隱匿危機</h3>
+                <ul>
+                    <li><strong>自動復位的脫位：</strong>如膝關節多韌帶傷，可能已復位但仍伴大血管損傷→需警覺缺血。</li>
+                    <li><strong>皮膚緊繃 + 蒼白：</strong>提示皮膚壓壞危險，須即刻復位減壓。</li>
+                </ul>
+            </div>
+            
+            <div class="concept-box">
+                <h3 id="other-imaging">5. 影像與輻射安全</h3>
+                <ul>
+                    <li><strong>下肢骨折 X ray：</strong>至少涵蓋受傷關節上下各一關節；若有血管/皮膚危急先臨時復位再拍片。</li>
+                    <li><strong>輻射防護：</strong>非必要人員離開；其餘穿戴鉛衣、束狹光束。</li>
+                </ul>
+            </div>
+            
+            <div class="concept-box">
+                <h3>6. 次要檢傷與隱蔽骨傷</h3>
+                <ul>
+                    <li>高 BMI、深層肌群處易藏小骨折或韌帶傷，需持續「再檢」與跨團隊溝通。</li>
+                    <li>詳列機轉（高度、速率、夾擠時間）有助於預測隱藏骨傷。</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                 <h3>7. Prehospital Checklist（交接資訊易漏）</h3>
+                 <p>車速／墜落高度、脫出時間、止血帶時戳、污染環境、即場復位或包紮、動作／感覺變化等 15 項詳單，有助後續風險評估與治療計畫。</p>
+            </div>
+            
+            <div class="danger-box">
+                <h3>8. Tetanus 高風險傷口判定</h3>
+                <p>傷口 &gt; 6 h、深 &gt; 1 cm、重度污染、燒灼或高能量損傷→需考慮 TIG + Tdap。</p>
+            </div>
+            
+            <div class="physiology-box">
+                <h3 id="other-transfer">9. 轉診至最終照護中心的實務要點</h3>
+                <ul>
+                    <li><strong>穩定再走：</strong>運送前確保肢體已適當固定、壓力點墊高。</li>
+                    <li><strong>文件：</strong>列明 neurovascular status、止血帶/束腹時間、已用藥物與尚待確診之傷。</li>
+                    <li><strong>跨專科需求：</strong>例如孕婦骨折需同時具備骨科、產科、新生兒科資源。</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>10. 危及肢體但非即刻致命的血管損傷</h3>
+                <ul>
+                    <li><strong>非閉塞性 (intimal tear/compression)：</strong>外觀可有脈搏，須復位後再測 ABI / IEI；低於 0.9 則顯示高風險、急需 CTA 或手術。</li>
+                    <li><strong>暫時整復優先於影像：</strong>任何能恢復長度、對位、對線的臨時固定都有助重建血流。</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -1354,8 +1294,15 @@
                 button.classList.remove('active');
             });
             
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
+            const targetTab = document.getElementById(tabName);
+            const targetButton = event.target;
+
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            if (targetButton) {
+                targetButton.classList.add('active');
+            }
         }
 
         // 問答收合功能
@@ -1363,8 +1310,10 @@
             const answer = element.nextElementSibling;
             const toggle = element.querySelector('.qa-toggle');
             
-            answer.classList.toggle('open');
-            toggle.classList.toggle('open');
+            if(answer && toggle) {
+                answer.classList.toggle('open');
+                toggle.classList.toggle('open');
+            }
         }
 
         // 下載PDF功能
@@ -1386,30 +1335,49 @@
             const progressBar = document.getElementById('progress-bar');
             
             // 返回頂部按鈕
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                backToTopBtn.style.display = 'flex';
-            } else {
-                backToTopBtn.style.display = 'none';
+            if (backToTopBtn) {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
             }
             
             // 進度條
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + '%';
+            if (progressBar) {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + '%';
+            }
         };
 
         // 平滑滾動到錨點
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        // 確保目標內容所在的 tab 是 active 的
+                        const parentTabContent = target.closest('.tab-content');
+                        if (parentTabContent && !parentTabContent.classList.contains('active')) {
+                            showTab(parentTabContent.id);
+                        }
+                        
+                        // 等待 tab 切換動畫完成再滾動
+                        setTimeout(() => {
+                           const headerOffset = 150; // 考慮到 sticky header 的高度
+                           const elementPosition = target.getBoundingClientRect().top;
+                           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                     
+                           window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                           });
+                        }, 100);
+                    }
+                });
             });
         });
     </script>
