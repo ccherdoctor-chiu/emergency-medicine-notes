@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLS 11版 - 進階創傷救命術 | 章節導航</title>
+    <meta name="description" content="ATLS 11版完整章節導航，涵蓋初級評估、團隊溝通、創傷處置等24個核心章節">
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        /* 讓錨點連結有平滑滾動效果 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            line-height: 1.6;
+            background-color: #f5f7fa; /* 使用稍微柔和的背景色 */
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .breadcrumb a {
+            color: #168aad;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: #6c757d;
+            margin: 0 8px;
+        }
+
+        /* --- START: Dropdown Menu CSS --- */
+        .nav-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .dropdown-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background: #e3f2fd;
+            border: 1px solid #1976d2;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-button:hover {
+            background: #1976d2;
+            color: white;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 300px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            z-index: 1;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:hover {
+            background: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* --- END: Dropdown Menu CSS --- */
+        
+        .main-content {
+            padding: 40px 30px;
+        }
+        
+        .section-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-intro h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .section-intro p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            color: white;
+        }
+        
+        .stat-card {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            border-left: 5px solid #4facfe;
+            position: relative;
+        }
+        
+        .section-header h2 {
+            color: #1e3a8a;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .section-header p {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .chapter-card-multi {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chapter-card-multi:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #00f2fe;
+        }
+        
+        .chapter-card-multi::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .chapter-card-multi:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .ai-versions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 20px;
+        }
+        
+        .ai-btn {
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .ai-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .ai-btn.gpt {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: white;
+        }
+        
+        .ai-btn.gpt:hover {
+            border-color: #16a34a;
+            background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+        }
+        
+        .ai-btn.gemini {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+        }
+        
+        .ai-btn.gemini:hover {
+            border-color: #dc2626;
+            background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+        }
+        
+        .ai-btn.claude {
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            color: white;
+        }
+        
+        .ai-btn.claude:hover {
+            border-color: #7c3aed;
+            background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+        }
+        
+        .chapter-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .chapter-number {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .chapter-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        
+        .chapter-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .chapter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tag {
+            background: #f1f3f4;
+            color: #5f6368;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .chapter-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-available {
+            background: #00b894;
+            color: white;
+        }
+        
+        .status-coming-soon {
+            background: #fdcb6e;
+            color: #2d3436;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            margin: 40px -30px -40px -30px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .back-button:before {
+            content: '←';
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* --- START: Progress Bar & Back to Top Button CSS --- */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            z-index: 1001;
+            transition: width 0.2s ease-out;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: none; /* Initially hidden */
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        #back-to-top.show {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        /* --- END: Progress Bar & Back to Top Button CSS --- */
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                position: static;
+            }
+            .dropdown-nav {
+                flex-direction: column;
+            }
+            .header {
+                padding: 30px 20px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .main-content {
+                padding: 30px 20px;
+            }
+            .breadcrumb {
+                padding: 15px 20px;
+            }
+            .chapters-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>🚑 ATLS 11版</h1>
+                <p class="subtitle">Advanced Trauma Life Support - 進階創傷救命術</p>
+            </div>
+        </header>
+        
+        <nav class="breadcrumb">
+            <a href="index.html">首頁</a>
+            <span>></span>
+            <span>ATLS 11版</span>
+        </nav>
+        
+        <!-- --- START: Dropdown Menu HTML --- -->
+        <div class="nav-container">
+            <div class="dropdown-nav">
+                <div class="dropdown">
+                    <button class="dropdown-button">Section I: 核心評估與處置 ▼</button>
+                    <div class="dropdown-content">
+                        <a href="#section1">跳至 Section I 總覽</a>
+                        <a href="#chapter1">Ch 1: Initial Assessment</a>
+                        <a href="#chapter2">Ch 2: Resuscitation Team</a>
+                        <a href="#chapter3">Ch 3: eXsanguinating Hemorrhage</a>
+                        <a href="#chapter4">Ch 4: Airway Management</a>
+                        <a href="#chapter5">Ch 5: Breathing and Ventilation</a>
+                        <a href="#chapter6">Ch 6: Circulation Assessment</a>
+                        <a href="#chapter7">Ch 7: Disability</a>
+                        <a href="#chapter8">Ch 8: Exposure and Environment</a>
+                        <a href="#chapter9">Ch 9: Thermal Injuries</a>
+                        <a href="#chapter10">Ch 10: Musculoskeletal Trauma</a>
+                        <a href="#chapter11">Ch 11: Pediatric Trauma</a>
+                        <a href="#chapter12">Ch 12: Older Adult Trauma</a>
+                        <a href="#chapter13">Ch 13: Pregnant Patient Trauma</a>
+                        <a href="#chapter14">Ch 14: Secondary Survey</a>
+                        <a href="#chapter15">Ch 15: Transfer to Definitive Care</a>
+                    </div>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="dropdown-button">Section II: 創傷系統與照護 ▼</button>
+                    <div class="dropdown-content">
+                        <a href="#section2">跳至 Section II 總覽</a>
+                        <a href="#chapter16">Ch 16: Trauma Systems</a>
+                        <a href="#chapter17">Ch 17: Triage and Disaster</a>
+                        <a href="#chapter18">Ch 18: Injury Prevention</a>
+                        <a href="#chapter19">Ch 19: Trauma-Informed Care</a>
+                        <a href="#chapter20">Ch 20: Communicating Serious News</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropdown-button">Section III: 特殊傷害型態 ▼</button>
+                    <div class="dropdown-content">
+                        <a href="#section3">跳至 Section III 總覽</a>
+                        <a href="#chapter21">Ch 21: Thoracic, Abdominopelvic Trauma</a>
+                        <a href="#chapter22">Ch 22: Penetrating Trauma</a>
+                        <a href="#chapter23">Ch 23: Ocular Trauma</a>
+                        <a href="#chapter24">Ch 24: Injury in Combat Zones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- --- END: Dropdown Menu HTML --- -->
+
+        <main class="main-content">
+            <section class="section-intro">
+                <h2>ATLS 11版完整學習指南</h2>
+                <p>Advanced Trauma Life Support第11版的系統化創傷評估與處置完整指南。涵蓋創傷救治的三大核心領域：基礎評估處置、創傷系統照護、特殊傷害型態。每個章節提供三種AI版本的學習筆記，滿足不同學習需求。</p>
+            </section>
+            
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">完整章節</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">核心領域</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">AI版本</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">72</div>
+                    <div class="stat-label">學習資源</div>
+                </div>
+            </div>
+            
+            <!-- Section I Header -->
+            <div class="section-header" id="section1">
+                <h2>Section I: Evaluation, Management, and Resuscitation of the Injured Patient (xABCDE)</h2>
+                <p>創傷評估、處置與復甦的核心技能</p>
+            </div>
+            
+            <section class="chapters-grid">
+                <!-- Chapter 1 -->
+                <div class="chapter-card-multi" id="chapter1">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">1</div>
+                        <h3 class="chapter-title">Initial Assessment: Primary Survey</h3>
+                    </div>
+                    <p class="chapter-description">創傷初級評估的系統化方法，建立ABCDE評估流程的基礎架構與優先順序。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter1-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter1-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter1-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 2 -->
+                <div class="chapter-card-multi" id="chapter2">
+                    <div class="chapter-status status-available">已上線</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">2</div>
+                        <h3 class="chapter-title">Resuscitation Team Function and Communication</h3>
+                    </div>
+                    <p class="chapter-description">團隊協作與溝通的核心原則，建立有效的創傷救治團隊運作模式。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter2-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter2-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter2-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 3 -->
+                <div class="chapter-card-multi" id="chapter3">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">3</div>
+                        <h3 class="chapter-title">x: Control of eXsanguinating Hemorrhage</h3>
+                    </div>
+                    <p class="chapter-description">大量出血的快速控制技術，掌握救命性止血的關鍵技能與決策。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter3-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter3-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter3-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 4 -->
+                <div class="chapter-card-multi" id="chapter4">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">4</div>
+                        <h3 class="chapter-title">Airway Assessment and Management</h3>
+                    </div>
+                    <p class="chapter-description">呼吸道評估與處置的完整指南，從基礎技術到困難呼吸道處理。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter4-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter4-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter4-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 5 -->
+                <div class="chapter-card-multi" id="chapter5">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">5</div>
+                        <h3 class="chapter-title">Breathing and Ventilation Assessment and Management</h3>
+                    </div>
+                    <p class="chapter-description">呼吸與通氣功能評估，胸部創傷的診斷與緊急處置原則。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter5-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter5-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter5-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 6 -->
+                <div class="chapter-card-multi" id="chapter6">
+                    <div class="chapter-status status-available">已上線</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">6</div>
+                        <h3 class="chapter-title">Circulation Assessment and Volume Resuscitation</h3>
+                    </div>
+                    <p class="chapter-description">循環評估與液體復甦策略，休克的診斷與治療原則。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter6-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter6-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter6-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 7 -->
+                <div class="chapter-card-multi" id="chapter7">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">7</div>
+                        <h3 class="chapter-title">Disability: Neurological Assessment and Management</h3>
+                    </div>
+                    <p class="chapter-description">神經功能評估與頭部創傷處置，GCS評估與顱內壓監測。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter7-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter7-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter7-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 8 -->
+                <div class="chapter-card-multi" id="chapter8">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">8</div>
+                        <h3 class="chapter-title">Exposure and Environmental Threats in the Primary Survey</h3>
+                    </div>
+                    <p class="chapter-description">暴露檢查與環境威脅評估，體溫調節與隱藏性傷害發現。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter8-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter8-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter8-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 9 -->
+                <div class="chapter-card-multi" id="chapter9">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">9</div>
+                        <h3 class="chapter-title">Thermal Injuries</h3>
+                    </div>
+                    <p class="chapter-description">熱傷害的評估與處置，燒傷面積計算與液體復甦策略。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter9-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter9-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter9-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 10 -->
+                <div class="chapter-card-multi" id="chapter10">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">10</div>
+                        <h3 class="chapter-title">Musculoskeletal Trauma</h3>
+                    </div>
+                    <p class="chapter-description">肌肉骨骼創傷的評估與處置，骨折固定與血管神經評估。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter10-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter10-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter10-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 11 -->
+                <div class="chapter-card-multi" id="chapter11">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">11</div>
+                        <h3 class="chapter-title">Trauma in the Pediatric Patient</h3>
+                    </div>
+                    <p class="chapter-description">兒童創傷的特殊考量，生理差異與年齡適應性處置原則。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter11-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter11-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter11-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 12 -->
+                <div class="chapter-card-multi" id="chapter12">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">12</div>
+                        <h3 class="chapter-title">Trauma in the Older Adult</h3>
+                    </div>
+                    <p class="chapter-description">高齡創傷的特殊挑戰，併發症預防與復健考量。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter12-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter12-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter12-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 13 -->
+                <div class="chapter-card-multi" id="chapter13">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">13</div>
+                        <h3 class="chapter-title">Trauma in the Pregnant Patient</h3>
+                    </div>
+                    <p class="chapter-description">孕婦創傷的雙重考量，母體與胎兒安全的平衡處置。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter13-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter13-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter13-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 14 -->
+                <div class="chapter-card-multi" id="chapter14">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">14</div>
+                        <h3 class="chapter-title">Initial Assessment: Secondary Survey</h3>
+                    </div>
+                    <p class="chapter-description">次級評估的系統化方法，詳細身體檢查與診斷影像運用。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter14-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter14-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter14-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 15 -->
+                <div class="chapter-card-multi" id="chapter15">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">15</div>
+                        <h3 class="chapter-title">Transfer to Definitive Care</h3>
+                    </div>
+                    <p class="chapter-description">轉診決策與轉送準備，確保患者安全移轉至專科照護。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter15-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter15-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter15-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section II Header -->
+            <div class="section-header" id="section2">
+                <h2>Section II: Trauma Systems and Patient-Centered Care</h2>
+                <p>創傷系統與以病人為中心的照護理念</p>
+            </div>
+            
+            <section class="chapters-grid">
+                <!-- Chapter 16 -->
+                <div class="chapter-card-multi" id="chapter16">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">16</div>
+                        <h3 class="chapter-title">Trauma Systems</h3>
+                    </div>
+                    <p class="chapter-description">創傷系統的組織架構，從現場救護到三級創傷中心的整體規劃。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter16-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter16-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter16-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 17 -->
+                <div class="chapter-card-multi" id="chapter17">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">17</div>
+                        <h3 class="chapter-title">Triage and Disaster Management</h3>
+                    </div>
+                    <p class="chapter-description">檢傷分類原則與災難醫療管理，大量傷患的資源配置策略。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter17-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter17-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter17-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 18 -->
+                <div class="chapter-card-multi" id="chapter18">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">18</div>
+                        <h3 class="chapter-title">Injury Prevention</h3>
+                    </div>
+                    <p class="chapter-description">傷害預防的公共衛生策略，從個人防護到政策制定的整體規劃。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter18-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter18-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter18-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 19 -->
+                <div class="chapter-card-multi" id="chapter19">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">19</div>
+                        <h3 class="chapter-title">Trauma-Informed Care and Social Determinants of Health</h3>
+                    </div>
+                    <p class="chapter-description">創傷知情照護理念，健康社會決定因子對創傷結果的影響。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter19-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter19-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter19-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 20 -->
+                <div class="chapter-card-multi" id="chapter20">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">20</div>
+                        <h3 class="chapter-title">Communicating Serious News in the Acute Trauma Setting</h3>
+                    </div>
+                    <p class="chapter-description">急性創傷環境中的重大消息溝通技巧，家屬關懷與溝通策略。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter20-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter20-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter20-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section III Header -->
+            <div class="section-header" id="section3">
+                <h2>Section III: Specific Injuries and Injury Patterns – Special Considerations</h2>
+                <p>特殊傷害型態與損傷模式的專門處置</p>
+            </div>
+            
+            <section class="chapters-grid">
+                <!-- Chapter 21 -->
+                <div class="chapter-card-multi" id="chapter21">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">21</div>
+                        <h3 class="chapter-title">Thoracic, Abdominopelvic, and Genitourinary Trauma</h3>
+                    </div>
+                    <p class="chapter-description">胸腔、腹骨盆與泌尿生殖系統創傷的診斷與處置策略。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter21-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter21-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter21-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 22 -->
+                <div class="chapter-card-multi" id="chapter22">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">22</div>
+                        <h3 class="chapter-title">Penetrating Trauma</h3>
+                    </div>
+                    <p class="chapter-description">穿透性創傷的評估與處置，彈道學基礎與傷害機制分析。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter22-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter22-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter22-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 23 -->
+                <div class="chapter-card-multi" id="chapter23">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">23</div>
+                        <h3 class="chapter-title">Ocular Trauma</h3>
+                    </div>
+                    <p class="chapter-description">眼部創傷的緊急評估與處置，視力保存的關鍵策略。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter23-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter23-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter23-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+                
+                <!-- Chapter 24 -->
+                <div class="chapter-card-multi" id="chapter24">
+                    <div class="chapter-status status-coming-soon">規劃中</div>
+                    <div class="chapter-header">
+                        <div class="chapter-number">24</div>
+                        <h3 class="chapter-title">Injury in Combat Zones and Austere Environments</h3>
+                    </div>
+                    <p class="chapter-description">戰場與偏遠環境創傷處置，資源受限下的救治策略。</p>
+                    <div class="ai-versions">
+                        <a href="chapters/chapter24-gpt-o3.html" class="ai-btn gpt">GPT O3版本</a>
+                        <a href="chapters/chapter24-gemini.html" class="ai-btn gemini">Gemini 2.5 Pro</a>
+                        <a href="chapters/chapter24-claude.html" class="ai-btn claude">Claude 4.0 Opus</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <a href="index.html" class="back-button">返回主頁</a>
+            <p>© 2024 邱俊文的急診考前筆記 - ATLS 11版完整學習指南 (24章節)</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">包含三大領域：基礎評估處置、創傷系統照護、特殊傷害型態</p>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // --- START: Back to Top & Progress Bar Script ---
+        const backToTopBtn = document.getElementById('back-to-top');
+        const progressBar = document.getElementById('progress-bar');
+
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide button and update progress bar on scroll
+        window.onscroll = function() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            
+            // Progress bar
+            const scrolled = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+
+            // Back to top button
+            if (scrollTop > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        };
+        // --- END: Back to Top & Progress Bar Script ---
+    </script>
+</body>
+</html>
