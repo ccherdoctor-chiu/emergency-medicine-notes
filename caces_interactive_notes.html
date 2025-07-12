@@ -3,32 +3,754 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CACES 互動筆記</title>
-    <meta name="description" content="CACES interactive notes">
+    <title>ChatGPT-Assisted Cognitive Enhancement Strategies - 互動式學習筆記</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background-color: #f5f7fa;
-            padding: 40px;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
+
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            padding: 40px;
-        }
-        h1 {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            margin-top: 20px;
             margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            margin: -20px -20px 40px -20px;
+            border-radius: 15px 15px 0 0;
+            color: white;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .download-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007bff;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .tab-link {
+            flex: 1;
+            padding: 15px 20px;
+            background: #e9ecef;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .tab-link:hover:not(.active) {
+            background: #dee2e6;
+            transform: translateY(-1px);
+        }
+
+        .tab-link.active {
+            background: #007bff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            padding: 20px 0;
+        }
+
+        .tab-content.is-active {
+            display: block !important;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-box {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateX(5px);
+        }
+
+        .info-box.abstract {
+            background: #e7f3ff;
+            border-color: #007bff;
+        }
+
+        .info-box.introduction {
+            background: #f0f9ff;
+            border-color: #17a2b8;
+        }
+
+        .info-box.methods {
+            background: #e2e3e5;
+            border-color: #6c757d;
+        }
+
+        .info-box.results {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .info-box.discussion {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+
+        .info-box.important {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .info-box.author {
+            background: #e1ecf4;
+            border-color: #39739d;
+        }
+
+        .info-box-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-box-title::before {
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+
+        .abstract .info-box-title::before { content: "📄"; }
+        .introduction .info-box-title::before { content: "📚"; }
+        .methods .info-box-title::before { content: "🔬"; }
+        .results .info-box-title::before { content: "📊"; }
+        .discussion .info-box-title::before { content: "💡"; }
+        .important .info-box-title::before { content: "⚠️"; }
+        .author .info-box-title::before { content: "👨‍⚕️"; }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8e6cf 0%, #dcedc8 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .key-finding {
+            background: linear-gradient(120deg, #ffd93d 0%, #ffb347 100%);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #2c3e50;
+            box-shadow: 0 2px 4px rgba(255, 185, 71, 0.3);
+        }
+
+        .statistical-result {
+            background: linear-gradient(120deg, #ff6b6b 0%, #ee5a52 100%);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 2px 4px rgba(255, 107, 107, 0.3);
+        }
+
+        .methodology-highlight {
+            background: linear-gradient(120deg, #4ecdc4 0%, #44a08d 100%);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 2px 4px rgba(78, 205, 196, 0.3);
+        }
+
+        .conclusion-highlight {
+            background: linear-gradient(120deg, #a8e6cf 0%, #88d8a3 100%);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            color: #2c3e50;
+            box-shadow: 0 2px 6px rgba(168, 230, 207, 0.4);
+            font-size: 1.05em;
+        }
+
+        .sample-size {
+            background: linear-gradient(120deg, #a29bfe 0%, #6c5ce7 100%);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 2px 4px rgba(162, 155, 254, 0.3);
+        }
+
+        .effect-size {
+            background: linear-gradient(120deg, #fd79a8 0%, #e84393 100%);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 2px 4px rgba(253, 121, 168, 0.3);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .dropdown-btn {
+            background: #17a2b8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-btn:hover {
+            background: #138496;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 300px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            padding: 10px;
+        }
+
+        .dropdown-content div {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .disclaimer {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .disclaimer h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .disclaimer ul {
+            margin-left: 20px;
+        }
+
+        .disclaimer li {
+            margin: 8px 0;
+        }
+
+        .original-text {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.5;
+            text-align: justify;
+            margin: 15px 0;
+        }
+
+        .original-text h2 {
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+            font-size: 1.4em;
+        }
+
+        .original-text h3 {
+            color: #34495e;
+            margin: 15px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .original-text em {
+            font-style: italic;
+        }
+
+        .original-text strong {
+            font-weight: bold;
+        }
+
+        .figure-placeholder {
+            background: #f8f9fa;
+            border: 2px dashed #ccc;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                padding: 12px 15px;
+            }
+
+            .download-btn {
+                position: static;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media print {
+            .download-btn,
+            .back-to-top,
+            .tabs,
+            .dropdown {
+                display: none !important;
+            }
+
+            .tab-content {
+                display: block !important;
+            }
+
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .header {
+                margin: 0;
+                border-radius: 0;
+                break-inside: avoid;
+            }
+
+            .info-box {
+                break-inside: avoid;
+                margin: 10px 0;
+            }
+
+            body {
+                background: white;
+                font-size: 12pt;
+                line-height: 1.4;
+            }
         }
     </style>
 </head>
 <body>
+    <button class="download-btn" onclick="window.print()">📄 下載PDF</button>
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
     <div class="container">
-        <h1>CACES 互動筆記</h1>
-        <p>這裡將收錄 CACES 練習相關的互動式筆記，內容待補充。</p>
+        <div class="header">
+            <h1>ChatGPT-Assisted Cognitive Enhancement Strategies in Enhancing Memory and Self-Study Outcomes among Undergraduate Medical Trainees</h1>
+            <p>互動式學習筆記系統</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab(event, 'title-authors')">標題與作者</button>
+            <button class="tab-link" onclick="openTab(event, 'abstract')">摘要</button>
+            <button class="tab-link" onclick="openTab(event, 'introduction')">引言</button>
+            <button class="tab-link" onclick="openTab(event, 'methods')">研究方法</button>
+            <button class="tab-link" onclick="openTab(event, 'results')">研究結果</button>
+            <button class="tab-link" onclick="openTab(event, 'discussion')">討論</button>
+        </div>
+
+        <div id="title-authors" class="tab-content is-active">
+            <div class="info-box author">
+                <div class="info-box-title">論文標題</div>
+                <div class="original-text">
+                    <h2>ChatGPT-Assisted Cognitive Enhancement Strategies in Enhancing Memory and Self-Study Outcomes among Undergraduate Medical Trainees</h2>
+                </div>
+            </div>
+
+            <div class="info-box author">
+                <div class="info-box-title">作者資訊</div>
+                <div class="original-text">
+                    <p><strong>Duen-Ren Jeng MD<sup>1</sup>，Wan-Chin Chen MD<sup>1</sup>，Chun-Wen Chiu MD<sup>2</sup></strong></p>
+                    
+                    <p><sup>1</sup>Department of Family Medicine, Changhua Christian Hospital, No. 135, Nanxiao St., Changhua City, Taiwan</p>
+                    
+                    <p><sup>2</sup>Department of Emergency Medicine, Changhua Christian Hospital, No. 135, Nanxiao St., Changhua City, Taiwan</p>
+                    
+                    <p><strong>*Corresponding author:</strong><br>
+                    Chun-Wen Chiu MD<br>
+                    E-mail: 100934@cch.org.tw</p>
+                </div>
+            </div>
+
+            <div class="info-box important">
+                <div class="info-box-title">論文資訊</div>
+                <div class="original-text">
+                    <p><strong>Type of manuscript:</strong> Original Research Article</p>
+                    <p><strong>Running head:</strong></p>
+                    <p><strong>Abstract: ; text word count: ; reference: ; Table(s): 1; Figure(s): 2</strong></p>
+                    
+                    <div class="dropdown">
+                        <button class="dropdown-btn">查看其他資訊 ▼</button>
+                        <div class="dropdown-content">
+                            <div><strong>Data availability statement:</strong><br>
+                            The data that support the findings of this study are available from the corresponding author, upon reasonable request.</div>
+                            <div><strong>Ethics approval:</strong><br>
+                            This study was approved by the Institutional Review Board of Chunghua Christian Hospital (No. 240116).</div>
+                            <div><strong>Conflicts of interest:</strong><br>
+                            The authors have no actual or potential competing financial interests.</div>
+                            <div><strong>Funding statements:</strong><br>
+                            This research received no specific grant from any funding agency in public, commercial or not-for-profit sectors.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="abstract" class="tab-content">
+            <div class="info-box abstract">
+                <div class="info-box-title">Abstract</div>
+                <div class="original-text">
+                    <p><strong>Purposes:</strong> The study aims to assess the application of a set of <span class="methodology-highlight">ChatGPT- assisted cognitive enhancement strategies (CACES)</span> in improving the academic performance and self-learning efficiency of medical interns.</p>
+                    
+                    <p><strong>Methods:</strong> We conducted a <span class="methodology-highlight">three-hour workshop of CACES</span> among medical clerks of a medical center in central Taiwan from February to December 2024. Before the session, each student was randomly assigned one chapter---<span class="highlight">"Asthma and COPD" or "Gastrointestinal Bleeding"</span>---from Tintinalli's Emergency Medicine Manual (8th ed.) and completed a chapter-specific <span class="methodology-highlight">20-item multiple-choice pre-test</span>. The workshop covered <span class="key-finding">five ChatGPT-driven techniques</span>---<span class="highlight">summarisation, flow-chart construction, table generation, multiple-choice question creation, and memory-aid design</span>---using standardised prompts for guided practice. Immediately after the workshop, participants completed an equivalent but non-identical post-test and the <span class="methodology-highlight">13-item Satisfaction and Self-Confidence in Learning Scale (SCLS)</span>, along with three open-ended questions. Knowledge gains were evaluated with paired-sample <em>t</em>-tests, and internal consistency of the SCLS was examined using Cronbach's α.</p>
+                    
+                    <p><strong>Results:</strong> A total of <span class="sample-size">49 medical clerks (27 males and 22 females)</span> participated in the study. The mean pre-test score was <span class="statistical-result">49.4 (standard deviation [SD] = 26.5)</span>, which increased to a mean post-test score of <span class="statistical-result">72.3 (SD = 21.9)</span> following the completion of the course, a <span class="effect-size">23-percentage-point increase (t = 8.41, <em>P</em> < 0.001)</span>. The SCLS demonstrated excellent reliability <span class="statistical-result">(α = 0.97 for Satisfaction; α = 0.87 for Self-Confidence)</span> and yielded very high mean ratings: <span class="key-finding">4.88 (SD = 0.31) for Satisfaction and 4.38 (SD = 0.27) for Self-Confidence</span> (on a 5-point Likert scale). <span class="key-finding">Over 90 % of individual item responses were "strongly agree."</span> Qualitative comments corresponded these findings, citing <span class="highlight">clearer understanding of complex concepts, faster information synthesis, and enthusiasm for prompt-engineering skills</span>; reported challenges were limited to minor technical constraints of the free ChatGPT version. Responses to the open-ended feedback questions were uniformly positive, indicating favorable student perceptions of the course and its effectiveness in enhancing their learning experience.</p>
+                    
+                    <p><strong>Conclusions:</strong> <span class="conclusion-highlight">CACES were particularly effective in improving the academic performance of undergraduate medical trainees.</span></p>
+                    
+                    <p><strong>Keywords:</strong> <span class="highlight">large language models, Cognitive Enhancement Strategies, medical education</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="introduction" class="tab-content">
+            <div class="info-box introduction">
+                <div class="info-box-title">INTRODUCTION</div>
+                <div class="original-text">
+                    <p>The landscape of medical education is undergoing a <span class="key-finding">transformative shift</span>, driven by the <span class="highlight">exponential growth of medical knowledge</span> and the pressing need for efficient, personalized learning strategies. Traditional pedagogical approaches often struggle to keep pace with the demands of modern medical training, necessitating innovative solutions that can enhance learning outcomes while accommodating individual learner needs.</p>
+                    
+                    <p><span class="methodology-highlight">Artificial Intelligence (AI), particularly large language models (LLMs) like ChatGPT</span>, has emerged as a promising tool in this context. These models offer capabilities such as <span class="highlight">real-time information retrieval, content summarization, and interactive learning support</span>, which can be harnessed to augment self-directed learning among medical trainees. Recent studies have begun to explore the integration of AI into medical education, highlighting its potential to improve knowledge acquisition and retention. For instance, the development of <span class="key-finding">AI-powered simulation platforms</span> has demonstrated the feasibility of providing realistic clinical interactions and immediate, structured feedback, thereby facilitating deliberate practice and self-regulated learning among medical students.</p>
+                    
+                    <p>Building on these advancements, our study introduces a structured set of <span class="conclusion-highlight">ChatGPT-Assisted Cognitive Enhancement Strategies (CACES)</span> aimed at improving academic performance and self-study efficiency among undergraduate medical trainees. CACES encompasses techniques such as <span class="highlight">content summarization, study flowchart development, table creation, multiple-choice question formulation, and memory reinforcement strategies</span>. By integrating these methods into a cohesive learning framework, we aim to empower medical students to navigate complex medical content more effectively and foster deeper engagement with the material.</p>
+                    
+                    <p>This research contributes to the growing body of literature on AI-assisted education by providing <span class="key-finding">empirical evidence on the efficacy of CACES in enhancing learning outcomes</span>. Through a structured program implemented among medical clerks in Taiwan, we assess the impact of CACES on <span class="highlight">academic performance, learner satisfaction, and self-confidence in learning</span>. Our findings offer practical insights into the application of AI-driven strategies in medical education and underscore the potential of such tools to transform traditional learning paradigms.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="methods" class="tab-content">
+            <div class="info-box methods">
+                <div class="info-box-title">MATERIALS AND METHODS</div>
+                <div class="original-text">
+                    <h3>Study design and Participants</h3>
+                    <p>We conducted a <span class="methodology-highlight">pre-post interventional design</span> to evaluate the effectiveness of the <span class="key-finding">ChatGPT-Assisted Clinical Education Strategy (CACES)</span> among medical clerks at a tertiary medical center in central Taiwan. The program was conducted from <span class="highlight">February to December 2024</span>. All medical clerks who rotated through the center during this period were eligible and enrolled in the study.</p>
+                    
+                    <h3>Educational Intervention</h3>
+                    <p>The educational intervention was based on <span class="methodology-highlight">two chapters from Tintinalli's Emergency Medicine Manual, 8th Edition</span>: <span class="highlight">Chapter 34 ("Asthma and Chronic Obstructive Pulmonary Disease") and Chapter 39 ("Gastrointestinal Bleeding")</span>. One week prior to the intervention, participants were provided with digital copies of these chapters for preliminary review. Students were informed that their task was to study the chapter randomly assigned to them in preparation for the class.</p>
+                    
+                    <p>On the day of the course, all participants completed a <span class="methodology-highlight">pre-test</span> before the instructional activities began. The intervention consisted of a <span class="key-finding">structured three-hour session</span>. During the <span class="highlight">first hour</span>, students were introduced to the concept of large language models (LLMs). They were then divided into small groups of 3 to 4 participants. In the <span class="highlight">second hour</span>, each group was instructed to select a topic of interest and generate prompts for interaction with a large language model (LLM). The groups then presented their chosen topics and corresponding prompts. The instructor provided feedback, revised the prompts as needed, and demonstrated improved versions to the entire class. The objective of this session was to evaluate how students constructed prompts and to offer them hands-on experience in utilizing LLMs for educational and problem-solving purposes. In the <span class="highlight">third hour</span>, students were provided with a <span class="methodology-highlight">standardized prompt (Supplement 1)</span> and shown how it could be used for various educational tasks, including <span class="key-finding">summarization, flowchart creation, table development, multiple-choice question formulation, and memory techniques</span>. These activities aimed to facilitate easier and more efficient study of the previously assigned chapters. Each group practiced using the prompt to generate a summary, flowchart, table, or MCQs, and then presented their outputs to the class. The instructor offered feedback on their work. The objective of this final session was to demonstrate how structured prompts could be applied to enhance learning efficiency and comprehension.</p>
+                    
+                    <p>At the end of the course, all students completed a <span class="methodology-highlight">post-test</span>. Both the pre-test and post-test (Supplement 2) were developed based on the specific chapters initially assigned to each participant. For example, if a student was randomly assigned Chapter 34, the multiple-choice questions in both the pre-test and post-test were derived from that chapter. Importantly, <span class="key-finding">the questions on the pre- and post-tests were not identical</span>, in order to minimize practice effects and ensure a more accurate assessment of learning.</p>
+                    
+                    <p>At the conclusion of the course, participants also completed a satisfaction survey. The <span class="methodology-highlight">Satisfaction and Self-Confidence in Learning Scale (Supplement 3)</span> was used to evaluate participants' perceptions of the teaching method and their confidence in applying what they had learned. In addition, <span class="highlight">three open-ended questions (Supplement 4)</span> were included to gather qualitative feedback on students' experiences with CACES, the challenges they encountered, and the perceived benefits or areas for improvement in future learning contexts.</p>
+                    
+                    <h3>Statistical analysis</h3>
+                    <p>The statistical method used the <span class="methodology-highlight">paired sample t-test</span>. All statistical tests were two-sided, with a <span class="highlight">significance level of 0.05</span>. The analyses were performed using <span class="highlight">SAS, version 9.4 (SAS Institute, Cary, NC, USA)</span>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="results" class="tab-content">
+            <div class="info-box results">
+                <div class="info-box-title">RESULTS</div>
+                <div class="original-text">
+                    <p>A total of <span class="sample-size">49 medical clerks (27 males and 22 females)</span> participated in the study. The mean pre-test score was <span class="statistical-result">49.4 (standard deviation [SD] = 26.5)</span>, which increased to <span class="statistical-result">72.3 (SD = 21.9)</span> on the post-test administered after course completion. Students demonstrated a <span class="key-finding">statistically significant improvement</span> in their scores following the intervention, as measured by a paired t-test (<span class="statistical-result">P < .001</span>) (Figure 1). Figure 1 displays paired pre- and post-test scores for every medical clerk who completed the CACES session.</p>
+                    
+                    <div class="figure-placeholder">
+                        <strong>Figure 1</strong><br>
+                        Paired profile plot of individual and mean examination scores before and after the ChatGPT-assisted Cognitive Augmentation Strategies (CACES) course (n = 49). Blue lines represent each participant's pre- and post-test scores; the orange line depicts the change in group mean scores (49.4 ± 26.5 vs 72.3 ± 21.9). The predominance of upward-sloping lines and the rise in the mean curve demonstrate a significant improvement in performance after the intervention (paired t-test, P < 0.001).
+                    </div>
+                    
+                    <p><span class="sample-size">Thirty-six medical clerks (73% of the participants)</span> completed the Satisfaction and Self-Confidence in Learning Scale immediately following the CACES-enhanced workshop. As shown in Figure 2, the mean satisfaction score was <span class="key-finding">4.88 (SD = 0.31)</span>, and the mean self-confidence score was <span class="key-finding">4.38 (SD = 0.27)</span>, both well above the neutral midpoint---indicating <span class="conclusion-highlight">strong approval of the instructional approach and high learner confidence</span>. Internal consistency was excellent, with <span class="statistical-result">Cronbach's α values of 0.97 for satisfaction and 0.87 for self-confidence</span>. <span class="effect-size">Over 90% of all item responses were "strongly agree,"</span> and item-level analysis confirmed consistently high ratings across all 13 scale items. These findings indicate that the course was both well-received and effective in enhancing learner engagement and confidence.</p>
+                    
+                    <div class="figure-placeholder">
+                        <strong>Figure 2</strong><br>
+                        Mean scores for items on the Satisfaction and Self-Confidence in Learning Scale (SCLS).<br>
+                        Each bar represents the average rating (1 = strongly disagree to 5 = strongly agree) for one of the 13 items on the SCLS, completed by medical clerks following the CACES-enhanced workshop. Items reflect students' perceptions of instructional effectiveness (Satisfaction subscale) and their confidence in applying the material (Self-Confidence subscale). All items received mean scores above 4.7, except the reverse-coded item ("It is the instructor's responsibility to tell me what I need to learn during class time"), which was scored lower as expected.
+                    </div>
+                    
+                    <p>Qualitative feedback reinforced the quantitative findings, with participants reporting <span class="key-finding">highly positive experiences using CACES</span>. Students noted that CACES enhanced their understanding of complex concepts and improved their ability to <span class="highlight">summarize, structure, and process information</span>---particularly when engaging with academic materials such as textbooks. Reported benefits included <span class="conclusion-highlight">faster comprehension, improved study organization, and practical support for tasks like literature reviews and concept mapping</span>. Challenges were primarily technical, including <span class="highlight">limitations of the free version of ChatGPT</span> (e.g., upload issues and response inconsistencies) and concerns about the completeness of AI-generated content. Overall, students recognized <span class="key-finding">strong potential for CACES in self-directed learning</span> and emphasized the value of strategies like summarization, visual organization, and MCQ generation, while recommending further refinement of prompts and sustained instructional support.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="discussion" class="tab-content">
+            <div class="info-box discussion">
+                <div class="info-box-title">DISCUSSION</div>
+                <div class="original-text">
+                    <p>This study demonstrated that the implementation of ChatGPT-Assisted Cognitive Enhancement Strategies (CACES) significantly enhanced the academic performance and self-directed learning capabilities of undergraduate medical trainees. The marked increase in post-test scores compared to pre-test scores suggests that the structured use of CACES can meaningfully support knowledge acquisition in medical education. To the best of our knowledge, this is among the first studies to systematically evaluate the application of ChatGPT-based cognitive strategies in a clinical education setting. While artificial intelligence has increasingly been integrated into medical decision-making and diagnostics, its role in foundational cognitive learning remains underexplored. Recent commentaries and pilot studies have highlighted the potential of large language models (LLMs) to support medical education through adaptive feedback, case-based learning, and personalized content delivery (JAMA, 2023; BMJ, 2023)【1】【2】. A notable strength of this study is its practice-oriented design, which enabled participants to interact directly with ChatGPT-generated prompts and apply these to real medical content. The strategies---such as study flowcharts, tabular summaries, and AI-generated multiple-choice questions---are consistent with modern educational frameworks that promote active engagement and metacognitive regulation (NEJM, 2021)【3】. These tools encourage deeper processing of material and are aligned with the constructivist model of learning, which has been shown to improve retention and comprehension in complex domains such as medicine. Moreover, the within-subject design enhanced the internal validity of the study by minimizing inter-individual variability. The high ratings on the Satisfaction and Self-Confidence in Learning Scale (SCLS) further support the acceptability and perceived value of the CACES intervention. This combination of objective academic improvement and positive learner perception reflects the growing call for integrating digital tools into medical education in a responsible and pedagogically sound manner (The Lancet Digital Health, 2022)【4】. Despite these promising findings, several limitations should be acknowledged. First, the study was conducted at a single institution with a relatively modest sample size, which may limit external generalizability. Second, the study assessed only short-term outcomes; long-term retention and performance in clinical settings remain to be evaluated. Third, the absence of a control group precludes causal inference, though the use of different content for pre- and post-tests helped mitigate practice effects. Lastly, the degree to which CACES can benefit learners at different stages of training or with varying baseline proficiency warrants further exploration. In conclusion, this study provides preliminary but compelling evidence that structured, AI-assisted cognitive strategies can enhance both academic outcomes and learner satisfaction in undergraduate medical education. Future research should incorporate randomized controlled trials with larger and more diverse cohorts, and investigate the long-term educational impact of such interventions across varied clinical contexts.</p>
+                </div>
+            </div>
+
+            <div class="info-box author">
+                <div class="info-box-title">Authors' contributions</div>
+                <div class="original-text">
+                    <p>Conceptualization:; methodology:; formal analysis and investigation: Wan-Chin Chen; writing - original draft preparation:; writing - review and editing:; resources:; supervision:</p>
+                </div>
+            </div>
+
+            <div class="info-box important">
+                <div class="info-box-title">Acknowledgments</div>
+                <div class="original-text">
+                    <p>Not applicable.</p>
+                </div>
+            </div>
+
+            <div class="info-box important">
+                <div class="info-box-title">REFERENCES</div>
+                <div class="original-text">
+                    <p>[References section was not provided in the original document]</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <h3>📋 版權聲明與使用限制</h3>
+            <ul>
+                <li><strong>本網頁內容使用GAI生成</strong></li>
+                <li><strong>本網頁為自學用途之中文編譯版本，非官方授權翻譯</strong></li>
+                <li>原文版權屬於：Duen-Ren Jeng MD, Wan-Chin Chen MD, Chun-Wen Chiu MD 等研究作者</li>
+                <li>本網頁教材旨在促進醫學教育發展，僅供學習者參考使用，嚴禁任何商業用途</li>
+                <li>讀者若需完整理解原文，建議參閱原始英文版本</li>
+                <li>如有任何版權疑慮，請立即聯繫製作方進行處理</li>
+            </ul>
+        </div>
     </div>
-</body>
-</html>
+
+    <script>
+        // 使用最簡單直接的方法
+        function openTab(evt, tabName) {
+            // 隱藏所有分頁內容
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("is-active");
+            }
+            
+            // 移除所有按鈕的active狀態
+            var tablinks = document.getElementsByClassName("tab-link");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            // 顯示選中的分頁並設置按鈕為active
+            document.getElementById(tabName).classList.add("is-active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 滾動事件處理
+        window.onscroll = function() {
+            var backToTop = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        };
+    </script><div class="original-text">
+                    <p>The landscape of medical education is undergoing a transformative shift, driven by the exponential growth of medical knowledge and the pressing need for efficient, personalized learning strategies. Traditional pedagogical approaches often struggle to keep pace with the demands of modern medical training, necessitating innovative solutions that can enhance learning outcomes while accommodating individual learner needs.</p>
+                    
+                    <p>Artificial Intelligence (AI), particularly large language models (LLMs) like ChatGPT, has emerged as a promising tool in this context. These models offer capabilities such as real-time information retrieval, content summarization, and interactive learning support, which can be harnessed to augment self-directed learning among medical trainees. Recent studies have begun to explore the integration of AI into medical education, highlighting its potential to improve knowledge acquisition and retention. For instance, the development of AI-powered simulation platforms has demonstrated the feasibility of providing realistic clinical interactions and immediate, structured feedback, thereby facilitating deliberate practice and self-regulated learning among medical students.</p>
+                    
+                    <p>Building on these advancements, our study introduces a structured set of ChatGPT-Assisted Cognitive Enhancement Strategies (CACES) aimed at improving academic performance and self-study efficiency among undergraduate medical trainees. CACES encompasses techniques such as content summarization, study flowchart development, table creation, multiple-choice question formulation, and memory reinforcement strategies. By integrating these methods into a cohesive learning framework, we aim to empower medical students to navigate complex medical content more effectively and foster deeper engagement with the material.</p>
+                    
+                    <p>This research contributes to the growing body of literature on AI-assisted education by providing empirical evidence on the efficacy of CACES in enhancing learning outcomes. Through a structured program implemented among medical clerks in Taiwan, we assess the impact of CACES on academic performance, learner satisfaction, and self-confidence in learning. Our findings offer practical insights into the application of AI-driven strategies in medical education and underscore the potential of such tools to transform traditional learning paradigms.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="methods" class="tab-content">
+            <div class="info-box methods">
+                <div class="info-box-title">MATERIALS AND METHODS</div>
+                <div class="original-text">
+                    <h3>Study design and Participants</h3>
+                    <p>We conducted a pre-post interventional design to evaluate the effectiveness of the ChatGPT-Assisted Clinical Education Strategy (CACES) among medical clerks at a tertiary medical center in central Taiwan. The program was conducted from February to December 2024. All medical clerks who rotated through the center during this period were eligible and enrolled in the study.</p>
+                    
+                    <h3>Educational Intervention</h3>
+                    <p>The educational intervention was based on two chapters from Tintinalli's Emergency Medicine Manual, 8th Edition: Chapter 34 ("Asthma and Chronic Obstructive Pulmonary Disease") and Chapter 39 ("Gastrointestinal Bleeding"). One week prior to the intervention, participants were provided with digital copies of these chapters for preliminary review. Students were informed that their task was to study the chapter randomly assigned to them in preparation for the class.</p>
+                    
+                    <p>On the day of the course, all participants completed a pre-test before the instructional activities began. The intervention consisted of a structured three-hour session. During the first hour, students were introduced to the concept of large language models (LLMs). They were then divided into small groups of 3 to 4 participants. In the second hour, each group was instructed to select a topic of interest and generate prompts for interaction with a large language model (LLM). The groups then presented their chosen topics and corresponding prompts. The instructor provided feedback, revised the prompts as needed, and demonstrated improved versions to the entire class. The objective of this session was to evaluate how students constructed prompts and to offer them hands-on experience in utilizing LLMs for educational and problem-solving purposes. In the third hour, students were provided with a standardized prompt (Supplement 1) and shown how it could be used for various educational tasks, including summarization, flowchart creation, table development, multiple-choice question formulation, and memory techniques. These activities aimed to facilitate easier and more efficient study of the previously assigned chapters. Each group practiced using the prompt to generate a summary, flowchart, table, or MCQs, and then presented their outputs to the class. The instructor offered feedback on their work. The objective of this final session was to demonstrate how structured prompts could be applied to enhance learning efficiency and comprehension.</p>
+                    
+                    <p>At the end of the course, all students completed a post-test. Both the pre-test and post-test (Supplement 2) were developed based on the specific chapters initially assigned to each participant. For example, if a student was randomly assigned Chapter 34, the multiple-choice questions in both the pre-test and post-test were derived from that chapter. Importantly, the questions on the pre- and post-tests were not identical, in order to minimize practice effects and ensure a more accurate assessment of learning.</p>
+                    
+                    <p>At the conclusion of the course, participants also completed a satisfaction survey. The Satisfaction and Self-Confidence in Learning Scale (Supplement 3) was used to evaluate participants' perceptions of the teaching method and their confidence in applying what they had learned. In addition, three open-ended questions (Supplement 4) were included to gather qualitative feedback on students' experiences with CACES, the challenges they encountered, and the perceived benefits or areas for improvement in future learning contexts.</p>
+                    
+                    <h3>Statistical analysis</h3>
+                    <p>The statistical method used the paired sample t-test. All statistical tests were two-sided, with a significance level of 0.05. The analyses were performed using SAS, version 9.4 (SAS Institute, Cary, NC, USA).</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="results" class="tab-content">
+            <div class="info-box results">
+                <div class="info-box-title">RESULTS</div>
+                <div class="original-text">
+                    <p>A total of <span class="highlight">49 medical clerks (27 males and 22 females)</span> participated in the study. The mean pre-test score was <span class="highlight">49.4 (standard deviation [SD] = 26.5)</span>, which increased to <span class="highlight">72.3 (SD = 21.9)</span> on the post-test administered after course completion. Students demonstrated a statistically significant improvement in their scores following the intervention, as measured by a paired t-test (<span class="highlight">P < .001</span>) (Figure 1). Figure 1 displays paired pre- and post-test scores for every medical clerk who completed the CACES session.</p>
+                    
+                    <div class="figure-placeholder">
+                        <strong>Figure 1</strong><br>
+                        Paired profile plot of individual and mean examination scores before and after the ChatGPT-assisted Cognitive Augmentation Strategies (CACES) course (n = 49). Blue lines represent each participant's pre- and post-test scores; the orange line depicts the change in group mean scores (49.4 ± 26.5 vs 72.3 ± 21.9). The predominance of upward-sloping lines and the rise in the mean curve demonstrate a significant improvement in performance after the intervention (paired t-test, P < 0.001).
+                    </div>
+                    
+                    <p><span class="highlight">Thirty-six medical clerks (73% of the participants)</span> completed the Satisfaction and Self-Confidence in Learning Scale immediately following the CACES-enhanced workshop. As shown in Figure 2, the mean satisfaction score was <span class="highlight">4.88 (SD = 0.31)</span>, and the mean self-confidence score was <span class="highlight">4.38 (SD = 0.27)</span>, both well above the neutral midpoint---indicating strong approval of the instructional approach and high learner confidence. Internal consistency was excellent, with <span class="highlight">Cronbach's α values of 0.97 for satisfaction and 0.87 for self-confidence</span>. Over 90% of all item responses were "strongly agree," and item-level analysis confirmed consistently high ratings across all 13 scale items. These findings indicate that the course was both well-received and effective in enhancing learner engagement and confidence.</p>
+                    
+                    <div class="figure-placeholder">
+                        <strong>Figure 2</strong><br>
+                        Mean scores for items on the Satisfaction and Self-Confidence in Learning Scale (SCLS).<br>
+                        Each bar represents the average rating (1 = strongly disagree to 5 = strongly agree) for one of the 13 items on the SCLS, completed by medical clerks following the CACES-enhanced workshop. Items reflect students' perceptions of instructional effectiveness (Satisfaction subscale) and their confidence in applying the material (Self-Confidence subscale). All items received mean scores above 4.7, except the reverse-coded item ("It is the instructor's responsibility to tell me what I need to learn during class time"), which was scored lower as expected.
+                    </div>
+                    
+                    <p>Qualitative feedback reinforced the quantitative findings, with participants reporting highly positive experiences using CACES. Students noted that CACES enhanced their understanding of complex concepts and improved their ability to summarize, structure, and process information---particularly when engaging with academic materials such as textbooks. Reported benefits included faster comprehension, improved study organization, and practical support for tasks like literature reviews and concept mapping. Challenges were primarily technical, including limitations of the free version of ChatGPT (e.g., upload issues and response inconsistencies) and concerns about the completeness of AI-generated content. Overall, students recognized strong potential for CACES in self-directed learning and emphasized the value of strategies like summarization, visual organization, and MCQ generation, while recommending further refinement of prompts and sustained instructional support.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="discussion" class="tab-content">
+            <div class="info-box discussion">
+                <div class="info-box-title">DISCUSSION</div>
+                <div class="original-text">
+                    <p>This study demonstrated that the implementation of ChatGPT-Assisted Cognitive Enhancement Strategies (CACES) significantly enhanced the academic performance and self-directed learning capabilities of undergraduate medical trainees. The marked increase in post-test scores compared to pre-test scores suggests that the structured use of CACES can meaningfully support knowledge acquisition in medical education. To the best of our knowledge, this is among the first studies to systematically evaluate the application of ChatGPT-based cognitive strategies in a clinical education setting. While artificial intelligence has increasingly been integrated into medical decision-making and diagnostics, its role in foundational cognitive learning remains underexplored. Recent commentaries and pilot studies have highlighted the potential of large language models (LLMs) to support medical education through adaptive feedback, case-based learning, and personalized content delivery (JAMA, 2023; BMJ, 2023)【1】【2】. A notable strength of this study is its practice-oriented design, which enabled participants to interact directly with ChatGPT-generated prompts and apply these to real medical content. The strategies---such as study flowcharts, tabular summaries, and AI-generated multiple-choice questions---are consistent with modern educational frameworks that promote active engagement and metacognitive regulation (NEJM, 2021)【3】. These tools encourage deeper processing of material and are aligned with the constructivist model of learning, which has been shown to improve retention and comprehension in complex domains such as medicine. Moreover, the within-subject design enhanced the internal validity of the study by minimizing inter-individual variability. The high ratings on the Satisfaction and Self-Confidence in Learning Scale (SCLS) further support the acceptability and perceived value of the CACES intervention. This combination of objective academic improvement and positive learner perception reflects the growing call for integrating digital tools into medical education in a responsible and pedagogically sound manner (The Lancet Digital Health, 2022)【4】. Despite these promising findings, several limitations should be acknowledged. First, the study was conducted at a single institution with a relatively modest sample size, which may limit external generalizability. Second, the study assessed only short-term outcomes; long-term retention and performance in clinical settings remain to be evaluated. Third, the absence of a control group precludes causal inference, though the use of different content for pre- and post-tests helped mitigate practice effects. Lastly, the degree to which CACES can benefit learners at different stages of training or with varying baseline proficiency warrants further exploration. In conclusion, this study provides preliminary but compelling evidence that structured, AI-assisted cognitive strategies can enhance both academic outcomes and learner satisfaction in undergraduate medical education. Future research should incorporate randomized controlled trials with larger and more diverse cohorts, and investigate the long-term educational impact of such interventions across varied clinical contexts.</p>
+                </div>
+            </div>
+
+            <div class="info-box author">
+                <div class="info-box-title">Authors' contributions</div>
+                <div class="original-text">
+                    <p>Conceptualization:; methodology:; formal analysis and investigation: Wan-Chin Chen; writing - original draft preparation:; writing - review and editing:; resources:; supervision:</p>
+                </div>
+            </div>
+
+            <div class="info-box important">
+                <div class="info-box-title">Acknowledgments</div>
+                <div class="original-text">
+                    <p>Not applicable.</p>
+                </div>
+            </div>
+
+            <div class="info-box important">
+                <div class="info-box-title">REFERENCES</div>
+                <div class="original-text">
+                    <p>[References section was not provided in the original document]</p>
+                </div>
+            
