@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATLS Chapter 1 - Initial Assessment: Primary Survey (Claude 4.0 Opus) 考前重點複習筆記</title>
+    <title>ATLS 11版 第一章 初步評估與主要檢查 - 考前重點複習筆記</title>
     <style>
         * {
             margin: 0;
@@ -12,115 +12,168 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f5f7fa;
-            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
 
-        #progress-bar {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 0%;
             height: 4px;
-            background: linear-gradient(90deg, #007bff, #00c853);
+            background: linear-gradient(90deg, #667eea, #764ba2);
             z-index: 1000;
             transition: width 0.3s ease;
         }
 
-        .main-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
             color: white;
-            padding: 30px 20px;
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        .main-header h1 {
-            font-size: 2em;
+        .header h1 {
+            font-size: 2.5em;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .main-header p {
-            font-size: 1.1em;
+        .header .subtitle {
+            font-size: 1.2em;
             opacity: 0.9;
         }
 
+        /* PDF Download Button */
+        .pdf-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
         .nav-container {
-            background: white;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: #34495e;
+            padding: 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .dropdown-nav {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-            justify-content: center;
+            justify-content: space-around;
+            padding: 10px 0;
+            background: #2c3e50;
         }
 
         .dropdown {
             position: relative;
-            display: inline-block;
         }
 
-        .dropdown-button {
-            background: #e3f2fd;
-            border: 1px solid #1976d2;
-            padding: 8px 16px;
+        .dropdown-btn {
+            background: none;
+            border: none;
+            color: white;
+            padding: 10px 15px;
             cursor: pointer;
-            border-radius: 4px;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-btn:hover {
+            background: #3498db;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #fff;
-            min-width: 160px;
+            background: #fff;
+            min-width: 200px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .dropdown-content a {
+            color: #333;
             padding: 12px 16px;
-            z-index: 1;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #f1f1f1;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
         }
 
-        .dropdown-content a {
-            color: black;
-            padding: 5px 0;
-            text-decoration: none;
-            display: block;
-        }
-
-        .tabs {
+        /* Tab Navigation */
+        .tab-nav {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            background: #34495e;
         }
 
-        .tab-button {
-            background: #e0f7fa;
-            border: 1px solid #0097a7;
-            padding: 8px 16px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .tab-button.active {
-            background: #0097a7;
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
             color: white;
+            padding: 15px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
         }
 
+        .tab-btn:hover {
+            background: #3498db;
+        }
+
+        .tab-btn.active {
+            background: #3498db;
+            border-bottom-color: #e74c3c;
+        }
+
+        /* Content */
         .content {
-            padding: 20px;
+            padding: 30px;
+            min-height: 500px;
         }
 
         .tab-content {
@@ -131,984 +184,2556 @@
             display: block;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
+        /* Info Boxes */
+        .info-box {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
+        .concept-box {
+            background: #e3f2fd;
+            border-left-color: #2196f3;
         }
 
-        th {
-            background: #f0f0f0;
-        }
-
-        .qa-container {
-            margin-bottom: 20px;
-        }
-
-        .qa-item {
-            margin-bottom: 10px;
-        }
-
-        .qa-question {
-            background: #ffe0b2;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .qa-answer {
-            display: none;
-            padding: 10px;
+        .warning-box {
             background: #fff3e0;
-            border-radius: 4px;
+            border-left-color: #ff9800;
         }
-        
-        .qa-answer.open {
-            display: block;
+
+        .danger-box {
+            background: #ffebee;
+            border-left-color: #f44336;
         }
-        
-        .qa-toggle {
-            font-size: 1.2em;
+
+        .dosage-box {
+            background: #f3e5f5;
+            border-left-color: #9c27b0;
+        }
+
+        .physiology-box {
+            background: #e8f5e8;
+            border-left-color: #4caf50;
+        }
+
+        .chart-box {
+            background: #fff3e0;
+            border-left-color: #ff5722;
+        }
+
+        /* Q&A Sections */
+        .qa-item {
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .question {
+            background: #f8f9fa;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .question:hover {
+            background: #e9ecef;
+        }
+
+        .question::before {
+            content: "▶ ";
             transition: transform 0.3s ease;
         }
 
-        .qa-toggle.open {
-            transform: rotate(180deg);
+        .question.active::before {
+            transform: rotate(90deg);
         }
 
-        .concept-box, .dosage-box, .danger-box, .warning-box, .physiology-box, .info-box, .chart-box {
-            background: #fff;
+        .answer {
+            display: none;
             padding: 15px;
+            background: #fff;
+            border-top: 1px solid #ddd;
+        }
+
+        .answer.active {
+            display: block;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
             margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-left: 5px solid;
-        }
-        
-        .concept-box { border-color: #2196f3; }
-        .warning-box { border-color: #ffc107; }
-        .danger-box { border-color: #dc3545; }
-        .dosage-box { border-color: #6f42c1; }
-        .physiology-box { border-color: #28a745; }
-        .info-box { border-color: #17a2b8; }
-        .chart-box { border-color: #fd7e14; }
-
-
-        .copyright-notice {
-            font-size: 0.9em;
-            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        #download-pdf, #back-to-top {
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
             position: fixed;
+            bottom: 20px;
             right: 20px;
-            padding: 10px 15px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            background: #2196f3;
+            background: #3498db;
             color: white;
-            z-index: 2000;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
         }
 
-        #download-pdf { bottom: 80px; }
-        #back-to-top { bottom: 20px; display: none; }
-        
-        ul, ol {
-            padding-left: 20px;
+        .back-to-top:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .pdf-btn {
+                position: static;
+                margin-top: 20px;
+            }
+            
+            .dropdown-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .tab-nav {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-container,
+            .pdf-btn,
+            .back-to-top,
+            .dropdown-nav {
+                display: none !important;
+            }
+            
+            .tab-content {
+                display: block !important;
+            }
+            
+            .answer {
+                display: block !important;
+            }
+            
+            .question::before {
+                content: "";
+            }
+            
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .header {
+                background: #2c3e50;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #6c757d;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .disclaimer h3 {
+            color: #495057;
+            margin-bottom: 10px;
+        }
+
+        .disclaimer ul {
+            margin-left: 20px;
+        }
+
+        .disclaimer li {
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
-    <div id="progress-bar"></div>
-    <header class="main-header">
-        <h1>ATLS Chapter 1 - Initial Assessment: Primary Survey (Claude 4.0 Opus)</h1>
-        <p>考前重點複習筆記</p>
-    </header>
-
-    <button id="download-pdf" onclick="downloadPDF()">📥 下載PDF</button>
-    <button id="back-to-top" onclick="scrollToTop()">⬆</button>
-
-    <div class="nav-container">
-        <div class="dropdown-nav">
-            <div class="dropdown">
-                <button class="dropdown-button">📋 一般性重點筆記 ▼</button>
-                <div class="dropdown-content">
-                    <a href="#general-purpose">章節定位與宗旨</a>
-                    <a href="#general-spectrum">初步評估連續光譜</a>
-                    <a href="#general-xabcde">xABCDE 演算法精要</a>
-                    <a href="#general-adjuncts">初級檢傷輔助與再評估</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-button">⚠️ 進階觀念與應考陷阱 ▼</button>
-                <div class="dropdown-content">
-                    <a href="#advanced-concepts">罕見但關鍵觀念</a>
-                    <a href="#advanced-monitoring">容易忽略的監測細節</a>
-                    <a href="#advanced-exceptions">特殊程序與例外規則</a>
-                    <a href="#advanced-diffs">新舊版差異／高階鑑別</a>
-                    <a href="#advanced-traps">模擬考官陷阱題</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-button">🚨 臨床現場實用資訊 ▼</button>
-                <div class="dropdown-content">
-                    <a href="#clinical-response">緊急狀況快速應變</a>
-                    <a href="#clinical-interventions">臨床常用介入速查</a>
-                    <a href="#clinical-monitoring">關鍵評估與監測</a>
-                    <a href="#clinical-pointers">實務操作核心提示</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-button">📊 重要圖表整理 ▼</button>
-                <div class="dropdown-content">
-                    <a href="#chart-1">圖表一：Initial Assessment Elements</a>
-                    <a href="#chart-2">圖表二：Field Triage Guideline (2021)</a>
-                    <a href="#chart-3">圖表三：MIST Handover Tool</a>
-                    <a href="#chart-4">圖表四：S-xABCDE-BAR Transfer Tool</a>
-                    <a href="#chart-5">圖表五：Primary Survey & Resuscitation</a>
-                    <a href="#chart-6">圖表六：Anatomic Locations for Blood Loss</a>
-                    <a href="#chart-7">圖表七：Adjuncts to Primary Survey</a>
-                    <a href="#chart-8">圖表八：Communicating Serious News</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-button">📌 其他重要重點 ▼</button>
-                <div class="dropdown-content">
-                    <a href="#others-note">內容建置中</a>
-                </div>
-            </div>
+    <div class="progress-bar"></div>
+    
+    <div class="container">
+        <div class="header">
+            <button class="pdf-btn" onclick="window.print()">📄 下載PDF</button>
+            <h1>🚑 ATLS 11版 第一章 初步評估與主要檢查</h1>
+            <p class="subtitle">考前重點複習筆記 - 系統化外傷處理指南</p>
         </div>
 
-        <div class="tabs">
-            <button class="tab-button active" onclick="showTab('general')">📋 一般性重點筆記</button>
-            <button class="tab-button" onclick="showTab('advanced')">⚠️ 進階觀念與應考陷阱</button>
-            <button class="tab-button" onclick="showTab('clinical')">🚨 臨床現場實用資訊</button>
-            <button class="tab-button" onclick="showTab('charts')">📊 重要圖表整理</button>
-            <button class="tab-button" onclick="showTab('others')">📌 其他重要重點</button>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="copyright-notice">
-            <h4>⚖️ 版權聲明與使用限制</h4>
-            <p>本網頁內容使用GAI生成</p>
-            <p>本網頁為自學用途之中文編譯版本，非官方授權翻譯。</p>
-            <ul>
-                <li>原文版權屬於American College of Surgeons Committee on Trauma</li>
-                <li>本網頁教材旨在促進醫學教育發展，僅供學習者參考使用，嚴禁任何商業用途</li>
-                <li>讀者若需完整理解原文，建議參閱原始英文版本</li>
-            </ul>
-        </div>
-
-        <!-- 一般性重點筆記 -->
-        <div id="general" class="tab-content active">
-            <h2>一般性重點筆記 — ATLS® 第 11 版</h2>
-            <h3>第 1 章〈Initial Assessment: Primary Survey〉</h3>
+        <div class="nav-container">
+            <div class="dropdown-nav">
+                <div class="dropdown">
+                    <button class="dropdown-btn">📚 一般性重點</button>
+                    <div class="dropdown-content">
+                        <a href="#general-core">核心概念摘要</a>
+                        <a href="#general-qa">主動回憶問題庫</a>
+                        <a href="#general-mnemonics">記憶輔助工具</a>
+                        <a href="#general-connections">概念關聯圖譜</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn">⚠️ 進階觀念</button>
+                    <div class="dropdown-content">
+                        <a href="#advanced-concepts">核心進階觀念</a>
+                        <a href="#advanced-differential">高階鑑別診斷</a>
+                        <a href="#advanced-populations">特殊族群規則</a>
+                        <a href="#advanced-procedures">程序性陷阱</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn">🏥 臨床實用</button>
+                    <div class="dropdown-content">
+                        <a href="#clinical-emergency">緊急狀況應變</a>
+                        <a href="#clinical-dosing">常用劑量速查</a>
+                        <a href="#clinical-assessment">關鍵評估判讀</a>
+                        <a href="#clinical-procedures">實務操作提示</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn">📊 重要圖表</button>
+                    <div class="dropdown-content">
+                        <a href="#chart-assessment">初步評估流程</a>
+                        <a href="#chart-triage">分檢指引</a>
+                        <a href="#chart-communication">溝通工具</a>
+                        <a href="#chart-anatomy">解剖位置</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn">➕ 其他重點</button>
+                    <div class="dropdown-content">
+                        <a href="#other-team">團隊動力學</a>
+                        <a href="#other-trauma-care">創傷知情照護</a>
+                        <a href="#other-resources">資源評估</a>
+                        <a href="#other-prevention">傷害預防</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn">📋 補充參考</button>
+                    <div class="dropdown-content">
+                        <a href="#supplement-vitals">生命徵象參考</a>
+                        <a href="#supplement-drugs">藥物劑量速查</a>
+                        <a href="#supplement-imaging">影像判讀要點</a>
+                        <a href="#supplement-procedures">處置流程圖</a>
+                        <a href="#supplement-transfer">轉院評估表</a>
+                        <a href="#supplement-equipment">設備檢查清單</a>
+                    </div>
+                </div>
+            </div>
             
-            <div class="concept-box">
-                <h4 id="general-purpose">章節定位與宗旨</h4>
-                <ul>
-                    <li><strong>目的：</strong>依序辨識並處置威脅生命之損傷，並在資源-適切的前提下，確保病人可獲得後續 definitive care。</li>
-                    <li><strong>核心流程：</strong>以 xABCDE 演算法為骨幹，結合重複評估與團隊溝通，於數分鐘內完成「初級檢傷（Primary Survey）」並立即開始復甦。</li>
-                </ul>
-                <h4>學習目標</h4>
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="openTab(event, 'general')">📚 一般性重點</button>
+                <button class="tab-btn" onclick="openTab(event, 'advanced')">⚠️ 進階觀念</button>
+                <button class="tab-btn" onclick="openTab(event, 'clinical')">🏥 臨床實用</button>
+                <button class="tab-btn" onclick="openTab(event, 'charts')">📊 重要圖表</button>
+                <button class="tab-btn" onclick="openTab(event, 'others')">➕ 其他重點</button>
+                <button class="tab-btn" onclick="openTab(event, 'supplement')">📋 補充參考</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- 一般性重點筆記 -->
+            <div id="general" class="tab-content active">
+                <h2 id="general-core">一、核心概念摘要 (Core Concept Summary)</h2>
+                
+                <div class="concept-box">
+                    <h3>🎯 ATLS三大核心原則</h3>
+                    <ol>
+                        <li><strong>治療最大的生命威脅優先</strong></li>
+                        <li><strong>缺乏確診不應延遲緊急治療</strong></li>
+                        <li><strong>詳細病史非開始治療的必要條件</strong></li>
+                    </ol>
+                </div>
+
+                <div class="physiology-box">
+                    <h3>🔄 主要檢查 (Primary Survey) - xABCDE系統</h3>
+                    <ul>
+                        <li><strong>x</strong>: eXsanguinating hemorrhage (大出血控制)</li>
+                        <li><strong>A</strong>: Airway + 頸椎保護 (呼吸道 + Cervical spine protection)</li>
+                        <li><strong>B</strong>: Breathing (呼吸與通氣)</li>
+                        <li><strong>C</strong>: Circulation (循環與出血控制)</li>
+                        <li><strong>D</strong>: Disability (神經功能評估)</li>
+                        <li><strong>E</strong>: Exposure/Environment (暴露檢查與環境控制)</li>
+                    </ul>
+                </div>
+
+                <div class="chart-box">
+                    <h3>📋 評估流程架構</h3>
+                    <p>初步評估 → 主要檢查 + 立即復甦 → 輔助檢查 → 重新評估 → 次要檢查 → 確定性照護</p>
+                </div>
+
+                <h2 id="general-qa">二、主動回憶問題庫 (Active Recall Question Bank)</h2>
+                
+                <div class="qa-item">
+                    <div class="question">Q1: ATLS主要檢查的口訣是什麼？每個字母代表什麼？</div>
+                    <div class="answer">A1: xABCDE - eXsanguinating hemorrhage, Airway, Breathing, Circulation, Disability, Exposure</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q2: x(大出血控制)的三大處理方式是什麼？</div>
+                    <div class="answer">A2: 直接加壓 (Direct pressure)、傷口填塞 (Wound packing)、止血帶 (Tourniquet)</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q3: 氣道評估時必須同時注意什麼？</div>
+                    <div class="answer">A3: 頸椎活動限制 (Cervical spine motion restriction)</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q4: GCS幾分以下通常需要確定性氣道？</div>
+                    <div class="answer">A4: GCS ≤ 8分</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q5: 呼吸評估要檢查哪三個組成？</div>
+                    <div class="answer">A5: 肺部 (Lungs)、胸壁 (Chest wall)、橫膈 (Diaphragm)</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q6: 休克的定義是什麼？</div>
+                    <div class="answer">A6: 組織灌流和氧合不足 (Insufficient tissue perfusion and oxygenation)</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q7: 外傷病人失血的五個解剖位置是什麼？</div>
+                    <div class="answer">A7: "One on the floor and four more" - 外出血、胸腔、腹腔、骨盆腔、四肢骨折處</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q8: 低血壓是休克的什麼時期表現？</div>
+                    <div class="answer">A8: 相對較晚期的表現，可能已失血達30%</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q9: FAST檢查的適應症是什麼？</div>
+                    <div class="answer">A9: 疑似腹部外傷，用於偵測腹膜內出血</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q10: 何時需要重複主要檢查？</div>
+                    <div class="answer">A10: 病人狀況任何惡化時都應重複主要檢查</div>
+                </div>
+
+                <h2 id="general-mnemonics">三、記憶輔助工具 (Memory Aids & Mnemonics)</h2>
+                
+                <div class="warning-box">
+                    <h3>🎭 【xABCDE記憶法】</h3>
+                    <p><strong>口訣：</strong> "血(x)路(A)不(B)通(C)會(D)餓(E)死"</p>
+                    <ul>
+                        <li><strong>血</strong>：eXsanguinating hemorrhage (大出血)</li>
+                        <li><strong>路</strong>：Airway (氣道)</li>
+                        <li><strong>不</strong>：Breathing (呼吸)</li>
+                        <li><strong>通</strong>：Circulation (循環)</li>
+                        <li><strong>會</strong>：Disability (神經功能)</li>
+                        <li><strong>餓</strong>：Exposure (暴露檢查)</li>
+                    </ul>
+                </div>
+
+                <div class="danger-box">
+                    <h3>🩸 【出血控制三步驟】</h3>
+                    <p><strong>口訣：</strong> "壓包帶"</p>
+                    <ul>
+                        <li><strong>壓</strong>：直接加壓</li>
+                        <li><strong>包</strong>：傷口填塞</li>
+                        <li><strong>帶</strong>：止血帶</li>
+                    </ul>
+                </div>
+
+                <div class="physiology-box">
+                    <h3>🫀 【失血五處記憶法】</h3>
+                    <p><strong>故事聯想：</strong> "一個人倒在<strong>地板</strong>上(外出血)，<strong>胸</strong>口痛、<strong>肚</strong>子痛、<strong>屁股</strong>痛、<strong>手腳</strong>也在流血"</p>
+                    <ul>
+                        <li>地板：外出血 (External hemorrhage)</li>
+                        <li>胸：胸腔 (Thoracic cavity)</li>
+                        <li>肚：腹腔 (Peritoneal cavity)</li>
+                        <li>屁股：骨盆和後腹腔 (Pelvic and retroperitoneal space)</li>
+                        <li>手腳：長骨骨折和肌肉間室 (Long bone and muscle compartments)</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h3>🧠 【GCS快速判定法】</h3>
+                    <p><strong>口訣：</strong> "睜眼說話動手腳，4-5-6加起來15"</p>
+                    <ul>
+                        <li>睜眼：4分</li>
+                        <li>說話：5分</li>
+                        <li>動作：6分</li>
+                        <li>總分：15分</li>
+                    </ul>
+                </div>
+
+                <h2 id="general-connections">四、概念關聯圖譜 (Concept Connection Map)</h2>
+                
+                <div class="chart-box">
+                    <h3>🔗 核心邏輯關係</h3>
+                    <pre>
+生命威脅識別 → xABCDE系統評估 → 立即處置 → 重新評估
+     ↓              ↓              ↓         ↓
+優先順序判定    標準化流程      症狀治療    狀況監控
+     ↓              ↓              ↓         ↓
+資源配置決定    團隊協作      復甦策略    後送決定
+                    </pre>
+                </div>
+
+                <div class="info-box">
+                    <h3>📊 評估-治療-監控循環</h3>
+                    <p><strong>xABCDE評估</strong> ←→ <strong>立即復甦治療</strong> ←→ <strong>持續重新評估</strong></p>
+                    <p>每個步驟都會影響下一步驟的決策，病人狀況變化時必須回到主要檢查重新開始</p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>💡 考前最後提醒</h3>
+                    <p>記住xABCDE不只是檢查順序，更是<strong>優先處理的順序</strong> - 發現問題立即處理，不要等到全部檢查完才開始治療！</p>
+                </div>
+            </div>
+
+            <!-- 進階觀念與應考陷阱 -->
+            <div id="advanced" class="tab-content">
+                <h2 id="advanced-concepts">一、核心進階觀念 (Advanced Core Concepts)</h2>
+                
+                <div class="danger-box">
+                    <h3>⚠️ 血管加壓劑使用的微妙平衡</h3>
+                    <p><strong>關鍵陷阱：</strong> 血管加壓劑可用於<strong>插管時的血壓支持</strong>，但<strong>絕不能作為休克的一線治療</strong></p>
+                    <ul>
+                        <li><strong>正確時機：</strong> 快速序列插管 (RSI) 時的暫時性血壓支持</li>
+                        <li><strong>錯誤觀念：</strong> 用血管加壓劑來"治療"出血性休克</li>
+                        <li><strong>生理原理：</strong> 未控制出血時使用血管加壓劑會加重組織缺血</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h3>🔬 ETCO2的雙重意義陷阱</h3>
+                    <p><strong>容易忽略：</strong> ETCO2反映<strong>通氣</strong>和<strong>灌流</strong>兩個面向</p>
+                    <ul>
+                        <li><strong>低ETCO2</strong> = 可能是早期失血性休克的指標（非僅僅過度換氣）</li>
+                        <li><strong>陷阱情境：</strong> 病人ETCO2下降，考生可能只想到呼吸問題，忽略循環問題</li>
+                    </ul>
+                </div>
+
+                <div class="danger-box">
+                    <h3>🩸 Permissive Hypotension vs TBI的矛盾處置</h3>
+                    <p><strong>高階鑑別：</strong></p>
+                    <ul>
+                        <li><strong>單純穿透性胸腹傷：</strong> 允許較低血壓（減少出血）</li>
+                        <li><strong>合併腦外傷：</strong> 需要較高血壓目標（維持腦灌流）</li>
+                    </ul>
+                    <p><strong>年齡分層目標：</strong></p>
+                    <ul>
+                        <li>小於15歲：SBP ≥ 80 mmHg</li>
+                        <li>15-49歲：SBP ≥ 90 mmHg</li>
+                        <li>50-69歲：SBP ≥ 100 mmHg</li>
+                        <li>≥70歲：SBP ≥ 110 mmHg</li>
+                    </ul>
+                </div>
+
+                <h2 id="advanced-differential">二、高階鑑別診斷陷阱 (Advanced Differential Traps)</h2>
+                
+                <div class="chart-box">
+                    <h3>🫁 張力性氣胸 vs 心包填塞</h3>
+                    <table>
+                        <tr>
+                            <th>特徵</th>
+                            <th>張力性氣胸</th>
+                            <th>心包填塞</th>
+                        </tr>
+                        <tr>
+                            <td>頸靜脈怒張</td>
+                            <td>有</td>
+                            <td>有</td>
+                        </tr>
+                        <tr>
+                            <td>呼吸音</td>
+                            <td>患側消失</td>
+                            <td>雙側正常</td>
+                        </tr>
+                        <tr>
+                            <td>叩診</td>
+                            <td>患側鼓音</td>
+                            <td>正常</td>
+                        </tr>
+                        <tr>
+                            <td>心音</td>
+                            <td>正常</td>
+                            <td>可能微弱</td>
+                        </tr>
+                        <tr>
+                            <td><strong>決定性處置</strong></td>
+                            <td><strong>胸腔減壓</strong></td>
+                            <td><strong>心包穿刺</strong></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="warning-box">
+                    <h3>🩸 外出血控制的層級陷阱</h3>
+                    <p><strong>陷阱點：</strong> 什麼時候用止血帶？</p>
+                    <ul>
+                        <li><strong>小軟組織傷 + 表淺動脈出血</strong> → 僅直接加壓</li>
+                        <li><strong>大血管傷 + 多處出血</strong> → 直接上止血帶</li>
+                        <li><strong>加壓/填塞無效的四肢出血</strong> → 應立即上止血帶</li>
+                        <li><strong>頸部/咽部/口腔出血</strong> → <strong>禁用</strong>止血帶，只能加壓</li>
+                    </ul>
+                </div>
+
+                <h2 id="advanced-populations">三、特殊族群的例外規則 (Special Population Exceptions)</h2>
+                
+                <div class="physiology-box">
+                    <h3>🤱 懷孕患者的隱藏陷阱</h3>
+                    <ul>
+                        <li><strong>生理陷阱：</strong> 可承受更大血容量流失才出現低血壓</li>
+                        <li><strong>解剖陷阱：</strong> 子宮壓迫下腔靜脈 → <strong>左側傾斜</strong>是關鍵處置</li>
+                        <li><strong>監測陷阱：</strong> 胎兒窘迫可能比母體症狀更早出現</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h3>👴 老年患者的"正常"血壓陷阱</h3>
+                    <p><strong>關鍵觀念：</strong> 有高血壓病史的老年人，"正常"血壓可能就是低血壓</p>
+                    <p><strong>實例：</strong> 平常血壓160/90的病人，血壓120/80可能已經是相對低血壓</p>
+                    <p><strong>處置差異：</strong> 需要更高的血壓目標來維持器官灌流</p>
+                </div>
+
+                <div class="concept-box">
+                    <h3>🏃‍♂️ 運動員的生理儲備掩蔽效應</h3>
+                    <ul>
+                        <li><strong>陷阱：</strong> 不會出現早期休克症狀（心跳過快、呼吸急促）</li>
+                        <li><strong>靜息血壓：</strong> 可能比一般人低</li>
+                        <li><strong>危險性：</strong> 容易低估傷勢嚴重程度</li>
+                    </ul>
+                </div>
+
+                <div class="danger-box">
+                    <h3>👶 小兒患者的急劇惡化陷阱</h3>
+                    <ul>
+                        <li><strong>生理特性：</strong> 強大代償能力 + 急劇失代償</li>
+                        <li><strong>體溫調節：</strong> 散熱快，容易低體溫 → 影響凝血功能</li>
+                        <li><strong>劑量陷阱：</strong> 所有藥物/輸液都需要依體重計算</li>
+                    </ul>
+                </div>
+
+                <h2 id="advanced-procedures">四、程序性陷阱與禁忌症 (Procedural Traps & Contraindications)</h2>
+                
+                <div class="danger-box">
+                    <h3>🚫 導尿管置放的絕對禁忌</h3>
+                    <p><strong>禁忌症識別：</strong></p>
+                    <ul>
+                        <li>尿道口出血</li>
+                        <li>會陰部瘀血</li>
+                        <li>前列腺上移觸診</li>
+                    </ul>
+                    <p><strong>陷阱：</strong> 在有禁忌症時強行插管會造成尿道完全撕裂</p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>🚫 鼻胃管插管的隱藏禁忌</h3>
+                    <ul>
+                        <li><strong>禁忌症：</strong> 已知或疑似顱底骨折（篩骨骨折）</li>
+                        <li><strong>風險：</strong> 鼻胃管可能插入腦內</li>
+                        <li><strong>替代方案：</strong> 改用口腔插管</li>
+                    </ul>
+                </div>
+
+                <h2>五、主動回憶陷阱題庫 (Advanced Trap Questions)</h2>
+                
+                <div class="qa-item">
+                    <div class="question">Q1: 病人插管時可以使用血管加壓劑嗎？這與休克治療時使用有何不同？</div>
+                    <div class="answer">A1: 可以用於插管時暫時血壓支持，但絕不能用來治療出血性休克本身</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q2: ETCO2突然下降，除了換氣問題還要考慮什麼？</div>
+                    <div class="answer">A2: 循環問題 - 可能是早期失血性休克的表現</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q3: 腦外傷合併胸部穿透傷的血壓目標如何制定？</div>
+                    <div class="answer">A3: 以腦外傷的較高血壓需求為準，不能採用permissive hypotension</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q4: 什麼情況下強行置放導尿管是危險的？</div>
+                    <div class="answer">A4: 尿道口出血、會陰瘀血時，可能造成尿道完全撕裂</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q5: 為什麼運動員的外傷評估特別需要小心？</div>
+                    <div class="answer">A5: 優異體能可能掩蓋早期休克症狀，容易低估傷勢</div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="question">Q6: 懷孕患者出現低血壓時的第一個處置是什麼？</div>
+                    <div class="answer">A6: 左側傾斜，解除子宮對下腔靜脈的壓迫</div>
+                </div>
+
+                <div class="info-box">
+                    <h3>🎯 考前陷阱提醒</h3>
+                    <ol>
+                        <li><strong>不要被"正常"數值騙了</strong> - 特殊族群有不同基準</li>
+                        <li><strong>處置衝突時優先考慮</strong> - 哪個威脅更immediate？</li>
+                        <li><strong>新舊觀念並存時</strong> - 以最新evidence-based指引為準</li>
+                        <li><strong>監測工具都有盲點</strong> - 臨床判斷永遠是王道</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- 臨床現場實用資訊 -->
+            <div id="clinical" class="tab-content">
+                <h2 id="clinical-emergency">一、緊急狀況快速應變 (Rapid Emergency Response)</h2>
+                
+                <div class="danger-box">
+                    <h3>🚨 張力性氣胸 (Tension Pneumothorax)</h3>
+                    <p><strong>核心判斷點:</strong> 呼吸窘迫 + 患側呼吸音消失 + 頸靜脈怒張 + 氣管偏移</p>
+                    <p><strong>立即SOP:</strong></p>
+                    <ol>
+                        <li><strong>第5肋間鎖骨中線</strong> 或 <strong>第2肋間鎖骨中線</strong> 立即針刺減壓</li>
+                        <li>使用 <strong>14G針頭</strong> (粗針)</li>
+                        <li>聽到氣體洩出聲 = 成功</li>
+                        <li>立即準備胸管置放</li>
+                    </ol>
+                </div>
+
+                <div class="danger-box">
+                    <h3>🩸 大量外出血控制</h3>
+                    <p><strong>核心判斷點:</strong> 動脈性出血 + 傳統止血法無效</p>
+                    <p><strong>立即SOP:</strong></p>
+                    <ol>
+                        <li><strong>四肢出血:</strong> 立即上止血帶於出血點<strong>近心端</strong></li>
+                        <li><strong>頸部/軀幹出血:</strong> 直接加壓 + 紗布填塞</li>
+                        <li><strong>頭皮出血:</strong> 環形縫合或血管夾快速止血</li>
+                        <li><strong>止血帶位置:</strong> 距離傷口5-7公分，記錄上帶時間</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <h3>💨 呼吸道完全阻塞</h3>
+                    <p><strong>核心判斷點:</strong> 無法發聲 + 呼吸費力 + 發紺</p>
+                    <p><strong>立即SOP:</strong></p>
+                    <ol>
+                        <li><strong>清醒病人:</strong> 哈姆立克法 (Heimlich maneuver)</li>
+                        <li><strong>昏迷病人:</strong> 下顎推舉 (Jaw thrust) + 異物移除</li>
+                        <li><strong>無效時:</strong> 準備緊急環甲膜切開術</li>
+                        <li><strong>頸椎受傷:</strong> 僅用下顎推舉，禁用頭部後仰</li>
+                    </ol>
+                </div>
+
+                <div class="danger-box">
+                    <h3>🫀 心跳停止 (Cardiac Arrest)</h3>
+                    <p><strong>核心判斷點:</strong> 無脈搏 + 無呼吸 + 無反應</p>
+                    <p><strong>立即SOP:</strong></p>
+                    <ol>
+                        <li><strong>立即CPR:</strong> 胸骨下1/3，深度5-6公分，頻率100-120/分</li>
+                        <li><strong>可電擊心律:</strong> 立即除顫</li>
+                        <li><strong>外傷性心跳停止:</strong> 考慮張力性氣胸、心包填塞、大量失血</li>
+                        <li><strong>ETCO2監測:</strong> <10mmHg提示CPR品質不佳</li>
+                    </ol>
+                </div>
+
+                <h2 id="clinical-dosing">二、臨床常用劑量與給藥速查 (Common Dosing & Administration Quick Ref.)</h2>
+                
+                <div class="dosage-box">
+                    <h3>💉 Epinephrine (腎上腺素)</h3>
+                    <ul>
+                        <li><strong>過敏性休克:</strong> 0.3-0.5mg IM (大腿外側) / 可重複每5-15分鐘</li>
+                        <li><strong>心跳停止:</strong> 1mg IV/IO 每3-5分鐘</li>
+                        <li><strong>特別提示:</strong> IM注射比皮下注射吸收更快</li>
+                    </ul>
+                </div>
+
+                <div class="dosage-box">
+                    <h3>🩸 Tranexamic Acid (傳明酸)</h3>
+                    <ul>
+                        <li><strong>外傷性出血:</strong> 1g IV over 10分鐘，之後1g IV over 8小時</li>
+                        <li><strong>給藥時機:</strong> 受傷後3小時內最有效</li>
+                        <li><strong>特別提示:</strong> 超過3小時給藥可能增加死亡率</li>
+                    </ul>
+                </div>
+
+                <div class="dosage-box">
+                    <h3>💨 Oxygen (氧氣)</h3>
+                    <ul>
+                        <li><strong>初始給氧:</strong> 所有外傷病人都給予100%氧氣</li>
+                        <li><strong>目標SpO2:</strong> ≥94% (COPD病人≥88%)</li>
+                        <li><strong>給氧裝置:</strong> Bag-mask reservoir 可達到90-95%氧氣濃度</li>
+                        <li><strong>特別提示:</strong> 不要因為怕CO2滯留而限制氧氣</li>
+                    </ul>
+                </div>
+
+                <div class="dosage-box">
+                    <h3>🧠 Mannitol (甘露醇)</h3>
+                    <ul>
+                        <li><strong>顱內壓升高:</strong> 0.25-1g/kg IV push</li>
+                        <li><strong>給藥速度:</strong> 快速推注 (5-10分鐘內)</li>
+                        <li><strong>特別提示:</strong> 需要確認腎功能正常，避免腎衰竭</li>
+                    </ul>
+                </div>
+
+                <div class="dosage-box">
+                    <h3>💔 Norepinephrine (正腎上腺素)</h3>
+                    <ul>
+                        <li><strong>插管時血壓支持:</strong> 0.1-0.5 mcg/kg/min IV</li>
+                        <li><strong>神經性休克:</strong> 初始劑量0.5-1 mcg/min</li>
+                        <li><strong>特別提示:</strong> 絕不用於出血性休克的主要治療</li>
+                    </ul>
+                </div>
+
+                <h2 id="clinical-assessment">三、關鍵評估與判讀要點 (Key Assessments & Interpretation)</h2>
+                
+                <div class="concept-box">
+                    <h3>🧠 GCS快速評估法</h3>
+                    <p><strong>評估目的:</strong> 意識程度量化 + 預後判斷</p>
+                    <p><strong>快速判讀:</strong></p>
+                    <ul>
+                        <li><strong>輕度:</strong> 13-15分 (可能腦震盪)</li>
+                        <li><strong>中度:</strong> 9-12分 (需要密切監測)</li>
+                        <li><strong>重度:</strong> 3-8分 (需要插管保護氣道)</li>
+                    </ul>
+                    <p><strong>代表意義:</strong> ≤8分通常需要確定性氣道</p>
+                </div>
+
+                <div class="physiology-box">
+                    <h3>📊 Shock Index (休克指數)</h3>
+                    <p><strong>評估目的:</strong> 早期休克偵測</p>
+                    <p><strong>計算公式:</strong> 心跳數 ÷ 收縮壓</p>
+                    <p><strong>快速判讀:</strong></p>
+                    <ul>
+                        <li><strong>正常:</strong> 0.5-0.7</li>
+                        <li><strong>輕度休克:</strong> 0.7-1.0</li>
+                        <li><strong>重度休克:</strong> >1.0</li>
+                    </ul>
+                    <p><strong>代表意義:</strong> >1.0需要積極輸液復甦</p>
+                </div>
+
+                <div class="chart-box">
+                    <h3>🔍 FAST檢查標準位置</h3>
+                    <p><strong>評估目的:</strong> 腹腔內出血快速偵測</p>
+                    <p><strong>四個標準位置:</strong></p>
+                    <ol>
+                        <li><strong>心包膜:</strong> 劍突下切面</li>
+                        <li><strong>右上腹:</strong> 肝腎間隙 (Morrison's pouch)</li>
+                        <li><strong>左上腹:</strong> 脾腎間隙</li>
+                        <li><strong>骨盆腔:</strong> 膀胱直腸間隙 (男) / 膀胱子宮間隙 (女)</li>
+                    </ol>
+                    <p><strong>判讀要點:</strong> 任一處有液體堆積 = 陽性</p>
+                </div>
+
+                <div class="physiology-box">
+                    <h3>📈 End-tidal CO2 (ETCO2)</h3>
+                    <p><strong>評估目的:</strong> 通氣 + 循環狀態監測</p>
+                    <p><strong>正常值:</strong> 35-45 mmHg</p>
+                    <p><strong>快速判讀:</strong></p>
+                    <ul>
+                        <li><strong><25 mmHg:</strong> 可能過度換氣或循環衰竭</li>
+                        <li><strong>>50 mmHg:</strong> 可能換氣不足</li>
+                        <li><strong>突然下降:</strong> 考慮肺栓塞、心跳停止、插管滑脫</li>
+                    </ul>
+                    <p><strong>CPR監測:</strong> >10 mmHg提示有效胸壓</p>
+                </div>
+
+                <h2 id="clinical-procedures">四、實務操作核心提示 (Practical Procedure Pointers)</h2>
+                
+                <div class="info-box">
+                    <h3>🫁 緊急插管準備 (Emergency Intubation)</h3>
+                    <p><strong>SOAP-ME準備:</strong></p>
+                    <ul>
+                        <li><strong>S</strong>uction (抽吸設備)</li>
+                        <li><strong>O</strong>xygen (預給氧)</li>
+                        <li><strong>A</strong>irway equipment (氣道設備)</li>
+                        <li><strong>P</strong>harmacy (藥物)</li>
+                        <li><strong>M</strong>onitoring (監測)</li>
+                        <li><strong>E</strong>quipment backup (備用設備)</li>
+                    </ul>
+                    <p><strong>關鍵步驟:</strong></p>
+                    <ol>
+                        <li><strong>頸椎保護:</strong> 助手維持頸椎中立位</li>
+                        <li><strong>預給氧:</strong> 3-5分鐘100%氧氣</li>
+                        <li><strong>備用計畫:</strong> 準備LMA或緊急氣道</li>
+                    </ol>
+                    <p><strong>安全提示:</strong> 外傷病人都當作困難氣道處理</p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>🩸 中心靜脈導管置放</h3>
+                    <p><strong>關鍵步驟:</strong></p>
+                    <ol>
+                        <li><strong>位置選擇:</strong> 鎖骨下 > 頸內 > 股靜脈</li>
+                        <li><strong>超音波導引:</strong> 即時監看血管結構</li>
+                        <li><strong>確認位置:</strong> 胸部X光確認導管位置</li>
+                        <li><strong>併發症監視:</strong> 氣胸、動脈穿刺、感染</li>
+                    </ol>
+                    <p><strong>效率訣竅:</strong> 先用小針頭確認位置再用大針</p>
+                </div>
+
+                <div class="concept-box">
+                    <h3>🚰 導尿管置放技巧</h3>
+                    <p><strong>關鍵步驟:</strong></p>
+                    <ol>
+                        <li><strong>禁忌症確認:</strong> 無尿道口出血、會陰瘀血</li>
+                        <li><strong>潤滑劑:</strong> 充分使用含局部麻醉劑潤滑劑</li>
+                        <li><strong>男性技巧:</strong> 陰莖向上拉直，克服尿道彎曲</li>
+                        <li><strong>阻力處理:</strong> 遇阻力不可強行推進</li>
+                    </ol>
+                    <p><strong>安全提示:</strong> 疑似尿道損傷時絕對禁止插管</p>
+                </div>
+
+                <div class="chart-box">
+                    <h3>🍽️ 鼻胃管插管</h3>
+                    <p><strong>關鍵步驟:</strong></p>
+                    <ol>
+                        <li><strong>禁忌症:</strong> 顱底骨折 (改用口腔插管)</li>
+                        <li><strong>插管深度:</strong> 鼻翼到耳垂到劍突的距離</li>
+                        <li><strong>位置確認:</strong> 抽吸胃液 + 胸部X光確認</li>
+                        <li><strong>固定方式:</strong> 避免壓迫鼻翼造成潰瘍</li>
+                    </ol>
+                    <p><strong>效率訣竅:</strong> 插管時請病人做吞嚥動作</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🦴 脊椎固定要點</h3>
+                    <p><strong>關鍵步驟:</strong></p>
+                    <ol>
+                        <li><strong>頸椎固定:</strong> C-collar + 人工維持中立位</li>
+                        <li><strong>翻身技巧:</strong> 至少4人log roll</li>
+                        <li><strong>脊椎板限制:</strong> 僅用於轉運，不可長時間留置</li>
+                        <li><strong>壓瘡預防:</strong> 每2小時檢查壓力點</li>
+                    </ol>
+                    <p><strong>安全提示:</strong> 脊椎板本身不提供脊椎固定功能</p>
+                </div>
+
+                <h2>五、交班重點速記 (Handoff Communication)</h2>
+                
+                <div class="chart-box">
+                    <h3>📞 S-xABCDE-BAR交班法</h3>
+                    <p><strong>S (Situation):</strong> 轉診醫師+醫院、病人基本資料、受傷機轉、轉診適應症</p>
+                    <p><strong>xABCDE:</strong></p>
+                    <ul>
+                        <li><strong>x:</strong> 止血帶、加壓、填塞等出血控制</li>
+                        <li><strong>A:</strong> 氣道評估、插管狀況</li>
+                        <li><strong>B:</strong> 呼吸評估、胸管、氧氣需求</li>
+                        <li><strong>C:</strong> 循環評估、輸液、輸血狀況</li>
+                        <li><strong>D:</strong> 神經評估、GCS、瞳孔反應</li>
+                        <li><strong>E:</strong> 體溫、其他發現</li>
+                    </ul>
+                    <p><strong>B (Background):</strong> AMPLE病史、已給藥物、影像檢查</p>
+                    <p><strong>A (Assessment):</strong> 目前生理狀況、治療反應、可能診斷</p>
+                    <p><strong>R (Recommendation):</strong> 運送方式、運送中可能需要的處置</p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>🗣️ 口頭醫囑標準化</h3>
+                    <ul>
+                        <li><strong>給藥醫囑:</strong> "給予 [藥名] [劑量] [途徑] [頻率]，請複誦確認"</li>
+                        <li><strong>檢查醫囑:</strong> "安排 [檢查項目] [緊急程度]，請複誦確認"</li>
+                        <li><strong>處置醫囑:</strong> "執行 [處置項目] [特殊注意事項]，請複誦確認"</li>
+                    </ul>
+                </div>
+
+                <h2>六、常見併發症立即警示 (Immediate Complication Alerts)</h2>
+                
+                <div class="danger-box">
+                    <h3>⚠️ 輸血反應</h3>
+                    <p><strong>立即警示徵象:</strong> 發燒、發冷、背痛、血尿</p>
+                    <p><strong>應變SOP:</strong></p>
+                    <ol>
+                        <li><strong>立即停止輸血</strong></li>
+                        <li>保持靜脈通路暢通 (生理食鹽水)</li>
+                        <li>檢查血袋標籤與病人身分</li>
+                        <li>通知血庫與主治醫師</li>
+                        <li>留取血液和尿液檢體</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <h3>💧 點滴外滲</h3>
+                    <p><strong>立即警示徵象:</strong> 注射部位腫脹、疼痛、皮膚變色</p>
+                    <p><strong>應變SOP:</strong></p>
+                    <ol>
+                        <li>立即停止輸液</li>
+                        <li>拔除靜脈導管</li>
+                        <li>抬高患肢</li>
+                        <li>冰敷15-20分鐘 (血管收縮劑外滲用溫敷)</li>
+                    </ol>
+                </div>
+
+                <div class="concept-box">
+                    <h3>🔌 導管阻塞</h3>
+                    <p><strong>中心靜脈導管阻塞:</strong></p>
+                    <ol>
+                        <li>嘗試抽吸 (不可強力沖洗)</li>
+                        <li>使用溶栓劑 (如許可)</li>
+                        <li>考慮更換導管</li>
+                    </ol>
+                    <p><strong>導尿管阻塞:</strong></p>
+                    <ol>
+                        <li>檢查導管是否彎曲</li>
+                        <li>膀胱沖洗 (生理食鹽水)</li>
+                        <li>必要時更換導管</li>
+                    </ol>
+                </div>
+
+                <h2>七、快速決策流程圖 (Quick Decision Trees)</h2>
+                
+                <div class="chart-box">
+                    <h3>🩸 出血控制決策樹</h3>
+                    <pre>
+                        外出血 
+                        ├── 四肢 → 加壓無效 → 止血帶
+                        ├──
+                        軀幹 → 加壓 + 填塞 → 手術
+                        └── 頭頸 → 加壓 + 縫合 → 血管夾
+                    </pre>
+                </div>
+<div class="chart-box">
+                <h3>🫁 呼吸窘迫決策樹</h3>
+                <pre>
+                    呼吸窘迫
+├── 單側呼吸音消失 → 氣胸 → 胸腔減壓
+├── 雙側囉音 → 肺水腫 → 利尿劑
+└── 呼吸音正常 → 上呼吸道阻塞 → 氣道處理
+</pre>
+</div>
+<div class="chart-box">
+                <h3>💔 休克決策樹</h3>
+                <pre>
+                    休克
+├── 出血性 → 止血 + 輸血
+├── 心因性 → 強心劑 + 利尿
+├── 感染性 → 抗生素 + 輸液
+└── 神經性 → 血管加壓劑
+</pre>
+</div>
+<div class="info-box">
+                <h3>⚡ 現場實戰提醒</h3>
                 <ol>
-                    <li>正確排序初級檢傷優先序</li>
-                    <li>描述初級檢傷期間之復甦選項與最佳實踐</li>
-                    <li>說明各步驟處置技術</li>
-                    <li>列舉初級檢傷輔助檢查及其禁忌</li>
-                    <li>強調頻繁再評估對治療策略的影響</li>
-                    <li>辨識需轉診至其他院所之病人</li>
-                    <li>解釋團隊動力與溝通之重要性</li>
-                    <li>強調 humanistic / trauma-informed care 原則</li>
-                    <li>說明急性期不良消息之溝通方式</li>
-                    <li>以「3 E」（Education-Engineering-Enforcement）觀點思考預防醫學</li>
+                    <li><strong>時間就是生命</strong> - 所有處置都要快、準、狠</li>
+                    <li><strong>安全第一</strong> - 自己安全才能救人</li>
+                    <li><strong>標準化流程</strong> - 壓力下靠SOP不靠記憶</li>
+                    <li><strong>持續監測</strong> - 病人狀況隨時在變化</li>
+                    <li><strong>團隊溝通</strong> - 大聲、清楚、確認</li>
                 </ol>
-                <h4>三大核心理念</h4>
-                <ul>
-                    <li>Treat the greatest threat to life first — 目標導向而非診斷導向</li>
-                    <li>Lack of definitive diagnosis should not delay urgent treatment — 邊評估邊處置</li>
-                    <li>Detailed history is not essential to begin evaluation — 所需資訊可於後續補齊</li>
-                </ul>
-            </div>
-
-            <div class="chart-box">
-                <h4 id="general-spectrum">初步評估連續光譜</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>步驟</th>
-                            <th>內容</th>
-                            <th>要點</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>預先準備</td>
-                            <td>團隊組織、資源盤點、個人防護裝備（PPE）</td>
-                            <td>到院前資訊</td>
-                        </tr>
-                        <tr>
-                            <td>MIST 報告</td>
-                            <td>2021 國家分級指引</td>
-                            <td>協助決定是否送創傷中心</td>
-                        </tr>
-                        <tr>
-                            <td>Primary Survey (xABCDE)</td>
-                            <td colspan="2">見下節</td>
-                        </tr>
-                        <tr>
-                            <td>Adjuncts</td>
-                            <td>血氣 / 血乳酸、超音波 (FAST)、X 光、心電監測…</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Re-evaluation & Monitoring</td>
-                            <td>生命徵象、出血控制、意識變化…</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Secondary Survey</td>
-                            <td>從 head-to-toe + 病史 AMPLE</td>
-                            <td>（Chapter 14 詳述）</td>
-                        </tr>
-                        <tr>
-                            <td>決定轉診</td>
-                            <td>依傷勢與院內資源</td>
-                            <td>預先建立 transfer 協議</td>
-                        </tr>
-                        <tr>
-                            <td>Definitive care</td>
-                            <td>手術、介入治療或專科加護</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="danger-box">
-                <h4 id="general-xabcde">xABCDE 演算法精要</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>順序</th>
-                            <th>關鍵處置</th>
-                            <th>重點提示／指標</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>x</strong> – Exsanguinating hemorrhage</td>
-                            <td>直接壓迫→填塞→止血帶；記錄時間</td>
-                            <td>高流量外出血優先於 Airway</td>
-                        </tr>
-                        <tr>
-                            <td><strong>A</strong> – Airway & cervical protection</td>
-                            <td>開放氣道、保護頸椎、考慮 RSI</td>
-                            <td>GCS ≤ 8、氣道燒傷、失去保護反射</td>
-                        </tr>
-                        <tr>
-                            <td><strong>B</strong> – Breathing & ventilation</td>
-                            <td>補氧、評估胸廓、針減壓/胸管</td>
-                            <td>SpO₂ < 94 %、張力氣胸</td>
-                        </tr>
-                        <tr>
-                            <td><strong>C</strong> – Circulation & shock control</td>
-                            <td>兩條大口徑 IV / IO、MTP、血壓目標</td>
-                            <td>評估「四加地板」潛在出血腔室</td>
-                        </tr>
-                        <tr>
-                            <td><strong>D</strong> – Disability</td>
-                            <td>Pupils、GCS、四肢動作</td>
-                            <td>及早偵測神經惡化、預防二次傷害</td>
-                        </tr>
-                        <tr>
-                            <td><strong>E</strong> – Exposure / Environment</td>
-                            <td>完整暴露並保溫、防低溫</td>
-                            <td>同步尋找隱藏傷口、環境威脅 (Chapter 8)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="info-box">
-                <h4 id="general-adjuncts">初級檢傷輔助與再評估</h4>
-                <ul>
-                    <li><strong>FAST / eFAST：</strong>快速篩檢胸腹腔出血</li>
-                    <li><strong>血氣、乳酸、Base Deficit：</strong>早期偵測組織灌流不足</li>
-                    <li><strong>Capnography：</strong>氣道/換氣監測</li>
-                    <li><strong>再次評估間隔：</strong>頻繁再評估 (frequent reevaluation)</li>
-                </ul>
-            </div>
-            
-            <div class="physiology-box">
-                <h4>團隊與溝通</h4>
-                <ul>
-                    <li><strong>五大關鍵概念：</strong>領導-追隨、注意與情境覺察、清晰溝通、決策、任務協調</li>
-                    <li><strong>IMIST-AMBO / MIST：</strong>到院交接範本</li>
-                    <li><strong>ATLS 強調 resource-appropriate care：</strong>小型醫院應預先了解自身能量、建立轉診綠道；大型中心需完整外科/介入/加護支援</li>
-                    <li>災難/多重傷患 場景需啟動院內分級與事故指揮系統</li>
-                </ul>
-            </div>
-
-            <div class="concept-box">
-                <h4>小結</h4>
-                <p>初級檢傷是一個 動態、可複製、跨資源 的流程；透過 xABCDE 演算法、持續再評估與高效團隊溝通，可最大化黃金時間內的救命效益，並為後續 Secondary Survey 與 definitive care 奠定安全基礎。</p>
-            </div>
-        </div>
-
-        <!-- 進階觀念與應考陷阱 -->
-        <div id="advanced" class="tab-content">
-            <h2>【進階觀念與應考陷阱】—ATLS® 11th Ed. Chapter 1〈Initial Assessment：高階觀念與陷阱〉</h2>
-            
-            <div class="danger-box">
-                <h4 id="advanced-concepts">一、罕見但關鍵觀念</h4>
-                <ul>
-                    <li><strong>「x-大量外出血」優先於 Airway：</strong>雖然 xABCDE 排列耳熟能詳，Table 1-1 進一步點名 “Exsanguinating external hemorrhage” 應第一時間處置；若試題僅寫「Airway 為首要」，即為陷阱。</li>
-                    <li><strong>2021 最新《國家場外分級指引》紅／黃準則：</strong>Figure 1-2 新增 RED vs YELLOW 分級（如穿刺傷部位、生命徵象門檻）；考題常以舊版 2011 標準混淆。</li>
-                    <li><strong>「十大學習目標」的隱藏考點：</strong>學習目標⑧〜⑩強調 trauma-informed care、壞消息溝通與 3 Es (教育／工程／執法)；屬軟實力卻易被忽略。</li>
-                    <li><strong>TeamSTEPPS「Three Cs」指令法 & 戰術暫停：</strong>命名-清晰-閉環 (Cite names-Clear-Close-loop) + TTL 於 primary survey 結束時主動 tactical pause 總結。</li>
-                    <li><strong>三層情境意識模型（Perception／Synthesis／Projection）：</strong>過度「聚焦」或「掃描」皆可能導致錯誤；高階考題常以 fixation error 出題。</li>
-                </ul>
-            </div>
-
-            <div class="warning-box">
-                <h4 id="advanced-monitoring">二、容易忽略的監測細節</h4>
-                <ul>
-                    <li><strong>SpO₂ 閾值混戰：</strong>場外紅色標準採 < 90 %；臨床講義口語習慣 < 94 %，需分辨題目情境。</li>
-                    <li><strong>脈搏血氧對 CO 中毒失準：</strong>高 SpO₂ 可能合併高 carboxy-Hb；抽 ABG + CO-oximetry 才能排除。</li>
-                    <li><strong>ABG／ETCO₂／乳酸互補：</strong>Figure 1-6 把 Capnography + ABG + Lactate 列為必備 adjunct，題目愛考 “僅靠 SpO₂ 是否足夠”。</li>
-                    <li><strong>Serial Physical Exam：</strong>科技監測並非萬能；重視「肢圍變化、痛感改變」等實體徵象。</li>
-                </ul>
-            </div>
-            
-            <div class="dosage-box">
-                <h4 id="advanced-exceptions">三、特殊程序與例外規則</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>高階陷阱</th>
-                            <th>正確處置要點</th>
-                            <th>考試易錯</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>疑 Cribriform Plate Fracture</td>
-                            <td>胃管改走 Orogastric，避免穿顱</td>
-                            <td>默用 NG tube</td>
-                        </tr>
-                        <tr>
-                            <td>防低溫三段式回暖</td>
-                            <td>主動加溫氣流 → 暖毯 → warm IV/輸血液</td>
-                            <td>只覆蓋毛毯</td>
-                        </tr>
-                        <tr>
-                            <td>Re-evaluation 時點</td>
-                            <td>重大介入後立即；其餘 5–10 min 內再次檢查</td>
-                            <td>依教材「frequent」卻不具體</td>
-                        </tr>
-                        <tr>
-                            <td>首度 Intubation 應最完美</td>
-                            <td>VL+經驗操作者+Bougie；失敗 3 次即改救援或切開氣道</td>
-                            <td>重複盲插增加死亡率</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="physiology-box">
-                <h4 id="advanced-diffs">四、新舊版差異／高階鑑別</h4>
-                 <ul>
-                    <li><strong>Junctional Tourniquet：</strong>11 版首度介紹，仍屬軍用場景，民間未普及；考題會問「何部位適用／不可用」。</li>
-                    <li><strong>Humanistic & Trauma-informed Care：</strong>新增對過往心理創傷、文化敏感度的強調，屬非技術核心，但易拿來當鑑別題。</li>
-                    <li><strong>Regular Disaster Drills：</strong>11 版要求醫院定期大量傷患演練；舊版未明示頻率。</li>
-                </ul>
-            </div>
-
-            <div class="qa-container">
-                <h4 id="advanced-traps">五、模擬考官陷阱題（示例）</h4>
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>問題：頭頸多處刀傷、噴射式出血患者抵達，呼吸窘迫但仍能對答。首要處置？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer"><p><strong>易錯：</strong>立即氣管插管<br><strong>正解：</strong>直接壓迫或止血帶控制外出血 (x)</p></div>
-                </div>
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>問題：SpO₂ 98 % 的車禍意識不清患者，懷疑 CO 中毒。下列那一項最能排除缺氧？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer"><p><strong>易錯：</strong>持續脈搏血氧監測<br><strong>正解：</strong>抽動脈血並測 CO-oximetry</p></div>
-                </div>
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>問題：疑有前顱底骨折病人需置胃管減壓，最佳途徑？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer"><p><strong>易錯：</strong>經鼻插管<br><strong>正解：</strong>經口胃管 (OG)</p></div>
-                </div>
-                <div class="qa-item">
-                    <div class="qa-question" onclick="toggleAnswer(this)">
-                        <span>問題：完成胸腔減壓、輸血後，TTL 進行 tactical pause 時應包含何三步？</span>
-                        <span class="qa-toggle">▼</span>
-                    </div>
-                    <div class="qa-answer"><p><strong>易錯：</strong>僅報告已完成事項<br><strong>正解：</strong>①回顧 xABCDE ②評估現況 ③制定下一步計畫 (Three Cs 關閉回路)</p></div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- 臨床現場實用資訊 -->
-        <div id="clinical" class="tab-content">
-            <h2>【臨床現場實用資訊】—ATLS® 第 11 版 第 1 章〈Initial Assessment : Primary Survey〉</h2>
-       
-            <div class="danger-box">
-                <h3 id="clinical-response">#1 緊急狀況快速應變 (Rapid Emergency Response)</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>狀況</th>
-                            <th>原文行動要點</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>大量外出血 (x)</td>
-                            <td>立即 <strong>直接壓迫 → 傷口填塞 → 適當時使用止血帶</strong>；早期止血帶可改善預後。對頸部、腋窩或鼠蹊「交界處」出血，若無交界止血帶，仍以直接壓迫為主</td>
-                        </tr>
-                        <tr>
-                            <td>無法維持氣道 (A)</td>
-                            <td>施行<strong>氣道維護</strong>並 <strong>限制頸椎活動</strong>；必要時<strong>氣管插管</strong></td>
-                        </tr>
-                        <tr>
-                            <td>換氣/氧合受損 (B)</td>
-                            <td>根據評估立即<strong>給氧、減壓胸腔或置胸管</strong>（具體技術詳見後續章節）</td>
-                        </tr>
-                        <tr>
-                            <td>休克徵象 (C)</td>
-                            <td>同步<strong>尋找出血源、止血</strong>，並<strong>恢復器官灌流</strong>（IV/IO 建立後給予液體/血品）</td>
-                        </tr>
-                        <tr>
-                            <td>低體溫風險 (E)</td>
-                            <td>以 <strong>暖毯、對流加溫系統、暖化輸液</strong> 積極升溫，避免凝血惡化</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="dosage-box">
-                <h3 id="clinical-interventions">#2 臨床常用介入速查 (Interventions & Access)</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>介入</th>
-                            <th>原文重點</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>IV / IO 建立</td>
-                            <td>建議 <strong>短且大口徑之周邊靜脈</strong>；若困難可經肱骨或脛骨建立 IO，以便快速給藥/輸液</td>
-                        </tr>
-                        <tr>
-                            <td>暖化輸液</td>
-                            <td>「<strong>warmed resuscitative fluids</strong>」列為防低體溫關鍵；原文未給出溫度數值</td>
-                        </tr>
-                        <tr>
-                            <td>尿液 / 胃管</td>
-                            <td>可提供診斷（如血尿）、監測（尿量）及治療（減壓）功能</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p><strong>注意：</strong>章內未列任何藥物劑量；藥物處置細節請參見後續專章（如 Circulation、Airway 章）。</p>
-            </div>
-
-            <div class="info-box">
-                <h3 id="clinical-monitoring">#3 關鍵評估與監測 (Key Assessments & Monitoring)</h3>
-                 <table>
-                    <thead>
-                        <tr>
-                            <th>工具 / 檢查</th>
-                            <th>原文說明與應用</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>連續 ECG、Pulse Ox、Capnography</td>
-                            <td>監測生理變化；Pulse-ox 對 CO 中毒可能失準，應與 ABG 比對</td>
-                        </tr>
-                        <tr>
-                            <td>ETCO₂</td>
-                            <td>可用於確認氣管內管位置、早期偵測低血容量休克及 CPR 預後</td>
-                        </tr>
-                        <tr>
-                            <td>ABG / Lactate / Base Excess</td>
-                            <td>提供氧合、通氣與酸鹼狀態資訊，能較血壓更早顯示休克跡象，並用於趨勢追蹤復甦成效</td>
-                        </tr>
-                        <tr>
-                            <td>FAST / eFAST / DPL</td>
-                            <td>如病患血流動力學異常且疑腹部外傷，可納入 Primary Survey Adjuncts</td>
-                        </tr>
-                        <tr>
-                            <td>Serial Physical Examination</td>
-                            <td>與技術監測並行，偵測新傷與惡化；團隊任何成員皆須即時回報變化</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="warning-box">
-                <h3 id="clinical-pointers">#4 實務操作核心提示 (Practical Procedure Pointers)</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>操作 / 裝置</th>
-                            <th>原文安全提點</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>止血帶</td>
-                            <td>適用無法以壓迫/填塞控制之四肢大出血；提倡「<strong>Early placement</strong>」以提升存活率</td>
-                        </tr>
-                        <tr>
-                            <td>交界止血帶 (Junctional Tourniquet)</td>
-                            <td>建議用於腹股溝／近端腋窩出血，但在平民醫院尚不普及</td>
-                        </tr>
-                        <tr>
-                            <td>脊椎動作限制</td>
-                            <td>上頸圈並於搬動時採 <strong>logroll</strong>；不應長期放置於硬背板以免壓傷</td>
-                        </tr>
-                        <tr>
-                            <td>骨盆穩定</td>
-                            <td>在血流動力學異常且疑骨盆骨折時，可於初級檢傷階段進行固定</td>
-                        </tr>
-                        <tr>
-                            <td>衣物移除與保溫</td>
-                            <td>完全暴露以免漏診，同時用暖毯等方法維護體溫並顧及病人隱私與尊嚴</td>
-                        </tr>
-                        <tr>
-                            <td>再評估時機</td>
-                            <td>原文強調必須「<strong>frequent reevaluation</strong>」；一旦病況改變，應立即重做 Primary Survey</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="concept-box">
-                <h4>使用建議</h4>
-                <ul>
-                    <li><strong>團隊板書：</strong>將表格 1-1 的 xABCDE 與關鍵致命問題列表貼於搶救室白板，便於分工與同步處置。</li>
-                    <li><strong>Adjuncts 清單：</strong>在推床旁張貼 Figure 1-6 所列監測與影像項目，當病患血流動力異常時快速勾選。</li>
-                    <li><strong>重複檢傷提醒：</strong>設定計時器提示「frequent reevaluation」；如任何參數惡化，立即回到 xABCDE 流程。</li>
-                </ul>
             </div>
         </div>
 
         <!-- 重要圖表整理 -->
         <div id="charts" class="tab-content">
-            <h2>【Chapter 1 重要圖表整理】</h2>
+            <h2 id="chart-assessment">一、圖表一：Figure 1-1: Elements of the Initial Assessment</h2>
             
-            <div class="chart-box" id="chart-1">
-                <h4>一、圖表一：Figure 1-1 Elements of the Initial Assessment</h4>
-                <p>初步評估是一個連續的循環過程，從初級和次級評估開始，一直進行到最終的確定性照護。過程中頻繁的再評估至關重要。</p>
-                <ol>
-                    <li>Primary Survey (xABCDE) and Resuscitation</li>
-                    <li>Adjuncts to the Primary Survey</li>
-                    <li>Re-evaluation</li>
-                    <li>Secondary Survey with Adjuncts</li>
-                    <li>Determination of Need for Transfer</li>
-                    <li>Definitive Care</li>
-                </ol>
+            <div class="chart-box">
+                <h3>【圖表內容呈現】</h3>
+                <p><strong>圓形流程圖結構：</strong></p>
+                <pre>
+                    中心：Initial Assessment (初步評估)
+                    順時針方向六個區塊：
+                    Primary Survey (xABCDE) and Resuscitation (主要檢查與復甦)
+                    Adjuncts to the Primary Survey (主要檢查輔助項目)
+                    Re-evaluation (重新評估)
+                    Secondary Survey with Adjuncts (次要檢查與輔助項目)
+                    Determination of Need for Transfer (轉診需求判定)
+                    Definitive Care (確定性照護)
+                    
+                    特殊標註：「Frequent re-evaluation throughout is critical」
+                </pre>
             </div>
+<div class="concept-box">
+                <h3>【圖表核心解釋】</h3>
+                <p>此圖呈現外傷處理的<strong>完整循環系統</strong>，強調初步評估不是線性過程，而是<strong>動態循環</strong>。每個階段都可能因病人狀況變化而需要回到前一階段，特別突出「重新評估」的核心地位。</p>
+            </div>
+
+            <div class="physiology-box">
+                <h3>【臨床應用與記憶建議】</h3>
+                <p><strong>臨床應用：</strong> 當您接收外傷病人時，將此圖視為「導航系統」- 知道自己在哪個階段，下一步該往哪裡走，何時需要「重新開機」回到主要檢查。</p>
+                <p><strong>記憶策略：</strong> 想像一個<strong>時鐘面</strong>，12點是主要檢查，順時針轉動。但這個時鐘有個特殊功能：任何時候都可以「重置」回到12點重新開始。</p>
+            </div>
+
+            <h2 id="chart-triage">二、圖表二：Figure 1-2: National Guideline for the Field Triage</h2>
             
-            <div class="danger-box" id="chart-2">
-                <h4>二、圖表二：Figure 1-2 National Guideline for the Field Triage of Injured Patients (2021)</h4>
-                <h5>RED CRITERIA – High Risk for Serious Injury</h5>
-                <h6>Injury Patterns</h6>
-                <ul>
-                    <li>Penetrating injuries to head, neck, torso, and proximal extremities</li>
-                    <li>Skull deformity, suspected skull fracture</li>
-                    <li>Suspected spinal injury with new motor or sensory loss</li>
-                    <li>Chest wall instability, deformity, or suspected flail chest</li>
-                    <li>Suspected pelvic fracture</li>
-                    <li>Suspected fracture of two or more proximal long bones</li>
-                    <li>Crushed, degloved, mangled, or pulseless extremity</li>
-                    <li>Amputation proximal to wrist or ankle</li>
-                    <li>Active bleeding requiring a tourniquet or wound packing with continuous pressure</li>
-                </ul>
-                <h6>Mental Status & Vital Signs</h6>
-                <ul>
-                    <li>Unable to follow commands (motor GCS score < 6)</li>
-                    <li>RR < 10 or > 29 breaths/min</li>
-                    <li>Respiratory distress or need for respiratory support</li>
-                    <li>Room-air pulse oximetry < 90%</li>
-                    <li><strong>Ages 0-9 years:</strong> SBP < 70 mm Hg + (2 x age in years)</li>
-                    <li><strong>Ages 10-64 years:</strong> SBP < 90 mm Hg or HR > SBP</li>
-                </ul>
-                <p><strong>Patients meeting any one of the above RED criteria should be transported to the highest-level trauma center available within the geographic constraints of the regional trauma system.</strong></p>
-                <hr>
-                <h5>YELLOW CRITERIA – Moderate Risk for Serious Injury</h5>
-                <h6>Mechanism of Injury</h6>
-                <ul>
-                    <li><strong>High-Risk Auto Crash</strong>
-                        <ul>
-                            <li>Partial or complete ejection</li>
-                            <li>Significant intrusion (including roof) > 12 inches occupant site OR > 18 inches any site OR Need for extrication for entrapped patient</li>
-                            <li>Death in passenger compartment</li>
-                            <li>Child (age 0-9 years) unrestrained or in unsecured child safety seat</li>
-                            <li>Vehicle telemetry data consistent with severe injury</li>
-                        </ul>
-                    </li>
-                    <li>Rider separated from transport vehicle with significant impact (e.g., motorcycle, ATV, horse, etc.)</li>
-                    <li>Pedestrian/bicycle rider thrown, run over, or with significant impact</li>
-                    <li>Fall from height > 10 feet (all ages)</li>
-                </ul>
-                <h6>EMS Judgment</h6>
-                <p>Consider risk factors, including:</p>
-                <ul>
-                    <li>Low-level falls in young children (age < 5 years) or older adults (age > 65 years) with significant head impact</li>
-                    <li>Anticoagulant use</li>
-                    <li>Suspicion of child abuse</li>
-                    <li>Special, high-resource healthcare needs</li>
-                    <li>Pregnancy > 20 weeks</li>
-                    <li>Burns in conjunction with trauma</li>
-                    <li>Children should be triaged preferentially to pediatric capable centers</li>
-                </ul>
-                <p><strong>If concerned, take to a trauma center</strong></p>
-                <p><strong>Patients meeting any one of the YELLOW CRITERIA WHO DO NOT MEET RED CRITERIA should be preferentially transported to a trauma center, as available within the geographic constraints of the regional trauma system (need not be the highest-level trauma center).</strong></p>
-            </div>
-
-            <div class="info-box" id="chart-3">
-                <h4>三、圖表三：Figure 1-3 MIST (Mechanism–Injuries–Symptoms and Signs–Treatment) Systemic Handover Tool</h4>
-                <p>MIST 工具提供了一個標準化、系統化的方式，用於管理到院前救護人員與院內團隊之間的交班。</p>
-                <ul>
-                    <li><strong>M:</strong> Mechanism of injury/medical complaint (受傷機轉/醫療主訴)</li>
-                    <li><strong>I:</strong> Injuries/information related to the complaint (傷害/主訴相關資訊)</li>
-                    <li><strong>S:</strong> Signs and symptoms including GCS score and vital signs (症狀與生命徵象，包含GCS分數)</li>
-                    <li><strong>T:</strong> Treatment given and trends noted (已給予的治療與趨勢變化)</li>
-                </ul>
-            </div>
-
-            <div class="info-box" id="chart-4">
-                <h4>四、圖表四：Figure 1-4 S-xABCDE-BAR Transfer Communication Tool</h4>
-                <p>一個全面、系統化的轉診溝通工具，確保所有相關資訊都能傳達給接收傷患的人員。</p>
-                 <table>
-                    <thead>
-                        <tr>
-                            <th>Acronym</th>
-                            <th>Intent (意圖)</th>
-                            <th>Information (資訊)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>S-xABCDE</strong></td>
-                            <td>Situation-x-Airway-Breathing-Circulation-Disability-Exposure/Environment</td>
-                            <td>
-                                <ul>
-                                    <li>轉診醫師與機構</li>
-                                    <li>姓名、年齡、性別、受傷機轉</li>
-                                    <li>轉診適應症</li>
-                                    <li>x-緊急出血控制措施 (如：加壓、填塞或止血帶)</li>
-                                    <li>Airway: 評估、處置</li>
-                                    <li>Breathing: 評估、處置</li>
-                                    <li>Circulation: 評估、處置</li>
-                                    <li>Disability: 評估、處置</li>
-                                    <li>Environment/Exposure: 評估、處置</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>B</strong></td>
-                            <td>Background (背景)</td>
-                            <td>
-                                <ul>
-                                    <li>AMPLE 病史</li>
-                                    <li>已給予的輸液/血液</li>
-                                    <li>藥物 (日期與時間)</li>
-                                    <li>影像</li>
-                                    <li>復位/夾板固定</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>A</strong></td>
-                            <td>Assessment (評估)</td>
-                            <td>
-                                <strong>目前狀態:</strong>
-                                <ul>
-                                    <li>生理狀況</li>
-                                    <li>對處置的反應</li>
-                                    <li>可能的傷害</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>R</strong></td>
-                            <td>Recommendation (建議)</td>
-                            <td>
-                                <ul>
-                                    <li>運送方式與能力</li>
-                                    <li>運送中的處置</li>
-                                    <li>其他必要的處置</li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="danger-box" id="chart-5">
-                <h4>五、圖表五：Table 1-1 The Primary Survey and Simultaneous Resuscitation</h4>
+            <div class="danger-box">
+                <h3>【RED CRITERIA (高風險嚴重傷害)】</h3>
                 <table>
-                    <thead>
-                        <tr>
-                            <th>步驟</th>
-                            <th>關鍵原因與議題 (Key Causes and Issues)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>x</strong> eXsanguinating external hemorrhage</td>
-                            <td>開放性肢體或其他傷口造成的大量出血</td>
-                        </tr>
-                        <tr>
-                            <td><strong>A</strong> Airway</td>
-                            <td>因直接傷害、意識狀態改變或休克導致無法維持呼吸道通暢</td>
-                        </tr>
-                        <tr>
-                            <td><strong>B</strong> Breathing</td>
-                            <td>因直接傷害或休克導致氧合及/或換氣功能受損</td>
-                        </tr>
-                        <tr>
-                            <td><strong>C</strong> Circulation</td>
-                            <td>
-                                <ol>
-                                    <li>因出血性、神經性、心因性或其他來源造成的休克</li>
-                                    <li>出血控制</li>
-                                    <li>恢復並維持終端器官灌流</li>
-                                </ol>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>D</strong> Disability</td>
-                            <td>
-                                <ul>
-                                    <li>對中樞神經系統的傷害</li>
-                                    <li>創傷性腦損傷</li>
-                                    <li>脊髓損傷</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>E</strong> Exposure / Environment</td>
-                            <td>
-                                <ol>
-                                    <li>完全暴露以防遺漏傷害，同時維持病人尊嚴</li>
-                                    <li>防止低體溫的措施</li>
-                                </ol>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tr>
+                        <th>傷害型態</th>
+                        <th>意識狀態與生命徵象</th>
+                    </tr>
+                    <tr>
+                        <td>• 穿透性傷害：頭、頸、軀幹、近端肢體<br>
+                            • 顱骨變形、疑似顱骨骨折<br>
+                            • 疑似脊髓傷合併新發運動或感覺喪失<br>
+                            • 胸壁不穩定、變形、疑似連枷胸<br>
+                            • 疑似骨盆骨折<br>
+                            • 疑似兩個以上近端長骨骨折<br>
+                            • 肢體壓碎、撕脫、變形或無脈搏<br>
+                            • 腕關節或踝關節以上截肢<br>
+                            • 需要止血帶或傷口填塞持續加壓的活動性出血</td>
+                        <td>全部病人：<br>
+                            • 無法遵從指令 (運動性GCS <6)<br>
+                            • RR <10 或 >29 次/分<br>
+                            • 呼吸窘迫或需要呼吸支持<br>
+                            • 室內空氣脈搏血氧飽和度 <90%<br><br>
+                            年齡分層血壓標準：<br>
+                            • 0-9歲：SBP < 70 + (2 × 年齡) mmHg<br>
+                            • 10-64歲：SBP < 90 mmHg 或 HR > SBP</td>
+                    </tr>
                 </table>
             </div>
 
-            <div class="physiology-box" id="chart-6">
-                <h4>六、圖表六：Figure 1-5 Potential Anatomic Locations for Blood Loss (“One on the Floor and Four More”)</h4>
-                <ul>
-                    <li><strong>A. Thoracic Cavity (胸腔):</strong> Hemothorax, Lung laceration, Chest wall injury</li>
-                    <li><strong>B. Peritoneal Cavity (腹膜腔):</strong> Spleen, Liver, Stomach, Intestines, Injured vessels</li>
-                    <li><strong>C. Retroperitoneal Space (後腹膜腔):</strong> Lumbar spine injury, Pelvic fracture, Kidney and other retroperitoneal organs</li>
-                    <li><strong>D. Long Bone/Soft Tissue Compartments (長骨/軟組織腔室):</strong> Open fracture, Closed long bone fracture</li>
-                    <li><strong>E. External Hemorrhage (“the floor”, 外部出血):</strong> Scalp laceration</li>
-                </ul>
+            <div class="warning-box">
+                <h3>【YELLOW CRITERIA (中度風險嚴重傷害)】</h3>
+                <table>
+                    <tr>
+                        <th>受傷機轉</th>
+                        <th>EMS判斷</th>
+                    </tr>
+                    <tr>
+                        <td>高風險車禍：<br>
+                            • 部分或完全拋出車外<br>
+                            • 明顯車體變形<br>
+                            • 乘客車廂內死亡<br>
+                            • 兒童未固定或安全座椅未固定<br><br>
+                            其他機轉：<br>
+                            • 騎乘者與運輸工具分離<br>
+                            • 行人/騎士被拋擲、輾過<br>
+                            • 高度墜落 >10英尺</td>
+                        <td>考慮風險因子：<br>
+                            • 幼兒/老年人低位墜落<br>
+                            • 抗凝血劑使用<br>
+                            • 疑似兒童虐待<br>
+                            • 特殊高資源醫療需求<br>
+                            • 懷孕 >20週<br>
+                            • 燒燙傷合併外傷<br>
+                            • 兒童優先轉至小兒專科中心</td>
+                    </tr>
+                </table>
             </div>
 
-            <div class="concept-box" id="chart-7">
-                <h4>七、圖表七：Figure 1-6 Adjuncts to the Primary Survey with Resuscitation (初級檢傷與復甦之輔助項目)</h4>
-                <p>任何有助於臨床醫師診斷和處置立即危及生命狀況的監測工具、診斷測試、介入措施或程序，都適合做為初級檢傷的一部分。請注意，在許多創傷病人中，連續性理學檢查作為再評估過程的一部分至關重要。</p>
-                <ul>
-                    <li><strong>心電圖監測</strong> (Electrocardiographic Monitoring)</li>
-                    <li><strong>脈搏血氧飽和度監測、呼吸速率、二氧化碳圖及動脈血氣體分析</strong> (Pulse Oximetry, Respiratory Rate, Capnography, and Arterial Blood Gases)</li>
-                    <li><strong>連續性理學檢查</strong> (Serial Physical Examination)</li>
-                    <li><strong>診斷性檢查:</strong> FAST, eFAST, DPL</li>
-                    <li><strong>介入措施:</strong> IV/IO 通路；骨盆固定；選擇性肢體夾板固定；脊椎活動限制 (Interventions: IV/IO access; Pelvic Stabilization; Selected Extremity Splinting; Spinal Motion Restriction)</li>
-                    <li><strong>胸部與骨盆 X 光檢查</strong> (Chest and Pelvis X-Rays)</li>
-                    <li><strong>導尿管與胃管</strong> (Urinary and Gastric Catheters)</li>
-                </ul>
+            <div class="concept-box">
+                <h3>【圖表核心解釋】</h3>
+                <p>此圖建立<strong>二階段篩檢系統</strong>：紅色標準決定「必須送最高等級外傷中心」，黃色標準決定「優先送外傷中心」。核心邏輯是<strong>生理異常 > 解剖傷害 > 機轉判斷 > EMS經驗</strong>的優先順序。</p>
             </div>
 
-            <div class="warning-box" id="chart-8">
-                <h4>八、圖表八：Figure 1-7 在急性創傷情境中溝通重大消息 (Communicating Serious News in the Acute Trauma Setting)</h4>
-                <p>創傷臨床醫師工作中必要的一環，是向病患及家屬溝通重大消息。此過程必須審慎，花時間考慮該說什麼、誰應參與、以及在何處及如何進行溝通。最後，與團隊進行事後簡報，確保每個人都知情並了解治療計畫。</p>
+            <div class="physiology-box">
+                <h3>【臨床應用與記憶建議】</h3>
+                <p><strong>臨床應用：</strong> 院前人員或急診分檢時的<strong>決策樹</strong>，按順序檢查：先看生命徵象，再看明顯傷害，最後考慮機轉和特殊情況。</p>
+                <p><strong>記憶策略：</strong> 用<strong>紅綠燈概念</strong>：紅燈=立即最高級，黃燈=優先但可調整。記住數字「6-8-90」：GCS運動<6、年齡0-9歲血壓公式、10歲以上血壓<90。</p>
+            </div>
+
+            <h2 id="chart-communication">三、圖表三：MIST & S-xABCDE-BAR 溝通工具</h2>
+            
+            <div class="info-box">
+                <h3>【MIST系統性交班工具】</h3>
+                <table>
+                    <tr>
+                        <th>項目</th>
+                        <th>內容</th>
+                    </tr>
+                    <tr>
+                        <td><strong>M</strong> - Mechanism</td>
+                        <td>受傷機轉/醫療主訴</td>
+                    </tr>
+                    <tr>
+                        <td><strong>I</strong> - Injuries</td>
+                        <td>傷害/與主訴相關資訊</td>
+                    </tr>
+                    <tr>
+                        <td><strong>S</strong> - Signs & Symptoms</td>
+                        <td>症狀與徵象，包括GCS評分與生命徵象</td>
+                    </tr>
+                    <tr>
+                        <td><strong>T</strong> - Treatment</td>
+                        <td>已給予治療與趨勢變化</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="chart-box">
+                <h3>【S-xABCDE-BAR轉院溝通工具】</h3>
+                <table>
+                    <tr>
+                        <th>項目</th>
+                        <th>內容</th>
+                    </tr>
+                    <tr>
+                        <td><strong>S-xABCDE</strong></td>
+                        <td>• 轉診醫師與醫院、基本資料、受傷機轉<br>
+                            • x-緊急止血控制介入<br>
+                            • Airway-Breathing-Circulation-Disability-Exposure評估與介入</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B</strong> - Background</td>
+                        <td>• AMPLE病史、輸液/輸血情況<br>
+                            • 藥物(日期與時間)、影像檢查、復位/固定</td>
+                    </tr>
+                    <tr>
+                        <td><strong>A</strong> - Assessment</td>
+                        <td>• 生理狀況、對介入的反應、可能傷害</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R</strong> - Recommendation</td>
+                        <td>• 運送方式與能力、運送中介入、其他必要介入</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 id="chart-anatomy">四、圖表五：Figure 1-5: 失血解剖位置圖</h2>
+
+            <div class="danger-box">
+                <h3>【圖表內容呈現】</h3>
+                <p><strong>人體解剖圖示配置：</strong></p>
+                <pre>
+                    中央標題：「TRAUMATIC HEMORRHAGE LOCATIONS」
+五個解剖區域標示：
+A. Thoracic Cavity (胸腔)
+
+位置：胸部區域
+標示：肺撕裂、血胸
+
+B. Peritoneal Cavity (腹腔)
+
+位置：腹部區域
+標示：胃、脾臟、肝臟、腸道
+
+C. Retroperitoneal Space (後腹腔)
+
+位置：腰部後方
+標示：腎臟與其他後腹腔器官、腰椎脊椎傷害
+
+D. Long Bone/Soft Tissue Compartments (長骨/軟組織間室)
+
+位置：四肢
+標示：閉合性長骨骨折、開放性骨折
+
+E. External Hemorrhage (外出血) - "the floor"
+
+位置：體表
+標示：頭皮撕裂、開放性骨折
+
+底部註記：「One on the Floor and Four More」
+</pre>
+</div>
+<div class="concept-box">
+                <h3>【圖表核心解釋】</h3>
+                <p>此圖將人體分為<strong>五個主要失血空間</strong>，每個空間都足以容納致命性失血量。「One on the Floor and Four More」的記憶口訣強調外出血（地板上看得見的）加上四個體內空間。</p>
+            </div>
+
+            <div class="physiology-box">
+                <h3>【臨床應用與記憶建議】</h3>
+                <p><strong>臨床應用：</strong> 面對休克病人時的<strong>系統性失血源搜尋</strong>，按圖示順序檢查每個空間，不遺漏任何可能的大量失血部位。</p>
+                <p><strong>記憶策略：</strong> 想像<strong>房屋結構</strong>：地板(外出血)、閣樓(胸腔)、客廳(腹腔)、地下室(後腹腔)、柱子(四肢長骨)。搜查時要每個房間都檢查到。</p>
+            </div>
+
+            <h2>五、圖表六：Figure 1-6: 主要檢查輔助項目</h2>
+
+            <div class="chart-box">
+                <h3>【圖表內容呈現】</h3>
+                <p><strong>放射狀圓形圖配置：</strong></p>
+                <pre>
+                    中心圓：「ADJUNCTS to the Primary Survey」
+六個放射分支：
+
+Electrocardiographic Monitoring (心電圖監測)
+Pulse Oximetry, Respiratory Rate, Capnography, and Arterial Blood Gases
+(脈搏血氧飽和度、呼吸速率、呼氣末二氧化碳、動脈血氣體)
+Chest and Pelvis X-Rays (胸部與骨盆X光)
+Diagnostic Studies: FAST, eFAST, DPL
+(診斷性檢查：FAST、eFAST、DPL)
+Urinary and Gastric Catheters (泌尿道與胃管)
+Interventions: IV/IO access; Pelvic Stabilization; Selected Extremity Splinting;
+Spinal Motion Restriction
+(介入措施：靜脈/骨內通路；骨盆固定；選擇性肢體固定；脊椎活動限制)
+
+底部特別標示：Serial Physical Examination (連續性理學檢查)
+</pre>
+</div>
+<div class="concept-box">
+                <h3>【圖表核心解釋】</h3>
+                <p>此圖展示主要檢查的<strong>六大輔助工具類別</strong>，強調這些工具是用來<strong>增強而非取代</strong>基本的xABCDE評估。連續性理學檢查被特別標示為所有輔助工具的基礎。</p>
+            </div>
+
+            <div class="physiology-box">
+                <h3>【臨床應用與記憶建議】</h3>
+                <p><strong>臨床應用：</strong> 進行主要檢查時的<strong>工具清單</strong>，根據病人狀況和醫院資源，選擇適當的輔助工具來強化診斷能力。</p>
+                <p><strong>記憶策略：</strong> 想像<strong>工具箱概念</strong>：監測工具(心電圖、血氧)、影像工具(X光、超音波)、檢體工具(導管)、治療工具(固定、通路)。記住「工具服務主人」：所有工具都是為了更好地執行xABCDE。</p>
+            </div>
+
+            <h2>六、表格一：Table 1-1: 主要檢查與同步復甦</h2>
+
+            <div class="info-box">
+                <h3>【表格內容呈現】</h3>
+                <table>
+                    <tr>
+                        <th>主要檢查項目</th>
+                        <th>關鍵原因與問題</th>
+                    </tr>
+                    <tr>
+                        <td><strong>x</strong> - eXsanguinating external hemorrhage (大出血控制)</td>
+                        <td>來自開放性四肢傷與其他傷口的大量出血</td>
+                    </tr>
+                    <tr>
+                        <td><strong>A</strong> - Airway (呼吸道)</td>
+                        <td>因直接傷害、意識改變、休克而無法維持呼吸道通暢</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B</strong> - Breathing (呼吸)</td>
+                        <td>因直接傷害、休克導致氧合和/或通氣功能受損</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C</strong> - Circulation (循環)</td>
+                        <td>1. 來自出血性、神經性、心因性或其他原因的休克存在<br>
+                            2. 出血控制<br>
+                            3. 末端器官灌流的恢復與維持</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D</strong> - Disability (神經功能障礙)</td>
+                        <td>中樞神經系統傷害<br>
+                            • 外傷性腦傷<br>
+                            • 脊髓傷害</td>
+                    </tr>
+                    <tr>
+                        <td><strong>E</strong> - Exposure/Environment (暴露/環境)</td>
+                        <td>1. 暴露檢查以防遺漏傷害，同時維護病人尊嚴<br>
+                            2. 預防低體溫的處置</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="concept-box">
+                <h3>【表格核心解釋】</h3>
+                <p>此表建立<strong>xABCDE系統的邏輯基礎</strong>，說明每個步驟背後的生理病理學原理。特別強調每個字母不只是檢查項目，更代表特定的<strong>生命威脅類型</strong>。</p>
+            </div>
+
+            <div class="physiology-box">
+                <h3>【臨床應用與記憶建議】</h3>
+                <p><strong>臨床應用：</strong> 執行主要檢查時的<strong>理論基礎參考</strong>，幫助理解為什麼要按這個順序進行，以及每個步驟要尋找什麼特定問題。</p>
+                <p><strong>記憶策略：</strong> 將每個字母與其<strong>核心威脅</strong>連結：x=血流不止、A=路不通、B=氣不順、C=血不循、D=腦不靈、E=體不溫。記住「威脅識別→立即處理」的邏輯。</p>
+            </div>
+
+            <div class="info-box">
+                <h3>🎯 視覺化記憶總結</h3>
                 <ol>
-                    <li><strong>整理您的思緒 (Organize your thoughts)</strong>
-                        <ul>
-                            <li>思考一個「預告」(warning)。(我有重要的消息要與您分享。)</li>
-                            <li>接著是「標題」(Headline)陳述。最嚴重的傷勢是什麼，以及預期的影響為何？</li>
-                        </ul>
-                    </li>
-                    <li><strong>為會面做準備 (Prepare for the meeting)</strong>
-                        <ul>
-                            <li>決定哪些團隊成員將出席。</li>
-                            <li>是否需要翻譯人員？</li>
-                            <li>注意您的儀容。</li>
-                            <li>選擇一個舒適、私密的環境。</li>
-                            <li>確保有足夠的空間讓所有人都能坐下並處於「視線水平」。</li>
-                        </ul>
-                    </li>
-                    <li><strong>與家屬會面 (Meet with the family - ABCDE)</strong>
-                        <ul>
-                            <li><strong>A:</strong> 詢問家屬已被告知的內容 (Ask what the family has been told)。</li>
-                            <li><strong>B:</strong> 以預告開頭 (Begin with the warning)。</li>
-                            <li><strong>C:</strong> 簡潔的摘要 (Concise summary)。</li>
-                            <li><strong>D:</strong> 允許沉默。不要說太多話。傾聽！ (Do allow for silence. Don't speak too much. Listen!)</li>
-                            <li><strong>E:</strong> 鼓勵並確認情緒。引導提問。以接下來的步驟計畫結束會面 (Encourage and validate Emotions. Elicit questions. End Encounter with a plan for next steps)。</li>
-                        </ul>
-                    </li>
-                    <li><strong>與團隊進行事後簡報 (Debrief with the team)</strong>
-                        <ul>
-                            <li>確保所有團隊成員都了解會議的細節和後續步驟的計畫。</li>
-                            <li>嘗試為團隊成員安排機會，以探討和管理他們自己的情緒。</li>
-                        </ul>
-                    </li>
+                    <li><strong>流程圖</strong> = 導航系統（知道在哪，往哪去）</li>
+                    <li><strong>分級表</strong> = 紅綠燈系統（優先序決策）</li>
+                    <li><strong>交班表</strong> = 故事架構（完整資訊傳遞）</li>
+                    <li><strong>解剖圖</strong> = 房屋搜查（系統性檢查）</li>
+                    <li><strong>輔助圖</strong> = 工具箱（增強診斷能力）</li>
+                    <li><strong>對照表</strong> = 邏輯基礎（理解根本原理）</li>
                 </ol>
+                <p><strong>記憶策略核心：將抽象概念轉化為具體視覺意象，建立穩固的心智模型！</strong></p>
             </div>
         </div>
 
         <!-- 其他重要重點 -->
         <div id="others" class="tab-content">
-            <h2>【其他重要重點】—ATLS® 11th Ed. Chapter 1〈Initial Assessment〉</h2>
-                    
+            <h2 id="other-team">一、團隊動力學與溝通管理 (Team Dynamics & Communication Management)</h2>
+            
             <div class="concept-box">
-                <h4 id="others-objectives">1. 教學目標 (Chapter Objectives)</h4>
+                <h3>🤝 高效團隊運作五大核心概念</h3>
                 <ul>
-                    <li>瞭解並依序執行 Primary Survey 與同時復甦。</li>
-                    <li>解釋 Primary Survey 各步驟的處置技術與輔助檢查。</li>
-                    <li>說明 頻繁再評估 (frequent re-evaluation) 的必要性以及轉診判準。</li>
-                    <li>描述 團隊功能、溝通與人文關懷 在初評中的關鍵角色。</li>
-                    <li>闡述 傷害預防 (3 Es: Education-Engineering-Enforcement) 的概念。</li>
+                    <li><strong>Leadership and Followership</strong> (領導力與追隨力)
+                        <ul>
+                            <li>團隊領導者應有明確指揮權</li>
+                            <li>所有成員都應能無懼地提供資訊</li>
+                            <li>建立清晰的角色分配</li>
+                        </ul>
+                    </li>
+                    <li><strong>Attention and Awareness</strong> (注意力與情境意識)
+                        <ul>
+                            <li>維持對整體狀況的掌握</li>
+                            <li>避免tunnel vision (隧道視野)</li>
+                            <li>持續監控團隊成員狀態</li>
+                        </ul>
+                    </li>
+                    <li><strong>Verbal Communication</strong> (口語溝通)
+                        <ul>
+                            <li>使用清晰、簡潔的語言</li>
+                            <li>重要指令需要複述確認</li>
+                            <li>避免使用模糊或專業術語</li>
+                        </ul>
+                    </li>
+                    <li><strong>Decision-making</strong> (決策制定)
+                        <ul>
+                            <li>建立決策階層與權責</li>
+                            <li>緊急情況下的快速決策機制</li>
+                            <li>集體智慧與個人判斷的平衡</li>
+                        </ul>
+                    </li>
+                    <li><strong>Task Management and Coordination</strong> (任務管理與協調)
+                        <ul>
+                            <li>並行任務的有效分配</li>
+                            <li>避免重複或遺漏</li>
+                            <li>時間管理與優先序安排</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <h2 id="other-trauma-care">二、創傷知情照護與人文關懷 (Trauma-Informed Care & Humanistic Approach)</h2>
+            
+            <div class="physiology-box">
+                <h3>💔 既往創傷史的影響認知</h3>
+                <ul>
+                    <li><strong>多元創傷概念</strong>：不僅是身體創傷，還包括情緒、心理、靈性、社會創傷</li>
+                    <li><strong>醫療創傷</strong>：過往不愉快的醫療經驗可能影響病人反應</li>
+                    <li><strong>文化創傷</strong>：特定族群可能有集體創傷經驗</li>
+                    <li><strong>行為誤判風險</strong>：可能被誤解為不配合或敵意</li>
+                </ul>
+            </div>
+
+            <h2 id="other-resources">三、資源評估與適當照護 (Resource Assessment & Appropriate Care)</h2>
+            
+            <div class="concept-box">
+                <h3>🏥 醫院能力評估框架</h3>
+                <p><strong>人員能力評估：</strong></p>
+                <ul>
+                    <li>專科醫師可得性（神經外科、胸腔外科等）</li>
+                    <li>護理人員配置與專業程度</li>
+                    <li>技術人員支援（放射、檢驗、血庫）</li>
+                </ul>
+                <p><strong>設備資源盤點：</strong></p>
+                <ul>
+                    <li>影像設備：CT、MRI、血管攝影</li>
+                    <li>手術室可得性與專業設備</li>
+                    <li>加護病房床位與監測設備</li>
+                    <li>血庫存量與血品處理能力</li>
+                </ul>
+            </div>
+
+            <h2 id="other-prevention">四、傷害預防與公共衛生觀點 (Injury Prevention & Public Health Perspective)</h2>
+            
+            <div class="physiology-box">
+                <h3>📚 3Es傷害預防架構</h3>
+                <p><strong>Education (教育)：</strong></p>
+                <ul>
+                    <li>個人層次：安全行為教育</li>
+                    <li>家庭層次：家庭安全環境建立</li>
+                    <li>社區層次：社區安全意識提升</li>
+                    <li>社會層次：大眾媒體安全宣導</li>
+                </ul>
+                <p><strong>Engineering/Environment (工程/環境)：</strong>
+                    <ul>
+                        <li>道路設計：交叉路口、護欄、照明</li>
+                        <li>車輛安全：安全帶、氣囊、防撞設計</li>
+                        <li>建築安全：防墜設計、消防設備</li>
+                        <li>產品設計：兒童安全包裝、防護設備</li>
+                    </ul>
+                    <p><strong>Enforcement (執法)：</strong></p>
+                    <ul>
+                        <li>法規制定：安全相關法律</li>
+                        <li>執法機制：違規取締與處罰</li>
+                        <li>政策執行：公共安全政策落實</li>
+                        <li>標準制定：安全標準與檢驗</li>
+                    </ul>
+                </div>
+                <div class="warning-box">
+                <h3>🔍 急診部門的預防角色</h3>
+                <ul>
+                    <li><strong>傷害模式識別</strong>：收集與分析傷害型態</li>
+                    <li><strong>高風險族群識別</strong>：找出重複受傷的個案</li>
+                    <li><strong>危險因子篩檢</strong>：酒精、藥物、家暴篩檢</li>
+                    <li><strong>轉介服務</strong>：社會服務、心理健康、成癮治療</li>
+                </ul>
+            </div>
+
+            <h2>五、法律與倫理考量 (Legal & Ethical Considerations)</h2>
+            
+            <div class="danger-box">
+                <h3>⚖️ 同意書與法律議題</h3>
+                <ul>
+                    <li><strong>緊急同意原則</strong>：生命危急時的implied consent</li>
+                    <li><strong>代理同意機制</strong>：無法自主決定時的surrogate decision making</li>
+                    <li><strong>未成年人同意</strong>：父母或監護人同意權</li>
+                    <li><strong>精神狀態異常</strong>：意識不清時的處理原則</li>
                 </ul>
             </div>
 
             <div class="info-box">
-                <h4 id="others-transfer">2. Resource-Appropriate Care 與轉診原則</h4>
+                <h3>🔒 隱私保護與資訊安全</h3>
+                <p><strong>國際資料保護法規：</strong></p>
                 <ul>
-                    <li>ATLS 強調「resource-appropriate trauma care」——各院所須預先了解人員、設備與專科可及性。</li>
-                    <li>當場域資源不足時，早期啟動轉院協議 可以減少延誤。</li>
-                    <li>團隊領導者負責 協調地面或空中後送，並確保適當護送能力。</li>
+                    <li><strong>HIPAA規範</strong> (美國)：健康資訊保護法</li>
+                    <li><strong>GDPR</strong> (歐盟)：一般資料保護規範</li>
+                    <li><strong>LGPD</strong> (巴西)：個人資料保護法</li>
+                    <li><strong>Privacy Act</strong> (澳洲)：隱私法</li>
                 </ul>
-            </div>
-
-            <div class="physiology-box">
-                <h4 id="others-teamwork">3. 團隊溝通與人因重點</h4>
+                <p><strong>實務考量：</strong></p>
                 <ul>
-                    <li>採用 S-xABCDE-BAR 進行院內外交班，確保傷勢與處置零遺漏。</li>
-                    <li>團隊須在 Primary Survey 完成後進行 tactical pause / time-out，由 TTL 整合現況並指示下一步。</li>
-                    <li>ATLS 鼓勵 debrief：處置結束後立即回顧流程並照顧團隊情緒。</li>
+                    <li>家屬資訊分享：何時可以分享、分享什麼</li>
+                    <li>媒體應對：重大事件的媒體處理</li>
                 </ul>
             </div>
 
             <div class="warning-box">
-                <h4 id="others-communication">4. 溝通重大噩耗 (Serious News)</h4>
+                <h3>🔍 證據保全責任</h3>
+                <p><strong>刑事案件處理：</strong></p>
                 <ul>
-                    <li>圖 1-7 提供 8-步驟框架：預備人員-環境 → Warning Shot → Headline → 沉默傾聽 → 情感回應 → 下一步計畫 → 團隊分享與 debrief。</li>
-                    <li>建議使用簡短警示語引入（例 “I have some serious news.”），再說明傷勢與預後。</li>
+                    <li>衣物保存：避免清洗或丟棄</li>
+                    <li>異物保存：子彈、玻璃碎片等</li>
+                    <li>攝影記錄：傷口型態記錄</li>
+                    <li>檢體採集：DNA、藥毒物檢驗</li>
+                </ul>
+                <p><strong>法醫學考量：</strong></p>
+                <ul>
+                    <li>傷口描述：大小、型態、位置</li>
+                    <li>時間記錄：受傷與處理時間</li>
+                    <li>處置記錄：可能影響傷口型態的醫療處置</li>
                 </ul>
             </div>
 
-            <div class="dosage-box">
-                <h4 id="others-legal">5. 法規、文件與證據保存</h4>
+            <h2>六、教育訓練與品質改善 (Education & Quality Improvement)</h2>
+            
+            <div class="concept-box">
+                <h3>📈 持續品質改善概念</h3>
+                <p><strong>事件檢討機制：</strong></p>
                 <ul>
-                    <li>指定 Recorder 即時記錄時間線、處置與藥物。</li>
-                    <li>轉診時須附上 影像檔與報告，並保持文件完整性以供法律或保險需求。</li>
-                    <li>若涉潛在犯罪（槍擊、家暴），應保存衣物／彈體，並遵循院內證據鏈流程。</li>
+                    <li>Hot wash：即時簡短檢討</li>
+                    <li>Formal debriefing：正式結構化檢討</li>
+                    <li>Root cause analysis：根本原因分析</li>
+                    <li>System improvement：系統性改善</li>
+                </ul>
+                <p><strong>績效指標監測：</strong></p>
+                <ul>
+                    <li>反應時間：各階段處理時間</li>
+                    <li>臨床結果：死亡率、併發症率</li>
+                    <li>滿意度：病人與家屬滿意度</li>
+                    <li>安全事件：醫療錯誤與近失事件</li>
+                </ul>
+            </div>
+
+            <div class="chart-box">
+                <h3>📋 教育訓練體系</h3>
+                <ul>
+                    <li><strong>ATLS課程體系</strong>：醫師標準化訓練</li>
+                    <li><strong>PHTLS課程</strong>：院前人員訓練</li>
+                    <li><strong>Stop the Bleed課程</strong>：一般民眾出血控制訓練</li>
+                    <li><strong>模擬訓練</strong>：高擬真情境訓練</li>
+                    <li><strong>跨專科訓練</strong>：多專業團隊訓練</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h3>📝 補充學習建議</h3>
+                <ol>
+                    <li><strong>持續關注指引更新</strong>：ATLS指引會定期更新，需要追蹤最新版本</li>
+                    <li><strong>跨領域學習</strong>：創傷醫學涉及多個專科，需要廣泛學習</li>
+                    <li><strong>實務經驗累積</strong>：書本知識需要與臨床實務結合</li>
+                    <li><strong>團隊合作能力</strong>：培養溝通協調與領導能力</li>
+                    <li><strong>倫理敏感性</strong>：提升文化敏感度與倫理判斷能力</li>
+                    <li><strong>終身學習</strong>：醫學知識不斷進步，需要持續學習更新</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+<!-- 補充參考資料 -->
+        <div id="supplement" class="tab-content">
+            <div class="danger-box">
+                <h3>⚠️ 重要聲明</h3>
+                <p><strong>本分頁內容為補充參考資料，非ATLS官方內容</strong></p>
+                <ul>
+                    <li>以下資料來源於一般醫學指引、臨床經驗總結及相關醫學文獻</li>
+                    <li>僅供學習參考使用，不應取代ATLS官方教材</li>
+                    <li>實際臨床決策應遵循當地醫院政策及最新醫學指引</li>
+                    <li>如有疑問，請以ATLS® Student Course Manual 11th Edition為準</li>
+                </ul>
+            </div>
+
+            <h2 id="supplement-vitals">一、生命徵象參考值表 (Vital Signs Reference Tables)</h2>
+
+            <div class="chart-box">
+                <h3>【年齡分層生命徵象正常值】</h3>
+                <table>
+                    <tr>
+                        <th>年齡</th>
+                        <th>心跳 (bpm)</th>
+                        <th>收縮壓 (mmHg)</th>
+                        <th>呼吸 (次/分)</th>
+                        <th>體重 (kg)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>新生兒 (0-30天)</strong></td>
+                        <td>120-160</td>
+                        <td>60-90</td>
+                        <td>30-50</td>
+                        <td>3.5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>嬰兒 (1-12月)</strong></td>
+                        <td>80-140</td>
+                        <td>70-100</td>
+                        <td>20-30</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><strong>幼兒 (1-3歲)</strong></td>
+                        <td>80-130</td>
+                        <td>80-110</td>
+                        <td>20-30</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td><strong>學齡前 (3-5歲)</strong></td>
+                        <td>80-120</td>
+                        <td>80-110</td>
+                        <td>20-30</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td><strong>學齡 (6-12歲)</strong></td>
+                        <td>70-110</td>
+                        <td>80-120</td>
+                        <td>20-30</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td><strong>青少年 (13-18歲)</strong></td>
+                        <td>60-100</td>
+                        <td>90-120</td>
+                        <td>12-20</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td><strong>成人 (>18歲)</strong></td>
+                        <td>60-100</td>
+                        <td>90-140</td>
+                        <td>12-20</td>
+                        <td>70</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="warning-box">
+                <h3>【休克分級與失血量對照表】</h3>
+                <table>
+                    <tr>
+                        <th>休克分級</th>
+                        <th>失血量</th>
+                        <th>失血百分比</th>
+                        <th>心跳</th>
+                        <th>血壓</th>
+                        <th>脈壓</th>
+                        <th>呼吸</th>
+                        <th>尿量</th>
+                        <th>意識</th>
+                    </tr>
+                    <tr>
+                        <td><strong>I級</strong></td>
+                        <td><750mL</td>
+                        <td><15%</td>
+                        <td><100</td>
+                        <td>正常</td>
+                        <td>正常或增加</td>
+                        <td>14-20</td>
+                        <td>>30mL/hr</td>
+                        <td>輕微焦慮</td>
+                    </tr>
+                    <tr>
+                        <td><strong>II級</strong></td>
+                        <td>750-1500mL</td>
+                        <td>15-30%</td>
+                        <td>100-120</td>
+                        <td>正常</td>
+                        <td>減少</td>
+                        <td>20-30</td>
+                        <td>20-30mL/hr</td>
+                        <td>輕度至中度焦慮</td>
+                    </tr>
+                    <tr>
+                        <td><strong>III級</strong></td>
+                        <td>1500-2000mL</td>
+                        <td>30-40%</td>
+                        <td>120-140</td>
+                        <td>減少</td>
+                        <td>減少</td>
+                        <td>30-40</td>
+                        <td>5-15mL/hr</td>
+                        <td>焦慮、困惑</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IV級</strong></td>
+                        <td>>2000mL</td>
+                        <td>>40%</td>
+                        <td>>140</td>
+                        <td>減少</td>
+                        <td>減少</td>
+                        <td>>35</td>
+                        <td>微量</td>
+                        <td>昏迷、嗜睡</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="concept-box">
+                <h3>【GCS評分詳細表】</h3>
+                <table>
+                    <tr>
+                        <th>項目</th>
+                        <th>反應</th>
+                        <th>分數</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="4"><strong>睜眼反應<br>(Eye Opening)</strong></td>
+                        <td>自發性睜眼</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>呼喚後睜眼</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>疼痛刺激後睜眼</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>無反應</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><strong>語言反應<br>(Verbal Response)</strong></td>
+                        <td>正確回答問題，對話清楚</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>對話困惑，答非所問</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>言語不當，可說出單字</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>無法理解的聲音</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>無語言反應</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6"><strong>動作反應<br>(Motor Response)</strong></td>
+                        <td>遵從指令</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>能定位疼痛</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>正常屈曲反應（撤避反應）</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>異常屈曲反應（去皮質僵直）</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>伸直反應（去腦僵直）</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>無動作反應</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 id="supplement-drugs">二、藥物劑量速查表 (Medication Dosing Quick Reference)</h2>
+
+            <div class="dosage-box">
+                <h3>【急救藥物劑量表 - 成人】</h3>
+                <table>
+                    <tr>
+                        <th>藥物</th>
+                        <th>適應症</th>
+                        <th>劑量</th>
+                        <th>給藥途徑</th>
+                        <th>注意事項</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Epinephrine</strong></td>
+                        <td>心跳停止</td>
+                        <td>1mg 每3-5分鐘</td>
+                        <td>IV/IO</td>
+                        <td>可重複給予</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Epinephrine</strong></td>
+                        <td>過敏性休克</td>
+                        <td>0.3-0.5mg</td>
+                        <td>IM（大腿外側）</td>
+                        <td>必要時15分鐘後重複</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Atropine</strong></td>
+                        <td>症狀性心搏過緩</td>
+                        <td>1mg</td>
+                        <td>IV</td>
+                        <td>最大總劑量3mg</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Adenosine</strong></td>
+                        <td>穩定的SVT</td>
+                        <td>6mg → 12mg</td>
+                        <td>IV快推</td>
+                        <td>需快速沖洗</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Amiodarone</strong></td>
+                        <td>VF/VT</td>
+                        <td>300mg</td>
+                        <td>IV</td>
+                        <td>第二劑150mg</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tranexamic Acid</strong></td>
+                        <td>外傷性出血</td>
+                        <td>1g over 10min + 1g over 8hr</td>
+                        <td>IV</td>
+                        <td>受傷後3小時內</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mannitol</strong></td>
+                        <td>顱內壓升高</td>
+                        <td>0.25-1g/kg</td>
+                        <td>IV drip</td>
+                        <td>確認腎功能正常</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Norepinephrine</strong></td>
+                        <td>神經性休克</td>
+                        <td>0.5-1 mcg/min</td>
+                        <td>IV點滴</td>
+                        <td>禁用於出血性休克</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="dosage-box">
+                <h3>【小兒急救藥物劑量表】</h3>
+                <table>
+                    <tr>
+                        <th>藥物</th>
+                        <th>適應症</th>
+                        <th>劑量（每公斤體重）</th>
+                        <th>最大劑量</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Epinephrine</strong></td>
+                        <td>心跳停止</td>
+                        <td>0.01mg/kg</td>
+                        <td>1mg</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Epinephrine</strong></td>
+                        <td>過敏性休克</td>
+                        <td>0.01mg/kg IM</td>
+                        <td>0.5mg</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Atropine</strong></td>
+                        <td>心搏過緩</td>
+                        <td>0.02mg/kg</td>
+                        <td>0.5mg（最小劑量0.1mg）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Adenosine</strong></td>
+                        <td>SVT</td>
+                        <td>0.1mg/kg → 0.2mg/kg</td>
+                        <td>6mg → 12mg</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Amiodarone</strong></td>
+                        <td>VF/VT</td>
+                        <td>5mg/kg</td>
+                        <td>300mg</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="physiology-box">
+                <h3>【輸液復甦指引】</h3>
+                <p><strong>成人外傷復甦：</strong></p>
+                <ul>
+                    <li><strong>初始輸液：</strong> 生理食鹽水或乳酸林格氏液 1-2L</li>
+                    <li><strong>血壓目標：</strong> 維持灌流（不追求正常血壓）</li>
+                    <li><strong>輸血指標：</strong> Hb <7g/dL 或持續出血</li>
+                    <li><strong>FFP:RBC比例：</strong> 1:1 至 1:2</li>
+                </ul>
+                <p><strong>小兒外傷復甦：</strong></p>
+                <ul>
+                    <li><strong>初始輸液：</strong> 20mL/kg 晶體溶液</li>
+                    <li><strong>可重複：</strong> 最多3次（總共60mL/kg）</li>
+                    <li><strong>輸血指標：</strong> 10-20mL/kg 紅血球</li>
+                </ul>
+            </div>
+
+            <h2 id="supplement-imaging">三、影像判讀要點 (Imaging Interpretation Key Points)</h2>
+
+            <div class="chart-box">
+                <h3>【胸部X光異常徵象檢查表】</h3>
+                <table>
+                    <tr>
+                        <th>部位</th>
+                        <th>正常徵象</th>
+                        <th>異常徵象</th>
+                        <th>可能診斷</th>
+                    </tr>
+                    <tr>
+                        <td><strong>氣管</strong></td>
+                        <td>居中</td>
+                        <td>偏移</td>
+                        <td>張力性氣胸、大量胸腔積液</td>
+                    </tr>
+                    <tr>
+                        <td><strong>肺野</strong></td>
+                        <td>清晰、對稱</td>
+                        <td>單側變白、變黑</td>
+                        <td>氣胸、血胸、肺挫傷</td>
+                    </tr>
+                    <tr>
+                        <td><strong>肋骨</strong></td>
+                        <td>完整弧形</td>
+                        <td>骨折線、錯位</td>
+                        <td>肋骨骨折、連枷胸</td>
+                    </tr>
+                    <tr>
+                        <td><strong>橫膈</strong></td>
+                        <td>清楚弧形</td>
+                        <td>輪廓不清、高低不等</td>
+                        <td>橫膈破裂、胃疝氣</td>
+                    </tr>
+                    <tr>
+                        <td><strong>心臟輪廓</strong></td>
+                        <td>清楚邊界</td>
+                        <td>輪廓模糊、擴大</td>
+                        <td>心包填塞、心肌挫傷</td>
+                    </tr>
+                    <tr>
+                        <td><strong>縱膈</strong></td>
+                        <td>不超過胸廓1/3</td>
+                        <td>擴大(>8cm)</td>
+                        <td>主動脈撕裂、食道破裂</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="warning-box">
+                <h3>【骨盆X光判讀重點】</h3>
+                <table>
+                    <tr>
+                        <th>檢查項目</th>
+                        <th>正常徵象</th>
+                        <th>異常徵象</th>
+                        <th>臨床意義</th>
+                    </tr>
+                    <tr>
+                        <td><strong>恥骨聯合</strong></td>
+                        <td>間隙<5mm</td>
+                        <td>分離>5mm</td>
+                        <td>前環不穩定</td>
+                    </tr>
+                    <tr>
+                        <td><strong>薦髂關節</strong></td>
+                        <td>對稱關節間隙</td>
+                        <td>不對稱、移位</td>
+                        <td>後環不穩定</td>
+                    </tr>
+                    <tr>
+                        <td><strong>恥骨支</strong></td>
+                        <td>完整弧形</td>
+                        <td>骨折線</td>
+                        <td>前環骨折</td>
+                    </tr>
+                    <tr>
+                        <td><strong>髂骨翼</strong></td>
+                        <td>完整輪廓</td>
+                        <td>骨折、變形</td>
+                        <td>高能量外傷</td>
+                    </tr>
+                    <tr>
+                        <td><strong>髖關節</strong></td>
+                        <td>對稱關節間隙</td>
+                        <td>移位、脫臼</td>
+                        <td>股骨頭骨折脫臼</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 id="supplement-procedures">四、處置流程圖 (Treatment Flow Charts)</h2>
+
+            <div class="chart-box">
+                <h3>【氣道管理決策樹】</h3>
+                <pre>
+呼吸道評估
+├── 意識清楚 + 能自主維持氣道
+│   ├── 氧氣 + 監測
+│   └── 準備輔助氣道
+├── 意識不清 或 氣道阻塞
+│   ├── GCS ≤ 8 → 確定性氣道（插管）
+│   ├── GCS 9-12 → 密切監測 + 準備插管
+│   └── 完全阻塞 → 緊急氣道
+└── 嚴重顏面外傷
+    ├── 可插管 → RSI + 頸椎保護
+    ├── 困難氣道 → 清醒插管 或 LMA
+    └── 無法插管 → 緊急環甲膜切開術
+                </pre>
+            </div>
+
+            <div class="danger-box">
+                <h3>【出血控制演算法】</h3>
+                <pre>
+發現出血
+├── 外出血
+│   ├── 四肢出血
+│   │   ├── 直接加壓 → 有效 → 包紮固定
+│   │   └── 直接加壓 → 無效 → 止血帶
+│   ├── 軀幹出血
+│   │   ├── 直接加壓 + 紗布填塞
+│   │   └── 無效 → 緊急手術
+│   └── 頭頸部出血
+│       ├── 加壓包紮
+│       ├── 血管縫合
+│       └── 血管夾止血
+└── 內出血
+    ├── 胸腔 → 胸管引流 + 手術評估
+    ├── 腹腔 → FAST陽性 → 緊急手術
+    ├── 骨盆腔 → 骨盆固定 + 血管介入
+    └── 後腹腔 → CT評估 + 保守或介入治療
+                </pre>
+            </div>
+
+            <div class="warning-box">
+                <h3>【休克處理流程】</h3>
+                <pre>
+休克識別（SI >1.0 或臨床徵象）
+├── 出血性休克
+│   ├── 控制出血源
+│   ├── 大口徑IV通路 × 2
+│   ├── 輸液復甦（限制性）
+│   ├── 配血 + 緊急輸血
+│   └── 啟動大量輸血協定
+├── 心因性休克
+│   ├── 心電圖 + 超音波
+│   ├── 強心劑（Dobutamine）
+│   ├── 利尿劑（小心使用）
+│   └── 緊急心導管/手術
+├── 神經性休克
+│   ├── 脊椎固定
+│   ├── 輸液復甦
+│   ├── 血管加壓劑（Norepinephrine）
+│   └── 類固醇考慮
+└── 感染性休克
+    ├── 抗生素（1小時內）
+    ├── 輸液復甦（30mL/kg）
+    ├── 血管加壓劑
+    └── 感染源控制
+                </pre>
+            </div>
+
+            <h2 id="supplement-transfer">五、轉院評估表 (Transfer Assessment Forms)</h2>
+
+            <div class="info-box">
+                <h3>【轉院適應症清單】</h3>
+                <table>
+                    <tr>
+                        <th>系統</th>
+                        <th>轉院適應症</th>
+                        <th>緊急程度</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><strong>神經系統</strong></td>
+                        <td>GCS ≤ 8 或下降超過2分</td>
+                        <td>立即</td>
+                    </tr>
+                    <tr>
+                        <td>顱內壓升高徵象</td>
+                        <td>立即</td>
+                    </tr>
+                    <tr>
+                        <td>脊髓損傷合併神經症狀</td>
+                        <td>急性</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><strong>胸腔系統</strong></td>
+                        <td>連枷胸</td>
+                        <td>急性</td>
+                    </tr>
+                    <tr>
+                        <td>縱膈擴大 >8cm</td>
+                        <td>立即</td>
+                    </tr>
+                    <tr>
+                        <td>持續大量血胸 (>1500mL)</td>
+                        <td>立即</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><strong>腹部系統</strong></td>
+                        <td>腹膜炎徵象</td>
+                        <td>急性</td>
+                    </tr>
+                    <tr>
+                        <td>FAST陽性 + 血流動力學不穩定</td>
+                        <td>立即</td>
+                    </tr>
+                    <tr>
+                        <td>穿透性腹部外傷</td>
+                        <td>急性</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>血管系統</strong></td>
+                        <td>肢體缺血 (6小時內)</td>
+                        <td>立即</td>
+                    </tr>
+                    <tr>
+                        <td>大血管損傷</td>
+                        <td>立即</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="chart-box">
+                <h3>【醫院資源需求評估】</h3>
+                <table>
+                    <tr>
+                        <th>專科需求</th>
+                        <th>設備需求</th>
+                        <th>人力需求</th>
+                        <th>時間需求</th>
+                    </tr>
+                    <tr>
+                        <td><strong>神經外科</strong></td>
+                        <td>CT、MRI、ICP監測</td>
+                        <td>24小時神外醫師</td>
+                        <td><4小時</td>
+                    </tr>
+                    <tr>
+                        <td><strong>胸腔外科</strong></td>
+                        <td>開胸器械、體外循環</td>
+                        <td>胸腔外科醫師</td>
+                        <td><2小時</td>
+                    </tr>
+                    <tr>
+                        <td><strong>血管外科</strong></td>
+                        <td>血管攝影、支架</td>
+                        <td>血管外科醫師</td>
+                        <td><6小時</td>
+                    </tr>
+                    <tr>
+                        <td><strong>整形外科</strong></td>
+                        <td>手術顯微鏡、器械</td>
+                        <td>整形外科醫師</td>
+                        <td><8小時</td>
+                    </tr>
+                    <tr>
+                        <td><strong>小兒外科</strong></td>
+                        <td>小兒專用器械</td>
+                        <td>小兒外科醫師</td>
+                        <td>24小時</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="warning-box">
+                <h3>【轉院緊急度分級】</h3>
+                <p><strong>Level 1 - 立即轉院 (< 1小時)：</strong></p>
+                <ul>
+                    <li>持續大量出血無法控制</li>
+                    <li>氣道完全阻塞</li>
+                    <li>張力性氣胸</li>
+                    <li>心包填塞</li>
+                    <li>顱內壓危象</li>
+                </ul>
+                
+                <p><strong>Level 2 - 急性轉院 (< 6小時)：</strong></p>
+                <ul>
+                    <li>需要專科手術</li>
+                    <li>多重器官衰竭</li>
+                    <li>嚴重腦外傷</li>
+                    <li>複雜骨折</li>
+                </ul>
+                
+                <p><strong>Level 3 - 計劃性轉院 (< 24小時)：</strong></p>
+                <ul>
+                    <li>穩定後需專科治療</li>
+                    <li>復健需求</li>
+                    <li>長期照護需求</li>
+                    <li>家屬要求轉院</li>
+                </ul>
+            </div>
+
+            <h2 id="supplement-equipment">六、設備檢查清單 (Equipment Checklist)</h2>
+
+            <div class="info-box">
+                <h3>【外傷急救車設備清單】</h3>
+                <table>
+                    <tr>
+                        <th>類別</th>
+                        <th>必備設備</th>
+                        <th>數量</th>
+                        <th>檢查頻率</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="4"><strong>氣道管理</strong></td>
+                        <td>成人氣管內管 (6.0-8.0mm)</td>
+                        <td>各2支</td>
+                        <td>每班</td>
+                    </tr>
+                    <tr>
+                        <td>喉鏡 (Miller #3, #4)</td>
+                        <td>各1支</td>
+                        <td>每班</td>
+                    </tr>
+                    <tr>
+                        <td>LMA (3, 4, 5號)</td>
+                        <td>各1個</td>
+                        <td>每週</td>
+                    </tr>
+                    <tr>
+                        <td>環甲膜切開包</td>
+                        <td>1包</td>
+                        <td>每月</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><strong>呼吸支持</strong></td>
+                        <td>AMBU復甦球</td>
+                        <td>2個</td>
+                        <td>每班</td>
+                    </tr>
+                    <tr>
+                        <td>面罩 (各尺寸)</td>
+                        <td>5個</td>
+                        <td>每週</td>
+                    </tr>
+                    <tr>
+                        <td>胸腔減壓針 (14G)</td>
+                        <td>4支</td>
+                        <td>每班</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><strong>循環支持</strong></td>
+                        <td>大口徑靜脈留置針</td>
+                        <td>10支</td>
+                        <td>每班</td>
+                    </tr>
+                    <tr>
+                        <td>骨內輸液針</td>
+                        <td>2支</td>
+                        <td>每週</td>
+                    </tr>
+                    <tr>
+                        <td>止血帶</td>
+                        <td>4條</td>
+                        <td>每班</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>監測設備</strong></td>
+                        <td>血壓計 + 聽診器</td>
+                        <td>1組</td>
+                        <td>每班</td>
+                    </tr>
+                    <tr>
+                        <td>脈搏血氧機</td>
+                        <td>1台</td>
+                        <td>每班</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="warning-box">
+                <h3>【急診創傷床位設備要求】</h3>
+                <p><strong>Level 1 創傷床 (最高級)：</strong></p>
+                <ul>
+                    <li><strong>監測設備：</strong> 多參數監視器、有創血壓監測、ETCO2</li>
+                    <li><strong>呼吸設備：</strong> 呼吸器、氧氣流量計、AMBU</li>
+                    <li><strong>循環設備：</strong> 輸液加溫器、大量輸血系統</li>
+                    <li><strong>影像設備：</strong> 攜帶式X光、超音波</li>
+                    <li><strong>手術設備：</strong> 開胸包、開腹包、氣道處置包</li>
+                </ul>
+                
+                <p><strong>Level 2 創傷床 (標準級)：</strong></p>
+                <ul>
+                    <li><strong>基本監測：</strong> 心電圖、血氧、血壓</li>
+                    <li><strong>氧氣支持：</strong> 鼻導管、面罩、AMBU</li>
+                    <li><strong>基本處置：</strong> 縫合包、小手術器械</li>
+                    <li><strong>輸液設備：</strong> 點滴架、加壓袋</li>
+                </ul>
+            </div>
+
+            <div class="chart-box">
+                <h3>【設備故障應變計畫】</h3>
+                <table>
+                    <tr>
+                        <th>設備類型</th>
+                        <th>主要設備</th>
+                        <th>備用方案</th>
+                        <th>緊急聯絡</th>
+                    </tr>
+                    <tr>
+                        <td><strong>監測設備</strong></td>
+                        <td>生理監視器</td>
+                        <td>攜帶式監視器</td>
+                        <td>生醫工程部</td>
+                    </tr>
+                    <tr>
+                        <td><strong>影像設備</strong></td>
+                        <td>CT掃描儀</td>
+                        <td>他院緊急轉診</td>
+                        <td>放射科主任</td>
+                    </tr>
+                    <tr>
+                        <td><strong>手術設備</strong></td>
+                        <td>手術室</td>
+                        <td>急診手術</td>
+                        <td>手術室護理長</td>
+                    </tr>
+                    <tr>
+                        <td><strong>血庫設備</strong></td>
+                        <td>血型配對機</td>
+                        <td>手工配血</td>
+                        <td>血庫主任</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2>七、特殊情況處理指引 (Special Situations Guidelines)</h2>
+
+            <div class="danger-box">
+                <h3>【懷孕外傷患者特殊考量】</h3>
+                <table>
+                    <tr>
+                        <th>孕期</th>
+                        <th>解剖生理變化</th>
+                        <th>特殊處置</th>
+                        <th>監測重點</th>
+                    </tr>
+                    <tr>
+                        <td><strong>第一孕期<br>(0-12週)</strong></td>
+                        <td>子宮仍在骨盆腔內</td>
+                        <td>標準ATLS流程</td>
+                        <td>β-hCG檢測</td>
+                    </tr>
+                    <tr>
+                        <td><strong>第二孕期<br>(13-27週)</strong></td>
+                        <td>子宮開始壓迫下腔靜脈</td>
+                        <td>左側傾斜15-30度</td>
+                        <td>胎心音監測</td>
+                    </tr>
+                    <tr>
+                        <td><strong>第三孕期<br>(28週以上)</strong></td>
+                        <td>顯著血管壓迫<br>血容量增加50%</td>
+                        <td>• 左側傾斜必須<br>• 準備剖腹產<br>• 考慮圍產期剖腹術</td>
+                        <td>• 持續胎心監測<br>• 產科會診<br>• 胎盤早剝評估</td>
+                    </tr>
+                </table>
+                
+                <p><strong>關鍵處置原則：</strong></p>
+                <ul>
+                    <li><strong>母體優先：</strong> 拯救母親生命是拯救胎兒的最佳方法</li>
+                    <li><strong>左側傾斜：</strong> 懷孕20週後必須執行，解除子宮壓迫</li>
+                    <li><strong>圍產期剖腹術：</strong> 母體心跳停止後4分鐘內執行</li>
+                    <li><strong>Kleihauer-Betke測試：</strong> 評估胎兒-母體出血</li>
                 </ul>
             </div>
 
             <div class="concept-box">
-                <h4 id="others-dignity">6. 患者尊嚴與 Trauma-Informed Care</h4>
+                <h3>【小兒外傷評估修正】</h3>
+                <table>
+                    <tr>
+                        <th>年齡</th>
+                        <th>體重估算公式</th>
+                        <th>血壓下限</th>
+                        <th>特殊考量</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1-12個月</strong></td>
+                        <td>(月齡 + 9) ÷ 2</td>
+                        <td>70mmHg</td>
+                        <td>頭部比例大、體表面積大</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1-10歲</strong></td>
+                        <td>(年齡 × 2) + 8</td>
+                        <td>70 + (年齡 × 2)</td>
+                        <td>代償能力強、失代償快</td>
+                    </tr>
+                    <tr>
+                        <td><strong>>10歲</strong></td>
+                        <td>(年齡 × 3) + 7</td>
+                        <td>90mmHg</td>
+                        <td>接近成人生理</td>
+                    </tr>
+                </table>
+                
+                <p><strong>小兒特殊處置要點：</strong></p>
                 <ul>
-                    <li>病人需 完全暴露 以免漏診，同時使用毯子或遮蔽巾維持隱私與體溫。</li>
-                    <li>團隊應尊重 文化、語言需求與既往心理創傷；必要時使用醫療口譯。</li>
+                    <li><strong>保溫：</strong> 體表面積大，容易失溫</li>
+                    <li><strong>輸液：</strong> 20mL/kg晶體溶液，可重複3次</li>
+                    <li><strong>氣道：</strong> 頭部較大，需肩部墊高</li>
+                    <li><strong>非意外傷害：</strong> 高度警覺兒童虐待可能</li>
                 </ul>
             </div>
-            
-            <div class="danger-box">
-                <h4 id="others-disaster">7. 災難與多重傷患準備</h4>
-                <ul>
-                    <li>醫院須 定期演練大規模傷亡 (mass-casualty) 流程，並熟悉院內指揮鏈。</li>
-                    <li>團隊成員應了解 區域／國家分級指引 (2021 Field-Triage Guideline) 以便於大量事故時快速決策。</li>
-                </ul>
+
+            <div class="physiology-box">
+                <h3>【老年外傷患者特殊考量】</h3>
+                <table>
+                    <tr>
+                        <th>系統</th>
+                        <th>生理變化</th>
+                        <th>臨床影響</th>
+                        <th>處置調整</th>
+                    </tr>
+                    <tr>
+                        <td><strong>心血管</strong></td>
+                        <td>• 血管硬化<br>• 心輸出量下降</td>
+                        <td>"正常"血壓可能是低血壓</td>
+                        <td>較高血壓目標<br>小心輸液過量</td>
+                    </tr>
+                    <tr>
+                        <td><strong>呼吸</strong></td>
+                        <td>• 肺活量下降<br>• 胸壁僵硬</td>
+                        <td>容易肺炎、呼吸衰竭</td>
+                        <td>積極呼吸治療<br>早期插管考慮</td>
+                    </tr>
+                    <tr>
+                        <td><strong>腎臟</strong></td>
+                        <td>• 腎功能下降<br>• 藥物清除率降低</td>
+                        <td>容易腎衰竭</td>
+                        <td>藥物劑量調整<br>避免腎毒性藥物</td>
+                    </tr>
+                    <tr>
+                        <td><strong>骨骼</strong></td>
+                        <td>• 骨質疏鬆<br>• 癒合能力差</td>
+                        <td>低能量外傷高風險</td>
+                        <td>影像檢查積極<br>早期固定</td>
+                    </tr>
+                </table>
             </div>
+
+            <h2>八、溝通與交班標準表單 (Communication & Handoff Standard Forms)</h2>
 
             <div class="warning-box">
-                <h4 id="others-infection">8. 感染控制與 PPE 概念</h4>
-                <p>初評時使用適當 個人防護裝備 (PPE)：眼面罩、手套、袖套或隔離衣；如有疑似空氣傳播風險，應升級呼吸防護。</p>
+                <h3>【標準化交班表單 - SBAR-R】</h3>
+                <table>
+                    <tr>
+                        <th>項目</th>
+                        <th>內容要求</th>
+                        <th>範例</th>
+                    </tr>
+                    <tr>
+                        <td><strong>S - Situation</strong><br>(狀況)</td>
+                        <td>• 病人基本資料<br>• 目前主要問題<br>• 轉入原因</td>
+                        <td>"35歲男性，車禍外傷，疑似腹內出血，血壓不穩定需緊急手術"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B - Background</strong><br>(背景)</td>
+                        <td>• 受傷機轉<br>• 既往病史<br>• 過敏史與用藥</td>
+                        <td>"高速撞擊，未繫安全帶，有糖尿病史，對盤尼西林過敏"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>A - Assessment</strong><br>(評估)</td>
+                        <td>• 生命徵象<br>• 檢查發現<br>• 診斷與傷害嚴重度</td>
+                        <td>"BP 85/50, HR 125, FAST陽性，疑似脾臟破裂，ISS 25"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R - Recommendation</strong><br>(建議)</td>
+                        <td>• 緊急處置需求<br>• 後續治療計畫<br>• 特殊注意事項</td>
+                        <td>"建議立即剖腹探查，準備大量輸血，通知血庫備血"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>R - Read Back</strong><br>(覆誦確認)</td>
+                        <td>• 接收者覆誦重點<br>• 確認理解正確<br>• 明確責任交接</td>
+                        <td>"確認收治35歲車禍男性，腹內出血需緊急手術，已通知OR"</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="concept-box">
+                <h3>【家屬溝通要點】</h3>
+                <p><strong>初次溝通(受傷後30分鐘內)：</strong></p>
+                <ul>
+                    <li><strong>說明現況：</strong> "您的家人受傷了，我們正在進行緊急處理"</li>
+                    <li><strong>避免預後：</strong> 不要過早討論預後或死亡可能</li>
+                    <li><strong>定時更新：</strong> 承諾每30-60分鐘提供進度更新</li>
+                    <li><strong>情緒支持：</strong> 安排社工或宗教師陪伴</li>
+                </ul>
+                
+                <p><strong>手術前溝通：</strong></p>
+                <ul>
+                    <li><strong>手術必要性：</strong> 解釋為什麼需要手術</li>
+                    <li><strong>手術風險：</strong> 誠實告知主要風險</li>
+                    <li><strong>替代方案：</strong> 說明其他治療選擇</li>
+                    <li><strong>時間預估：</strong> 提供合理的手術時間預估</li>
+                </ul>
+                
+                <p><strong>壞消息告知(SPIKES模式)：</strong></p>
+                <ul>
+                    <li><strong>S - Setting：</strong> 安靜私密的環境</li>
+                    <li><strong>P - Perception：</strong> 了解家屬認知程度</li>
+                    <li><strong>I - Invitation：</strong> 詢問家屬想知道多少</li>
+                    <li><strong>K - Knowledge：</strong> 提供資訊（分段、簡單）</li>
+                    <li><strong>E - Emotions：</strong> 回應情緒反應</li>
+                    <li><strong>S - Strategy：</strong> 討論後續計畫</li>
+                </ul>
+            </div>
+
+            <div class="physiology-box">
+                <h3>【補充資料使用指引】</h3>
+                <p><strong>這些補充資料的臨床應用建議：</strong></p>
+                <ol>
+                    <li><strong>快速參考：</strong> 緊急情況下的數值查詢</li>
+                    <li><strong>教學輔助：</strong> 新進人員培訓參考</li>
+                    <li><strong>標準化作業：</strong> 建立院內SOP參考</li>
+                    <li><strong>品質改善：</strong> 監測指標設定參考</li>
+                    <li><strong>跨科溝通：</strong> 統一語言和標準</li>
+                </ol>
+                
+                <p><strong>使用注意事項：</strong></p>
+                <ul>
+                    <li>以ATLS官方內容為主，補充資料為輔</li>
+                    <li>定期更新，確保符合最新醫學指引</li>
+                    <li>結合當地法規和醫院政策使用</li>
+                    <li>持續教育，提升團隊整體水準</li>
+                </ul>
+                
+                <div class="warning-box" style="margin-top: 20px;">
+                    <h4>📝 最終提醒</h4>
+                    <p><strong>本補充資料僅供參考，所有臨床決策應：</strong></p>
+                    <ul>
+                        <li>以ATLS® Student Course Manual 11th Edition為準</li>
+                        <li>遵循當地醫院政策和標準作業程序</li>
+                        <li>結合臨床經驗和個案特殊性</li>
+                        <li>持續關注最新醫學證據和指引更新</li>
+                    </ul>
+                </div>
             </div>
         </div>
+    <!-- 免責聲明 -->
+    <div class="disclaimer">
+        <h3>⚠️ 免責聲明與版權資訊</h3>
+        <ul>
+            <li>本網頁內容使用生成式AI (GAI) 協助製作</li>
+            <li>本網頁為自學用途之中文編譯版本，非官方授權翻譯</li>
+            <li>原文版權屬於 American College of Surgeons Committee on Trauma</li>
+            <li>本網頁教材旨在促進醫學教育發展，僅供學習者參考使用，嚴禁任何商業用途</li>
+            <li>讀者若需完整理解原文，建議參閱原始英文版本 ATLS® Student Course Manual 11th Edition</li>
+            <li>本內容不應取代正式的ATLS®課程訓練或臨床判斷</li>
+            <li>醫療決策應基於個別病人狀況及最新臨床指引</li>
+        </ul>
     </div>
+</div>
 
-    <script>
-        function showTab(tabId) {
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`).classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+<button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+<script>
+    // Tab functionality
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
         }
-
-        function toggleAnswer(element) {
-            const answer = element.nextElementSibling;
-            const toggle = element.querySelector('.qa-toggle');
-            answer.classList.toggle('open');
-            toggle.classList.toggle('open');
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
         }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
 
-        function downloadPDF() {
-            window.print();
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        window.onscroll = function() {
-            const backToTopBtn = document.getElementById('back-to-top');
-            const progressBar = document.getElementById('progress-bar');
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + '%';
-            if (winScroll > 300) {
-                backToTopBtn.style.display = 'flex';
-            } else {
-                backToTopBtn.style.display = 'none';
-            }
-        };
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Q&A functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const questions = document.querySelectorAll('.question');
+        questions.forEach(function(question) {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                if (isActive) {
+                    answer.classList.remove('active');
+                    this.classList.remove('active');
+                } else {
+                    answer.classList.add('active');
+                    this.classList.add('active');
                 }
             });
         });
-    </script>
+    });
+
+    // Progress bar
+    window.addEventListener('scroll', function() {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (scrollTop / scrollHeight) * 100;
+        document.querySelector('.progress-bar').style.width = scrolled + '%';
+        
+        // Show/hide back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        if (scrollTop > 300) {
+            backToTop.style.display = 'block';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    // Back to top functionality
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>
