@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATLS Chapter 11: Trauma in the Pediatric Patient 考前重點複習筆記</title>
+  <style>
+    /* 全局重置 */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Microsoft JhengHei', sans-serif; line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    /* 進度條 */
+    #progress-container { position:fixed; top:0; left:0; width:100%; height:4px; background:#e0e0e0; z-index:1000; }
+    #progress-bar { height:4px; width:0; background:#007bff; }
+    /* 標題區 */
+    header { padding:20px; text-align:center; background:#f8f9fa; border-bottom:1px solid #ddd; }
+    /* Tabs */
+    .tabs { display:flex; border-bottom:2px solid #ddd; background:#f1f1f1; }
+    .tabs button { flex:1; padding:10px; cursor:pointer; border:none; background:none; }
+    .tabs button.active { border-bottom:3px solid #007bff; font-weight:bold; }
+    .tab-content { padding:20px; display:none; }
+    .tab-content.active { display:block; }
+    /* Dropdown 導覽 */
+    .nav-dropdown { margin:10px 0; }
+    /* Q&A 折疊 */
+    .question { padding:10px; background:#eef; cursor:pointer; border:1px solid #ccd; margin-top:10px; }
+    .answer { display:none; padding:10px; border:1px solid #ccd; border-top:none; }
+    /* 資訊框 */
+/* ===== 高對比色塊資訊分類框 ===== */
+
+.concept-box {
+  background: #004085 !important;  /* 深藍底 */
+  color: #ffffff !important;       /* 白字 */
+  border: 1px solid #b8daff !important;
+}
+.concept-box h3,
+.concept-box ul li {
+  color: #ffffff !important;       /* 確保標題與條列文字都是白色 */
+}
+.concept-box::before {
+  content: "💡";
+  margin-right: 8px;
+}
+
+.warning-box {
+  background: #ffc107;
+  color: #212529;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+.warning-box::before {
+  content: "⚠️";
+  margin-right: 8px;
+}
+
+.danger-box {
+  background: #dc3545;
+  color: #ffffff;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+.danger-box::before {
+  content: "🚨";
+  margin-right: 8px;
+}
+
+.dosage-box {
+  background: #6f42c1;
+  color: #ffffff;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+.dosage-box::before {
+  content: "💉";
+  margin-right: 8px;
+}
+
+.physiology-box {
+  background: #28a745;
+  color: #ffffff;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+.physiology-box::before {
+  content: "⚙️";
+  margin-right: 8px;
+}
+
+.chart-box {
+  background: #fd7e14;
+  color: #212529;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+.chart-box::before {
+  content: "📊";
+  margin-right: 8px;
+}
+
+    /* ===== 強化資訊分類區塊 ===== */
+.info-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 8px;
+  border: 1px solid;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  background-color: #f9f9f9;
+}
+.info-box::before {
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-top: 2px;
+}
+/* 概念框 */
+.concept-box.info-box {
+  border-color: #007bff;
+  background-color: #e7f1ff;
+}
+.concept-box.info-box::before { content: "💡"; }
+/* 警告框 */
+.warning-box.info-box {
+  border-color: #ffc107;
+  background-color: #fff8e1;
+}
+.warning-box.info-box::before { content: "⚠️"; }
+/* 危險框 */
+.danger-box.info-box {
+  border-color: #dc3545;
+  background-color: #fdecea;
+}
+.danger-box.info-box::before { content: "🚨"; }
+/* 劑量框 */
+.dosage-box.info-box {
+  border-color: #6f42c1;
+  background-color: #f3e8ff;
+}
+.dosage-box.info-box::before { content: "💉"; }
+/* 生理框 */
+.physiology-box.info-box {
+  border-color: #28a745;
+  background-color: #e6f4ea;
+}
+.physiology-box.info-box::before { content: "⚙️"; }
+/* 圖表框 */
+.chart-box.info-box {
+  border-color: #fd7e14;
+  background-color: #fff4e6;
+}
+.chart-box.info-box::before { content: "📊"; }
+
+    /* Back to Top */
+    #back-to-top { position:fixed; bottom:20px; right:20px; display:none; padding:10px; background:#007bff; color:#fff; border:none; border-radius:4px; cursor:pointer; }
+    /* 列印樣式 */
+    @media print {
+      .tabs, .nav-dropdown, #back-to-top, button { display:none !important; }
+      .tab-content { display:block !important; }
+    }
+    /* 表格清晰樣式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+table thead {
+  background: #f1f1f1;
+}
+/* ======== 視覺優化 ======== */
+/* 全頁背景與容器 */
+html {
+  scroll-behavior: smooth;
+  background: #f5f6fa;
+}
+body {
+  max-width: 1200px;
+  margin: 20px auto;
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow-y: auto;
+}
+/* ===== 直接強化資訊分類區塊樣式 ===== */
+/* 共同樣式：彈性排版、陰影、圓角、間距 */
+.concept-box,
+.warning-box,
+.danger-box,
+.dosage-box,
+.physiology-box,
+.chart-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid transparent;  /* 後面個別覆蓋 */
+  background-color: #f9f9f9;      /* 淺灰底襯出重點 */
+}
+
+/* 概念框 Concept */
+.concept-box {
+  border-color: #007bff;
+  background-color: #e7f1ff;
+}
+.concept-box::before {
+  content: "💡";
+  font-size: 1.3rem;
+  margin-right: 8px;
+}
+
+/* 警告框 Warning */
+.warning-box {
+  border-color: #ffc107;
+  background-color: #fff8e1;
+}
+.warning-box::before {
+  content: "⚠️";
+  font-size: 1.3rem;
+  margin-right: 8px;
+}
+
+/* 危險框 Danger */
+.danger-box {
+  border-color: #dc3545;
+  background-color: #fdecea;
+}
+.danger-box::before {
+  content: "🚨";
+  font-size: 1.3rem;
+  margin-right: 8px;
+}
+
+/* 劑量框 Dosage */
+.dosage-box {
+  border-color: #6f42c1;
+  background-color: #f3e8ff;
+}
+.dosage-box::before {
+  content: "💉";
+  font-size: 1.3rem;
+  margin-right: 8px;
+}
+
+/* 生理框 Physiology */
+.physiology-box {
+  border-color: #28a745;
+  background-color: #e6f4ea;
+}
+.physiology-box::before {
+  content: "⚙️";
+  font-size: 1.3rem;
+  margin-right: 8px;
+}
+
+/* 圖表框 Chart */
+.chart-box {
+  border-color: #fd7e14;
+  background-color: #fff4e6;
+}
+.chart-box::before {
+  content: "📊";
+  font-size: 1.3rem;
+  margin-right: 8px;
+}
+
+/* 標題區樣式 */
+header {
+  background: linear-gradient(90deg, #0062E6, #33AEFF);
+  color: #ffffff;
+}
+header h1 {
+  font-size: 1.8rem;
+}
+header button {
+  background: #ffffff;
+  color: #0062E6;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+header button:hover {
+  background: #e6e6e6;
+}
+
+/* 分頁 Tabs */
+.tabs {
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.tabs button {
+  padding: 12px 0;
+  transition: background 0.3s, color 0.3s;
+}
+.tabs button:hover:not(.active) {
+  background: #f1f1f1;
+}
+.tabs button.active {
+  background: #0062E6;
+  color: #ffffff;
+}
+
+/* 分頁內容卡片化 */
+.tab-content {
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  margin: 20px;
+  padding: 20px;
+}
+
+/* Dropdown 選單 */
+.nav-dropdown select {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* 標題分區 */
+section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 6px;
+}
+section h3 {
+  font-size: 1.2rem;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  border-left: 4px solid #007bff;
+  padding-left: 10px;
+}
+
+/* 表格優化 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+table thead {
+  background: #e9ecef;
+}
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 0.95rem;
+}
+table tbody tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+/* Back to Top 按鈕 */
+#back-to-top {
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
+#back-to-top:hover {
+  background: #0056b3;
+}
+
+/* 響應式 */
+@media (max-width: 768px) {
+  .tabs { flex-wrap: wrap; }
+  .tabs button { flex: 1 1 50%; }
+  body { margin: 0; border-radius: 0; }
+  .tab-content { margin: 10px; padding: 16px; }
+}
+
+  </style>
+</head>
+<body>
+  <div id="progress-container"><div id="progress-bar"></div></div>
+  <header>
+    <h1>ATLS Chapter 11: Trauma in the Pediatric Patient 考前重點複習筆記</h1>
+    <button onclick="window.print()">下載 PDF</button>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="active" data-target="tab1">一般性重點筆記</button>
+    <button data-target="tab2">進階觀念與應考陷阱</button>
+    <button data-target="tab3">臨床現場實用資訊</button>
+    <button data-target="tab4">重要圖表整理</button>
+    <button data-target="tab5">其他重要重點</button>
+  </nav>
+
+  <div class="nav-dropdown" id="dropdowns">
+    <!-- 下拉式選單由JS動態生成 -->
+  </div>
+
+  <!-- 分頁內容 -->
+   <section id="tab1" class="tab-content active">
+      <div class="concept-box">
+    <h3 id="core-concept">一、核心概念摘要 (Core Concept Summary)</h3>
+    <ul>
+      <li><strong>小兒生理特性決定優先序</strong>
+        <ul>
+          <li>頭大軀小、骨彈性高、表面積∕質量比大 → 易失溫、易多系統損傷。</li>
+          <li>缺氧（Airway & Breathing）在兒童比失血更常致死，故 xABCDE 仍 A→B→C，但 <strong>氣道穩定</strong>最優先。</li>
+        </ul>
+      </li>
+      <li><strong>生命徵象速查公式</strong>
+        <ul>
+          <li>SBP 下限 ≈ <em>65 + 2 × 年齡</em> (mm Hg)。</li>
+          <li>Shock Index Pediatric Age-adjusted (SIPA) &gt; 1 → 高風險休克。</li>
+        </ul>
+      </li>
+      <li><strong>復甦流程「20-10-1:1:1」</strong>
+        <ul>
+          <li>初始 20 mL/kg 等張晶體。</li>
+          <li>無效 → 10 mL/kg PRBC + 同步啟動 <strong>兒童 MTP (RBC:FFP:Plt = 1 : 1 : 1)</strong>。</li>
+        </ul>
+      </li>
+      <li><strong>常見致命急症與即刻處置</strong>
+        <ul>
+          <li>張力性氣胸 → 16–22G 針減壓（第 5 肋間腋中線）→ 20–28Fr 胸管。</li>
+          <li>開書型骨盆骨折 + 低血壓 → <strong>即刻骨盆束帶</strong> 以減少骨盆腔出血。
+            <ul><li><strong>開放性骨折</strong> → 抗生素（Cefazolin 30 mg/kg IV）須在 <strong>2 小時內</strong>給予。</li></ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>影像與輻射最小化 (ALARA)</strong>
+        <ul>
+          <li>優先 FAST／X-ray；<strong>Occult Pneumothorax &lt;2.7 cm</strong> 可僅監測。</li>
+          <li>CT 只在會改變治療且 hemodynamically 穩定時施行。</li>
+        </ul>
+      </li>
+      <li><strong>Non-Accidental Trauma (NAT) 必須警覺</strong>
+        <ul>
+          <li>後背或軀幹瘀青、雙側後肋骨折、圓形燙痕 → 高度懷疑。</li>
+          <li>任何疑似 NAT 為法定通報；&lt;2 歲追加全身骨骼攝影。</li>
+        </ul>
+      </li>
+      <li><strong>Pediatric Trauma Score (PTS)</strong>
+        <ul>
+          <li>PTS ≤ 8 ＝ 重症啟動，需完整創傷團隊直接接手。</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+<div class="chart-box">
+    <h3 id="recall-qa">二、主動回憶問題庫 (Active Recall Q&A Accordion)</h3>
+    <div class="qa-container">
+      <div class="qa-item">
+        <div class="question">Q1. 兒童 SBP 下限估算公式是？</div>
+        <div class="answer">65 + (2 × 年齡) mm Hg</div>
+      </div>
+      <div class="qa-item">
+        <div class="question">Q2. 初始液體與第一輪輸血劑量？</div>
+        <div class="answer">20 mL/kg 晶體；10 mL/kg PRBC</div>
+      </div>
+      <div class="qa-item">
+        <div class="question">Q3. 何時啟動兒童 MTP？</div>
+        <div class="answer">20 mL/kg 復甦後仍不穩或估計失血 &gt;30 %</div>
+      </div>
+      <div class="qa-item">
+        <div class="question">Q4. Occult pneumothorax 幾公分內可觀察？</div>
+        <div class="answer">&lt; 2.7 cm</div>
+      </div>
+      <div class="qa-item">
+        <div class="question">Q5. 開放性骨折抗生素時間窗？</div>
+        <div class="answer">傷後 2 小時內 IV Cefazolin 30 mg/kg</div>
+      </div>
+      <div class="qa-item">
+        <div class="question">Q6. PTS ≤ 8 代表什麼？</div>
+        <div class="answer">重症，需 Level I 創傷團隊到場</div>
+      </div>
+      <div class="qa-item">
+        <div class="question">Q7. NAT 最具特異性的骨折型態？</div>
+        <div class="answer">雙側後肋骨折或不同齡癒合骨折</div>
+      </div>
+      <div class="qa-item">
+        <div class="question">Q8. 小兒休克最敏感早期指標？</div>
+        <div class="answer">心搏過速 + 皮膚灌流差 (血壓仍正常)</div>
+      </div>
+      <div class="qa-item">
+        <div class="question">Q9. 骨盆束帶的適應症？</div>
+        <div class="answer">開書型骨盆影像 + SBP &lt; 90 mm Hg</div>
+      </div>
+      <div class="qa-item">
+        <div class="question">Q10. SIPA 的危險臨界值？</div>
+        <div class="answer">SIPA &gt; 1 (學齡前) 或 &gt; 0.9 (學齡)</div>
+      </div>
+    </div>
+  </div>
+
+    <h3 id="memory-aids">三、記憶輔助工具 (Memory Aids & Mnemonics)</h3>
+    <table>
+      <thead><tr><th>主題</th><th>Mnemonic / 解釋</th></tr></thead>
+      <tbody>
+        <tr><td>初始復甦節奏</td><td><strong>「20-10-1:1:1」</strong>：20 mL/kg 晶體 → 10 mL/kg PRBC → 血製品 1:1:1</td></tr>
+        <tr><td>骨折抗生素</td><td><strong>「2-30-2」</strong>：2 hrs 內給 Cefazolin 30 mg/kg，重複每 2 hr 手術前</td></tr>
+        <tr><td>NAT 高危跡象</td><td><strong>「TEN-4-FACES」</strong><br>Torso, Ear, Neck / &lt;4 歲 bruising on FACES 區域</td></tr>
+        <tr><td>Shock 三大先決</td><td><strong>「Heat, Heart, Hemoglobin」</strong>：保溫、心率、血色素</td></tr>
+      </tbody>
+    </table>
+
+    <h3 id="concept-map">四、概念關聯圖譜 (Concept Connection Map)</h3>
+    <ul>
+      <li><strong>生理解剖差異</strong> → 易失溫 &amp; 高代謝 → <strong>低溫 + 酸血 + 凝血障礙</strong> 惡循環 → 早期 <strong>暖體 + MTP 1:1:1</strong> 打斷循環。</li>
+      <li><strong>NAT</strong> → 通報 → 法醫/社工介入 → 避免重複傷害；同時排除隱藏顱內/腹內出血。</li>
+      <li><strong>影像最小化 (CT)</strong> ↔ <strong>ALARA</strong> 原則 → 減輻射 → 長期癌症風險降低。</li>
+      <li><strong>PTS ≤ 8／SIPA &gt; 1</strong> → 創傷團隊 &amp; 高階中心 → 提升生存。</li>
+      <li><strong>骨盆束帶 &amp; 開放骨折抗生素</strong> → 同步時間敏感介入 → 降低失血與感染。</li>
+    </ul>
+
+    <blockquote>
+      <p><strong>使用策略</strong></p>
+      <p>1. 先背「核心 7 條」＋「20-10-1:1:1」復甦節奏。</p>
+      <p>2. 將問題庫製作 Anki；每日晨會、下班各快測一次。</p>
+      <p>3. 考前 10 分鐘重唸 Mnemonics，「2-30-2」「TEN-4-FACES」等即刻提取。</p>
+      <p>（以上內容結合最新補強項，確保重點完整無缺，適合隔日考試衝刺。）</p>
+    </blockquote>
+  </section>
+<section id="tab2" class="tab-content">
+  <h3 id="advanced-traps-1">一、罕見但致命的觀念羅列</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>進階要點</th>
+        <th>為什麼重要？(核心機轉)</th>
+        <th>常見出題陷阱</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>開放性骨折：2 hr 內抗生素</strong></td>
+        <td>兒童軟組織血流旺盛、感染擴散快；2 小時內 IV <strong>Cefazolin 30 mg/kg</strong> 可降 6 成感染</td>
+        <td>考題常以「6–8 hr 內用藥」混淆成人經驗</td>
+      </tr>
+      <tr>
+        <td><strong>Salter-Harris I–II「隱形骨折」</strong></td>
+        <td>生長板未礦化→X 光易漏；臨床觸痛 &gt; 影像</td>
+        <td>若以 X 光正常而忽略石膏固定＝失分</td>
+      </tr>
+      <tr>
+        <td><strong>Occult Pneumothorax &lt; 2.7 cm 可觀察</strong></td>
+        <td>兒童肺順應性高、漏氣可自行封閉</td>
+        <td>題幹給「小 pneumothorax」＋穩定生命徵象；若答插管則錯</td>
+      </tr>
+      <tr>
+        <td><strong>pseudosubluxation vs. 真脫位</strong></td>
+        <td>&lt; 7 y C2-C3 前移 ≤ 3 mm 屬生理現象</td>
+        <td>考官藏「側位 X 光前移 2 mm」—若選硬性固定手術即失分</td>
+      </tr>
+      <tr>
+        <td><strong>骨盆開書型骨折 + 低血壓</strong></td>
+        <td>盆腔血管撕裂是兒童少見、但一旦發生迅速失血</td>
+        <td>若未加骨盆束帶，晶體再多也救不回</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="advanced-traps-2">二、外觀相似但處置相反的鑑別診斷</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>相似表現</th>
+        <th>關鍵鑑別</th>
+        <th>正確處置</th>
+        <th>常見錯誤</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FAST(+)、穩定 BP</td>
+        <td>實體器官撕裂 vs. Hollow viscus injury</td>
+        <td>肝脾 3–4 級多採觀察；空腸破裂需急開腹</td>
+        <td>一律送開刀而增加不必要手術</td>
+      </tr>
+      <tr>
+        <td>C-spine X 光正常、四肢麻木</td>
+        <td><strong>SCIWORA</strong> vs. 心因性麻痺</td>
+        <td>MRI＋硬頸圈 72 hr 觀察</td>
+        <td>以「影像正常」而提早拔頸圈</td>
+      </tr>
+      <tr>
+        <td>肢體痛腫、X 光正常</td>
+        <td>Torus/Green-stick vs. 軟組織挫傷</td>
+        <td>石膏固定 2–3 週</td>
+        <td>僅彈繃→後期彎曲畸形</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="advanced-traps-3">三、特殊劑量／程序／例外規則</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>主題</th>
+        <th>標準作法</th>
+        <th>例外陷阱</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>MTP 血製品比例</strong></td>
+        <td>1 RBC : 1 FFP : 1 Plt<br>建議統一 <strong>10–20 mL/kg</strong> 各組分</td>
+        <td>只給 PRBC → 稀釋凝血因子，酸血低溫惡化</td>
+      </tr>
+      <tr>
+        <td><strong>IO 置針禁忌</strong></td>
+        <td>骨折側、前 24 h 同部位 IO、骨髓病</td>
+        <td>題目描述「同腿骨折」仍放 IO</td>
+      </tr>
+      <tr>
+        <td><strong>小兒 CPR 終止</strong></td>
+        <td>無 ROSC 且 CPR &gt; 15 min、初始節律無心電活動</td>
+        <td>以「兒童生命力旺盛」為由持續 30 min</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="advanced-traps-4">四、新舊指南差異（ATLS 10 ➜ 11）</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>主題</th>
+        <th>10th Ed. 舊說</th>
+        <th>11th Ed. 新版</th>
+        <th>考官常見陷阱</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>開放骨折抗生素</td>
+        <td>3–6 hr 內</td>
+        <td><strong>2 hr 內必給</strong></td>
+        <td>出題仍引用舊 6 hr 時限</td>
+      </tr>
+      <tr>
+        <td>C-spine 影像</td>
+        <td>提早 CT</td>
+        <td><strong>先側位 X 光 + 軟墊重拍</strong>，CT 問題導向</td>
+        <td>題幹強調「第一時間做 CT」—高階答選 X 光</td>
+      </tr>
+      <tr>
+        <td>小 Pneumothorax 處置</td>
+        <td>一律胸管</td>
+        <td>&lt; 2.7 cm 觀察</td>
+        <td>給胸管反而屬過度治療</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="advanced-traps-5">五、主動回憶陷阱題卡 (Trap-Card QBank)</h3>
+  <table>
+    <thead>
+      <tr><th>Q</th><th>高階答點</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>12 y 男童開放脛骨骨折，抵院 2 hr 心跳 110 BP 正常，下一步？</td><td>立刻 IV Cefazolin 30 mg/kg，後續洗創減壓</td></tr>
+      <tr><td>5 y 女童側位頸椎前移 2 mm，頸痛輕微，其它正常；處置？</td><td>墊 1 吋肩重拍 X 光確認，暫不 CT</td></tr>
+      <tr><td>FAST(+) 脾臟 III 級 Blush，BP 100/70 HR 140；最佳策略？</td><td>ICU 觀察＋serial Hb；非立即栓塞</td></tr>
+      <tr><td>穩定外傷兒胸片見 1 cm 肺尖氣泡；行動？</td><td>高流量 O₂ 觀察、48 hr 重拍</td></tr>
+      <tr><td>CPR 20 min 無 ROSC，初始無心電活動；下一步？</td><td>符合終止規範，可考慮停止 CPR</td></tr>
+    </tbody>
+  </table>
+
+  <h3 id="advanced-traps-6">六、深度 Why-解釋</h3>
+  <ol>
+    <li><strong>開放骨折 2 hr 窗口</strong>：細菌生物膜形成平均 3 hr，早期高濃度抗生素能抑制定植。</li>
+    <li><strong>Salter-Harris 檢出率</strong>：增生軟骨對 X 光低密度 → 必須①臨床壓痛 ②重拍對位或超音波。</li>
+    <li><strong>小 pneumothorax 監測</strong>：兒童胸腔負壓波動幅度小，漏氣不進一步擴大；插管反造成 iatrogenic 感染。</li>
+    <li><strong>1:1:1 MTP</strong>：兒童凡失血 &gt;40 mL/kg，凝血因子與血小板同步流失；補回等比例可減少 DIC。</li>
+  </ol>
+
+  <blockquote>
+    <p><strong>備考建議</strong></p>
+    <p>* 將表中「陷阱題卡」製作抽認卡，每題限時 30 秒作答。</p>
+    <p>* 模考留意成人舊知識套進兒童情境的誤導選項，先懷疑再判斷。</p>
+  </blockquote>
+</section>
+
+<section id="tab3" class="tab-content">
+  <h3 id="clinical-rapid-response">#1 緊急狀況快速應變 (Rapid Emergency Response)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>狀況</th>
+        <th>核心判斷點 → 立即 SOP</th>
+        <th>時間敏感細節</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>開放性骨折</strong></td>
+        <td>任何外露骨端 → <strong>2 hr 內</strong>給 Cefazolin 30 mg/kg IV → 清創包紮 → X-ray 定位</td>
+        <td>2 hr 後感染率 ↑ 6 倍</td>
+      </tr>
+      <tr>
+        <td><strong>開書型骨盆 + 低血壓</strong></td>
+        <td>AP 骨盆片「蝴蝶展翅」＋ SBP < 90 mm Hg → <strong>立即骨盆束帶</strong> (greater trochanter 水平) → MTP</td>
+        <td>束帶優先於大量晶體，可減 40 % 出血量</td>
+      </tr>
+      <tr>
+        <td><strong>張力性氣胸</strong></td>
+        <td>胸超或臨床圖像 → 16–22 G 第 5 ICS MAL 針減壓 → 20–28 Fr 胸管</td>
+        <td>針長 < 4 cm 或 24 G 容易失敗</td>
+      </tr>
+      <tr>
+        <td><strong>小肺尖氣泡 &lt; 2.7 cm</strong></td>
+        <td>BS 正常、BP 穩 → 高流量 O₂ + 48 hr 監測；暫不置管</td>
+        <td>過度治療 ↑ 感染率</td>
+      </tr>
+      <tr>
+        <td><strong>兒童創傷 CPR 終止判準</strong></td>
+        <td>持續 CPR &gt; 15 min + 無 ROSC + Asystole → 可考慮終止 CPR (依醫院政策)</td>
+        <td>避免無效 CPR 佔用資源</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="clinical-dosing-ref">#2 臨床常用劑量與給藥速查 (Common Dosing & Administration Quick Ref.)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>藥物 / 血品</th>
+        <th>臨床常用劑量 / 路徑</th>
+        <th>特別提示</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Cefazolin</strong> (開放骨折)</td>
+        <td>30 mg/kg IV (單次上限 2 g)</td>
+        <td>傷後 2 hr 內；&gt;8 hr 再追加</td>
+      </tr>
+      <tr>
+        <td><strong>PRBC</strong></td>
+        <td>10 mL/kg IV (MTP)</td>
+        <td>首輪輸血</td>
+      </tr>
+      <tr>
+        <td><strong>FFP</strong></td>
+        <td>10–20 mL/kg IV</td>
+        <td>與 PRBC 等比例 (1:1)</td>
+      </tr>
+      <tr>
+        <td><strong>Platelet</strong></td>
+        <td>10–20 mL/kg (或 1 unit/10 kg)</td>
+        <td>1:1 與血球、FFP 配合</td>
+      </tr>
+      <tr>
+        <td><strong>Cryoprecipitate</strong></td>
+        <td>1 unit/10 kg (≈ 5–10 mL/kg)</td>
+        <td>Fibrinogen < 1.5 g/L 補充</td>
+      </tr>
+      <tr>
+        <td><strong>TXA</strong></td>
+        <td>15 mg/kg IV load → 2 mg/kg/h</td>
+        <td>3 hr 內給藥最有效</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>MTP 兒童版口訣：</strong>「<strong>10-10-10→1:1:1</strong>」—PRBC、FFP、Plt 各 10 mL/kg 同步給。</p>
+
+  <h3 id="clinical-key-assessments">#3 關鍵評估與判讀要點 (Key Assessments & Interpretation)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>工具 / 指標</th>
+        <th>快速閾值</th>
+        <th>臨床意義 & 行動</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SIPA</strong></td>
+        <td>&gt; 1 (學齡前) / &gt; 0.9 (學齡)</td>
+        <td>高風險出血 → 啟動 MTP</td>
+      </tr>
+      <tr>
+        <td><strong>PTS</strong></td>
+        <td>≤ 8</td>
+        <td>創傷全團隊即刻到位</td>
+      </tr>
+      <tr>
+        <td><strong>Occult Pneumo</strong></td>
+        <td>厚度 &lt; 2.7 cm</td>
+        <td>觀察；避免不必要胸管</td>
+      </tr>
+      <tr>
+        <td><strong>C-spine 安全影像流程</strong></td>
+        <td>側位 X-ray＋墊肩重拍 → 疑似 → CT/MRI</td>
+        <td>避免初期直接 CT 之輻射</td>
+      </tr>
+      <tr>
+        <td><strong>開放骨折感染風險表</strong></td>
+        <td>&gt; 6 hr 延遲、嚴重污染、農村環境 → 感染風險翻倍</td>
+        <td>若 3 高危因素 → 加次世代抗生素 (Piperacillin/Tazo)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="clinical-procedure-pointers">#4 實務操作核心提示 (Practical Procedure Pointers)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>操作</th>
+        <th>關鍵步驟 / 安全訣竅</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>血管通路階梯</strong></td>
+        <td>① 周邊 18–22 G → 90 s 失敗 ② IO (近端脛骨) → 失敗 / 禁忌* ③ 股靜脈切開 / 導管</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>IO 禁忌</strong></td>
+        <td>同側骨折、先前 IO 穿刺 < 24 h、骨髓疾病、焦痂部位</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>骨盆束帶</strong></td>
+        <td>帶寬 10 cm，固定於大轉子水平；收緊至無顫動感</td>
+        <td>10 min 後再評足脈，防過度壓迫</td>
+      </tr>
+      <tr>
+        <td><strong>開放骨折抗生素流程</strong></td>
+        <td>初評 → 2 hr 內給 Cefazolin → X-ray → OR debridement (6–12 h 內)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>小 Pneumothorax 監測</strong></td>
+        <td>每 6 h 重拍胸片；≥3 cm 或呼吸窘迫 → 胸管</td>
+        <td>高流量 O₂ 協助吸收</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><em>* IO 一旦成功即使用至確立中心或周邊靜脈，建議 < 24 h 更換。</em></p>
+
+  <h3 id="clinical-use-tips">使用建議 (現場作戰法)</h3>
+  <ol>
+    <li><strong>口袋速查卡</strong>：將 #2 劑量表 + #3 閾值列印雙面；配色標示 MTP 三血品。</li>
+    <li><strong>流程貼紙</strong>：把「開放骨折 2 hr 抗生素」「骨盆束帶三步驟」貼在創傷車抽屜外。</li>
+    <li><strong>模擬演練</strong>：值班前 5 min 兩人互問 SIPA / PTS 算法與 MTP 劑量。</li>
+    <li><strong>觀察表單</strong>：Occult Pneumo 監測表，交班時確認拍片與高流量 O₂ 是否持續。</li>
+  </ol>
+  <blockquote>
+    <p><strong>重點心法：</strong> <em>「先止血、早抗生、少輻射」</em>——兒童創傷救命三大原則。</p>
+  </blockquote>
+</section>
+
+  <section id="tab4" class="tab-content">
+  <h2>【Trauma in the Pediatric Patient（ATLS 11 Ed. Chapter 11）重要圖表整理】</h2>
+
+  <h3 id="chart-1">一、Table 11-4 Normal Vital Signs by Age Group</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>年齡層</th><th>HR &lt;上限&gt; (bpm)</th><th>SBP &gt;下限 (mm Hg)</th><th>RR &lt;上限 (breaths/min)</th><th>尿量目標 (mL/kg/h)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Infant 0-12 m</td><td>160</td><td>60</td><td>60</td><td>2.0</td></tr>
+      <tr><td>Toddler 1-2 y</td><td>150</td><td>70</td><td>40</td><td>1.5</td></tr>
+      <tr><td>Preschool 3-5 y</td><td>140</td><td>75</td><td>35</td><td>1.0</td></tr>
+      <tr><td>School 6-12 y</td><td>120</td><td>80</td><td>30</td><td>1.0</td></tr>
+      <tr><td>Adolescent ≥13 y</td><td>100</td><td>90</td><td>30</td><td>0.5</td></tr>
+    </tbody>
+  </table>
+  <p><em>不同年齡的「心跳上限」與「血壓下限」呈線性遞減/遞增，可迅速識別異常生命徵象。</em><br>
+     <strong>記憶口訣：</strong>「160-150-140-120-100／60-70-75-80-90」</p>
+
+  <h3 id="chart-2">二、Figure 11-2 Pediatric C-Spine Clearance Algorithm</h3>
+  <ol>
+    <li><strong>初側位 X 光</strong></li>
+    <li>檢查 <strong>前移 ≤3 mm @ C2-C3</strong>？
+      <ul>
+        <li>是 → 墊 1 吋肩再拍側位</li>
+        <li>否/或異常 → CT (問題導向)</li>
+      </ul>
+    </li>
+    <li><strong>神經症狀/PSCIWORA 憂慮</strong> → MRI</li>
+  </ol>
+  <p><em>強調先 Plain Film＋墊肩重拍再決定 CT，避免過度輻射。</em><br>
+     <strong>記憶口訣：</strong>「X → 墊 → CT」</p>
+
+  <h3 id="chart-3">三、Table 11-6 Pediatric Massive Transfusion Protocol (MTP) Dosage</h3>
+  <table>
+    <thead>
+      <tr><th>血製品</th><th>劑量指南</th><th>1:1:1 比例換算</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>PRBC</td><td><strong>10 mL/kg</strong></td><td>①</td></tr>
+      <tr><td>FFP</td><td><strong>10-20 mL/kg</strong></td><td>②</td></tr>
+      <tr><td>Platelet</td><td><strong>10-20 mL/kg</strong> (≈1 unit/10 kg)</td><td>③</td></tr>
+      <tr><td>Cryoprecipitate</td><td><strong>1 unit/10 kg</strong></td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p><em>兒童 MTP 以「體重×10」為基準，同步補充凝血因子，預防稀釋性 DIC。</em><br>
+     <strong>記憶口訣：</strong>「10-10-10 → 1:1:1」</p>
+
+  <h3 id="chart-4">四、Table 11-7 Open Fracture Infection Risk Matrix</h3>
+  <table>
+    <thead>
+      <tr><th>風險因子</th><th>+0</th><th>+1</th><th>+2</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>時間至抗生素</td><td>&lt;2 h</td><td>2–6 h</td><td>&gt;6 h</td></tr>
+      <tr><td>傷口污染</td><td>無/清潔</td><td>中度</td><td>重度/農田</td></tr>
+      <tr><td>組織損傷</td><td>皮膚完整</td><td>軟組織撕裂</td><td>壓碎/失活</td></tr>
+      <tr>
+        <td colspan="4"><strong>總分 ≥3 → 高風險，啟動 廣效抗生素(Piperacillin-Tazo) + 早期洗創。</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <p><em>以三項簡易量化，預測傷口感染；分數越高，需更廣效藥物與更快手術清創。</em><br>
+     <strong>記憶口訣：</strong>「2-6-6」</p>
+
+  <h3 id="chart-5">五、Figure 11-3 Resuscitation Flow for Pediatric Shock</h3>
+  <pre>
+20 mL/kg Crystalloid
+     │
+     ├─ Respond → Monitor & Warm
+     └─ No / Transient
+          ├─ 10 mL/kg PRBC + Start MTP
+          └─ FAST / OR decision
+  </pre>
+  <p><em>用「一次晶體、一次血」分流早期 vs. 遲發休克，搭配 MTP。</em><br>
+     <strong>記憶口訣：</strong>「20-10-MTP」</p>
+
+  <h3 id="chart-6">六、Figure 11-1 Drug-Assisted Intubation Algorithm (更新版)</h3>
+  <ul>
+    <li>Atropine 0.02 mg/kg (<8 y + SCh)</li>
+    <li>Etomidate 0.1 mg/kg (低血壓) ｜ 0.3 mg/kg (正常)</li>
+    <li>Succinylcholine &lt;10 kg 2 mg/kg ｜ ≥10 kg 1 mg/kg</li>
+    <li>失敗 → Rocuronium 0.6 mg/kg → Intubate, Cuff &lt;25 cmH₂O</li>
+  </ul>
+  <p><em>鎮靜劑劑量依「血壓」分流；無「Atropine 0.1 mg 最低量」限制。</em><br>
+     <strong>記憶口訣：</strong>雙色標記「Hypo 0.1 / Normo 0.3」</p>
+
+  <h3 id="chart-7">七、Table 11-5 Modified GCS Verbal Score (&lt;4 y)</h3>
+  <table>
+    <thead>
+      <tr><th>反應</th><th>分數</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>社交微笑或注視</td><td>5</td></tr>
+      <tr><td>哭泣可安撫</td><td>4</td></tr>
+      <tr><td>持續哭鬧</td><td>3</td></tr>
+      <tr><td>無法安撫、呻吟</td><td>2</td></tr>
+      <tr><td>無反應</td><td>1</td></tr>
+    </tbody>
+  </table>
+  <p><em>用「是否能被安撫」取代語言反應，解決幼兒無言語能力問題。</em><br>
+     <strong>記憶口訣：</strong>「Smile-Soothe-Sob-Snarl-Silent」</p>
+
+  <blockquote>
+    <p><strong>整合建議</strong></p>
+    <ol>
+    <li>將七張圖表製作三折口袋卡：左列「生命生理」、中列「流程」、右列「用藥 & MTP」。</li>
+      <li>使用螢光筆以 <span style="color:red">紅＝危急</span>、<span style="color:green">綠＝觀察</span> 標示關鍵閾值。</li>
+      <li>每班晨會 1 min 快問快答：「MTP 劑量？C-spine 首步驟？」</li>
+    </ol>
+  </blockquote>
+</section>
+
+ <section id="tab5" class="tab-content">
+  <h2>【其他重要重點】—ATLS 11 Ed. Chapter 11《Trauma in the Pediatric Patient》</h2>
+  <p><em>本節匯整 <strong>前四份筆記以外</strong>，但在章節中仍具臨床決策、公共衛生或教育價值的內容。</em></p>
+
+  <h3 id="other-epi">1. 流行病學與公共衛生趨勢</h3>
+  <ul>
+    <li><strong>槍枝暴力已成美國兒童死亡首位原因</strong>（超越交通事故）。
+      <ul><li>急診需熟悉彈道傷評估；公共衛生面重視防範與立法倡議。</li></ul>
+    </li>
+    <li><strong>非意外性創傷 (NAT) 案例逐年上升</strong>，尤以 &lt;2 歲佔大宗。
+      <ul><li>建議醫院定期辦「兒少保護」模擬演練。</li></ul>
+    </li>
+  </ul>
+
+  <h3 id="other-team">2. 團隊協作與能力建置</h3>
+  <ul>
+    <li><strong>兒科創傷中心分級指引</strong>：
+      <ol>
+        <li><em>Level I</em>—24/7 兒科外科專責在院；有 PICU、兒科麻醉。</li>
+        <li><em>Level II</em>—外科 on-call &lt;20 min 可到；影像、血庫全時段可用。</li>
+        <li><em>Level III</em>—穩定後 2 h 內安排轉診。</li>
+      </ol>
+    </li>
+    <li><strong>TeamSTEPPS + CRM</strong>：推薦用於創傷接班；章節示例腳本可作 OSCE 素材。</li>
+  </ul>
+
+  <h3 id="other-masscasualty">3. 大規模事件與資源受限場域</h3>
+  <ul>
+    <li><strong>JumpSTART 分流</strong>（兒童版 START）：
+      <ul>
+        <li>不可單用成人 START，因兒童有「呼吸暫停可恢復」特性。</li>
+        <li>評呼吸→脈搏→心理狀態；6 次/15 s 胸壓試氣。</li>
+      </ul>
+    </li>
+    <li><strong>資源有限地區策略</strong>：
+      <ul>
+        <li>*低溫預防*：鋁箔保溫毯 + 家庭用電熱水袋。</li>
+        <li>*就地止血*：加壓繃帶與便攜止血帶替代骨盆束帶。</li>
+        <li>*影像*：hand-held FAST 優先。</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="other-prevention">4. 預防醫學與安全教育</h3>
+  <ul>
+    <li><strong>兒童安全座椅時程（AAP）</strong>：Rear-facing 至 ≥2 歲；Booster 至 ≥8 歲或身高 145 cm。</li>
+    <li><strong>安全帽</strong>：前額保護 2 指寬、帶扣呈「V」形。</li>
+    <li><strong>居家溺水防治</strong>：四面欄杆泳池 + 門鎖警報，可降 70 % 溺水率。</li>
+  </ul>
+
+  <h3 id="other-rehab">5. 早期復健與長期追蹤</h3>
+  <ul>
+    <li><strong>脊髓損傷</strong>：24 h 內被動關節活動，防攣縮與壓瘡。</li>
+    <li><strong>中重度頭傷</strong>：3 個月後校園評估；有學習障礙啟動 IEP。</li>
+    <li><strong>高代謝需求</strong>：24 h 內腸道餵食首選。</li>
+  </ul>
+
+  <h3 id="other-psych">6. 心理社會支持與家庭參與</h3>
+  <ul>
+    <li><strong>Family Presence during Resuscitation</strong>：專責陪同員可提升家屬滿意度。</li>
+    <li><strong>Child Life Specialist</strong>：降低術後疼痛評分與焦慮。</li>
+    <li><strong>PTSD 預防</strong>：
+      <ul>
+        <li>高風險：目睹死亡、NAT、ICU &gt;48 h。</li>
+        <li>建議：24 h 內分齡衛教、繪本、放鬆訓練。</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="other-radsafety">7. 放射安全延伸議題</h3>
+  <ul>
+    <li><strong>鎮靜 vs. 劑量調降</strong>：若必須做 CT，寧可鎮靜一次完成，避免多次掃描。</li>
+    <li><strong>MRI 替代 CT</strong>：SCIWORA 或腦部評估，穩定後改 MRI，零輻射。</li>
+  </ul>
+
+  <h3 id="other-tips">使用建議 (現場作戰法)</h3>
+  <ol>
+    <li>本筆記視「臨床外延與公共衛生面」補充，OSCE、案例討論或政策研擬時參考。</li>
+    <li>回顧頻率可低於前四筆記，但務必掌握公共衛生趨勢。</li>
+  </ol>
+</section>
+
+
+  <!-- Back to Top 按鈕 -->
+  <button id="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+  <script>
+    document.querySelectorAll('.tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.target).classList.add('active');
+        generateDropdown(btn.dataset.target);
+      });
+    });
+    function generateDropdown(tabId) {
+      const container = document.getElementById('dropdowns');
+      container.innerHTML = '';
+      const section = document.getElementById(tabId);
+      const headings = section.querySelectorAll('h3');
+      if (headings.length) {
+        const select = document.createElement('select');
+        select.onchange = e => location.hash = e.target.value;
+        select.add(new Option('-- 選擇標題 --', ''));
+        headings.forEach(h3 => select.add(new Option(h3.textContent, '#' + h3.id)));
+        container.appendChild(select);
+      }
+    }
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('question')) {
+        const ans = e.target.nextElementSibling;
+        if (ans && ans.classList.contains('answer')) {
+          ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+        }
+      }
+    });
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      document.getElementById('progress-bar').style.width = (winScroll/height)*100 + '%';
+      document.getElementById('back-to-top').style.display = winScroll>300?'block':'none';
+    });
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    generateDropdown('tab1');
+
+// 等 DOM 讀取完畢後再操作
+
+
+  </script>
+</body>
+</html>
