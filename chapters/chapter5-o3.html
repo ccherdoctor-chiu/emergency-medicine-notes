@@ -3,344 +3,758 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATLS Chapter 5 - Breathing and Ventilation Assessment and Management 考前重點複習筆記</title>
+    <title>ATLS 第9版第5章 呼吸與通氣 – 11版重點整理筆記</title>
     <style>
+        /* 基本樣式與主題顏色 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f5f7fa;
-            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
-
-        #progress-bar {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        /* 頂端進度條 */
+        .progress-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 0%;
             height: 4px;
-            background: linear-gradient(90deg, #007bff, #00c853);
+            background: linear-gradient(90deg, #667eea, #764ba2);
             z-index: 1000;
             transition: width 0.3s ease;
         }
-
-        .main-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        /* 標題區 */
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
             color: white;
-            padding: 30px 20px;
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
         }
-
-        .main-header h1 {
-            font-size: 2em;
+        .header h1 {
+            font-size: 2.2em;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-
-        .main-header p {
+        .header .subtitle {
             font-size: 1.1em;
             opacity: 0.9;
         }
-
+        .pdf-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        .pdf-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        /* 下拉選單與頁籤 */
         .nav-container {
-            background: white;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: #34495e;
+            padding: 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
         .dropdown-nav {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-            justify-content: center;
+            justify-content: space-around;
+            padding: 10px 0;
+            background: #2c3e50;
         }
-
         .dropdown {
             position: relative;
-            display: inline-block;
         }
-
-        .dropdown-button {
-            background: #e3f2fd;
-            border: 1px solid #1976d2;
-            padding: 8px 16px;
+        .dropdown-btn {
+            background: none;
+            border: none;
+            color: white;
+            padding: 10px 15px;
             cursor: pointer;
-            border-radius: 4px;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
-
+        .dropdown-btn:hover {
+            background: #3498db;
+        }
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #fff;
-            min-width: 160px;
+            background: #fff;
+            min-width: 220px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            padding: 12px 16px;
-            z-index: 1;
+            z-index: 1000;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
         }
-
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            background: #f1f1f1;
+        }
         .dropdown:hover .dropdown-content {
             display: block;
         }
-
-        .dropdown-content a {
-            color: black;
-            padding: 5px 0;
-            text-decoration: none;
-            display: block;
-        }
-
-        .tabs {
+        .tab-nav {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            background: #34495e;
         }
-
-        .tab-button {
-            background: #e0f7fa;
-            border: 1px solid #0097a7;
-            padding: 8px 16px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .tab-button.active {
-            background: #0097a7;
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
             color: white;
+            padding: 15px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
         }
-
+        .tab-btn:hover {
+            background: #3498db;
+        }
+        .tab-btn.active {
+            background: #3498db;
+            border-bottom-color: #e74c3c;
+        }
+        /* 內容區 */
         .content {
-            padding: 20px;
+            padding: 30px;
+            min-height: 500px;
         }
-
         .tab-content {
             display: none;
         }
-
         .tab-content.active {
             display: block;
         }
-
+        /* 資訊區塊樣式 */
+        .info-box {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .concept-box { background: #e3f2fd; border-left-color: #2196f3; }
+        .warning-box { background: #fff3e0; border-left-color: #ff9800; }
+        .danger-box { background: #ffebee; border-left-color: #f44336; }
+        .physiology-box { background: #e8f5e8; border-left-color: #4caf50; }
+        .chart-box { background: #fffde7; border-left-color: #ffeb3b; }
+        /* 問答區樣式 */
+        .qa-item {
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .question {
+            background: #f8f9fa;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .question:hover { background: #e9ecef; }
+        .question::before {
+            content: "▶ ";
+            transition: transform 0.3s ease;
+        }
+        .question.active::before { transform: rotate(90deg); }
+        .answer {
+            display: none;
+            padding: 15px;
+            background: #fff;
+            border-top: 1px solid #ddd;
+        }
+        .answer.active { display: block; }
+        /* 表格 */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
         th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
+            padding: 12px;
             text-align: left;
+            border-bottom: 1px solid #ddd;
         }
-
-        th {
-            background: #f0f0f0;
-        }
-
-        .qa-container {
-            margin-bottom: 20px;
-        }
-
-        .qa-item {
-            margin-bottom: 10px;
-        }
-
-        .qa-question {
-            background: #ffe0b2;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .qa-answer {
-            display: none;
-            padding: 10px;
-            background: #fff3e0;
-            border-radius: 4px;
-        }
-
-        .concept-box, .dosage-box, .danger-box, .warning-box {
-            background: #fff;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .copyright-notice {
-            font-size: 0.9em;
-            margin-bottom: 20px;
-        }
-
-        #download-pdf, #back-to-top {
+        th { background: #f8f9fa; font-weight: bold; }
+        tr:hover { background: #f8f9fa; }
+        /* 回到頂部按鈕 */
+        .back-to-top {
             position: fixed;
+            bottom: 20px;
             right: 20px;
-            padding: 10px 15px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            background: #2196f3;
+            background: #3498db;
             color: white;
-            z-index: 2000;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            display: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
         }
-
-        #download-pdf { bottom: 80px; }
-        #back-to-top { bottom: 20px; display: none; }
+        .back-to-top:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        /* 引文腳註 */
+        .footnotes {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #555;
+        }
+        .footnotes ol {
+            padding-left: 20px;
+        }
+        .footnotes li {
+            margin-bottom: 6px;
+        }
+        /* 響應式調整 */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .pdf-btn { position: static; margin-top: 20px; }
+            .dropdown-nav { flex-direction: column; gap: 10px; }
+            .tab-nav { flex-direction: column; }
+            .content { padding: 20px; }
+        }
+        /* 列印模式隱藏互動元素 */
+        @media print {
+            .nav-container, .pdf-btn, .back-to-top, .dropdown-nav { display: none !important; }
+            .tab-content { display: block !important; }
+            .answer { display: block !important; }
+            .question::before { content: ""; }
+            body { background: white; }
+            .container { box-shadow: none; }
+            .header { background: #2c3e50; -webkit-print-color-adjust: exact; }
+        }
     </style>
 </head>
 <body>
-    <div id="progress-bar"></div>
-    <header class="main-header">
-        <h1>ATLS Chapter 5 - Breathing and Ventilation Assessment and Management</h1>
-        <p>考前重點複習筆記</p>
-    </header>
-
-    <button id="download-pdf" onclick="downloadPDF()">📥 下載PDF</button>
-    <button id="back-to-top" onclick="scrollToTop()">⬆</button>
-
-    <div class="nav-container">
-        <div class="dropdown-nav">
-            <div class="dropdown">
-                <button class="dropdown-button">📋 一般性重點筆記 ▼</button>
-                <div class="dropdown-content">
-                    <a href="#general-info">資訊篩選與核心解構</a>
-                    <a href="#general-concepts">概念濃縮與簡化</a>
-                    <a href="#general-qa">主動回憶問題庫</a>
-                    <a href="#general-summary">核心概念摘要</a>
-                    <a href="#general-mnemonic">記憶輔助與概念圖</a>
+    <div class="progress-bar"></div>
+    <div class="container">
+        <div class="header">
+            <button class="pdf-btn" onclick="window.print()">📄 下載PDF</button>
+            <h1>ATLS 第11版 第5章：呼吸與通氣</h1>
+            <p class="subtitle">外傷呼吸處理指南</p>
+        </div>
+        <!-- 導航：下拉目錄與頁籤 -->
+        <div class="nav-container">
+            <div class="dropdown-nav">
+                <div class="dropdown">
+                    <button class="dropdown-btn">📚 一般性重點</button>
+                    <div class="dropdown-content">
+                        <a href="#general-core">核心概念摘要</a>
+                        <a href="#general-eval">評估與病理</a>
+                        <a href="#general-qa">主動回憶問題</a>
+                        <a href="#general-mnemonics">記憶輔助</a>
+                        <a href="#general-map">概念關聯圖</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn">⚠️ 進階觀念</button>
+                    <div class="dropdown-content">
+                        <a href="#advanced-injuries">五大致命胸傷</a>
+                        <a href="#advanced-diff">鑑別與陷阱</a>
+                        <a href="#advanced-special">特殊族群調整</a>
+                        <a href="#advanced-updates">版次差異</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn">🏥 臨床實用</button>
+                    <div class="dropdown-content">
+                        <a href="#clinical-rapid">緊急應變表格</a>
+                        <a href="#clinical-dosing">止痛及用藥</a>
+                        <a href="#clinical-assessment">監測與判讀</a>
+                        <a href="#clinical-procedure">操作要訣</a>
+                        <a href="#clinical-complications">併發症處理</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-btn">📊 重要圖表</button>
+                    <div class="dropdown-content">
+                        <a href="#chart-anatomy">內外標記</a>
+                        <a href="#chart-sites">減壓與放管定位</a>
+                        <a href="#chart-physiology">張力性氣胸生理</a>
+                        <a href="#chart-diaphragm">橫膈損傷示意</a>
+                        <a href="#chart-signs">呼吸障礙體徵表</a>
+                    </div>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="dropdown-btn">➕ 其他重點</button>
+                    <div class="dropdown-content">
+                        <a href="#others-rare">隱形殺手</a>
+                        <a href="#others-traps">關鍵細節</a>
+                        <a href="#others-diff">相似表現鑑別</a>
+                        <a href="#others-updates">新舊差異</a>
+                        <a href="#others-pitfalls">自我測試</a>
+                        <a href="#others-additional">補充知識</a>
+                    </div>
                 </div>
             </div>
-            <div class="dropdown">
-                <button class="dropdown-button">⚠️ 進階觀念與應考陷阱 ▼</button>
-                <div class="dropdown-content">
-                    <a href="#advanced-note">內容建置中</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-button">🚨 臨床現場實用資訊 ▼</button>
-                <div class="dropdown-content">
-                    <a href="#clinical-note">內容建置中</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-button">📊 重要圖表整理 ▼</button>
-                <div class="dropdown-content">
-                    <a href="#charts-note">內容建置中</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-button">📌 其他重要重點 ▼</button>
-                <div class="dropdown-content">
-                    <a href="#others-note">內容建置中</a>
-                </div>
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="openTab(event, 'general')">📚 一般性重點</button>
+                <button class="tab-btn" onclick="openTab(event, 'advanced')">⚠️ 進階觀念</button>
+                <button class="tab-btn" onclick="openTab(event, 'clinical')">🏥 臨床實用</button>
+                <button class="tab-btn" onclick="openTab(event, 'charts')">📊 重要圖表</button>
+                <button class="tab-btn" onclick="openTab(event, 'others')">➕ 其他重要重點</button>
+                <button class="tab-btn" onclick="openTab(event, 'references')">📌 引文與參考</button>
             </div>
         </div>
+        <div class="content">
+            <!-- 一般性重點 -->
+            <div id="general" class="tab-content active">
+                <h2 id="general-core">一、核心概念摘要</h2>
+                <div class="concept-box">
+                    <h3>🎯 5T 致命胸傷總覽</h3>
+                    <p>呼吸與通氣的首要任務是辨認並迅速處理<b>五種致命胸傷 (5T)</b>：
+                        張力性氣胸、開放性氣胸、大量/張力性血胸、連枷胸與橫膈破裂。這些損傷可迅速奪命，ATLS 強調在
+                        <em>沒有確診之前也不可延遲治療</em>，臨床上依症狀作診斷後立即處置。</p>
+                    <ul>
+                        <li><strong>張力性氣胸 (Tension Pneumothorax)</strong>：胸壁或肺泡破損形成單向活瓣，空氣進入胸腔但無法外洩，導致患側肺萎縮、縱膈推移、靜脈回流受阻而休克。臨床特徵包括呼吸困難、患側呼吸音消失、氣管偏移與低血壓；需立即以粗針減壓後放置胸管。</li>
+                        <li><strong>開放性氣胸 (Open Pneumothorax)</strong>：胸壁創傷缺口＞2/3 氣管直徑，呼吸時胸腔內外氣體自由出入形成「吸吮傷口」。處理方法是在傷口上覆蓋厚敷料並<strong>三邊貼合、一邊開口</strong>，形成單向活瓣，再於另處置入胸管。</li>
+                        <li><strong>大量或張力性血胸 (Massive/Tension Hemothorax)</strong>：血管破裂導致胸腔血量迅速累積，壓迫肺與縱膈。臨床表現為叩診濁音、血壓下降和休克；需即刻置入至少 24 Fr 胸管引流，初次引流量超過 1500 mL 或每小時 300–500 mL 持續 2–4 小時應考慮緊急胸腔探索或開胸止血。</li>
+                        <li><strong>連枷胸/多發肋骨骨折 (Flail Chest)</strong>：同側三根以上肋骨各有兩處骨折，造成胸壁一塊骨片遊離並出現反常運動。疼痛使病人淺呼吸和無效咳嗽，導致肺實質挫傷、分泌物滯留與低氧。非手術治療包括高流量氧氣、有效鎮痛、多模式呼吸支持和肺復健。</li>
+                        <li><strong>橫膈破裂 (Diaphragmatic Rupture)</strong>：高速鈍傷或穿透傷撕裂橫膈，腹內臟器（尤其左側胃腸）疝入胸腔，可能形成張力生理。影像可見鼻胃管盤旋在胸腔或胃泡位移；所有左側及大多數右側破裂需手術修補。</li>
+                    </ul>
+                </div>
+                <div class="physiology-box" id="general-eval">
+                    <h3>🔎 看、聽、摸評估三步驟</h3>
+                    <p>ATLS 建議對呼吸患者執行 <strong>Look-Listen-Feel (視、聽、觸)</strong> 評估：</p>
+                    <ul>
+                        <li><strong>視：</strong>觀察胸部對稱起伏、有無外傷及穿透傷口、頸靜脈怒張或扁平、氣管偏移以及皮下氣腫。</li>
+                        <li><strong>聽：</strong>以聽診器確認雙側呼吸音強弱與是否存在異常聲響（笛鳴、濕囉音）；聽血壓和心音以辨別心包填塞或低血壓。</li>
+                        <li><strong>觸：</strong>觸診胸壁壓痛、肋骨移動度、皮下氣腫及胸骨動態；叩診辨別鼓音或濁音可協助區分氣胸與血胸。</li>
+                    </ul>
+                    <p>評估過程中應即刻給予 <strong>100% 高流量氧氣</strong>，監測脈搏血氧 (SpO₂)、呼氣末二氧化碳 (ETCO₂) 及血壓，必要時備行氣道維護與插管。</p>
+                </div>
+                <div class="chart-box">
+                    <h3>🧪 影像順序與選擇</h3>
+                    <p>胸傷患者的影像評估通常依序採用：</p>
+                    <ul>
+                        <li><strong>eFAST/Lung Ultrasound：</strong>牀邊超音波能迅速辨識氣胸及血胸，其敏感度 86–98%、特異度 97–100%，明顯優於仰臥式胸部 X 光。</li>
+                        <li><strong>正位或臥位胸部 X 光：</strong>用於評估肋骨骨折、縱膈氣管偏移及導管位置。</li>
+                        <li><strong>胸部 CT：</strong>當病人穩定且需進一步評估隱匿性損傷、肺挫傷或複合傷時再行。</li>
+                    </ul>
+                    <p>影像永遠不應延遲治療；若臨床診斷張力性氣胸或大量血胸，應先減壓再影像。</p>
+                </div>
+                <h2 id="general-qa">二、主動回憶問題</h2>
+                <!-- 問答列表 -->
+                <div class="qa-item"><div class="question">Q1：試列出 5T 致命胸傷及其主要處置措施？</div><div class="answer">A1：5T 包含張力性氣胸（針減壓＋胸管）、開放性氣胸（三邊貼合敷料＋胸管）、大量或張力性血胸（≥24 Fr 胸管；若引流量超過 1500 mL 或 >300 mL/h 則考慮開胸）、連枷胸（高流量氧氣＋多模式鎮痛＋呼吸支持）、橫膈破裂（鼻胃管減壓＋手術修補）。</div></div>
+                <div class="qa-item"><div class="question">Q2：張力性氣胸的典型臨床三聯徵？</div><div class="answer">A2：胸痛與呼吸困難、患側呼吸音消失並出現鼓音、血壓迅速下降伴頸靜脈怒張與氣管偏離。</div></div>
+                <div class="qa-item"><div class="question">Q3：進行針減壓時推薦的兩個部位及其理由？</div><div class="answer">A3：<ul><li>第二肋間鎖骨中線 (2nd ICS MCL)：皮膚距胸膜最短，適用於瘦弱患者；</li><li>第五肋間腋前/中線 (5th ICS AAL/MAL)：皮下脂肪厚或穿著防彈衣者較適用。兩處針頭均應垂直插入肋骨上緣以避免血管神經束。</li></ul></div></div>
+                <div class="qa-item"><div class="question">Q4：為何單純針減壓無法治療張力性血胸？</div><div class="answer">A4：血液黏稠且量大，細針難以快速排出，無法解除胸腔壓力；因此需直接置入 ≥24 Fr 胸管或進行開胸。</div></div>
+                <div class="qa-item"><div class="question">Q5：開放性氣胸傷口敷料應如何貼敷？</div><div class="answer">A5：使用厚敷料覆蓋傷口，三邊緊密貼合、一邊敞開，創造單向活瓣使氣體能排出但不再吸入；若出現張力生理需拆除敷料並進行針減壓。</div></div>
+                <div class="qa-item"><div class="question">Q6：大量血胸引流後何種情況須緊急開胸？</div><div class="answer">A6：胸管初始引流量 ≥1500 mL，或持續出血 ≥300–500 mL/h 超過 2–4 小時，或合併大血管/心包損傷需要外科止血。</div></div>
+                <div class="qa-item"><div class="question">Q7：連枷胸造成呼吸衰竭的病理機轉？</div><div class="answer">A7：多處肋骨骨折形成游離胸壁，吸氣時受損區塊凹陷、呼氣時突出；疼痛使病人淺呼吸及無效咳嗽，導致肺挫傷、水腫與分泌物滯留。</div></div>
+                <div class="qa-item"><div class="question">Q8：為何小兒肋骨骨折不易但肺實質易受傷？</div><div class="answer">A8：兒童胸壁柔軟，外力易將能量直接傳遞至肺實質造成挫傷；因此即便 X 光無骨折亦須警惕潛在肺傷。</div></div>
+                <div class="qa-item"><div class="question">Q9：橫膈破裂時放置胸管有何風險？</div><div class="answer">A9：腹臟可能疝入胸腔且與肺緊貼，盲目放置胸管可能傷及胃腸造成出血或張力性胃氣胸；應先插入鼻胃管減壓，若影像顯示胃泡位於胸腔則須緊急手術。</div></div>
+                <div class="qa-item"><div class="question">Q10：您如何區分張力性氣胸與張力性血胸？</div><div class="answer">A10：兩者皆呈休克與呼吸窘迫，張力氣胸叩診鼓音、頸靜脈怒張且針減壓後可聞氣體逸出，而張力血胸叩診濁音、頸靜脈可能扁平，針減壓無效且需要立即置入大口徑胸管。</div></div>
+                <h2 id="general-mnemonics">三、記憶輔助工具</h2>
+                <div class="warning-box">
+                    <h3>🗂️ 口訣「氣開血斷膈」</h3>
+                    <p>依次代表 5T 致命胸傷：<b>氣</b>：張力性氣胸、<b>開</b>：開放性氣胸、<b>血</b>：大量/張力性血胸、<b>斷</b>：連枷胸（多發肋骨骨折）、<b>膈</b>：橫膈破裂。</p>
+                </div>
+                <div class="danger-box">
+                    <h3>⭐ 口訣「二中五腋★」</h3>
+                    <p>第二肋間鎖骨中線與第五肋間腋前/中線是減壓的黃金部位。想像兩顆星分別位於胸前與腋側，選擇最適合的點垂直進針。</p>
+                </div>
+                <div class="physiology-box">
+                    <h3>💊 口訣「K-A-N-L 止痛四寶」</h3>
+                    <p>鎮痛藥物：Ketamine (酮氨酸)、Acetaminophen (撲熱息痛)、NSAIDs (非類固醇抗炎藥) 以及 Lidocaine (局部麻醉)。</p>
+                    <ul>
+                        <li><strong>K：</strong>Ketamine 0.25–0.5 mg/kg IV push，可避免血壓下降。</li>
+                        <li><strong>A：</strong>Acetaminophen 1 g IV/PO q6h，日總量不超過 4 g。</li>
+                        <li><strong>N：</strong>NSAIDs (Ibuprofen) 400 mg PO q6h，注意腎功能與凝血。</li>
+                        <li><strong>L：</strong>Lidocaine 2%，3 mg/kg 以内用於肋間神經阻斷，沿肋骨上緣注射避開血管神經束。</li>
+                    </ul>
+                </div>
+                <div class="concept-box">
+                    <h3>🔍 口訣「聲‑管‑頸‑壓」</h3>
+                    <p>掃描呼吸障礙體徵表時，依序看「呼吸音、氣管偏移、頸靜脈、血壓」，能在 30 秒內完成鑑別。</p>
+                </div>
+                <h2 id="general-map">四、概念關聯圖</h2>
+                <div class="chart-box">
+                    <h3>🔗 受傷→病理→表現→處置 流程圖</h3>
+<pre>
+外力/武器 → 肋骨或肺損傷 → 胸腔壓力改變 → 肺萎縮/出血 → 靜脈回流減少 → 低血壓
+   ↓            ↓                ↓                 ↓               ↓
+五大胸傷   單向活瓣/缺口    吸氣胸壁凹陷     聽診呼吸音變    休克與缺氧
+   ↓            ↓                ↓                 ↓               ↓
+臨床判斷   Look-Listen-Feel   eFAST/超音波      立即針減壓/胸管   手術修補或復健
+</pre>
+                    <p>記住：發現問題要即刻處置，不需等待影像或實驗室報告。評估、治療、再評估形成閉環循環。</p>
+                </div>
+            </div> <!-- end general tab -->
 
-        <div class="tabs">
-            <button class="tab-button active" onclick="showTab('general')">📋 一般性重點筆記</button>
-            <button class="tab-button" onclick="showTab('advanced')">⚠️ 進階觀念與應考陷阱</button>
-            <button class="tab-button" onclick="showTab('clinical')">🚨 臨床現場實用資訊</button>
-            <button class="tab-button" onclick="showTab('charts')">📊 重要圖表整理</button>
-            <button class="tab-button" onclick="showTab('others')">📌 其他重要重點</button>
+            <!-- 進階觀念 -->
+            <div id="advanced" class="tab-content">
+                <h2 id="advanced-injuries">一、五大致命胸傷詳細說明</h2>
+                <div class="physiology-box">
+                    <h3>🫁 張力性氣胸</h3>
+                    <p>胸膜破裂造成空氣單向進入胸腔，壓力急劇增加，縱膈被推向健側，壓迫心臟與大靜脈。臨床症狀包括呼吸急促、頸靜脈怒張、患側呼吸音消失與氣管偏移。對於血流動力學不穩定的患者，應立即進行針減壓，最常使用 14 或 16 Gauge、≥8 cm 長的針頭，垂直插入 2nd ICS MCL 或 5th ICS AAL/MAL。針減壓後立即改指插開窗(Finger Thoracostomy)並置入胸管，以防再次積氣。</p>
+                </div>
+                <div class="warning-box">
+                    <h3>🌬️ 開放性氣胸 (Sucking Chest Wound)</h3>
+                    <p>當胸壁創口面積大於氣管截面積時，呼吸時外界空氣 preferentially 由傷口進入胸腔，導致肺無法擴張並形成「吸吮傷口」聲。管理要點：</p>
+                    <ul>
+                        <li>使用<strong>厚敷料</strong>覆蓋傷口，<strong>三邊貼合、一邊開放</strong>，允許氣體單向排出但避免再吸入。</li>
+                        <li>同時給予 100% 氧氣並監測氣道；若出現張力生理則暫時打開敷料並進行針減壓。</li>
+                        <li>於受傷部位的<strong>別處</strong>切口置入胸管，以便肺部重膨與持續引流。</li>
+                    </ul>
+                </div>
+                <div class="danger-box">
+                    <h3>🩸 大量/張力性血胸</h3>
+                    <p>胸腔出血量>1500 mL 或造成縱膈壓迫者稱大量或張力性血胸。典型體徵為患側叩診濁音、呼吸音減弱、扁平頸靜脈及休克。處置要點：</p>
+                    <ul>
+                        <li>立即置入 ≥24 Fr 胸管；一般氣胸可使用較小管 (14 Fr)，但血胸容易凝血堵塞需使用大口徑。</li>
+                        <li>初次引流量 ≥1500 mL 或每小時 300–500 mL 持續 2–4 小時應緊急開胸止血。</li>
+                        <li>如有張力生理，單純針減壓無法快速排出血液，因此<strong>針減壓無效</strong>。</li>
+                        <li>在運送途中保持胸管連接負壓吸引（約 −20 cmH₂O）以防止血液回流。</li>
+                    </ul>
+                </div>
+                <div class="concept-box">
+                    <h3>🦴 連枷胸 / 多發肋骨骨折</h3>
+                    <p>多根肋骨雙處骨折導致胸壁一塊遊離，產生反常呼吸運動，常合併肺挫傷。治療重點：</p>
+                    <ul>
+                        <li>給予高流量氧氣與適當呼吸支持（包括鼻導管、高流量鼻氧、CPAP 或必要時插管）。</li>
+                        <li>多模式鎮痛：包括系統性麻醉 (Ketamine、Acetaminophen、NSAIDs) 與局部肋間神經阻斷。</li>
+                        <li>鼓勵咳嗽與呼吸復健，如誘發式量器 (Incentive Spirometry)、胸部物理治療，避免肺不張與肺炎。</li>
+                        <li>少數情況下，若呼吸衰竭嚴重或胸壁明顯不穩，可考慮外科固定。</li>
+                    </ul>
+                </div>
+                <div class="physiology-box">
+                    <h3>🫀 橫膈破裂</h3>
+                    <p>橫膈膜斷裂使腹腔臟器（特別是胃、脾與腸）進入胸腔，左側損傷更常見因右側由肝臟保護。</p>
+                    <ul>
+                        <li>懷疑時應立即置入鼻胃管減壓，避免胃脹氣加劇呼吸困難；若 X 光見胃泡或 NGT 盤旋於胸腔，應高度懷疑。</li>
+                        <li>盲目置入胸管可能傷及腹腔臟器；確診後需手術修補，所有左側與大部分右側破裂皆需手術。</li>
+                        <li>術後需留置胸管幾天以排除殘餘血液或氣體。</li>
+                    </ul>
+                </div>
+                <h2 id="advanced-diff">二、鑑別診斷與陷阱</h2>
+                <div class="chart-box">
+                    <h3>🩺 張力性氣胸 vs 張力性血胸 vs 心包填塞</h3>
+                    <table>
+                        <tr><th>特徵</th><th>張力性氣胸</th><th>張力性血胸</th><th>心包填塞</th></tr>
+                        <tr><td>叩診</td><td>鼓音</td><td>濁音</td><td>正常或悶音</td></tr>
+                        <tr><td>頸靜脈</td><td>怒張</td><td>扁平或不明顯</td><td>怒張</td></tr>
+                        <tr><td>呼吸音</td><td>患側消失</td><td>患側消失</td><td>雙側正常</td></tr>
+                        <tr><td>氣管偏移</td><td>偏離患側</td><td>可能無明顯偏移</td><td>無</td></tr>
+                        <tr><td>立即處置</td><td>針減壓→胸管</td><td>放置大口徑胸管</td><td>心包穿刺→開胸止血</td></tr>
+                    </table>
+                    <p>判斷時切勿僅依單一徵象；需綜合叩診音、頸靜脈、呼吸音與血壓等線索。</p>
+                </div>
+                <div class="warning-box" id="advanced-special">
+                    <h3>👩‍🍼 特殊族群調整</h3>
+                    <ul>
+                        <li><strong>孕婦：</strong>子宮增大使橫膈上移，針減壓及胸管插入點需向頭側上移 1–2 肋間。</li>
+                        <li><strong>兒童：</strong>胸壁柔軟且結構小，針/管可以選用較細管徑並置於或略高於 IMF；評估時須警惕肺挫傷即使無骨折。</li>
+                        <li><strong>肥胖患者：</strong>胸壁厚度增加，2nd ICS 可能難以穿透，建議使用更長針或改在 5th ICS AAL/MAL；必要時直接進行指插開窗。</li>
+                    </ul>
+                </div>
+                <div class="danger-box" id="advanced-updates">
+                    <h3>📘 9版與 11版主要差異</h3>
+                    <ul>
+                        <li><strong>減壓部位：</strong>11 版強調第 5 肋間腋前線 (IMF 水平) 為首選，因成功率較高；2nd ICS MCL 仍可使用，但肥胖或穿戴裝備者應選 5th ICS。</li>
+                        <li><strong>胸管尺寸：</strong>新指南指出除大量血胸外，大多數氣胸和少量血胸使用 14 Fr 小管即可有效引流，降低疼痛與並發症。</li>
+                        <li><strong>使用超音波：</strong>11 版強調在主要檢查後即早使用 eFAST/Lung US 探測氣血胸，並在疑似張力生理時無需等待影像而立即處置。</li>
+                        <li><strong>疼痛控制：</strong>多模式鎮痛與肺復健成為標準，避免僅靠鴉片類藥物，並重視局部神經阻斷。</li>
+                    </ul>
+                    <p>整體而言，新版更重視以患者狀況為中心的動態評估與個人化治療。</p>
+                </div>
+            </div> <!-- end advanced tab -->
+
+            <!-- 臨床實用 -->
+            <div id="clinical" class="tab-content">
+                <h2 id="clinical-rapid">一、緊急應變表格</h2>
+                <table>
+                    <tr><th>狀況</th><th>核心判斷點</th><th>立即 SOP</th></tr>
+                    <tr>
+                        <td><strong>張力性氣胸</strong></td>
+                        <td>胸痛 + 呼吸困難 + 迅速低血壓；臨床即可診斷</td>
+                        <td>❶給 100% O₂ ❷使用 14 G 針於 2nd ICS MCL 或 5th ICS AAL/MAL 進行減壓 ❸立即指插開窗並置入胸管</td>
+                    </tr>
+                    <tr>
+                        <td><strong>開放性氣胸</strong></td>
+                        <td>胸壁缺口 >2/3 氣管直徑、胸腔呼吸音異常</td>
+                        <td>❶敷料三邊貼、一邊開形成單向活瓣❷於別處切口置胸管❸若有張力生理立即針減壓</td>
+                    </tr>
+                    <tr>
+                        <td><strong>大量/張力性血胸</strong></td>
+                        <td>單側叩診濁音 + 低血壓 + 扁平頸靜脈</td>
+                        <td>❶置入 ≥24 Fr 胸管；若引流量≥1500 mL 或 300–500 mL/h 持續數小時需緊急開胸</td>
+                    </tr>
+                    <tr>
+                        <td><strong>連枷胸/多發肋折</strong></td>
+                        <td>胸壁奇異擺動或疼痛導致淺呼吸</td>
+                        <td>❶高流量氧氣 ❷多模式鎮痛 ❸早期呼吸復健</td>
+                    </tr>
+                    <tr>
+                        <td><strong>肺挫傷</strong></td>
+                        <td>外觀正常但低氧延遲出現</td>
+                        <td>❶維持 SpO₂ >94% ❷嚴格流體管理，避免過度輸液</td>
+                    </tr>
+                </table>
+                <h2 id="clinical-dosing">二、鎮痛及用藥速查</h2>
+                <table>
+                    <tr><th>藥物</th><th>適應症</th><th>常用劑量 / 給法</th><th>特別提示</th></tr>
+                    <tr><td>Ketamine</td><td>劇痛肋骨骨折</td><td>0.25–0.5 mg/kg IV push；若需鎮靜 1 mg/kg</td><td>不抑制呼吸，適合低血壓病人</td></tr>
+                    <tr><td>Acetaminophen</td><td>基礎止痛</td><td>1 g IV/PO q6h；24 h 上限 4 g</td><td>肝病患者需調降劑量</td></tr>
+                    <tr><td>NSAIDs (Ibuprofen)</td><td>發炎性疼痛</td><td>400 mg PO q6h</td><td>評估腎功能及凝血功能</td></tr>
+                    <tr><td>Lidocaine 2%</td><td>肋間神經阻斷</td><td>≤3 mg/kg，沿肋骨上緣注射</td><td>避開血管神經束以防止併發症</td></tr>
+                </table>
+                <h2 id="clinical-assessment">三、監測與判讀</h2>
+                <table>
+                    <tr><th>工具</th><th>目的</th><th>閾值 / 指標</th><th>意義與立即處置</th></tr>
+                    <tr><td>Pulse Oximetry</td><td>監測氧合</td><td>SpO₂ <94%</td><td>立即給氧，評估氣胸或肺挫傷</td></tr>
+                    <tr><td>Capnography (ETCO₂)</td><td>監測通氣</td><td>ETCO₂ >50 mmHg</td><td>考慮換氣不足或胸管阻塞；檢查氣道及胸管通暢</td></tr>
+                    <tr><td>eFAST / Lung US</td><td>床邊偵測氣血胸</td><td>消失的 lung sliding 或探測到自由液體</td><td>應立即胸腔減壓或放管；在沒有 CT 的環境尤為重要</td></tr>
+                </table>
+                <h2 id="clinical-procedure">四、操作要訣</h2>
+                <div class="info-box">
+                    <h3>Needle Thoracostomy</h3>
+                    <ul>
+                        <li>部位：2nd ICS MCL 或 5th ICS AAL/MAL。</li>
+                        <li>進針角度：垂直胸壁，靠近肋骨<strong>上緣</strong>避免血管神經束。</li>
+                        <li>若針減壓失敗，立即改為指插開窗再置入胸管。</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h3>Tube Thoracostomy</h3>
+                    <ul>
+                        <li>常規 14 Fr 已足以處理大多數氣胸；大量/張力性血胸需 ≥24 Fr。</li>
+                        <li>插入點位於「安全三角」：前界為胸大肌側緣、後界為背闊肌前緣、底界為第五肋間水平，頂點在腋窩下方。</li>
+                        <li>穿刺角度沿肋骨上緣，將管指向背上方並確保有良好引流；運送中保持 −20 cmH₂O 負壓以防回流。</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h3>特殊情境調整</h3>
+                    <ul>
+                        <li>孕晚期：針與胸管均需向頭側上移 1–2 肋間，避免子宮阻礙。</li>
+                        <li>兒童：選用細口徑管，插入位置略高於 IMF；即使 X 光無骨折亦要警惕肺挫傷。</li>
+                        <li>肥胖或胸壁厚：使用長針或直接行指插開窗；必要時使用氣管導管代替胸管。</li>
+                    </ul>
+                </div>
+                <h2 id="clinical-complications">五、常見併發症及處理</h2>
+                <table>
+                    <tr><th>併發症</th><th>早期線索</th><th>立即應變</th></tr>
+                    <tr><td>胸管阻塞</td><td>水封瓶不再冒泡或 ETCO₂ 上升</td><td>檢查夾管、解開結束、沖洗管道，必要時換管</td></tr>
+                    <tr><td>輸血相關急性肺損傷 (TRALI)</td><td>輸血後 <6 h 突發低氧</td><td>立即停血品，給氧並通知加護團隊</td></tr>
+                    <tr><td>胸壁感染/蜂窩組織炎</td><td>管道周圍紅腫熱痛</td><td>拔管、給予廣效抗生素並外科評估</td></tr>
+                </table>
+                <div class="warning-box">
+                    <h3>✅ 口頭交班檢查表</h3>
+                    <p>快速提醒：「針放了？管通嗎？吸引 −20？痛有控？」並交接：</p>
+                    <ol>
+                        <li>針減壓時間與部位</li>
+                        <li>胸管尺寸、側別與負壓狀態</li>
+                        <li>最近一次胸腔輸出量與顏色</li>
+                        <li>SpO₂ / ETCO₂ / 血壓變化</li>
+                        <li>止痛方案與呼吸復健指令 (誘發式量器、胸部物理治療)</li>
+                    </ol>
+                </div>
+            </div> <!-- end clinical tab -->
+
+            <!-- 重要圖表 -->
+            <div id="charts" class="tab-content">
+                <h2 id="chart-anatomy">一、內外標記示意</h2>
+                <div class="chart-box">
+                    <p>胸腔可分為右肺腔、左肺腔及縱膈。外部標記包括肋間空隙、鎖骨中線 (MCL)、腋前線 (AAL)、腋中線 (MAL) 及乳下摺 (IMF)。使用這些地標可迅速定位針減壓與胸管插入位置。</p>
+                    <p>想像胸腔是一間「三室一廳」公寓：左右房間為左右肺腔，中間客廳為縱膈；門牌即是 MCL、AAL、MAL 及 IMF，幫助記憶。</p>
+                </div>
+                <h2 id="chart-sites">二、減壓與放管定位</h2>
+                <div class="chart-box">
+                    <p>圖表將兩個黃金減壓點標記為星號：<strong>★ 第5肋間 AAL/MAL</strong> 與 <strong>★ 第2肋間 MCL</strong>。評估胸壁厚度後選擇適當部位，使用 ≥8 cm 14 G 針垂直插入肋骨上緣，如失敗立刻改為指插開窗。</p>
+                    <p>安全三角由胸大肌側緣、背闊肌前緣及第5肋間連線圍成，插管時應在此區域內進行以避免損傷神經血管束。</p>
+                </div>
+                <h2 id="chart-physiology">三、張力性氣胸生理示意</h2>
+                <div class="chart-box">
+                    <p>單向活瓣效應使空氣進入胸腔但無法外洩，胸腔壓力升高→肺萎縮→縱膈向健側推移→大靜脈受壓回流受阻，導致低血壓與缺氧。此圖幫助我們理解為何張力性氣胸發現後必須立即減壓。</p>
+                </div>
+                <h2 id="chart-diaphragm">四、橫膈損傷示意</h2>
+                <div class="chart-box">
+                    <p>當橫膈被撕裂時，腹臟（胃腸）可上移至胸腔並形成張力生理。影像中鼻胃管可盤旋於胸腔，提示診斷；治療需立即手術修補。</p>
+                </div>
+                <h2 id="chart-signs">五、呼吸障礙體徵表</h2>
+                <div class="chart-box">
+                    <table>
+                        <tr><th>狀況</th><th>呼吸音</th><th>氣管</th><th>頸靜脈</th><th>血壓</th><th>備註</th></tr>
+                        <tr><td>肺挫傷</td><td>正常→下降</td><td>中線</td><td>–</td><td>–</td><td>嚴重度不一</td></tr>
+                        <tr><td>單純血/氣胸</td><td>正常→下降</td><td>中線</td><td>–</td><td>–</td><td>–</td></tr>
+                        <tr><td><strong>張力性血/氣胸</strong></td><td>下降</td><td>偏離患側</td><td>怒張</td><td>下降</td><td>臨床即可診斷</td></tr>
+                        <tr><td>開放性氣胸</td><td>異常下降</td><td>中線</td><td>–</td><td>–</td><td>胸壁傷口明顯</td></tr>
+                        <tr><td>大量血胸</td><td>下降</td><td>中線或輕偏</td><td>扁平</td><td>下降</td><td>出血性休克</td></tr>
+                        <tr><td>連枷胸</td><td>下降</td><td>中線</td><td>–</td><td>–</td><td>低氧程度依肺挫傷</td></tr>
+                        <tr><td>橫膈損傷</td><td>下降</td><td>中線</td><td>–</td><td>–</td><td>可能出現張力生理</td></tr>
+                        <tr><td>氣管/支氣管損傷</td><td>下降或異常</td><td>中線</td><td>–</td><td>–</td><td>氣漏及廣泛皮下氣腫</td></tr>
+                    </table>
+                    <p>此表格將七種胸傷關鍵體徵對照，快速掃描即可區分「誰有張力」、「誰出血」、「誰頸靜脈不脹」。</p>
+                </div>
+            </div> <!-- end charts tab -->
+
+            <!-- 其他重要重點 -->
+            <div id="others" class="tab-content">
+                <h2 id="others-rare">一、罕見但必考的「隱形殺手」</h2>
+                <p>下列胸傷雖然罕見，但診斷一旦遺漏常導致致命後果。考試與臨床須熟知其特徵與處置要點：</p>
+                <table>
+                    <tr><th>罕見傷病</th><th>診斷/處置關鍵</th><th>重要性</th></tr>
+                    <tr><td>Tracheobronchial injury</td><td>持續大量漏氣、肺部無法展開時應懷疑主支氣管裂傷；需單側選擇性插管或纖支鏡輔助定位。</td><td>破裂口大，正壓通氣易轉為張力氣胸；早期胸管與高階氣道技術可買救命時間。</td></tr>
+                    <tr><td>Occult pneumothorax</td><td>CT 上距胸壁 <3.5 cm 可觀察；距離較大或將接受正壓通氣/空中轉送時應先置胸管。</td><td>微小氣胸在機械通氣或高空環境中體積迅速膨脹，可能轉變為張力性氣胸。</td></tr>
+                    <tr><td>Tension hemothorax</td><td>一般血胸可用 14 Fr 小管，但大量或張力性血胸須使用 ≥24 Fr 大管，並隨時準備緊急開胸止血。</td><td>凝血塊堵塞小管導致持續失血與縱膈偏移，針減壓無效。</td></tr>
+                    <tr><td>Diaphragm rupture</td><td>避免無意識插胸管；左側裂傷多，X 光見鼻胃管位於胸腔時高度懷疑。</td><td>腹臟疝入胸腔可導致絞扭缺血；需盡早手術修補。</td></tr>
+                </table>
+                <h2 id="others-traps">二、容易被考官「卡分」的細節</h2>
+                <ul>
+                    <li><strong>−20 cmH₂O：</strong>所有轉院中的胸管應持續負壓吸引 −20 cmH₂O，避免運送中再度積氣或積血。</li>
+                    <li><strong>特殊族群穿刺位移動：</strong>孕晚期橫膈上抬，針與胸管要往頭側上移 1–2 肋；兒童胸壁柔軟，穿刺位置略高且使用小管徑；肥胖者 2nd ICS 常不足，首選 5th ICS 並備長針或指插開窗。</li>
+                    <li><strong>Needle Thoracostomy 成功率：</strong>新觀念認為 2nd ICS MCL 和 5th ICS AAL 均為黃金點，但失敗多因胸壁厚或導管扭折，減壓後應立即改行指插開窗。</li>
+                    <li><strong>Pulmonary contusion 延遲惡化：</strong>低氧高峰通常在受傷後 72 小時；約 20% 患者併發肺炎，早期 CXR 可能陰性，需嚴格流體管理與肺復健。</li>
+                </ul>
+                <h2 id="others-diff">三、外觀相似卻處置南轅北轍</h2>
+                <table>
+                    <tr><th>相似表現</th><th>鑑別徵象</th><th>正確處置</th><th>常見誤區</th></tr>
+                    <tr><td>張力氣胸 vs 張力血胸</td><td>兩者皆有低血壓與呼吸衰竭，但血胸無鼓音，患側呼吸音極弱而非完全消失；X 光見均勻白影。</td><td>氣胸→針/指減壓；血胸→大口徑胸管及可能手術。</td><td>誤用 14 G 針減壓血胸，導致無效。</td></tr>
+                    <tr><td>Pulmonary contusion vs 吸入性肺炎</td><td>受傷 6 小時內 CT 可見不分葉磨玻璃影；肺炎症狀漸進且伴發熱。</td><td>肺挫傷治療集中於控制液體、鎮痛與肺復健；肺炎則需抗生素。</td><td>將早期 contusion 當作肺炎，忽視限制輸液。</td></tr>
+                    <tr><td>左膈裂 vs 偏左張力氣胸</td><td>鼻胃管上移至胸腔、聽診可聞腸音提示膈裂。</td><td>應避免盲目置胸管，緊急外科修補。</td><td>錯把膈裂當氣胸插胸管，可能刺破腸管。</td></tr>
+                </table>
+                <h2 id="others-updates">四、新舊指南差異 &amp; 例外規則</h2>
+                <table>
+                    <tr><th>主題</th><th>舊版 (≤10th)</th><th>新版 (11th) / 最新證據</th><th>可能考點</th></tr>
+                    <tr><td>Needle 減壓位置</td><td>主要強調 2nd ICS MCL</td><td>2nd ICS MCL 或 5th ICS AAL 均可，視病人體型選擇</td><td>肥胖患者首選 5th ICS？</td></tr>
+                    <tr><td>Chest tube 口徑</td><td>統一使用 >28 Fr</td><td>大多數氣/血胸可使用 14 Fr 小管；massive/張力血胸需 ≥24 Fr</td><td>哪些情況仍需大管？</td></tr>
+                    <tr><td>Asymptomatic PTX</td><td>一旦看到即置胸管</td><td>影像 <3.5 cm 可保守；若需空運或正壓通氣則置管</td><td>空運轉診前是否要置胸管？</td></tr>
+                </table>
+                <h2 id="others-pitfalls">五、自我測試：陷阱題回顧</h2>
+                <ol>
+                    <li>為何 occult PTX 在空中惡化？→ 外界氣壓下降導致胸膜內外壓差增大，氣腔體積依玻意耳定律快速膨脹。</li>
+                    <li>張力血胸為何針減壓無效？→ 血液無法經細針快速排出，持續壓迫肺與大靜脈。</li>
+                    <li>兒童肋骨不易斷卻肺易傷，原因？→ 胸壁柔軟，外力能量更易傳至肺實質造成挫傷。</li>
+                    <li>為何胸管運送中需接負壓 −20 cmH₂O？→ 預防飛行或車震造成的姿勢改變導致氣體或血液倒流。</li>
+                    <li>左膈破裂未立即修補可能引發哪些致命併發症？→ 腹臟絞扭缺血與遲發性張力生理。</li>
+                </ol>
+
+                <h2 id="others-additional">六、補充知識：特殊族群與資源策略</h2>
+                <p>本節彙整 ATLS 章末未詳述但考試與臨床常被忽略的重點，包括特殊族群、資源受限環境、影像監測與病理生理等知識，以便完整理解胸傷處置。</p>
+                <ul>
+                    <li><strong>特殊族群處置：</strong>孕晚期患者橫膈上抬、肺容量減少，針減壓與胸管置入點需向頭側上移 1–2 肋；兒童胸壁柔軟、易肺挫傷但不易肋骨斷裂，穿刺位置略高並選用較細胸管；高齡者多肋骨骨折死亡率高，應儘早使用結構化照護路徑並轉送外傷中心；肥胖者胸壁厚，2nd ICS 減壓可能失敗，宜選 5th ICS 並備長針或指插開窗。</li>
+                    <li><strong>資源受限環境策略：</strong>在無法取得電腦斷層的場域須倚賴超音波與 X 光檢查。胸部超音波可辨識不規則低回聲肺挫傷或多條 B‑line，但操作者經驗影響診斷力；若缺乏胸管，可將氣管內管當作臨時引流管，將囊球置於胸腔內固定以減壓。</li>
+                    <li><strong>動態再評估與轉院原則：</strong>任何介入後均以「Look‑Listen‑Feel + SpO₂ / ETCO₂」循環再評估，注意胸管輸出量、疼痛控制與肺徵；肋骨骨折患者需頻繁監測以預防肺炎。中重度胸傷或需持續 −20 cmH₂O 吸引的患者應轉送外傷中心，並在空中運送前完成胸腔減壓。</li>
+                    <li><strong>影像與監測輔助診斷：</strong>脈搏血氧受末梢灌流影響，低值時需輔以 ETCO₂ 與血氣分析確認；仰臥胸片因血液沉積於背側而易低估大量血胸，小氣胸亦可能不顯影；第一、二肋骨骨折暗示高能量傷。帶口服或經胃管對比劑的 CT 偵測左膈裂敏感度僅約八成，鼻胃管盤旋於胸腔是重要線索。</li>
+                    <li><strong>病理生理深讀：</strong>肺挫傷在受傷後 24–72 小時內水腫增加並有約 20 % 併發肺炎，治療重點為補氧、嚴格限制輸液、鎮痛與肺復健；正壓通氣可將單純氣胸迅速推成張力性氣胸，造成縱膈偏移與血壓驟降；大量血胸可能同時具有張力效應與失血性休克，需警覺肋間血管、心臟或橫膈創傷等原因。</li>
+                    <li><strong>統計與解剖輔助記憶：</strong>橫膈裂傷發生率約佔外傷 0.5%，三分之二為穿刺傷且 80 % 裂口小於 2 cm；心臟箱 (cardiac box) 是指前胸乳頭內側至後肩胛尖內側之間、從胸骨角到劍突的區域，穿刺傷於此區需警覺心臟大血管受損。</li>
+                    <li><strong>延伸學習資源：</strong>章末參考文獻列出多篇先進氣道與正壓通氣相關的系統性回顧 (如 SCCM RSI 2023 Guideline、影像引導氣管插管研究)，可作為深入研讀之用。</li>
+                </ul>
+            </div> <!-- end others tab -->
+
+            <!-- 引文與參考 -->
+            <div id="references" class="tab-content">
+                <div class="footnotes">
+                    <h2>📌 引文與參考</h2>
+                    <ol>
+                        <li id="cite-1">ATLS 第9版《Breathing &amp; Ventilation》筆記整理強調了 5T 致命胸傷、Look‑Listen‑Feel 評估、針減壓/胸管位置以及早期影像順序。</li>
+                        <li id="cite-2">ATLS 第9版第二步概述：針減壓可選 2nd ICS MCL 或 5th ICS AAL/MAL；所有疑似張力氣胸患者需立即給氧並監測 SpO₂、ETCO₂、血壓。</li>
+                        <li id="cite-3">學習筆記提供多個口訣與主動回憶問題，如「氣開血斷膈」、「二中五腋★」、「K‑A‑N‑L」以及概念圖譜。</li>
+                        <li id="cite-4">快速應變表格強調張力氣胸、開放性氣胸、大量血胸、連枷胸與肺挫傷的臨床判斷與初步處置。</li>
+                        <li id="cite-5">筆記中列出常用止痛藥物及劑量，包括 Ketamine、Acetaminophen、NSAIDs 和 Lidocaine。</li>
+                        <li id="cite-6">關鍵監測工具表格解釋了脈搏血氧、ETCO₂ 與 eFAST 在胸傷判斷中的閾值與臨床意義。</li>
+                        <li id="cite-7">程序提示強調針減壓與胸管的定位、操作要點以及在孕婦、兒童與肥胖患者中的調整。</li>
+                        <li id="cite-8">圖表 5-11 提示兩個減壓點：5th ICS AAL/MAL 與 2nd ICS MCL，並提供記憶口訣「二中五腋」。</li>
+                        <li id="cite-9">表 5-1 對比不同呼吸障礙的呼吸音、氣管偏移、頸靜脈和血壓表現，有助快速鑑別。</li>
+                        <li id="cite-10">StatPearls 描述張力性氣胸的典型臨床表徵：呼吸困難、低血壓、患側呼吸音消失與氣管偏移。</li>
+                        <li id="cite-11">StatPearls 建議對血流動力學不穩定的張力性氣胸患者立即針減壓後置入胸管，穩定者可先拍攝 X 光。</li>
+                        <li id="cite-12">管理開放性氣胸的標準做法為三邊貼敷、一邊開放的敷料，必要時拆除敷料並針減壓。</li>
+                        <li id="cite-13">StatPearls 指出胸腔引流量 ≥1500 mL 或持續每小時 300–500 mL 是手術探查的大量血胸指標。</li>
+                        <li id="cite-14">Flail Chest 的疼痛導致淺呼吸、低潮氣量和無效咳嗽，非手術治療包括鎮痛、呼吸支持和肺復健。</li>
+                        <li id="cite-15">StatPearls 關於橫膈破裂指出左側更常見，需 nasogastric 管減壓並手術修補。</li>
+                        <li id="cite-16">Chest Tube 文章說明安全三角界限：胸大肌側緣、背闊肌前緣與第5肋間連線；插管應位於此區域內。</li>
+                        <li id="cite-17">Radiopaedia 文章提到超音波偵測氣胸的敏感度 86–98% 和特異度 97–100%，優於仰臥胸 X 光。</li>
+                    </ol>
+                </div>
+            </div> <!-- end references tab -->
+
         </div>
+        <button class="back-to-top" onclick="scrollToTop()">⬆️</button>
     </div>
-
-    <div class="content">
-        <div class="copyright-notice">
-            <h4>⚖️ 版權聲明與使用限制</h4>
-            <p>本網頁內容使用GAI生成</p>
-            <p>本網頁為自學用途之中文編譯版本，非官方授權翻譯。</p>
-            <ul>
-                <li>原文版權屬於American College of Surgeons Committee on Trauma</li>
-                <li>本網頁教材旨在促進醫學教育發展，僅供學習者參考使用，嚴禁任何商業用途</li>
-                <li>讀者若需完整理解原文，建議參閱原始英文版本</li>
-            </ul>
-        </div>
-
-        <div id="general" class="tab-content active">
-            <h2>📋 一般性重點筆記</h2>
-            <p id="general-note">內容持續建置中…</p>
-        </div>
-
-        <div id="advanced" class="tab-content">
-            <h2>⚠️ 進階觀念與應考陷阱</h2>
-            <p id="advanced-note">內容持續建置中…</p>
-        </div>
-
-        <div id="clinical" class="tab-content">
-            <h2>🚨 臨床現場實用資訊</h2>
-            <p id="clinical-note">內容持續建置中…</p>
-        </div>
-
-        <div id="charts" class="tab-content">
-            <h2>📊 重要圖表整理</h2>
-            <p id="charts-note">內容持續建置中…</p>
-        </div>
-
-        <div id="others" class="tab-content">
-            <h2>📌 其他重要重點</h2>
-            <p id="others-note">內容持續建置中…</p>
-        </div>
-    </div>
-
     <script>
-        function showTab(tabId) {
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`).classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+        // Tab switcher
+        function openTab(evt, tabName) {
+            let i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tabbuttons = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
         }
-
-        function toggleAnswer(element) {
-            const answer = element.nextElementSibling;
-            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        // Q&A toggle
+        const questions = document.querySelectorAll('.question');
+        questions.forEach(q => {
+            q.addEventListener('click', () => {
+                q.classList.toggle('active');
+                const ans = q.nextElementSibling;
+                ans.classList.toggle('active');
+            });
+        });
+        // Scroll progress bar
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.querySelector('.progress-bar').style.width = scrolled + "%";
+            // Back to top button
+            const backBtn = document.querySelector('.back-to-top');
+            if (winScroll > 300) {
+                backBtn.style.display = 'block';
+            } else {
+                backBtn.style.display = 'none';
+            }
         }
-
-        function downloadPDF() {
-            window.print();
-        }
-
+        // Back to top
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        window.onscroll = function() {
-            const backToTopBtn = document.getElementById('back-to-top');
-            const progressBar = document.getElementById('progress-bar');
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + '%';
-            if (winScroll > 300) {
-                backToTopBtn.style.display = 'flex';
-            } else {
-                backToTopBtn.style.display = 'none';
-            }
-        };
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
     </script>
 </body>
 </html>
